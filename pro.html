@@ -15,107 +15,136 @@
 <div class="flex items-center gap-2"><div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-black">D</div><span class="font-black">DIGITAL MAROC PRO</span></div>
 <div class="flex items-center gap-2">
 <div class="flex bg-[#f6f6f6] rounded-full p-1 text-[11px] font-black"><button onclick="setLang('ar')" id="btn-ar" class="lang-active px-3 py-1 rounded-full">AR</button><button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1 rounded-full">FR</button><button onclick="setLang('en')" id="btn-en" class="px-3 py-1 rounded-full">EN</button></div>
-<a href="https://wa.me/212719380106" class="bg-black text-white px-5 py-2 rounded-full text-xs font-black">299 DH</a>
+<a href="https://wa.me/212719380106" class="bg-black text-white px-5 py-2 rounded-full text-xs font-black" data-i18n="header_btn">299 DH - اطلب الآن</a>
 </div></div></header>
 
-<div class="bg-black text-white py-2 text-center text-[11px] font-bold flex justify-center gap-6"><span>⚡ تسليم فوري 5 دقائق</span><span>🔒 ضمان 7 أيام</span><span>🇲🇦 شركة مغربية موثقة</span></div>
+<div class="bg-black text-white py-2 text-center text-[11px] font-bold flex justify-center gap-6"><span data-i18n="top1">⚡ تسليم فوري في 5 دقائق</span><span data-i18n="top2">🔒 ضمان 7 أيام استرجاع</span><span data-i18n="top3">🇲🇦 شركة مغربية موثقة - 2026</span></div>
 
 <div class="max-w-[1200px] mx-auto px-6 py-10 grid md:grid-cols-2 gap-10 items-center">
 <div>
-<div class="flex items-center gap-2 mb-4"><span class="bg-red-500 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse">🔥 عرض محدود - 2026</span><span class="bg-orange-100 text-orange-700 text-[10px] px-3 py-1 rounded-full font-black" id="totalLeft">⚠️ باقي 19 متجر فقط هذا الشهر</span></div>
-<h1 class="text-[38px] md:text-[48px] font-black leading-[0.9]">المتجر الجاهز<br><span class="bg-black text-white px-3 rounded-[12px]">PRO MAX</span><br>يخدم وانت ناعس.</h1>
-<p class="text-zinc-500 mt-4 text-[13px] leading-relaxed">ماشي قالب ووردبريس عادي. نظام احترافي + دومين + استضافة + منتجات بحقوق إعادة البيع. كتختار النوع اللي بغيتي وكتستلمو واجد.</p>
+<div class="flex items-center gap-2 mb-4"><span class="bg-red-500 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse" data-i18n="badge_sale">🔥 عرض محدود - 2026</span><span class="bg-orange-100 text-orange-700 text-[10px] px-3 py-1 rounded-full font-black" data-i18n="total_left">⚠️ باقي 19 متجر فقط هذا الشهر</span></div>
+<h1 class="text-[38px] md:text-[48px] font-black leading-[0.9]" data-i18n="hero">المتجر الجاهز<br><span class="bg-black text-white px-3 rounded-[12px]">PRO MAX</span><br>يخدم وانت ناعس.</h1>
+<p class="text-zinc-500 mt-4 text-[13px] leading-relaxed" data-i18n="hero_desc">ماشي قالب ووردبريس عادي. نظام احترافي + دومين + استضافة + منتجات بحقوق إعادة البيع. كتختار النوع اللي بغيتي وكتستلمو واجد.</p>
 
 <div class="mt-6 bg-white border-2 border-black rounded-[20px] p-5">
-<p class="text-[11px] font-black">💡 علاش العدد محدود؟</p>
-<p class="text-[11px] text-zinc-500 mt-2">كنصاوبو 30 متجر فالشهر باش نحافظو على الجودة والدعم. ملي كيتعامر العدد كنحبسو الطلبات حتى الشهر الجاي. هادشي باش نضمنو كل زبون كياخد حقه فالدعم والتدريب.</p>
-<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-black text-white px-3 py-1 rounded-full">19 متجر متبقي</span><span class="bg-red-500 text-white px-3 py-1 rounded-full">11 متجر تباع اليوم</span></div>
+<p class="text-[11px] font-black" data-i18n="why_title">💡 علاش العدد محدود؟</p>
+<p class="text-[11px] text-zinc-500 mt-2" data-i18n="why_desc">كنصاوبو 30 متجر فالشهر باش نحافظو على الجودة والدعم. ملي كيتعامر العدد كنحبسو الطلبات حتى الشهر الجاي. هادشي باش نضمنو كل زبون كياخد حقه فالدعم والتدريب.</p>
+<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-black text-white px-3 py-1 rounded-full" data-i18n="left_badge">19 متجر متبقي</span><span class="bg-red-500 text-white px-3 py-1 rounded-full" data-i18n="sold_badge">11 متجر تباع اليوم</span></div>
 </div>
 
-<div class="mt-6 flex gap-3"><a href="#stores" class="flex-1 bg-black text-white py-4 rounded-full font-black text-center text-sm">اختار نوع متجرك من الأسفل ↓</a></div>
+<div class="mt-6 flex gap-3"><a href="#stores" class="flex-1 bg-black text-white py-4 rounded-full font-black text-center text-sm" data-i18n="cta_choose">اختار نوع متجرك من الأسفل ↓</a></div>
 </div>
 
-<div class="relative"><div class="bg-white border rounded-[32px] p-3 shadow-2xl"><div class="bg-[#f6f6f6] rounded-[24px] overflow-hidden"><img src="pro.header.jpg" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600'" class="w-full h-[320px] object-cover"><div class="p-5 bg-white"><div class="flex justify-between items-center"><p class="font-black">متجرك PRO جاهز</p><span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full">● LIVE</span></div><div class="mt-3 grid grid-cols-3 gap-2 text-[10px]"><div class="bg-[#f6f6f6] p-3 rounded-xl text-center"><p class="text-xl">📚</p><p class="font-bold mt-1">500 كتاب</p></div><div class="bg-[#f6f6f6] p-3 rounded-xl text-center"><p class="text-xl">🎨</p><p class="font-bold mt-1">2000 قالب</p></div><div class="bg-black text-white p-3 rounded-xl text-center"><p class="text-xl">💳</p><p class="font-bold mt-1">دفع CIH</p></div></div></div></div></div></div>
+<div class="relative"><div class="bg-white border rounded-[32px] p-3 shadow-2xl"><div class="bg-[#f6f6f6] rounded-[24px] overflow-hidden"><img src="pro.header.jpg" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600'" class="w-full h-[320px] object-cover"><div class="p-5 bg-white"><div class="flex justify-between items-center"><p class="font-black" data-i18n="preview_title">متجرك PRO جاهز</p><span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full">● LIVE</span></div><div class="mt-3 grid grid-cols-3 gap-2 text-[10px]"><div class="bg-[#f6f6f6] p-3 rounded-xl text-center"><p class="text-xl">📚</p><p class="font-bold mt-1" data-i18n="p1">500 كتاب</p></div><div class="bg-[#f6f6f6] p-3 rounded-xl text-center"><p class="text-xl">🎨</p><p class="font-bold mt-1" data-i18n="p2">2000 قالب</p></div><div class="bg-black text-white p-3 rounded-xl text-center"><p class="text-xl">💳</p><p class="font-bold mt-1" data-i18n="p3">دفع CIH</p></div></div></div></div></div></div>
 </div>
 
-<!-- ✅ 6 أنواع - كل واحد كيمشي للواتساب بمعلومات النوع والثمن -->
 <section id="stores" class="max-w-[1200px] mx-auto px-6 py-12">
 <h2 class="text-2xl font-black text-center" data-i18n="stores_title">6 أنواع متاجر كنصاوبو لك - اختار اللي بغيتي</h2>
 <p class="text-center text-zinc-500 text-xs mt-2" data-i18n="stores_desc">كليكي على النوع اللي بغيتي وغادي تمشي مباشرة للواتساب بالمعلومات</p>
 <div class="grid md:grid-cols-3 gap-4 mt-8">
 
-<!-- 1 -->
-<div class="bg-white border-2 border-black rounded-[20px] p-6 relative overflow-hidden">
-<div class="absolute top-3 left-3 bg-red-500 text-white text-[9px] px-2 py-1 rounded-full font-black">باقي 4 فقط</div>
+<div class="bg-white border-2 border-black rounded-[20px] p-6 relative">
+<div class="absolute top-3 left-3 bg-red-500 text-white text-[9px] px-2 py-1 rounded-full font-black" data-i18n="s1_left">باقي 4 فقط</div>
 <div class="w-10 h-10 bg-black text-white rounded-xl flex items-center justify-center mt-4">📚</div>
-<h3 class="font-black mt-3 text-sm">متجر الكتب الرقمية</h3>
-<p class="text-[11px] text-zinc-500 mt-2">500 كتاب PLR + نظام تحميل فوري + حماية نسخ. تبيع 49-99 DH وتربح 100%.</p>
-<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full">500 كتاب</span><span class="bg-black text-white px-2 py-1 rounded-full">299 DH</span></div>
-<a href="https://wa.me/212719380106?text=السلام%20Ahsan%20بغيت%20متجر%20الكتب%20الرقمية%20📚%0Aالنوع%3A%20متجر%20كتب%20رقمية%0Aالثمن%3A%20299%20DH%20بدل%20599%20DH%0Aالعدد%20المتبقي%3A%204%20متاجر%20فقط%20فهاد%20الفئة%0Aبغيت%20نعرف%20كتر%20ونخلص" class="mt-4 block w-full bg-black text-white text-center py-3 rounded-full font-black text-xs">اطلب هاد النوع - 299 DH →</a>
+<h3 class="font-black mt-3 text-sm" data-i18n="s1_t">متجر الكتب الرقمية</h3>
+<p class="text-[11px] text-zinc-500 mt-2" data-i18n="s1_d">500 كتاب PLR + نظام تحميل فوري + حماية نسخ. تبيع 49-99 DH وتربح 100%.</p>
+<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full" data-i18n="s1_tag">500 كتاب</span><span class="bg-black text-white px-2 py-1 rounded-full">299 DH</span></div>
+<a id="wa1" href="#" class="mt-4 block w-full bg-black text-white text-center py-3 rounded-full font-black text-xs" data-i18n="s1_btn">اطلب هاد النوع - 299 DH →</a>
 </div>
 
-<!-- 2 -->
-<div class="bg-white border rounded-[20px] p-6 relative overflow-hidden">
-<div class="absolute top-3 left-3 bg-orange-500 text-white text-[9px] px-2 py-1 rounded-full font-black">باقي 3 فقط</div>
+<div class="bg-white border rounded-[20px] p-6 relative">
+<div class="absolute top-3 left-3 bg-orange-500 text-white text-[9px] px-2 py-1 rounded-full font-black" data-i18n="s2_left">باقي 3 فقط</div>
 <div class="w-10 h-10 bg-[#f6f6f6] rounded-xl flex items-center justify-center mt-4">🎨</div>
-<h3 class="font-black mt-3 text-sm">متجر قوالب Canva</h3>
-<p class="text-[11px] text-zinc-500 mt-2">2000 قالب في 20 نيتش. تبيع 19-49 DH. مطلوب بزاف فالمغرب.</p>
-<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full">2000 قالب</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
-<a href="https://wa.me/212719380106?text=السلام%20Ahsan%20بغيت%20متجر%20قوالب%20Canva%20🎨%0Aالنوع%3A%20متجر%20قوالب%20Canva%0Aالثمن%3A%20299%20DH%20بدل%20599%20DH%0Aالعدد%20المتبقي%3A%203%20متاجر%20فقط%20فهاد%20الفئة%0Aبغيت%20نعرف%20كتر%20ونخلص" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs">اطلب هاد النوع - 299 DH →</a>
+<h3 class="font-black mt-3 text-sm" data-i18n="s2_t">متجر قوالب Canva</h3>
+<p class="text-[11px] text-zinc-500 mt-2" data-i18n="s2_d">2000 قالب في 20 نيتش. تبيع 19-49 DH. مطلوب بزاف فالمغرب.</p>
+<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full" data-i18n="s2_tag">2000 قالب</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
+<a id="wa2" href="#" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs" data-i18n="s2_btn">اطلب هاد النوع - 299 DH →</a>
 </div>
 
-<!-- 3 -->
-<div class="bg-white border rounded-[20px] p-6 relative overflow-hidden">
-<div class="absolute top-3 left-3 bg-orange-500 text-white text-[9px] px-2 py-1 rounded-full font-black">باقي 2 فقط</div>
+<div class="bg-white border rounded-[20px] p-6 relative">
+<div class="absolute top-3 left-3 bg-orange-500 text-white text-[9px] px-2 py-1 rounded-full font-black" data-i18n="s3_left">باقي 2 فقط</div>
 <div class="w-10 h-10 bg-[#f6f6f6] rounded-xl flex items-center justify-center mt-4">🛒</div>
-<h3 class="font-black mt-3 text-sm">متجر E-commerce ملموس</h3>
-<p class="text-[11px] text-zinc-500 mt-2">سلة + COD + تتبع طلبات. متجر حقيقي تتحكم فيه.</p>
+<h3 class="font-black mt-3 text-sm" data-i18n="s3_t">متجر E-commerce ملموس</h3>
+<p class="text-[11px] text-zinc-500 mt-2" data-i18n="s3_d">سلة + COD + تتبع طلبات. متجر حقيقي تتحكم فيه.</p>
 <div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full">COD + CIH</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
-<a href="https://wa.me/212719380106?text=السلام%20Ahsan%20بغيت%20متجر%20E-commerce%20ملموس%20🛒%0Aالنوع%3A%20متجر%20منتجات%20ملموسة%0Aالثمن%3A%20299%20DH%20بدل%20599%20DH%0Aالعدد%20المتبقي%3A%202%20متاجر%20فقط%20فهاد%20الفئة%0Aبغيت%20نعرف%20كتر%20ونخلص" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs">اطلب هاد النوع - 299 DH →</a>
+<a id="wa3" href="#" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs" data-i18n="s3_btn">اطلب هاد النوع - 299 DH →</a>
 </div>
 
-<!-- 4 -->
-<div class="bg-white border rounded-[20px] p-6 relative overflow-hidden">
-<div class="absolute top-3 left-3 bg-green-500 text-white text-[9px] px-2 py-1 rounded-full font-black">باقي 5 فقط</div>
+<div class="bg-white border rounded-[20px] p-6 relative">
+<div class="absolute top-3 left-3 bg-green-500 text-white text-[9px] px-2 py-1 rounded-full font-black" data-i18n="s4_left">باقي 5 فقط</div>
 <div class="w-10 h-10 bg-[#f6f6f6] rounded-xl flex items-center justify-center mt-4">💈</div>
-<h3 class="font-black mt-3 text-sm">متجر الخدمات والحجز</h3>
-<p class="text-[11px] text-zinc-500 mt-2">صالون، مطعم، عيادة، جيم. حجز + واتساب + خريطة.</p>
-<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full">حجز + واتساب</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
-<a href="https://wa.me/212719380106?text=السلام%20Ahsan%20بغيت%20متجر%20الخدمات%20والحجز%20💈%0Aالنوع%3A%20متجر%20خدمات%0Aالثمن%3A%20299%20DH%20بدل%20599%20DH%0Aالعدد%20المتبقي%3A%205%20متاجر%20فقط%20فهاد%20الفئة%0Aبغيت%20نعرف%20كتر%20ونخلص" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs">اطلب هاد النوع - 299 DH →</a>
+<h3 class="font-black mt-3 text-sm" data-i18n="s4_t">متجر الخدمات والحجز</h3>
+<p class="text-[11px] text-zinc-500 mt-2" data-i18n="s4_d">صالون، مطعم، عيادة، جيم. حجز + واتساب + خريطة.</p>
+<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full" data-i18n="s4_tag">حجز + واتساب</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
+<a id="wa4" href="#" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs" data-i18n="s4_btn">اطلب هاد النوع - 299 DH →</a>
 </div>
 
-<!-- 5 -->
-<div class="bg-white border rounded-[20px] p-6 relative overflow-hidden">
-<div class="absolute top-3 left-3 bg-green-500 text-white text-[9px] px-2 py-1 rounded-full font-black">باقي 3 فقط</div>
+<div class="bg-white border rounded-[20px] p-6 relative">
+<div class="absolute top-3 left-3 bg-green-500 text-white text-[9px] px-2 py-1 rounded-full font-black" data-i18n="s5_left">باقي 3 فقط</div>
 <div class="w-10 h-10 bg-[#f6f6f6] rounded-xl flex items-center justify-center mt-4">🎓</div>
-<h3 class="font-black mt-3 text-sm">متجر الكورسات</h3>
-<p class="text-[11px] text-zinc-500 mt-2">حماية فيديو + تتبع تقدم + شهادات. أكاديمية صغيرة.</p>
-<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full">فيديو + شهادة</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
-<a href="https://wa.me/212719380106?text=السلام%20Ahsan%20بغيت%20متجر%20الكورسات%20🎓%0Aالنوع%3A%20متجر%20كورسات%0Aالثمن%3A%20299%20DH%20بدل%20599%20DH%0Aالعدد%20المتبقي%3A%203%20متاجر%20فقط%20فهاد%20الفئة%0Aبغيت%20نعرف%20كتر%20ونخلص" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs">اطلب هاد النوع - 299 DH →</a>
+<h3 class="font-black mt-3 text-sm" data-i18n="s5_t">متجر الكورسات</h3>
+<p class="text-[11px] text-zinc-500 mt-2" data-i18n="s5_d">حماية فيديو + تتبع تقدم + شهادات. أكاديمية صغيرة.</p>
+<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-[#f6f6f6] px-2 py-1 rounded-full" data-i18n="s5_tag">فيديو + شهادة</span><span class="border px-2 py-1 rounded-full">299 DH</span></div>
+<a id="wa5" href="#" class="mt-4 block w-full border-2 border-black text-center py-3 rounded-full font-black text-xs" data-i18n="s5_btn">اطلب هاد النوع - 299 DH →</a>
 </div>
 
-<!-- 6 Empire -->
-<div class="bg-black text-white border rounded-[20px] p-6 relative overflow-hidden">
-<div class="absolute top-3 left-3 bg-red-500 text-white text-[9px] px-2 py-1 rounded-full font-black animate-pulse">باقي 2 فقط - الأكثر طلبا</div>
+<div class="bg-black text-white border rounded-[20px] p-6 relative">
+<div class="absolute top-3 left-3 bg-red-500 text-white text-[9px] px-2 py-1 rounded-full font-black animate-pulse" data-i18n="s6_left">باقي 2 فقط - الأكثر طلبا</div>
 <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center mt-4">🚀</div>
-<h3 class="font-black mt-3 text-sm">متجر شامل Empire</h3>
-<p class="text-[11px] text-zinc-400 mt-2">كلشي فمتجر واحد: كتب + قوالب + منتجات + خدمات + كورسات.</p>
-<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-white/10 px-2 py-1 rounded-full">الكل في واحد</span><span class="bg-white text-black px-2 py-1 rounded-full">499 DH بدل 999</span></div>
-<a href="https://wa.me/212719380106?text=السلام%20Ahsan%20بغيت%20متجر%20شامل%20Empire%20🚀%0Aالنوع%3A%20متجر%20شامل%20Empire%20-%20كلشي%20فمتجر%20واحد%0Aالثمن%3A%20499%20DH%20بدل%20999%20DH%0Aالعدد%20المتبقي%3A%202%20متاجر%20فقط%20فهاد%20الفئة%20-%20الأكثر%20طلبا%0Aبغيت%20نعرف%20كتر%20ونخلص" class="mt-4 block w-full bg-white text-black text-center py-3 rounded-full font-black text-xs">اطلب Empire - 499 DH →</a>
+<h3 class="font-black mt-3 text-sm" data-i18n="s6_t">متجر شامل Empire</h3>
+<p class="text-[11px] text-zinc-400 mt-2" data-i18n="s6_d">كلشي فمتجر واحد: كتب + قوالب + منتجات + خدمات + كورسات.</p>
+<div class="mt-3 flex gap-2 text-[10px]"><span class="bg-white/10 px-2 py-1 rounded-full" data-i18n="s6_tag">الكل في واحد</span><span class="bg-white text-black px-2 py-1 rounded-full">499 DH</span></div>
+<a id="wa6" href="#" class="mt-4 block w-full bg-white text-black text-center py-3 rounded-full font-black text-xs" data-i18n="s6_btn">اطلب Empire - 499 DH →</a>
 </div>
 
 </div>
 </section>
 
 <script>
-const i18n={ar:{stores_title:"6 أنواع متاجر كنصاوبو لك - اختار اللي بغيتي",stores_desc:"كليكي على النوع اللي بغيتي وغادي تمشي مباشرة للواتساب بالمعلومات"},fr:{stores_title:"6 Types de boutiques - Choisissez",stores_desc:"Cliquez sur le type et vous irez sur WhatsApp avec les infos"},en:{stores_title:"6 Store types - Choose yours",stores_desc:"Click the type and go directly to WhatsApp with info"}};
+const i18n={
+ar:{
+header_btn:"299 DH - اطلب الآن",top1:"⚡ تسليم فوري في 5 دقائق",top2:"🔒 ضمان 7 أيام استرجاع",top3:"🇲🇦 شركة مغربية موثقة - 2026",badge_sale:"🔥 عرض محدود - 2026",total_left:"⚠️ باقي 19 متجر فقط هذا الشهر",hero:"المتجر الجاهز<br><span class='bg-black text-white px-3 rounded-[12px]'>PRO MAX</span><br>يخدم وانت ناعس.",hero_desc:"ماشي قالب ووردبريس عادي. نظام احترافي + دومين + استضافة + منتجات بحقوق إعادة البيع. كتختار النوع اللي بغيتي وكتستلمو واجد.",why_title:"💡 علاش العدد محدود؟",why_desc:"كنصاوبو 30 متجر فالشهر باش نحافظو على الجودة والدعم. ملي كيتعامر العدد كنحبسو الطلبات حتى الشهر الجاي. هادشي باش نضمنو كل زبون كياخد حقه فالدعم والتدريب.",left_badge:"19 متجر متبقي",sold_badge:"11 متجر تباع اليوم",cta_choose:"اختار نوع متجرك من الأسفل ↓",preview_title:"متجرك PRO جاهز",p1:"500 كتاب",p2:"2000 قالب",p3:"دفع CIH",stores_title:"6 أنواع متاجر كنصاوبو لك - اختار اللي بغيتي",stores_desc:"كليكي على النوع اللي بغيتي وغادي تمشي مباشرة للواتساب بالمعلومات",
+s1_left:"باقي 4 فقط",s1_t:"متجر الكتب الرقمية",s1_d:"500 كتاب PLR + نظام تحميل فوري + حماية نسخ. تبيع 49-99 DH وتربح 100%.",s1_tag:"500 كتاب",s1_btn:"اطلب هاد النوع - 299 DH →",
+s2_left:"باقي 3 فقط",s2_t:"متجر قوالب Canva",s2_d:"2000 قالب في 20 نيتش. تبيع 19-49 DH. مطلوب بزاف فالمغرب.",s2_tag:"2000 قالب",s2_btn:"اطلب هاد النوع - 299 DH →",
+s3_left:"باقي 2 فقط",s3_t:"متجر E-commerce ملموس",s3_d:"سلة + COD + تتبع طلبات. متجر حقيقي تتحكم فيه.",s3_btn:"اطلب هاد النوع - 299 DH →",
+s4_left:"باقي 5 فقط",s4_t:"متجر الخدمات والحجز",s4_d:"صالون، مطعم، عيادة، جيم. حجز + واتساب + خريطة.",s4_tag:"حجز + واتساب",s4_btn:"اطلب هاد النوع - 299 DH →",
+s5_left:"باقي 3 فقط",s5_t:"متجر الكورسات",s5_d:"حماية فيديو + تتبع تقدم + شهادات. أكاديمية صغيرة.",s5_tag:"فيديو + شهادة",s5_btn:"اطلب هاد النوع - 299 DH →",
+s6_left:"باقي 2 فقط - الأكثر طلبا",s6_t:"متجر شامل Empire",s6_d:"كلشي فمتجر واحد: كتب + قوالب + منتجات + خدمات + كورسات.",s6_tag:"الكل في واحد",s6_btn:"اطلب Empire - 499 DH →",
+wa1:"السلام Ahsan بغيت متجر الكتب الرقمية 📚%0Aالنوع: متجر كتب رقمية%0Aالثمن: 299 DH بدل 599 DH%0Aالعدد المتبقي: 4 فقط%0Aبغيت نعرف كتر ونخلص",wa2:"السلام Ahsan بغيت متجر قوالب Canva 🎨%0Aالنوع: متجر قوالب Canva%0Aالثمن: 299 DH بدل 599 DH%0Aالعدد المتبقي: 3 فقط%0Aبغيت نعرف كتر ونخلص",wa3:"السلام Ahsan بغيت متجر E-commerce ملموس 🛒%0Aالنوع: متجر منتجات ملموسة%0Aالثمن: 299 DH بدل 599 DH%0Aالعدد المتبقي: 2 فقط%0Aبغيت نعرف كتر ونخلص",wa4:"السلام Ahsan بغيت متجر الخدمات والحجز 💈%0Aالنوع: متجر خدمات%0Aالثمن: 299 DH بدل 599 DH%0Aالعدد المتبقي: 5 فقط%0Aبغيت نعرف كتر ونخلص",wa5:"السلام Ahsan بغيت متجر الكورسات 🎓%0Aالنوع: متجر كورسات%0Aالثمن: 299 DH بدل 599 DH%0Aالعدد المتبقي: 3 فقط%0Aبغيت نعرف كتر ونخلص",wa6:"السلام Ahsan بغيت متجر شامل Empire 🚀%0Aالنوع: متجر شامل Empire%0Aالثمن: 499 DH بدل 999 DH%0Aالعدد المتبقي: 2 فقط - الأكثر طلبا%0Aبغيت نعرف كتر ونخلص"
+},
+fr:{
+header_btn:"299 DH - Commander",top1:"⚡ Livraison instantanée 5 min",top2:"🔒 Garantie 7 jours",top3:"🇲🇦 Entreprise Marocaine - 2026",badge_sale:"🔥 Offre limitée - 2026",total_left:"⚠️ Il reste 19 boutiques ce mois",hero:"Boutique Prête<br><span class='bg-black text-white px-3 rounded-[12px]'>PRO MAX</span><br>Qui travaille pour vous.",hero_desc:"Pas un template WordPress. Système pro + domaine + hébergement + produits PLR. Choisissez votre type et recevez tout prêt.",why_title:"💡 Pourquoi quantité limitée?",why_desc:"On crée 30 boutiques par mois pour garder qualité et support. Quand c'est complet, on arrête jusqu'au mois prochain pour garantir support à chaque client.",left_badge:"19 boutiques restantes",sold_badge:"11 vendues aujourd'hui",cta_choose:"Choisissez votre type ci-dessous ↓",preview_title:"Votre boutique PRO prête",p1:"500 livres",p2:"2000 templates",p3:"Paiement CIH",stores_title:"6 Types de boutiques - Choisissez",stores_desc:"Cliquez sur le type et vous irez directement sur WhatsApp avec les infos",
+s1_left:"Reste 4 seulement",s1_t:"Boutique Livres Numériques",s1_d:"500 livres PLR + téléchargement instantané + protection copie. Vendez 49-99 DH et gardez 100%.",s1_tag:"500 livres",s1_btn:"Commander ce type - 299 DH →",
+s2_left:"Reste 3 seulement",s2_t:"Boutique Templates Canva",s2_d:"2000 templates en 20 niches. Vendez 19-49 DH. Très demandé au Maroc.",s2_tag:"2000 templates",s2_btn:"Commander ce type - 299 DH →",
+s3_left:"Reste 2 seulement",s3_t:"Boutique E-commerce Physique",s3_d:"Panier + COD + suivi commandes. Vraie boutique que vous contrôlez.",s3_btn:"Commander ce type - 299 DH →",
+s4_left:"Reste 5 seulement",s4_t:"Boutique Services & Réservation",s4_d:"Salon, resto, clinique, gym. Réservation + WhatsApp + carte.",s4_tag:"Réservation + WhatsApp",s4_btn:"Commander ce type - 299 DH →",
+s5_left:"Reste 3 seulement",s5_t:"Boutique Cours",s5_d:"Protection vidéo + suivi progression + certificats. Petite académie.",s5_tag:"Vidéo + certificat",s5_btn:"Commander ce type - 299 DH →",
+s6_left:"Reste 2 - Le plus demandé",s6_t:"Boutique Empire Complète",s6_d:"Tout dans une boutique: livres + templates + produits + services + cours.",s6_tag:"Tout en un",s6_btn:"Commander Empire - 499 DH →",
+wa1:"Salut Ahsan je veux boutique livres numériques 📚%0AType: Boutique livres numériques%0APrix: 299 DH au lieu de 599 DH%0AReste: 4 seulement%0AJe veux plus d'infos",wa2:"Salut Ahsan je veux boutique templates Canva 🎨%0AType: Boutique Canva%0APrix: 299 DH au lieu de 599 DH%0AReste: 3 seulement",wa3:"Salut Ahsan je veux boutique E-commerce physique 🛒%0AType: E-commerce physique%0APrix: 299 DH%0AReste: 2 seulement",wa4:"Salut Ahsan je veux boutique services 💈%0AType: Boutique services%0APrix: 299 DH%0AReste: 5 seulement",wa5:"Salut Ahsan je veux boutique cours 🎓%0AType: Boutique cours%0APrix: 299 DH%0AReste: 3 seulement",wa6:"Salut Ahsan je veux boutique Empire complète 🚀%0AType: Empire%0APrix: 499 DH au lieu de 999 DH%0AReste: 2 - Le plus demandé"
+},
+en:{
+header_btn:"299 DH - Order Now",top1:"⚡ Instant delivery 5 min",top2:"🔒 7-day guarantee",top3:"🇲🇦 Moroccan Company - 2026",badge_sale:"🔥 Limited offer - 2026",total_left:"⚠️ Only 19 stores left this month",hero:"Ready Store<br><span class='bg-black text-white px-3 rounded-[12px]'>PRO MAX</span><br>Works while you sleep.",hero_desc:"Not a WordPress template. Pro system + domain + hosting + PLR products. Choose your type and get everything ready.",why_title:"💡 Why limited quantity?",why_desc:"We create 30 stores per month to keep quality and support. When full, we stop until next month to guarantee support for each client.",left_badge:"19 stores left",sold_badge:"11 sold today",cta_choose:"Choose your store type below ↓",preview_title:"Your PRO store ready",p1:"500 books",p2:"2000 templates",p3:"CIH Payment",stores_title:"6 Store Types - Choose Yours",stores_desc:"Click the type and go directly to WhatsApp with info",
+s1_left:"Only 4 left",s1_t:"Digital Books Store",s1_d:"500 PLR books + instant download + copy protection. Sell 49-99 DH and keep 100%.",s1_tag:"500 books",s1_btn:"Order this type - 299 DH →",
+s2_left:"Only 3 left",s2_t:"Canva Templates Store",s2_d:"2000 templates in 20 niches. Sell 19-49 DH. High demand in Morocco.",s2_tag:"2000 templates",s2_btn:"Order this type - 299 DH →",
+s3_left:"Only 2 left",s3_t:"Physical E-commerce Store",s3_d:"Cart + COD + order tracking. Real store you control.",s3_btn:"Order this type - 299 DH →",
+s4_left:"Only 5 left",s4_t:"Services & Booking Store",s4_d:"Salon, resto, clinic, gym. Booking + WhatsApp + map.",s4_tag:"Booking + WhatsApp",s4_btn:"Order this type - 299 DH →",
+s5_left:"Only 3 left",s5_t:"Courses Store",s5_d:"Video protection + progress tracking + certificates. Small academy.",s5_tag:"Video + certificate",s5_btn:"Order this type - 299 DH →",
+s6_left:"Only 2 left - Most wanted",s6_t:"Empire Complete Store",s6_d:"Everything in one store: books + templates + products + services + courses.",s6_tag:"All in one",s6_btn:"Order Empire - 499 DH →",
+wa1:"Hi Ahsan I want digital books store 📚%0AType: Digital books store%0APrice: 299 DH instead of 599 DH%0ALeft: Only 4%0AI want more info",wa2:"Hi Ahsan I want Canva templates store 🎨%0AType: Canva store%0APrice: 299 DH%0ALeft: Only 3",wa3:"Hi Ahsan I want physical e-commerce store 🛒%0AType: Physical products store%0APrice: 299 DH%0ALeft: Only 2",wa4:"Hi Ahsan I want services store 💈%0AType: Services store%0APrice: 299 DH%0ALeft: Only 5",wa5:"Hi Ahsan I want courses store 🎓%0AType: Courses store%0APrice: 299 DH%0ALeft: Only 3",wa6:"Hi Ahsan I want Empire complete store 🚀%0AType: Empire store%0APrice: 499 DH instead of 999 DH%0ALeft: Only 2 - Most wanted"
+}
+};
+
 function setLang(l){
 localStorage.setItem('dm_lang',l);
 document.getElementById('btn-ar').className=l=='ar'?'lang-active px-3 py-1 rounded-full':'px-3 py-1 rounded-full';
 document.getElementById('btn-fr').className=l=='fr'?'lang-active px-3 py-1 rounded-full':'px-3 py-1 rounded-full';
 document.getElementById('btn-en').className=l=='en'?'lang-active px-3 py-1 rounded-full':'px-3 py-1 rounded-full';
+document.documentElement.lang=l;
 document.documentElement.dir=l=='ar'?'rtl':'ltr';
 document.querySelectorAll('[data-i18n]').forEach(e=>{let k=e.getAttribute('data-i18n'); if(i18n[l][k]) e.innerHTML=i18n[l][k];});
+document.body.style.fontFamily=l=='ar'?"'Tajawal',sans-serif":"'Inter',sans-serif";
+// واتساب مترجم
+for(let i=1;i<=6;i++){ let el=document.getElementById('wa'+i); if(el) el.href='https://wa.me/212719380106?text='+i18n[l]['wa'+i]; }
 }
 setLang(localStorage.getItem('dm_lang')||'ar');
 </script>
