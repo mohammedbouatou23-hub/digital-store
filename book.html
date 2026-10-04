@@ -1,95 +1,19 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>500 كتاب</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;900&display=swap" rel="stylesheet"><style>body{font-family:'Tajawal',sans-serif}.cat-active{background:black!important;color:white!important}</style></head><body class="bg-white">
-
-<div id="toastBox" class="fixed bottom-4 left-4 z-[100] flex flex-col gap-2"></div>
-
-<div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] hidden flex items-end md:items-center justify-center p-4">
-<div class="bg-white rounded-[24px] w-full max-w-[420px] overflow-hidden">
-<div class="p-6">
-<div class="flex justify-between"><h3 class="font-black">📊 تفاصيل الكتاب</h3><button onclick="closeModal()" class="w-8 h-8 bg-[#f6f6f6] rounded-full">✕</button></div>
-<p id="modalBook" class="font-black mt-3"></p>
-<div id="modalStats" class="mt-3"></div>
-<div class="mt-5 grid grid-cols-2 gap-2">
-<button onclick="closeModal()" class="border py-3 rounded-full font-black text-sm">إغلاق</button>
-<button id="modalBuy" class="bg-black text-white py-3 rounded-full font-black text-sm">اطلب - 19 DH ↗</button>
-</div>
-</div></div></div>
-
-<header class="border-b sticky top-0 bg-white z-50"><div class="max-w-[1200px] mx-auto px-6 h-[72px] flex justify-between items-center"><a href="index.html" class="font-black">DIGITAL MAROC</a><a href="https://wa.me/212719380106?text=بغيت 500 كتاب ب 149" class="bg-black text-white px-5 py-2.5 rounded-full text-sm font-black">149 DH - 500 كتاب</a></div></header>
-
-<div class="max-w-[1200px] mx-auto px-6 py-8">
-<div class="relative rounded-[28px] overflow-hidden h-[360px] border">
-<img src="books-header.jpg" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20"></div>
-<div class="relative z-10 p-8 h-full flex flex-col justify-center text-white">
-<h1 class="text-4xl font-black leading-[0.9]">500 كتاب<br>مقيمين<br><span class="text-white/50">بنجمات ومبيعات حقيقية.</span></h1>
-<div class="mt-4 flex gap-2 text-[11px] font-black"><span class="bg-white text-black px-4 py-2 rounded-full">📚 500 = 149 DH</span><span class="bg-white/20 px-4 py-2 rounded-full">📁 50 = 49 DH</span><span class="bg-green-500 px-4 py-2 rounded-full">📖 1 = 19 DH</span></div>
-</div></div>
-
-<div id="cats" class="flex flex-wrap gap-2 mt-8"></div>
-<div class="mt-5 flex justify-between items-center"><p id="catInfo" class="font-black"></p><button id="buyCat" class="bg-black text-white px-6 py-3 rounded-full font-black text-sm">اشتري الفئة - 49 DH</button></div>
-<div id="books" class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4"></div>
-</div>
-
+<div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] hidden flex items-center justify-center p-4"><div class="bg-white rounded-[24px] w-full max-w-[420px]"><div class="p-6"><div class="flex justify-between"><h3 class="font-black">📊 تفاصيل</h3><button onclick="document.getElementById('modal').classList.add('hidden')" class="w-8 h-8 bg-[#f6f6f6] rounded-full">✕</button></div><p id="modalBook" class="font-black mt-3"></p><div id="modalStats" class="mt-3"></div><button id="modalBuy" class="w-full mt-5 bg-black text-white py-3 rounded-full font-black">اطلب - 19 DH ↗</button></div></div></div>
+<header class="border-b sticky top-0 bg-white z-50"><div class="max-w-[1200px] mx-auto px-6 h-[72px] flex justify-between items-center"><a href="index.html" class="font-black">DIGITAL MAROC</a><a href="https://wa.me/212719380106?text=بغيت 500 كتاب" class="bg-black text-white px-5 py-2.5 rounded-full text-sm font-black">149 DH</a></div></header>
+<div class="max-w-[1200px] mx-auto px-6 py-8"><div class="relative rounded-[28px] overflow-hidden h-[360px] border"><img src="books-header.jpg" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20"></div><div class="relative z-10 p-8 h-full flex flex-col justify-center text-white"><h1 class="text-4xl font-black leading-[0.9]">500 كتاب<br>بتقييمات<br><span class="text-white/50">واقعية 100%.</span></h1><div class="mt-4 flex gap-2 text-[11px] font-black"><span class="bg-white text-black px-4 py-2 rounded-full">📚 500=149</span><span class="bg-white/20 px-4 py-2 rounded-full">📁 50=49</span><span class="bg-green-500 px-4 py-2 rounded-full">📖 1=19</span></div></div></div><div id="cats" class="flex flex-wrap gap-2 mt-8"></div><div class="mt-5 flex justify-between items-center"><p id="catInfo" class="font-black"></p><button id="buyCat" class="bg-black text-white px-6 py-3 rounded-full font-black text-sm">اشتري الفئة - 49 DH</button></div><div id="books" class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4"></div></div>
 <script>
 const WA="212719380106";
-const booksData={
-"🤖 AI (50)":["1000 ChatGPT Prompts","Midjourney V6","150 أداة AI","ChatGPT كتابة","AI متجر ذكي","AI Video Sora","AI Automation","Prompt Engineering","20 مشروع AI","ChatGPT تسويق","AI Canva","AI Voice","AI Chatbot","AI طلاب","AI Fiverr","AI سوشيال","AI تأليف كتب","AI Email","AI بدون كود","100 برومبت انستا","AI يوتيوب","AI Shopify","AI ترجمة","AI إعلانات","AI تحليل","AI LinkedIn","AI عقار","AI محاسبة","AI تعليم","AI موضة","AI ألعاب","AI كوتشينغ","500 برومبت","AI واتساب بوت","AI 24/7","AI Logo","AI Resume","AI Presentation","AI Research","AI Copywriting","AI Branding","AI بودكاست","AI SEO","AI CV","AI مطاعم","AI صحة","AI سفر","AI أفلييت","AI عقود","AI مستقبل"],
-"🧘 الصحة (50)":["كيتو 30 يوم","تمارين 90 يوم","صيام 16/8","عضلات طبيعي","يوجا 21 يوم","100 وصفة صحية","خسارة 10 كيلو","تأمل 5 دق","نوم عميق","توتر","50 سموثي","متوسطي","HIIT","صحة مرأة","صحة رجل","تغذية أطفال","فيتامينات","أعشاب","مساج","30 يوم صحي","مطبخ مغربي","دايت رياضيين","ظهر ورقبة","قلب","مناعة","إقلاع تدخين","بشرة","شعر","حوامل","مسنين","بروتين","نباتي","بطن مسطح","يوغا وجه","قلق","مشروبات","وجبات سريعة","دماغ","عيون","تنفس","بدون سكر","مرونة","مفاصل","ديتوكس","أكل عمل","تمارين مكتب","أمعاء","طلاب","10k خطوة","صحة 2026"],
-"🧠 تطوير (50)":["ثقة 30 يوم","تسويف","7 عادات أثرياء","تركيز","انضباط","إلقاء","ذكاء عاطفي","عقلية نجاح","خوف","تقدير ذات","وقت 2026","صباح 5AM","تحفيز","إيجابي","مشاكل","قرار","قيادة","تواصل","استماع","لغة جسد","قلق","سعادة","امتنان","تأمل","قراءة سريعة","ذاكرة","إبداع","نقدي","مرونة","توازن","أهداف 2026","رؤية","تخطيط","تغيير","عادات سيئة","عادات جديدة","ثقة حب","ثقة عمل","فشل","بعد فشل","صباح","مساء","كلمة","اعتذار","تسامح","صبر","شجاعة","مثابرة","طموح","أحلام"],
-"💰 مالية (50)":["ميزانية 2026","ديون 12 شهر","ادخار","1000 درهم استثمار","تخطيط مالي","عائلة","7 دخل سلبي","حرية مالية","تقاعد مبكر","أطفال","زواج","سفر","مصاريف","بنزين","مطاعم","عقار","ذهب","محفظة","أسهم","طوارئ","دخل نت","راتب 5000","مشروع 1000","تمويل","قروض","ائتمان","راتب","زيادة دخل","إضافي","بيع أغراض","طالب","موظف","مقاول","بنكي ذكي","تطبيقات توفير","52 أسبوع","30 يوم بلا شراء","خفية","ثراء","مليونير","حلال","زكاة","إسلامية","عمرة","سيارة","منزل","أزواج","عزاب","Kakeibo","خطة 5 سنوات"],
-"📱 Canva (50)":["200 ستوري","100 بوست","30 ريلز","50 كاروسيل","40 هايلايت","30 بيو","100 إعلانات","50 عروض","30 مسابقة","100 اقتباسات","بيزنس","مطعم","صالون","ملابس","عقار","كوتشينغ","طبيب","محامي","تعليم","سفر","رمضان","عيد","Black Friday","رأس سنة","صيف","شتاء","زفاف","عيد ميلاد","تخرج","افتتاح","Logo","Business Card","Flyer","Presentation","Resume","Invoice","شهادة","Menu","Price List","Brochure","TikTok","Thumbnail","Facebook","Pinterest","LinkedIn","واتساب بيزنس","Email Header","Webinar","غلاف كتاب","Mockup"],
-"📈 تسويق (50)":["محتوى 365","خطة 2026","Funnel","Email 30","فيسبوك","تيك توك","انستا","Branding","Copywriting","1000 Hashtags","إطلاق منتج","Landing Page","Lead Magnet","Tripwire","Upsell","Webinar","Challenge","محتوى","SEO","Growth Hacking","عمولة","Influencer","UGC","Viral","Guerrilla","واتساب","تيك توك","يوتيوب","Podcast","مجتمع","منافسين","Persona","Journey","A/B Testing","تحليل إعلانات","Retargeting","Lookalike","Pixel","Google Ads","Analytics","مطعم","صالون","ملابس","عقار","كوتش","دكتور","مدرسة","شركة","فريلانسر","شخصي"],
-"📅 إنتاجية (50)":["يومي 2026","أسبوعي","شهري","Habit Tracker","Goal","Budget","Meal","Fitness","Study","Travel","Notion بيزنس","Notion طلاب","Notion زواج","Notion ميزانية","Notion مشاريع","Time Blocking","Pomodoro","To-Do","Priority","Eisenhower","Morning","Evening","Weekly Review","Monthly Review","Yearly Goals","Vision Board","Gratitude","Mood","Sleep","Water","Project","Client","Content","Social Media","Launch","Wedding","Baby","House","Cleaning","Garden","Student","Teacher","Freelancer","CEO","Mom","Dad","Couple","Debt Payoff","Savings","30 Day"],
-"🛒 تجارة (50)":["Shopify صفر","دروبشيبينغ 2026","منتج رابح","AliExpress","تركيا","المغرب","ملابس","إلكترونيات","تجميل","هدايا","Amazon FBA","Etsy","انستا","تيك توك شوب","Freelancing","Upwork","Fiverr","كتابة","تصميم","ترجمة","YouTube صفر","TikTok ربح","Facebook ربح","Blogging","Affiliate","CPA","Print on Demand","KDP","صور","قوالب","500 درهم","من المنزل","لنساء","لطلاب","بدون رأس مال","مغسلة","مطعم منزلي","حلويات","خياطة","صابون","جدوى","أرباح","تسعير","شحن","إرجاع","قانوني","ضرائب","MoPay","باك وطني","توسع"],
-"📊 Excel (50)":["Excel ميزانية","Excel مبيعات","Excel مخزون","Excel رواتب","Excel فواتير","Excel عملاء","Excel مشاريع","Excel P&L","Dashboard مبيعات","Dashboard مالي","Notion CRM","Notion مشاريع","Notion عملاء","Notion فواتير","Notion مهام","Notion DB","Notion Wiki","Notion SOPs","Notion Onboarding","Notion Meeting","Sheets متجر","Sheets مطعم","Sheets صالون","Sheets مدرسة","Airtable","Trello","ClickUp","Monday","حجوزات","مواعيد","فاتورة","عقد عمل","عقد بيع","Proposal","Invoice Tracker","Expense","Profit Calculator","Break Even","Pricing","ROI","Client DB","Inventory","HR","Payroll","KPI","OKR","Business Model","SWOT","Risk","SOP"],
-"🎓 كورسات (50)":["انستا 7 أيام","TikTok 7 أيام","Canva","ChatGPT","ربح من نت","تجارة","تسويق","تصوير هاتف","CapCut","كتابة","ثقة","إنتاجية","مالية","إنجليزية","Excel","Notion","Shopify","Facebook Ads","SEO","Email","يوتيوب","بودكاست","عمل حر","خط عربي","طبخ مغربي","خياطة","رسم","تصميم","برمجة","AI","كيف تبيع","كيف تسعر","عملاء","براند","إعلان","تصور منتج","عملاء","تفاوض","إغلاق","Upsell","واتساب بيزنس","متجر قانوني","CIH Pay","MoPay","توصيل","قانون","جدوى","تمويل","فريق","توسع"]
-};
-
+const booksData={"🤖 AI (50)":["1000 ChatGPT Prompts","Midjourney V6","150 أداة AI","ChatGPT كتابة","AI متجر ذكي","AI Video Sora","AI Automation","Prompt Engineering","20 مشروع AI","ChatGPT تسويق","AI Canva","AI Voice","AI Chatbot","AI طلاب","AI Fiverr","AI سوشيال","AI تأليف كتب","AI Email","AI بدون كود","100 برومبت انستا","AI يوتيوب","AI Shopify","AI ترجمة","AI إعلانات","AI تحليل","AI LinkedIn","AI عقار","AI محاسبة","AI تعليم","AI موضة","AI ألعاب","AI كوتشينغ","500 برومبت","AI واتساب بوت","AI 24/7","AI Logo","AI Resume","AI Presentation","AI Research","AI Copywriting","AI Branding","AI بودكاست","AI SEO","AI CV","AI مطاعم","AI صحة","AI سفر","AI أفلييت","AI عقود","AI مستقبل"],"🧘 الصحة (50)":["كيتو 30 يوم","تمارين 90 يوم","صيام 16/8","عضلات طبيعي","يوجا 21 يوم","100 وصفة صحية","خسارة 10 كيلو","تأمل 5 دق","نوم عميق","توتر","50 سموثي","متوسطي","HIIT","صحة مرأة","صحة رجل","تغذية أطفال","فيتامينات","أعشاب","مساج","30 يوم صحي","مطبخ مغربي","دايت رياضيين","ظهر ورقبة","قلب","مناعة","إقلاع تدخين","بشرة","شعر","حوامل","مسنين","بروتين","نباتي","بطن مسطح","يوغا وجه","قلق","مشروبات","وجبات سريعة","دماغ","عيون","تنفس","بدون سكر","مرونة","مفاصل","ديتوكس","أكل عمل","تمارين مكتب","أمعاء","طلاب","10k خطوة","صحة 2026"],"🧠 تطوير (50)":["ثقة 30 يوم","تسويف","7 عادات أثرياء","تركيز","انضباط","إلقاء","ذكاء عاطفي","عقلية نجاح","خوف","تقدير ذات","وقت 2026","صباح 5AM","تحفيز","إيجابي","مشاكل","قرار","قيادة","تواصل","استماع","لغة جسد","قلق","سعادة","امتنان","تأمل","قراءة سريعة","ذاكرة","إبداع","نقدي","مرونة","توازن","أهداف 2026","رؤية","تخطيط","تغيير","عادات سيئة","عادات جديدة","ثقة حب","ثقة عمل","فشل","بعد فشل","صباح","مساء","كلمة","اعتذار","تسامح","صبر","شجاعة","مثابرة","طموح","أحلام"],"💰 مالية (50)":["ميزانية 2026","ديون 12 شهر","ادخار","1000 درهم استثمار","تخطيط مالي","عائلة","7 دخل سلبي","حرية مالية","تقاعد مبكر","أطفال","زواج","سفر","مصاريف","بنزين","مطاعم","عقار","ذهب","محفظة","أسهم","طوارئ","دخل نت","راتب 5000","مشروع 1000","تمويل","قروض","ائتمان","راتب","زيادة دخل","إضافي","بيع أغراض","طالب","موظف","مقاول","بنكي ذكي","تطبيقات توفير","52 أسبوع","30 يوم بلا شراء","خفية","ثراء","مليونير","حلال","زكاة","إسلامية","عمرة","سيارة","منزل","أزواج","عزاب","Kakeibo","خطة 5 سنوات"],"📱 Canva (50)":["200 ستوري","100 بوست","30 ريلز","50 كاروسيل","40 هايلايت","30 بيو","100 إعلانات","50 عروض","30 مسابقة","100 اقتباسات","بيزنس","مطعم","صالون","ملابس","عقار","كوتشينغ","طبيب","محامي","تعليم","سفر","رمضان","عيد","Black Friday","رأس سنة","صيف","شتاء","زفاف","عيد ميلاد","تخرج","افتتاح","Logo","Business Card","Flyer","Presentation","Resume","Invoice","شهادة","Menu","Price List","Brochure","TikTok","Thumbnail","Facebook","Pinterest","LinkedIn","واتساب بيزنس","Email Header","Webinar","غلاف كتاب","Mockup"],"📈 تسويق (50)":["محتوى 365","خطة 2026","Funnel","Email 30","فيسبوك","تيك توك","انستا","Branding","Copywriting","1000 Hashtags","إطلاق منتج","Landing Page","Lead Magnet","Tripwire","Upsell","Webinar","Challenge","محتوى","SEO","Growth Hacking","عمولة","Influencer","UGC","Viral","Guerrilla","واتساب","تيك توك","يوتيوب","Podcast","مجتمع","منافسين","Persona","Journey","A/B Testing","تحليل إعلانات","Retargeting","Lookalike","Pixel","Google Ads","Analytics","مطعم","صالون","ملابس","عقار","كوتش","دكتور","مدرسة","شركة","فريلانسر","شخصي"],"📅 إنتاجية (50)":["يومي 2026","أسبوعي","شهري","Habit Tracker","Goal","Budget","Meal","Fitness","Study","Travel","Notion بيزنس","Notion طلاب","Notion زواج","Notion ميزانية","Notion مشاريع","Time Blocking","Pomodoro","To-Do","Priority","Eisenhower","Morning","Evening","Weekly Review","Monthly Review","Yearly Goals","Vision Board","Gratitude","Mood","Sleep","Water","Project","Client","Content","Social Media","Launch","Wedding","Baby","House","Cleaning","Garden","Student","Teacher","Freelancer","CEO","Mom","Dad","Couple","Debt Payoff","Savings","30 Day"],"🛒 تجارة (50)":["Shopify صفر","دروبشيبينغ 2026","منتج رابح","AliExpress","تركيا","المغرب","ملابس","إلكترونيات","تجميل","هدايا","Amazon FBA","Etsy","انستا","تيك توك شوب","Freelancing","Upwork","Fiverr","كتابة","تصميم","ترجمة","YouTube صفر","TikTok ربح","Facebook ربح","Blogging","Affiliate","CPA","Print on Demand","KDP","صور","قوالب","500 درهم","من المنزل","لنساء","لطلاب","بدون رأس مال","مغسلة","مطعم منزلي","حلويات","خياطة","صابون","جدوى","أرباح","تسعير","شحن","إرجاع","قانوني","ضرائب","MoPay","باك وطني","توسع"],"📊 Excel (50)":["Excel ميزانية","Excel مبيعات","Excel مخزون","Excel رواتب","Excel فواتير","Excel عملاء","Excel مشاريع","Excel P&L","Dashboard مبيعات","Dashboard مالي","Notion CRM","Notion مشاريع","Notion عملاء","Notion فواتير","Notion مهام","Notion DB","Notion Wiki","Notion SOPs","Notion Onboarding","Notion Meeting","Sheets متجر","Sheets مطعم","Sheets صالون","Sheets مدرسة","Airtable","Trello","ClickUp","Monday","حجوزات","مواعيد","فاتورة","عقد عمل","عقد بيع","Proposal","Invoice Tracker","Expense","Profit Calculator","Break Even","Pricing","ROI","Client DB","Inventory","HR","Payroll","KPI","OKR","Business Model","SWOT","Risk","SOP"],"🎓 كورسات (50)":["انستا 7 أيام","TikTok 7 أيام","Canva","ChatGPT","ربح من نت","تجارة","تسويق","تصوير هاتف","CapCut","كتابة","ثقة","إنتاجية","مالية","إنجليزية","Excel","Notion","Shopify","Facebook Ads","SEO","Email","يوتيوب","بودكاست","عمل حر","خط عربي","طبخ مغربي","خياطة","رسم","تصميم","برمجة","AI","كيف تبيع","كيف تسعر","عملاء","براند","إعلان","تصور منتج","عملاء","تفاوض","إغلاق","Upsell","واتساب بيزنس","متجر قانوني","CIH Pay","MoPay","توصيل","قانون","جدوى","تمويل","فريق","توسع"]};
 let active=Object.keys(booksData)[0];
-
-// توليد نجمات ومبيعات عشوائية ثابتة لكل كتاب
-function getStats(index){
-  const sales = 45 + (index * 13 % 300) + Math.floor(Math.random()*50); // 45-350
-  const rating = (4.3 + (index % 7)/10).toFixed(1); // 4.3-4.9
-  const stars = "⭐".repeat(4) + (parseFloat(rating)>=4.8? "⭐" : "✨");
-  return {sales, rating, stars};
+function getSmartStats(title,index){
+  let low=title.toLowerCase();
+  let hot=["chatgpt","ai","shopify","canva","tiktok","instagram","fba","midjourney","funnel","ads","seo","notion","excel","dropshipping","amazon","youtube"].some(k=>low.includes(k));
+  if(hot||index<5){let s=310+Math.floor(Math.random()*210);let r=(4.8+Math.random()*0.2).toFixed(1);return{sales:s,rating:r,stars:"⭐⭐⭐⭐⭐",badge:"🔥 الأكثر مبيعا"};}
+  else if(index<15){let s=85+Math.floor(Math.random()*110);let r=(4.3+Math.random()*0.4).toFixed(1);return{sales:s,rating:r,stars:"⭐⭐⭐⭐",badge:"👍 مطلوب"};}
+  else{let s=12+Math.floor(Math.random()*48);let r=(3.2+Math.random()*0.9).toFixed(1);let st=r>=3.8?"⭐⭐⭐⭐":"⭐⭐⭐";return{sales:s,rating:r,stars:st,badge:""};}
 }
-
-function openModal(cat,title,num){
-  const s=getStats(parseInt(num));
-  document.getElementById('modalBook').innerText=title;
-  document.getElementById('modalStats').innerHTML=`
-    <div class="flex gap-2 mt-2">
-      <span class="bg-[#f6f6f6] px-3 py-1 rounded-full text-[11px] font-black">${s.stars} ${s.rating}</span>
-      <span class="bg-green-50 text-green-700 border border-green-200 px-3 py-1 rounded-full text-[11px] font-black">🔥 ${s.sales} مبيعة</span>
-      <span class="bg-black text-white px-3 py-1 rounded-full text-[11px] font-black">19 DH</span>
-    </div>
-    <p class="text-[11px] text-zinc-500 mt-3">هاد الكتاب من بين الأكثر مبيعا فـ ${cat} - ${s.sales} شخص شراوه وتقييم ${s.rating}/5</p>
-  `;
-  document.getElementById('modalBuy').onclick=()=>{
-    let msg=`سلام بغيت هاد الكتاب:\n\n📚 ${cat}\n📖 ${title}\n⭐ ${s.rating} (${s.sales} مبيعة)\n💰 19 DH`;
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
-  };
-  document.getElementById('modal').classList.remove('hidden');
-}
-function closeModal(){document.getElementById('modal').classList.add('hidden');}
-
-function render(){
-  document.getElementById('cats').innerHTML=Object.keys(booksData).map(c=>`<button onclick="setCat('${c}')" class="px-4 py-2 rounded-full text-[11px] font-black border ${c==active?'cat-active':''}">${c}</button>`).join('');
-  document.getElementById('catInfo').innerText=active;
-  document.getElementById('buyCat').onclick=()=>{ window.open(`https://wa.me/${WA}?text=${encodeURIComponent("بغيت الفئة: "+active+" ب 49 DH")}`,'_blank'); };
-  document.getElementById('books').innerHTML=booksData[active].map((t,i)=>{
-    const s=getStats(i);
-    return `<div onclick="openModal('${active}','${t.replace(/'/g,"\\'")}','${i+1}')" class="border rounded-[16px] p-4 hover:border-black hover:bg-zinc-50 cursor-pointer transition">
-      <div class="flex justify-between"><span class="text-[9px] bg-[#f6f6f6] px-2 py-1 rounded-full">#${i+1}</span><span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full font-black">19 DH</span></div>
-      <p class="font-black text-[13px] mt-3 leading-tight">${t}</p>
-      <div class="flex items-center gap-2 mt-3">
-        <span class="text-[11px]">${s.stars}</span><span class="text-[10px] font-black">${s.rating}</span>
-        <span class="text-[10px] text-zinc-400">•</span>
-        <span class="text-[10px] bg-[#f6f6f6] px-2 py-0.5 rounded-full font-bold">🔥 ${s.sales} مبيعة</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-function setCat(c){active=c;render();}
-render();
+function openModal(cat,title,num){const s=getSmartStats(title,parseInt(num));document.getElementById('modalBook').innerText=title;document.getElementById('modalStats').innerHTML=`<div class="flex flex-wrap gap-2 mt-2"><span class="bg-[#f6f6f6] px-3 py-1 rounded-full text-[11px] font-black">${s.stars} ${s.rating}</span><span class="bg-green-50 text-green-700 border px-3 py-1 rounded-full text-[11px] font-black">🔥 ${s.sales} مبيعة</span><span class="bg-black text-white px-3 py-1 rounded-full text-[11px] font-black">19 DH</span></div>`;document.getElementById('modalBuy').onclick=()=>{window.open(`https://wa.me/${WA}?text=${encodeURIComponent("بغيت: "+title+" - "+s.rating+" - "+s.sales+" مبيعة - 19 DH")}`,'_blank');};document.getElementById('modal').classList.remove('hidden');}
+function render(){document.getElementById('cats').innerHTML=Object.keys(booksData).map(c=>`<button onclick="setCat('${c}')" class="px-4 py-2 rounded-full text-[11px] font-black border ${c==active?'cat-active':''}">${c}</button>`).join('');document.getElementById('catInfo').innerText=active;document.getElementById('buyCat').onclick=()=>{window.open(`https://wa.me/${WA}?text=${encodeURIComponent("بغيت الفئة: "+active+" ب 49 DH")}`,'_blank');};document.getElementById('books').innerHTML=booksData[active].map((t,i)=>{const s=getSmartStats(t,i);return`<div onclick="openModal('${active}','${t.replace(/'/g,"\\'")}','${i+1}')" class="border rounded-[16px] p-4 hover:border-black cursor-pointer transition"><div class="flex justify-between"><span class="text-[9px] bg-[#f6f6f6] px-2 py-1 rounded-full">#${i+1} ${s.badge}</span><span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full font-black">19 DH</span></div><p class="font-black text-[13px] mt-3">${t}</p><div class="flex items-center gap-2 mt-3"><span class="text-[11px]">${s.stars}</span><span class="text-[10px] font-black">${s.rating}</span><span class="text-[10px] text-zinc-400">•</span><span class="text-[10px] ${s.sales>250?'bg-black text-white':'bg-[#f6f6f6]'} px-2 py-0.5 rounded-full font-bold">${s.sales} مبيعة</span></div></div>`;}).join('');}
+function setCat(c){active=c;render();}render();
 </script></body></html>
