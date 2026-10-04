@@ -35,12 +35,19 @@
 <img src="canva.header.jpg" class="absolute inset-0 w-full h-full object-cover">
 <div class="absolute inset-0 bg-black/50"></div>
 <div id="heroBox" class="relative z-10 p-8 h-full flex flex-col justify-center text-white items-end text-right">
-<span class="bg-white text-black px-3 py-1 rounded-full text-[10px] font-black" data-i18n="hero_badge">🔥 20 مجال × 100 تصميم مختلف = 2000 بدون تكرار</span>
+<span class="bg-white text-black px-3 py-1 rounded-full text-[10px] font-black" data-i18n="hero_badge">🔥 20 مجال × 100 مختلف = 2000 بدون تكرار</span>
 <h1 class="text-4xl font-black mt-3" data-i18n="hero_title">2000 قالب مختلف<br>100% Unique</h1>
 <div class="mt-4 flex gap-2 text-[11px] font-black"><span class="bg-white text-black px-3 py-1 rounded-full">2000 = 199 DH</span><span class="bg-white/20 border px-3 py-1 rounded-full">100 = 49 DH</span><span class="bg-green-500 px-3 py-1 rounded-full">1 = 19 DH</span></div>
 </div></div>
 
-<div id="cats" class="flex flex-wrap gap-2 mt-8"></div>
+<!-- 🔍 خانة البحث الجديدة - زدناها بلا ما نبدلو والو -->
+<div class="mt-6 relative">
+<input id="searchInput" oninput="doSearch()" type="text" placeholder="قلب على القالب ديالك... مثال: CV مهندس، قفطان، عقار، حلويات..." data-i18n-placeholder="search_placeholder" class="w-full border-2 border-black rounded-full px-6 py-4 pr-12 text-[14px] font-bold outline-none focus:bg-zinc-50 placeholder:text-zinc-400">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 bg-black text-white w-8 h-8 rounded-full flex items-center justify-center text-[14px]">🔍</span>
+<p id="searchResult" class="text-[11px] font-black mt-2 text-zinc-500 hidden"></p>
+</div>
+
+<div id="cats" class="flex flex-wrap gap-2 mt-6"></div>
 <div class="mt-4 flex justify-between items-center"><p id="catInfo" class="font-black text-sm"></p><button id="buyCat" class="bg-black text-white px-5 py-2.5 rounded-full font-black text-xs"></button></div>
 <div id="books" class="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mt-4"></div>
 </div>
@@ -49,12 +56,11 @@
 const WA="212719380106";
 let currentLang=localStorage.getItem('dm_lang')||'ar';
 const i18n={
-ar:{header_btn:"199 DH - 2000 مختلف",hero_badge:"🔥 20 مجال × 100 مختلف = 2000 بدون تكرار",hero_title:"2000 قالب مختلف<br>كل واحد ستايل بوحدو",buy_cat:"اشتري 100 مختلف - 49 DH",buy_one:"اطلب - 19 DH ↗",downloads:"تحميل",modal_title:"🎨 تفاصيل القالب"},
-fr:{header_btn:"199 DH - 2000 Différents",hero_badge:"🔥 20 Niches × 100 différents = 2000",hero_title:"2000 Templates<br>100% Différents",buy_cat:"Acheter 100 différents - 49 DH",buy_one:"Commander - 19 DH ↗",downloads:"téléchargements",modal_title:"🎨 Détails"},
-en:{header_btn:"199 DH - 2000 Different",hero_badge:"🔥 20 Niches × 100 different = 2000",hero_title:"2000 Templates<br>100% Unique",buy_cat:"Buy 100 different - 49 DH",buy_one:"Order - 19 DH ↗",downloads:"downloads",modal_title:"🎨 Details"}
+ar:{header_btn:"199 DH - 2000 مختلف",hero_badge:"🔥 20 مجال × 100 مختلف = 2000 بدون تكرار",hero_title:"2000 قالب مختلف<br>كل واحد ستايل بوحدو",buy_cat:"اشتري 100 مختلف - 49 DH",buy_one:"اطلب - 19 DH ↗",downloads:"تحميل",modal_title:"🎨 تفاصيل القالب",search_placeholder:"قلب على القالب ديالك... مثال: CV مهندس، قفطان، عقار، حلويات...",search_found:"لقينا",search_result:"نتيجة",search_no:"ما لقيناش حتى قالب بهاد الاسم"},
+fr:{header_btn:"199 DH - 2000 Différents",hero_badge:"🔥 20 Niches × 100 différents = 2000",hero_title:"2000 Templates<br>100% Différents",buy_cat:"Acheter 100 différents - 49 DH",buy_one:"Commander - 19 DH ↗",downloads:"téléchargements",modal_title:"🎨 Détails",search_placeholder:"Recherchez votre template... Ex: CV ingénieur, caftan, immobilier...",search_found:"On a trouvé",search_result:"résultats",search_no:"Aucun template trouvé"},
+en:{header_btn:"199 DH - 2000 Different",hero_badge:"🔥 20 Niches × 100 different = 2000",hero_title:"2000 Templates<br>100% Unique",buy_cat:"Buy 100 different - 49 DH",buy_one:"Order - 19 DH ↗",downloads:"downloads",modal_title:"🎨 Details",search_placeholder:"Search your template... Ex: Engineer CV, caftan, real estate...",search_found:"Found",search_result:"results",search_no:"No template found"}
 };
 
-// 100 مفهوم مختلف تماما - ما كيتعاودش
 const CONCEPTS_AR=["افتتاح فاخر","عرض خاص وحصري","خصم استثنائي","عرض محدود الوقت","عرض نهاية الأسبوع","عرض العائلة الكبيرة","عرض الطلبة","عرض الموظفين","عرض VIP","توصيل مجاني","الدفع عند الاستلام","رأي زبون حقيقي","قبل وبعد مذهل","جودة عالية مضمونة","سعر مناسب","عرض 2+1 مجانا","بطاقة وفاء ذهبية","هدية مجانية","عرض رمضان كريم","عرض العيد","Black Friday","عرض الصيف","عرض الشتاء الدافئ","عرض رأس السنة","عرض عيد الحب","عرض عيد المرأة","عنوان المحل","مواعيد العمل","حجز واتساب فوري","خدمة سريعة","نظافة وتعقيم","خبرة 10 سنوات","1000 زبون راضي","تصميم عصري 2026","تصميم فخم","تصميم بسيط وأنيق","تصميم ملون جذاب","تصميم ذهبي أسود","أثمنة تنافسية","افتتاح فرع جديد","فرصة ذهبية","آخر كمية","كمية محدودة","عرض 3 أيام فقط","عرض نهاية الشهر","عرض الصباح","عرض المساء","عرض الجمعة","عرض الاثنين","توظيف فوري","تدريب احترافي","شهادة تقدير","بطاقة شكر للزبون","عرض التخرج","عرض الزفاف","عرض الخطوبة","عرض المولود الجديد","عرض عيد ميلاد","مفاجأة سارة","مسابقة كبرى","سؤال وجواب","معلومة مفيدة","نصيحة خبير","وراء الكواليس","يوميات العمل","قصة نجاح","تحدي جديد","تصويت الجمهور","سحب الجوائز","هدية العيد","عرض العودة للمدرسة","عرض الدخول المدرسي","عرض الخريف","عرض الربيع","عرض نهاية الموسم","تشكيلة جديدة","وصل حديثا","الأكثر مبيعا","الأكثر طلبا","حصري 2026","جديد 2026","موديل 2026","عرض المتابعين","خصم العائلة","خصم الأصدقاء","عرض الأختين","عرض الأم وبنتها","عرض الأب وابنه","عرض 3 أصدقاء","مكان هادئ ومريح","خدمة VIP","استشارة مجانية","معاينة مجانية","زيارة مجانية","ضمان 10 سنوات","جودة مضمونة","أصلي 100%","صنع مغربي يدوي","تصميم عصري","تصميم كلاسيكي","تصميم فخم وراقي","بسيط وأنيق"];
 const CONCEPTS_FR=["Ouverture Luxe","Offre Spéciale Exclusive","Remise Exceptionnelle","Offre Limitée","Offre Weekend","Offre Famille Nombreuse","Offre Étudiants","Offre Employés","Offre VIP","Livraison Gratuite","Paiement à Livraison","Avis Client Réel","Avant/Après Incroyable","Haute Qualité Garantie","Prix Abordable","Offre 2+1 Gratuit","Carte Fidélité Or","Cadeau Gratuit","Offre Ramadan Karim","Offre Aïd","Black Friday","Offre Été","Offre Hiver Chaleureux","Offre Nouvel An","Offre Saint-Valentin","Offre Fête Femmes","Adresse Boutique","Horaires Travail","Réservation WhatsApp Instantanée","Service Rapide","Hygiène Stérilisation","Expérience 10 Ans","1000 Clients Satisfaits","Design Moderne 2026","Design Luxe","Design Simple & Chic","Design Coloré Attractif","Design Doré Noir","Prix Compétitifs","Ouverture Nouvelle Branche","Opportunité en Or","Dernière Quantité","Quantité Limitée","Offre 3 Jours Seulement","Offre Fin du Mois","Offre Matin","Offre Soir","Offre Vendredi","Offre Lundi","Recrutement Immédiat","Formation Pro","Certificat","Merci Client","Offre Diplôme","Offre Mariage","Offre Fiançailles","Offre Nouveau-né","Offre Anniversaire","Surprise Agréable","Grand Concours","Question Réponse","Info Utile","Conseil Expert","Coulisses","Journal de Travail","Histoire de Réussite","Nouveau Défi","Vote Public","Tirage au Sort","Cadeau Aïd","Offre Rentrée Scolaire","Offre Rentrée","Offre Automne","Offre Printemps","Offre Fin Saison","Nouvelle Collection","Nouvel Arrivage","Best Seller","Plus Demandé","Exclusif 2026","Nouveau 2026","Modèle 2026","Offre Abonnés","Remise Famille","Remise Amis","Offre Deux Sœurs","Offre Mère Fille","Offre Père Fils","Offre 3 Amis","Endroit Calme & Confortable","Service VIP","Consultation Gratuite","Aperçu Gratuit","Visite Gratuite","Garantie 10 Ans","Qualité Garantie","100% Original","Fabriqué Marocain Main","Design Moderne","Design Classique","Design Luxe & Chic","Simple & Élégant"];
 const CONCEPTS_EN=["Luxury Opening","Exclusive Special Offer","Exceptional Discount","Limited Time Offer","Weekend Offer","Big Family Offer","Student Offer","Employee Offer","VIP Offer","Free Delivery","Cash on Delivery","Real Client Review","Amazing Before/After","High Quality Guaranteed","Affordable Price","2+1 Free Offer","Gold Loyalty Card","Free Gift","Ramadan Kareem Offer","Eid Offer","Black Friday","Summer Offer","Warm Winter Offer","New Year Offer","Valentine Offer","Women's Day Offer","Shop Address","Working Hours","Instant WhatsApp Booking","Fast Service","Hygiene & Sterilization","10 Years Experience","1000 Happy Clients","Modern Design 2026","Luxury Design","Simple & Chic Design","Colorful Attractive Design","Golden Black Design","Competitive Prices","New Branch Opening","Golden Opportunity","Last Quantity","Limited Quantity","Only 3 Days Offer","End of Month Offer","Morning Offer","Evening Offer","Friday Offer","Monday Offer","Immediate Hiring","Pro Training","Certificate","Thank You Client","Graduation Offer","Wedding Offer","Engagement Offer","Newborn Offer","Birthday Offer","Pleasant Surprise","Big Contest","Q&A","Useful Info","Expert Advice","Behind the Scenes","Work Diary","Success Story","New Challenge","Public Vote","Prize Draw","Eid Gift","Back to School Offer","School Entry Offer","Autumn Offer","Spring Offer","End Season Offer","New Collection","New Arrival","Best Seller","Most Requested","Exclusive 2026","New 2026","Model 2026","Followers Special Offer","Family Discount","Friends Discount","Two Sisters Offer","Mother Daughter Offer","Father Son Offer","3 Friends Offer","Quiet & Comfortable Place","VIP Service","Free Consultation","Free Preview","Free Visit","10 Years Guarantee","Quality Guaranteed","100% Original","Handmade Moroccan","Modern Design","Classic Design","Luxury & Chic Design","Simple & Elegant"];
@@ -82,20 +88,14 @@ const CATEGORIES=[
 {ar:"🌙 رمضان والعيد (100)",fr:"🌙 Ramadan & Aïd (100)",en:"🌙 Ramadan & Eid (100)",pre:{ar:"رمضان",fr:"Ramadan",en:"Ramadan"}}
 ];
 
-// توليد 20 مجال × 100 مختلف = 2000 قالب مختلف تماما
 const DATA=CATEGORIES.map(cat=>{
 let items=[];
 for(let i=0;i<100;i++){
-items.push({
-ar: cat.pre.ar + " - " + CONCEPTS_AR[i],
-fr: cat.pre.fr + " - " + CONCEPTS_FR[i],
-en: cat.pre.en + " - " + CONCEPTS_EN[i]
-});
+items.push({ar: cat.pre.ar + " - " + CONCEPTS_AR[i],fr: cat.pre.fr + " - " + CONCEPTS_FR[i],en: cat.pre.en + " - " + CONCEPTS_EN[i]});
 }
 return {cat:{ar:cat.ar,fr:cat.fr,en:cat.en},items:items};
 });
 
-// CV نبدلوه بـ 100 مهنة مختلفة حقيقية
 DATA[0].items=[
 {ar:"CV مهندس مدني",fr:"CV Ingénieur Civil",en:"Civil Engineer CV"},{ar:"CV مهندس معماري",fr:"CV Architecte",en:"Architect CV"},{ar:"CV مهندس كهرباء",fr:"CV Ingénieur Électrique",en:"Electrical Engineer CV"},{ar:"CV مهندس ميكانيك",fr:"CV Ingénieur Mécanique",en:"Mechanical Engineer CV"},{ar:"CV مهندس برمجيات",fr:"CV Ingénieur Logiciel",en:"Software Engineer CV"},{ar:"CV مطور ويب",fr:"CV Développeur Web",en:"Web Developer CV"},{ar:"CV مطور تطبيقات",fr:"CV Développeur Mobile",en:"Mobile Developer CV"},{ar:"CV محلل بيانات",fr:"CV Analyste Données",en:"Data Analyst CV"},{ar:"CV خبير أمن سيبراني",fr:"CV Expert Cybersécurité",en:"Cybersecurity CV"},{ar:"CV مصمم UI/UX",fr:"CV Designer UI/UX",en:"UI/UX Designer CV"},
 {ar:"CV مصمم جرافيك",fr:"CV Graphiste",en:"Graphic Designer CV"},{ar:"CV مصور",fr:"CV Photographe",en:"Photographer CV"},{ar:"CV مونتاج فيديو",fr:"CV Monteur Vidéo",en:"Video Editor CV"},{ar:"CV كاتب محتوى",fr:"CV Rédacteur",en:"Content Writer CV"},{ar:"CV مترجم",fr:"CV Traducteur",en:"Translator CV"},{ar:"CV معلم ابتدائي",fr:"CV Instituteur",en:"Primary Teacher CV"},{ar:"CV أستاذ رياضيات",fr:"CV Prof Maths",en:"Math Teacher CV"},{ar:"CV أستاذ فرنسية",fr:"CV Prof Français",en:"French Teacher CV"},{ar:"CV أستاذ إنجليزية",fr:"CV Prof Anglais",en:"English Teacher CV"},{ar:"CV مدير مدرسة",fr:"CV Directeur École",en:"School Director CV"},
@@ -109,6 +109,8 @@ DATA[0].items=[
 ];
 
 let activeIndex=0;
+let isSearching=false;
+
 function setLang(lang){
 currentLang=lang;
 localStorage.setItem('dm_lang',lang);
@@ -117,12 +119,16 @@ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
 document.querySelectorAll('[id^=btn-]').forEach(b=>b.classList.remove('lang-active'));
 document.getElementById('btn-'+lang).classList.add('lang-active');
 document.querySelectorAll('[data-i18n]').forEach(el=>{let k=el.getAttribute('data-i18n');if(i18n[lang][k])el.innerHTML=i18n[lang][k];});
+let ph=document.getElementById('searchInput'); if(ph){ph.placeholder=i18n[lang].search_placeholder;}
 let hero=document.getElementById('heroBox');
 if(lang==='ar'){hero.classList.remove('items-start','text-left');hero.classList.add('items-end','text-right');}
 else{hero.classList.remove('items-end','text-right');hero.classList.add('items-start','text-left');}
 render();
+if(isSearching) doSearch();
 }
+
 function render(){
+if(isSearching) return;
 document.getElementById('cats').innerHTML=DATA.map((d,i)=>`<button onclick="setCat(${i})" class="px-3 py-1.5 rounded-full text-[10px] font-black border ${i==activeIndex?'cat-active':''}">${d.cat[currentLang]}</button>`).join('');
 document.getElementById('catInfo').innerText=DATA[activeIndex].cat[currentLang];
 document.getElementById('buyCat').innerText=i18n[currentLang].buy_cat;
@@ -133,7 +139,51 @@ let rating=(4.2+Math.random()*0.7).toFixed(1);
 return `<div onclick="openModal('${t[currentLang].replace(/'/g,"\\'")}')" class="border rounded-[14px] p-3 hover:border-black cursor-pointer bg-white"><div class="flex justify-between"><span class="text-[8px] bg-[#f6f6f6] px-2 py-0.5 rounded-full">#${i+1}</span><span class="text-[9px] bg-green-500 text-white px-2 py-0.5 rounded-full font-black">19 DH</span></div><p class="font-black text-[11px] mt-2 leading-tight h-[40px] overflow-hidden">${t[currentLang]}</p><div class="flex items-center gap-1 mt-2"><span class="text-[9px]">⭐ ${rating}</span><span class="text-[8px] bg-[#f6f6f6] px-1.5 py-0.5 rounded-full">${sales} ${i18n[currentLang].downloads}</span></div></div>`;
 }).join('');
 }
-function setCat(i){activeIndex=i;render();}
+
+// 🔍 دالة البحث الجديدة - كتقلب فـ 2000 قالب كامل
+function doSearch(){
+let q=document.getElementById('searchInput').value.trim().toLowerCase();
+let resultInfo=document.getElementById('searchResult');
+if(q.length===0){
+isSearching=false;
+resultInfo.classList.add('hidden');
+render();
+return;
+}
+isSearching=true;
+let allItems=[];
+DATA.forEach(catData=>{
+catData.items.forEach(item=>{
+let name=item[currentLang].toLowerCase();
+let catName=catData.cat[currentLang].toLowerCase();
+if(name.includes(q) || catName.includes(q)){
+allItems.push({cat:catData.cat[currentLang], item:item});
+}
+});
+});
+if(allItems.length>0){
+resultInfo.classList.remove('hidden');
+resultInfo.innerHTML=`${i18n[currentLang].search_found} <span class="bg-black text-white px-2 py-0.5 rounded-full">${allItems.length}</span> ${i18n[currentLang].search_result} لـ "${q}"`;
+document.getElementById('catInfo').innerText=`🔍 نتائج البحث: ${allItems.length}`;
+document.getElementById('books').innerHTML=allItems.map((obj,i)=>{
+let sales=15+Math.floor(Math.random()*400);
+let rating=(4.2+Math.random()*0.7).toFixed(1);
+return `<div onclick="openModal('${obj.item[currentLang].replace(/'/g,"\\'")}')" class="border-2 border-black rounded-[14px] p-3 hover:bg-zinc-50 cursor-pointer bg-white"><div class="flex justify-between"><span class="text-[8px] bg-black text-white px-2 py-0.5 rounded-full">${obj.cat}</span><span class="text-[9px] bg-green-500 text-white px-2 py-0.5 rounded-full font-black">19 DH</span></div><p class="font-black text-[11px] mt-2 leading-tight">${obj.item[currentLang]}</p><div class="flex items-center gap-1 mt-2"><span class="text-[9px]">⭐ ${rating}</span><span class="text-[8px] bg-[#f6f6f6] px-1.5 py-0.5 rounded-full">${sales} ${i18n[currentLang].downloads}</span></div></div>`;
+}).join('');
+}else{
+resultInfo.classList.remove('hidden');
+resultInfo.innerHTML=`❌ ${i18n[currentLang].search_no} "${q}"`;
+document.getElementById('catInfo').innerText=`🔍 0 نتيجة`;
+document.getElementById('books').innerHTML=`<div class="col-span-4 text-center py-10 border-2 border-dashed rounded-[20px]"><p class="font-black">😔 ما لقيناش "${q}"</p><p class="text-[11px] text-zinc-500 mt-1">جرب كلمة أخرى: CV، قفطان، عقار، مطعم...</p><button onclick="clearSearch()" class="mt-3 bg-black text-white px-4 py-2 rounded-full text-[11px] font-black">مسح البحث</button></div>`;
+}
+}
+
+function clearSearch(){
+document.getElementById('searchInput').value='';
+doSearch();
+}
+
+function setCat(i){activeIndex=i; if(isSearching){clearSearch();} render();}
 function openModal(title){
 document.getElementById('modalBook').innerText=title;
 document.getElementById('modalStats').innerHTML=`<span class="bg-black text-white px-3 py-1 rounded-full text-[11px] font-black">19 DH - ${i18n[currentLang].downloads}</span>`;
