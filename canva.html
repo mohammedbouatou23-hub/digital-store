@@ -1,213 +1,139 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>600 قالب Canva - DIGITAL MAROC</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"><style>body{font-family:'Tajawal',sans-serif}.cat-active{background:black!important;color:white!important}.lang-active{background:black!important;color:white!important;border-color:black!important}</style></head>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>600 قالب - DIGITAL MAROC</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"><style>body{font-family:'Tajawal',sans-serif}.cat-active{background:black!important;color:white!important}.lang-active{background:black!important;color:white!important}</style></head>
 <body class="bg-white">
 
-<!-- POPUP -->
-<div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] hidden flex items-center justify-center p-4"><div class="bg-white rounded-[24px] w-full max-w-[420px] overflow-hidden"><div class="p-6"><div class="flex justify-between items-center"><h3 class="font-black text-[18px]" data-i18n="modal_title">🎨 تفاصيل القالب</h3><button onclick="document.getElementById('modal').classList.add('hidden')" class="w-8 h-8 bg-[#f6f6f6] rounded-full">✕</button></div><p id="modalBook" class="font-black mt-3 text-[15px]"></p><div id="modalStats" class="mt-3"></div><p class="text-[11px] text-zinc-500 mt-3" data-i18n="modal_desc">قوالب أصلية قابلة للتعديل 100% في Canva - رابط مباشر</p><button id="modalBuy" class="w-full mt-5 bg-black text-white py-3 rounded-full font-black text-sm">اطلب دابا - 19 DH ↗</button></div></div></div>
+<div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] hidden flex items-center justify-center p-4"><div class="bg-white rounded-[24px] w-full max-w-[420px] overflow-hidden"><div class="p-6"><div class="flex justify-between items-center"><h3 class="font-black text-[18px]" data-i18n="modal_title">🎨 تفاصيل القالب</h3><button onclick="document.getElementById('modal').classList.add('hidden')" class="w-8 h-8 bg-[#f6f6f6] rounded-full">✕</button></div><p id="modalBook" class="font-black mt-3 text-[15px]"></p><div id="modalStats" class="mt-3"></div><button id="modalBuy" class="w-full mt-5 bg-black text-white py-3 rounded-full font-black text-sm"></button></div></div></div>
 
-<header class="border-b sticky top-0 bg-white z-50"><div class="max-w-[1200px] mx-auto px-6 h-[72px] flex justify-between items-center gap-3">
-<a href="index.html" class="font-black shrink-0">DIGITAL MAROC</a>
-<div class="flex items-center gap-2">
-<!-- LANGUAGE SWITCHER احترافي بلا Google -->
-<div class="flex border rounded-full p-1 bg-[#f6f6f6] text-[11px] font-black">
-<button onclick="setLang('ar')" id="btn-ar" class="lang-active px-3 py-1 rounded-full transition">AR</button>
-<button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1 rounded-full transition">FR</button>
-<button onclick="setLang('en')" id="btn-en" class="px-3 py-1 rounded-full transition">EN</button>
-</div>
-<a href="https://wa.me/212719380106?text=بغيت 600 قالب Canva ب 199 درهم" class="bg-black text-white px-4 md:px-5 py-2.5 rounded-full text-[11px] md:text-sm font-black shrink-0"><span data-i18n="header_btn">199 DH - 600 قالب</span></a>
-</div>
-</div></header>
+<header class="border-b sticky top-0 bg-white z-50"><div class="max-w-[1200px] mx-auto px-6 h-[72px] flex justify-between items-center gap-2"><a href="index.html" class="font-black shrink-0">DIGITAL MAROC</a><div class="flex items-center gap-2"><div class="flex border rounded-full p-1 bg-[#f6f6f6] text-[11px] font-black"><button onclick="setLang('ar')" id="btn-ar" class="lang-active px-3 py-1 rounded-full">AR</button><button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1 rounded-full">FR</button><button onclick="setLang('en')" id="btn-en" class="px-3 py-1 rounded-full">EN</button></div><a href="https://wa.me/212719380106" class="bg-black text-white px-4 py-2.5 rounded-full text-[11px] font-black" data-i18n="header_btn">199 DH - 600 قالب</a></div></div></header>
 
 <div class="max-w-[1200px] mx-auto px-6 py-8">
-<div class="relative rounded-[28px] overflow-hidden h-[420px] border bg-zinc-900">
-<img src="canva.header.jpg" class="absolute inset-0 w-full h-full object-cover" style="filter: brightness(1.2);">
-<div class="absolute inset-0 bg-gradient-to-r from-black/20 via-black/30 to-black/70"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="relative z-10 p-8 md:p-10 h-full flex flex-col justify-center text-white items-end text-right" id="heroBox">
-<span class="bg-white text-black px-3 py-1 rounded-full text-[10px] font-black w-fit" data-i18n="hero_badge">🔥 12 مجال مطلوب + CV و Marketing</span>
-<h1 class="text-4xl md:text-[44px] font-black leading-[0.9] mt-4" data-i18n="hero_title">600 قالب<br>Canva مغربي<br><span class="text-white/80">جاهز للتعديل.</span></h1>
-<div class="mt-5 flex flex-wrap gap-2 text-[11px] font-black justify-end">
-<span class="bg-white text-black px-4 py-2 rounded-full" data-i18n="price_all">🎨 600 قالب = 199 DH</span>
-<span class="bg-white/20 backdrop-blur border border-white/30 px-4 py-2 rounded-full" data-i18n="price_cat">📁 50 قالب = 49 DH</span>
-<span class="bg-green-500 px-4 py-2 rounded-full" data-i18n="price_one">📄 1 قالب = 19 DH</span>
-</div>
-</div>
-</div>
-
-<div id="cats" class="flex flex-wrap gap-2 mt-8"></div>
-<div class="mt-5 flex flex-wrap justify-between items-center gap-3"><div><p id="catInfo" class="font-black text-[16px]"></p><p class="text-xs text-zinc-500 mt-1" data-i18n="cat_hint">اختار المجال ديالك وشوف القوالب</p></div><button id="buyCat" class="bg-black text-white px-6 py-3 rounded-full font-black text-sm"></button></div>
-<div id="books" class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4"></div>
-
-<div class="mt-12 grid md:grid-cols-3 gap-3">
-<div class="border-2 border-black rounded-[20px] p-6 text-center bg-black text-white"><p class="text-[10px] bg-white text-black px-2 py-1 rounded-full w-fit mx-auto font-black" data-i18n="best_seller">الأكثر مبيعا</p><h3 class="font-black text-xl mt-3" data-i18n="box_all_title">600 قالب كامل</h3><p class="text-3xl font-black mt-2">199 DH</p><p class="text-xs text-white/60 mt-2" data-i18n="box_all_desc">12 مجال + CV + Marketing</p><a href="https://wa.me/212719380106?text=بغيت 600 قالب Canva ب 199" class="block mt-4 bg-white text-black py-3 rounded-full font-black text-sm" data-i18n="order_now">اطلب دابا</a></div>
-<div class="border rounded-[20px] p-6 text-center"><h3 class="font-black text-xl" data-i18n="box_cat_title">50 قالب</h3><p class="text-3xl font-black mt-2">49 DH</p><p class="text-xs text-zinc-500 mt-2" data-i18n="box_cat_desc">مجال واحد من اختيارك</p><p class="mt-4 bg-[#f6f6f6] py-3 rounded-full font-black text-sm" data-i18n="choose_from_top">اختار مجال من الفوق</p></div>
-<div class="border rounded-[20px] p-6 text-center"><h3 class="font-black text-xl" data-i18n="box_one_title">قالب واحد</h3><p class="text-3xl font-black mt-2">19 DH</p><p class="text-xs text-zinc-500 mt-2" data-i18n="box_one_desc">قالب واحد برابط Canva</p><p class="mt-4 bg-[#f6f6f6] py-3 rounded-full font-black text-sm" data-i18n="click_any">كليكي على أي قالب</p></div>
-</div>
+<div class="relative rounded-[28px] overflow-hidden h-[420px] border bg-zinc-900"><img src="canva.header.jpg" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-black/50"></div><div class="relative z-10 p-8 md:p-10 h-full flex flex-col justify-center text-white items-end text-right" id="heroBox"><span class="bg-white text-black px-3 py-1 rounded-full text-[10px] font-black w-fit" data-i18n="hero_badge">🔥 12 مجال + CV و Marketing</span><h1 class="text-4xl md:text-[44px] font-black leading-[0.9] mt-4" data-i18n="hero_title">600 قالب Canva</h1><div class="mt-5 flex flex-wrap gap-2 text-[11px] font-black justify-end"><span class="bg-white text-black px-4 py-2 rounded-full" data-i18n="price_all">600 = 199 DH</span><span class="bg-white/20 border px-4 py-2 rounded-full" data-i18n="price_cat">50 = 49 DH</span><span class="bg-green-500 px-4 py-2 rounded-full" data-i18n="price_one">1 = 19 DH</span></div></div></div>
+<div id="cats" class="flex flex-wrap gap-2 mt-8"></div><div class="mt-5 flex justify-between items-center"><p id="catInfo" class="font-black"></p><button id="buyCat" class="bg-black text-white px-6 py-3 rounded-full font-black text-sm"></button></div><div id="books" class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4"></div>
 </div>
 
 <script>
 const WA="212719380106";
-
-// === نظام الترجمة الحقيقي ===
 let currentLang = localStorage.getItem('dm_lang') || 'ar';
-const i18n = {
- ar: {
-   header_btn: "199 DH - 600 قالب",
-   hero_badge: "🔥 12 مجال مطلوب + CV و Marketing",
-   hero_title: "600 قالب<br>Canva مغربي<br><span class='text-white/80'>جاهز للتعديل.</span>",
-   price_all: "🎨 600 قالب = 199 DH",
-   price_cat: "📁 50 قالب = 49 DH",
-   price_one: "📄 1 قالب = 19 DH",
-   cat_hint: "اختار المجال ديالك وشوف القوالب",
-   best_seller: "الأكثر مبيعا",
-   box_all_title: "600 قالب كامل",
-   box_all_desc: "12 مجال + CV + Marketing",
-   order_now: "اطلب دابا",
-   box_cat_title: "50 قالب",
-   box_cat_desc: "مجال واحد من اختيارك",
-   choose_from_top: "اختار مجال من الفوق",
-   box_one_title: "قالب واحد",
-   box_one_desc: "قالب واحد برابط Canva",
-   click_any: "كليكي على أي قالب",
-   modal_title: "🎨 تفاصيل القالب",
-   modal_desc: "قوالب أصلية قابلة للتعديل 100% في Canva - رابط مباشر",
-   buy_cat: "اشتري هاد المجال - 49 DH",
-   buy_one: "اطلب دابا - 19 DH ↗",
-   downloads: "تحميل",
-   more_sales: "🔥 الأكثر مبيعا",
-   wanted: "👍 مطلوب"
- },
- fr: {
-   header_btn: "199 DH - 600 Templates",
-   hero_badge: "🔥 12 Niches + CV & Marketing",
-   hero_title: "600 Templates<br>Canva Marocain<br><span class='text-white/80'>Prêt à modifier.</span>",
-   price_all: "🎨 600 Templates = 199 DH",
-   price_cat: "📁 50 Templates = 49 DH",
-   price_one: "📄 1 Template = 19 DH",
-   cat_hint: "Choisissez votre niche et découvrez les templates",
-   best_seller: "Meilleure vente",
-   box_all_title: "600 Templates complets",
-   box_all_desc: "12 Niches + CV + Marketing",
-   order_now: "Commander maintenant",
-   box_cat_title: "50 Templates",
-   box_cat_desc: "Une seule niche au choix",
-   choose_from_top: "Choisissez en haut",
-   box_one_title: "1 Template",
-   box_one_desc: "1 template avec lien Canva",
-   click_any: "Cliquez sur un template",
-   modal_title: "🎨 Détails du template",
-   modal_desc: "Templates originaux 100% modifiables sur Canva - lien direct",
-   buy_cat: "Acheter cette niche - 49 DH",
-   buy_one: "Commander - 19 DH ↗",
-   downloads: "téléchargements",
-   more_sales: "🔥 Best-seller",
-   wanted: "👍 Populaire"
- },
- en: {
-   header_btn: "199 DH - 600 Templates",
-   hero_badge: "🔥 12 Niches + CV & Marketing",
-   hero_title: "600 Moroccan<br>Canva Templates<br><span class='text-white/80'>Ready to Edit.</span>",
-   price_all: "🎨 600 Templates = 199 DH",
-   price_cat: "📁 50 Templates = 49 DH",
-   price_one: "📄 1 Template = 19 DH",
-   cat_hint: "Choose your niche and see templates",
-   best_seller: "Best seller",
-   box_all_title: "600 Full Templates",
-   box_all_desc: "12 Niches + CV + Marketing",
-   order_now: "Order now",
-   box_cat_title: "50 Templates",
-   box_cat_desc: "One niche of your choice",
-   choose_from_top: "Choose from top",
-   box_one_title: "Single Template",
-   box_one_desc: "Single template with Canva link",
-   click_any: "Click any template",
-   modal_title: "🎨 Template details",
-   modal_desc: "Original templates 100% editable on Canva - direct link",
-   buy_cat: "Buy this niche - 49 DH",
-   buy_one: "Order now - 19 DH ↗",
-   downloads: "downloads",
-   more_sales: "🔥 Best seller",
-   wanted: "👍 Popular"
- }
+const i18n={
+ ar:{header_btn:"199 DH - 600 قالب",hero_badge:"🔥 12 مجال + CV و Marketing",hero_title:"600 قالب<br>Canva مغربي<br>جاهز للتعديل",price_all:"🎨 600 قالب = 199 DH",price_cat:"📁 50 قالب = 49 DH",price_one:"📄 1 قالب = 19 DH",buy_cat:"اشتري هاد المجال - 49 DH",buy_one:"اطلب دابا - 19 DH ↗",downloads:"تحميل",modal_title:"🎨 تفاصيل القالب"},
+ fr:{header_btn:"199 DH - 600 Templates",hero_badge:"🔥 12 Niches + CV & Marketing",hero_title:"600 Templates<br>Canva Marocain<br>Prêt à modifier",price_all:"🎨 600 Templates = 199 DH",price_cat:"📁 50 Templates = 49 DH",price_one:"📄 1 Template = 19 DH",buy_cat:"Acheter cette niche - 49 DH",buy_one:"Commander - 19 DH ↗",downloads:"téléchargements",modal_title:"🎨 Détails du template"},
+ en:{header_btn:"199 DH - 600 Templates",hero_badge:"🔥 12 Niches + CV & Marketing",hero_title:"600 Moroccan<br>Canva Templates<br>Ready to Edit",price_all:"🎨 600 Templates = 199 DH",price_cat:"📁 50 Templates = 49 DH",price_one:"📄 1 Template = 19 DH",buy_cat:"Buy this niche - 49 DH",buy_one:"Order now - 19 DH ↗",downloads:"downloads",modal_title:"🎨 Template details"}
 };
 
+// === أهم حاجة: كل قالب عندو 3 ترجمات ===
+const DATA=[
+{
+ cat:{ar:"📄 سيرة ذاتية CV (50)", fr:"📄 CV Professionnel (50)", en:"📄 Professional CV (50)"},
+ items:[
+  {ar:"CV عصرية مهندس - أسود وذهبي", fr:"CV Moderne Ingénieur - Noir & Or", en:"Modern Engineer CV - Black & Gold"},
+  {ar:"CV بدون خبرة - للمبتدئين", fr:"CV Sans Expérience - Débutant", en:"No Experience CV - Beginner"},
+  {ar:"CV إنجليزية - Marketing", fr:"CV Anglais - Marketing", en:"English CV - Marketing"},
+  {ar:"CV فرنسية - معلمة", fr:"CV Français - Enseignante", en:"French CV - Teacher"},
+  {ar:"CV فخمة - مدير", fr:"CV Luxe - Directeur", en:"Luxury Manager CV"},
+  {ar:"CV ممرضة", fr:"CV Infirmière", en:"Nurse CV"},
+  {ar:"CV محاسب", fr:"CV Comptable", en:"Accountant CV"},
+  {ar:"CV مصمم جرافيك", fr:"CV Graphiste", en:"Graphic Designer CV"},
+  {ar:"CV مطور ويب", fr:"CV Développeur Web", en:"Web Developer CV"},
+  {ar:"Cover Letter رسالة تحفيزية", fr:"Lettre de Motivation", en:"Cover Letter"},
+ ]
+},
+{
+ cat:{ar:"📈 تسويق و Pitch Deck (50)", fr:"📈 Marketing & Pitch Deck (50)", en:"📈 Marketing & Pitch Deck (50)"},
+ items:[
+  {ar:"Marketing Strategy 2026", fr:"Stratégie Marketing 2026", en:"Marketing Strategy 2026"},
+  {ar:"Pitch Deck شركة ناشئة", fr:"Pitch Deck Startup", en:"Startup Pitch Deck"},
+  {ar:"Business Plan خطة عمل", fr:"Business Plan", en:"Business Plan"},
+  {ar:"Company Profile بروفايل شركة", fr:"Profil d'Entreprise", en:"Company Profile"},
+  {ar:"عرض تسويقي لصالون", fr:"Offre Marketing Salon", en:"Salon Marketing Offer"},
+  {ar:"خطة سوشيال ميديا", fr:"Plan Social Media", en:"Social Media Plan"},
+  {ar:"Media Kit للمؤثرين", fr:"Media Kit Influenceur", en:"Influencer Media Kit"},
+  {ar:"تقرير مبيعات", fr:"Rapport de Ventes", en:"Sales Report"},
+  {ar:"عرض سعر - Devis", fr:"Devis Professionnel", en:"Professional Quote"},
+  {ar:"فاتورة احترافية", fr:"Facture Pro", en:"Pro Invoice"},
+ ]
+},
+{
+ cat:{ar:"📱 سوشيال ميديا (50)", fr:"📱 Réseaux Sociaux (50)", en:"📱 Social Media (50)"},
+ items:[
+  {ar:"Instagram Post - عرض", fr:"Post Instagram - Offre", en:"Instagram Post - Offer"},
+  {ar:"Instagram Story - سؤال", fr:"Story Instagram - Question", en:"Instagram Story - Question"},
+  {ar:"Reels Cover - جديد", fr:"Couverture Reels - Nouveau", en:"Reels Cover - New"},
+  {ar:"Post - قبل وبعد", fr:"Post - Avant/Après", en:"Post - Before/After"},
+  {ar:"Story - خصم 50%", fr:"Story - Remise 50%", en:"Story - 50% Off"},
+  {ar:"Post - رأي زبون", fr:"Post - Avis Client", en:"Post - Client Review"},
+  {ar:"Post - عرض اليوم", fr:"Post - Offre du Jour", en:"Post - Today's Offer"},
+  {ar:"Story - وراء الكواليس", fr:"Story - Coulisses", en:"Story - Behind the Scenes"},
+ ]
+},
+{
+ cat:{ar:"🧕 صالون تجميل (50)", fr:"🧕 Salon de Beauté (50)", en:"🧕 Beauty Salon (50)"},
+ items:[
+  {ar:"افتتاح صالون جديد - عرض 50%", fr:"Ouverture Nouveau Salon - Offre 50%", en:"New Salon Opening - 50% Off"},
+  {ar:"قبل وبعد - صباغة شعر", fr:"Avant/Après - Coloration", en:"Before/After - Hair Color"},
+  {ar:"قائمة أسعار صالون 2026", fr:"Liste Prix Salon 2026", en:"Salon Price List 2026"},
+  {ar:"عرض العروسة الكامل", fr:"Offre Mariée Complète", en:"Full Bride Offer"},
+  {ar:"بروتين وكيراتين", fr:"Protéine & Kératine", en:"Protein & Keratin"},
+  {ar:"حجز موعد واتساب", fr:"Réservation WhatsApp", en:"WhatsApp Booking"},
+ ]
+},
+{
+ cat:{ar:"🍽️ مطعم مغربي (50)", fr:"🍽️ Restaurant Marocain (50)", en:"🍽️ Moroccan Restaurant (50)"},
+ items:[
+  {ar:"Menu طاجين - 4 أنواع", fr:"Menu Tajine - 4 Types", en:"Tajine Menu - 4 Types"},
+  {ar:"Couscous الجمعة - 49 DH", fr:"Couscous Vendredi - 49 DH", en:"Friday Couscous - 49 DH"},
+  {ar:"توصيل مجاني - مراكش", fr:"Livraison Gratuite - Marrakech", en:"Free Delivery - Marrakech"},
+  {ar:"Pastilla دجاج", fr:"Pastilla Poulet", en:"Chicken Pastilla"},
+  {ar:"عرض عائلي - 199 DH", fr:"Offre Familiale - 199 DH", en:"Family Offer - 199 DH"},
+ ]
+},
+{
+ cat:{ar:"👗 بوتيك قفطان (50)", fr:"👗 Boutique Caftan (50)", en:"👗 Caftan Boutique (50)"},
+ items:[
+  {ar:"Collection قفطان 2026 جديدة", fr:"Nouvelle Collection Caftan 2026", en:"New Caftan Collection 2026"},
+  {ar:"قفطان جوهرة - سور ميزور", fr:"Caftan Jawhara - Sur Mesure", en:"Jawhara Caftan - Custom Made"},
+  {ar:"عرض 2 قفاطن = 799 DH", fr:"Offre 2 Caftans = 799 DH", en:"Offer 2 Caftans = 799 DH"},
+  {ar:"تكشيطة عروسة", fr:"Takchita Mariée", en:"Bride Takchita"},
+ ]
+}
+];
+
+let activeIndex=0;
 function setLang(lang){
  currentLang=lang;
  localStorage.setItem('dm_lang',lang);
  document.documentElement.lang=lang;
- document.documentElement.dir = lang==='ar'? 'rtl' : 'ltr';
- // active buttons
+ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
  document.querySelectorAll('[id^=btn-]').forEach(b=>b.classList.remove('lang-active'));
  document.getElementById('btn-'+lang).classList.add('lang-active');
- // translate data-i18n
  document.querySelectorAll('[data-i18n]').forEach(el=>{
-   let key=el.getAttribute('data-i18n');
-   if(i18n[lang][key]) el.innerHTML=i18n[lang][key];
+  let k=el.getAttribute('data-i18n');
+  if(i18n[lang][k]) el.innerHTML=i18n[lang][k];
  });
- // update hero alignment
  let hero=document.getElementById('heroBox');
- if(lang==='ar'){ hero.classList.remove('items-start','text-left'); hero.classList.add('items-end','text-right'); }
- else { hero.classList.remove('items-end','text-right'); hero.classList.add('items-start','text-left'); }
+ if(lang==='ar'){hero.classList.remove('items-start','text-left');hero.classList.add('items-end','text-right');}
+ else {hero.classList.remove('items-end','text-right');hero.classList.add('items-start','text-left');}
  render();
 }
-
-const booksData={
-"📄 سيرة ذاتية CV (50)":["CV عصرية مهندس - أسود وذهبي","CV بدون خبرة - للمبتدئين","CV إنجليزية - Marketing","CV فرنسية - معلمة","CV فخمة - مدير","CV انفوجرافيك ملونة","CV ممرضة","CV محاسب","CV مصمم جرافيك","CV مطور ويب","CV محامية","CV سكرتيرة","CV سائق","CV طباخ","CV حلاق","CV صالون تجميل","CV استاذة","CV مهندسة معمارية","CV مبيعات","CV خدمة عملاء","CV بالعربية - بسيطة","CV بالعربية - احترافية","CV وردية للبنات","CV زرقاء للشباب","CV مع صورة","CV بدون صورة","CV صفحة واحدة","CV صفحتين","Cover Letter رسالة تحفيزية عربية","Cover Letter فرنسية","CV ATS - تقبلها الشركات","CV للمنحة","CV للعمل في الخليج","CV للعمل في أوروبا","CV طبيب","CV مهندس دولة","CV تقني","CV حرفي","CV طالب","CV تلميذ باك","CV متدرب Stage","CV عصرية 2026","CV كلاسيكية","CV إبداعية","CV مع خبرات","CV مع مهارات","CV مع لغات","CV مع شهادات","CV مع بروفايل LinkedIn","CV جاهزة للطباعة"],
-"📈 تسويق و Pitch Deck (50)":["Marketing Strategy 2026","Pitch Deck شركة ناشئة","Business Plan خطة عمل","دراسة سوق","عرض تسويقي لصالون","عرض لمطعم","خطة سوشيال ميديا شهر","إعلانات فيسبوك - تقرير","تقرير مبيعات شهري","عرض للزبون - Proposal","عرض سعر - Devis","فاتورة احترافية","Company Profile بروفايل شركة","عرض منتج جديد","خطة إطلاق منتج","تحليل منافسين","SWOT تحليل","Content Calendar","إستراتيجية انستغرام","إستراتيجية تيك توك","خطة تسويق بالمحتوى","عرض تسويق عقاري","عرض تسويق قفطان","عرض تسويق مطعم","عرض تسويق صالون","Media Kit للمؤثرين","Brand Guidelines","Logo Presentation","Social Media Report","إعلانات جوجل - تقرير","Email Marketing","عرض Black Friday","عرض رمضان تسويقي","عرض العيد","خطة تسويق 3 أشهر","خطة تسويق 6 أشهر","خطة تسويق سنة","عرض شراكة","عرض استثمار","عرض Franchise","عرض خدمات","عرض أسعار باقات","شهادة تقدير","بطاقة شكر للزبون","عرض توظيف","عرض تدريب","تقرير نهاية السنة","خطة 2026","Marketing Mix 4P"],
-"📱 سوشيال ميديا (50)":["Instagram Post - عرض","Instagram Story - سؤال","Reels Cover - جديد","Highlight Covers - ذهبي","Instagram Carousel - 5 نصائح","Post - قبل وبعد","Story - خصم 50%","Post - رأي زبون","Story - سؤال وجواب","Post - معلومة","Story - تصويت","Post - عرض اليوم","Story - وراء الكواليس","Post - جديد","Story - عد تنازلي","Post - مسابقة","Story - مسابقة","Post - عيد ميلاد","Story - عيد ميلاد","Post - رمضان","Story - رمضان","Post - العيد","Story - العيد","Post - الجمعة","Story - الجمعة","Post - تحفيزي","Story - تحفيزي","Post - نصيحة","Story - نصيحة","Post - منتج جديد","Story - منتج جديد","Post - عرض محدود","Story - عرض محدود","Post - توصيل مجاني","Story - توصيل مجاني","Post - شكرا","Story - شكرا","Post - افتتاح","Story - افتتاح","Post - توظيف","Story - توظيف","Post - عنوان","Story - عنوان","Post - مواعيد العمل","Story - مواعيد العمل","Post - سؤال للمتابعين","Post - ميمز مضحك","Post - Black Friday","Story - Black Friday","Post - رأس السنة"],
-"🧕 صالون تجميل (50)":["افتتاح صالون جديد - عرض 50%","قبل وبعد - صباغة شعر","قائمة أسعار صالون 2026","حجز موعد واتساب","عرض العيد - مكياج + تسريحة","بروتين وكيراتين","تنظيف بشرة عميق","عرض العروسة الكامل","رأي زبونة - شهادة","خصم للطالبات","صباغة Balayage","Manicure & Pedicure","رموش دائمة","Microblading حواجب","عرض الجمعة","هدية مع كل زيارة","صالون VIP","تدريب صالون","توظيف عاملة صالون","عيد ميلاد صالون","عرض رمضان","عرض الصيف","Black Friday صالون","صباغة بدون أمونياك","علاج تساقط الشعر","ماسك طبيعي","تسريحة عرس","تسريحة خطوبة","عرض الأختين","بطاقة وفاء","رأي 5 نجوم","عرض الطالبات","عرض الموظفات","صالون متنقل","تعقيم ونظافة","مواعيد العمل","عنوان الصالون","عرض الأم وبنتها","عرض 3 صديقات","صباغة أطفال","قص أطفال","عرض الصباح","عرض المساء","عرض نهاية الأسبوع","هدية عيد المرأة","عرض رأس السنة","عرض العودة للدخول","صباغة خريف 2026","تسريحة شتاء"],
-"🍽️ مطعم مغربي (50)":["Menu طاجين - 4 أنواع","Couscous الجمعة - 49 DH","عرض عائلي - 199 DH","توصيل مجاني - مراكش","رأي زبون - 5 نجوم","طبق اليوم","شهيوات رمضان","عرض الفطور","عرض الغداء","عرض العشاء","Pastilla دجاج","طاجين لحم بالبرقوق","كسكس بالخضرة 7 خضاري","حريرة + تمر","بسطيلة حوت","مشاوي مغربية","سندويش كفتة","بيتزا مغربية","عرض الطلبة","عرض الموظفين","عرض نهاية الأسبوع","عيد ميلاد فالمطعم","حفلة صغيرة","Menu عرس","Menu خطوبة","عرض 2+1","بطاقة وفاء","خصم 20% للمتابعين","افتتاح فرع جديد","توصيل 24/24","نظافة وتعقيم","مطبخ مفتوح","شيف مغربي","أثمنة مناسبة","عرض العائلة الكبيرة","Menu أطفال","عصائر طبيعية","أتاي مغربي","قهوة + حلوى","عرض رمضان","سحور رمضان","فطور رمضان","عرض الصيف","عرض الشتاء","Black Friday مطعم","رأس السنة","عرض الحب","عرض العودة للمدرسة","Menu جديد 2026","عنوان المطعم"],
-"👗 بوتيك قفطان (50)":["Collection قفطان 2026 جديدة","قفطان جوهرة - سور ميزور","عرض 2 قفاطن = 799 DH","جلباب مغربي - 299 DH","تكشيطة عروسة","قفطان العيد","عرض رمضان - جلابة + شال","خياطة يدوية","طرز رباطي","راندة","تنبات","قفطان للأطفال","قفطان للبنات","عرض الأم وبنتها","عرض 3 صديقات","توصيل مجاني لجميع المدن","الدفع عند الاستلام","رأي زبونة","قبل وبعد - خياطة","عرض نهاية الموسم","Black Friday - 50%","عرض الصيف","عرض الشتاء","قفطان خفيف","قفطان ثقيل - مناسبات","قفطان مخزني","قفطان عصري","قفطان كلاسيكي","عرض العروسة - 3 قفاطن","هدية مع كل قفطان","بطاقة وفاء","خصم للمتابعين","افتتاح بوتيك","عنوان البوتيك","مواعيد العمل","طلب عبر واتساب","قياسات - كيف تاخدي المقاس","ألوان متوفرة","قفطان أحمر","قفطان أخضر ملكي","قفطان أسود","قفطان أبيض عرس","قفطان أزرق","قفطان وردي","عرض عيد المرأة","عرض رأس السنة","Collection خريف","Collection شتاء","قفطان 2026 الأكثر مبيعا"],
-"🏠 عقار (50)":["فيلا للبيع - 120m² - مراكش","شقة للكراء - 2 غرف - كازا","أرض للبيع - 500m²","محل تجاري للكراء","عرض خاص - بدون سمسرة","Estimation مجانية","فيلا فاخرة - كاليفورنيا","شقة اقتصادية - 25 مليون","بقعة أرضية - نواحي مراكش","محل فالسوق","مكتب للكراء","رياض للبيع - المدينة","عرض العيد - تخفيض 10%","تمويل بنكي","بدون تسبيق","تقسيط 10 سنوات","رأي زبون - باع دار","قبل وبعد - إصلاح","مشروع جديد","فرصة استثمارية","أراضي للبيع - طريق أوريكة","شقق للبيع - المحاميد","فيلات للبيع - النخيل","محلات للبيع - جليز","عرض رمضان","عرض الصيف","Black Friday عقار","عرض رأس السنة","وكالة معتمدة","خبرة 10 سنوات","1000 زبون راضي","زيارة مجانية","استشارة مجانية","تقييم عقاري","عقد بيع","كراء يومي - مراكش","كراء للسياح","فيلا بمسبح","شقة مفروشة","أرض فلاحية","محل للبيع - الحي الصناعي","مكتب فاخر","عرض 2+1","بطاقة وفاء","خصم للمتابعين","عنوان الوكالة","مواعيد العمل","طلب عبر واتساب","عروض جديدة كل يوم","آخر فرصة"],
-"🎂 حلويات مغربية (50)":["كعب غزال - 80 DH للكيلو","بقلاوة تركية","شباكية رمضان","بريوات لوز","فقاص","غريبة بهلة","حلوى العيد - باك 5 كيلو","عرض رمضان - شباكية + بريوات","توصيل مجاني","الدفع عند الاستلام","حلوى بدون سكر","حلوى للأطفال","كيك عيد ميلاد","كيك خطوبة","كيك عرس - 3 طوابق","عرض العروسة - حلوى العرس","رأي زبونة","Menu حلويات 2026","عرض الطلبة","عرض العائلة","عرض 2 كيلو + 1 مجانا","بطاقة وفاء","خصم 20% للمتابعين","افتتاح محل","عنوان المحل","مواعيد العمل","طلب عبر واتساب","حلوى لوز","حلوى كاوكاو","حلوى جوز الهند","حلوى شكلاط","دونات","كب كيك","ماكرون","تشيز كيك","تارت","كيك بارد","حلوى صحية","حلوى كيتو","عرض الصيف","عرض الشتاء","Black Friday حلويات","عرض رأس السنة","عرض الحب","عرض عيد المرأة","عرض العودة للمدرسة","حلوى جديدة","آخر كمية","توصيل 24/24","نظافة وجودة"],
-"💈 Barber حلاق (50)":["حلاقة عصرية 2026","Fade - 50 DH","لحية + حلاقة = 80 DH","عرض الطلبة - 30 DH","حلاقة أطفال - 25 DH","صباغة شعر رجالي","بروتين للرجال","تنظيف بشرة","حمام مغربي للرجال","عرض العريس - 299 DH","افتتاح صالون حلاقة","رأي زبون","قبل وبعد","عرض الجمعة","عرض نهاية الأسبوع","بطاقة وفاء - 10 حلاقات = 1 مجانا","خصم للمتابعين","عنوان الصالون","مواعيد العمل","حجز عبر واتساب","حلاقة كلاسيكية","حلاقة أمريكية","حلاقة كورية","لحية خليجية","صباغة لحية","حلاقة + مساج","عرض الأب وابنه","عرض 2 أصدقاء","صالون VIP","كرسي VIP","أدوات معقمة","نظافة","خبرة 10 سنوات","حلاق محترف","عرض رمضان","عرض العيد","Black Friday","عرض الصيف","عرض الشتاء","عرض رأس السنة","عرض عيد الأضحى","حلاقة شعر طويل","حلاقة شعر قصير","تسريحة عرس","تسريحة خطوبة","عرض عيد الميلاد","هدية مع كل حلاقة","توظيف حلاق","تدريب حلاقة"],
-"☕ مقهى و عصائر (50)":["Menu مقهى 2026","عصير أفوكادو - 25 DH","باناشي - 20 DH","قهوة + كرواصة = 25 DH","فطور مقهى - 49 DH","عرض الطلبة","عرض الموظفين","توصيل مجاني","مكان هادئ للدراسة","WiFi مجاني","رأي زبون","عرض نهاية الأسبوع","عرض الحب","عرض رمضان - فطور","سحور رمضان","عصائر طبيعية 100%","أتاي مغربي","قهوة إسبريسو","كابتشينو","موخيطو","عصير ليمون","عصير برتقال","عصير مانجو","بان كيك","وافل","كريب","سندويش","برغر","بيتزا","سلطة","شيشة","عرض 2+1","بطاقة وفاء","خصم للمتابعين","افتتاح مقهى","عنوان المقهى","مواعيد العمل","حجز طاولة","مكان للعائلات","مكان للشباب","عرض عيد الميلاد","حفلة صغيرة","عرض المباريات","Black Friday مقهى","عرض الصيف","عرض الشتاء","عرض رأس السنة","Menu جديد","آخر عروض"],
-"💍 مجوهرات (50)":["خاتم ذهب - 18K","سنسلة ذهب","براسلي ذهب","حلقات ذهب","طقم عروسة ذهب","ذهب أبيض","ألماس","عرض العرس - طقم كامل","تخفيض 20%","توصيل مجاني","الدفع عند الاستلام","ذهب مستعمل - شراء","إصلاح مجوهرات","تنظيف مجوهرات مجانا","رأي زبونة","عرض العيد","عرض رمضان","Black Friday ذهب","عرض الحب","عرض عيد المرأة","عرض رأس السنة","مجوهرات فضة","خاتم فضة","سنسلة فضة","مجوهرات للأطفال","مجوهرات رجالية","ساعة ذهب","هدية عيد ميلاد","هدية خطوبة","هدية عرس","علبة مجوهرات","شهادة ضمان","ذهب إيطالي","ذهب تركي","ذهب خليجي","ذهب مغربي","عرض 2+1","بطاقة وفاء","خصم للمتابعين","افتتاح محل","عنوان المحل","مواعيد العمل","طلب عبر واتساب","قياس الخاتم","ذهب 2026","آخر صيحات","كمية محدودة","آخر فرصة","ذهب أصلي 100%"],
-"🛋️ ديكور و زليج (50)":["زليج مغربي - 2026","صالون مغربي عصري","ديكور حائط","إضاءة - ثريا","طابلة وسط","زرابي مغربية","مخدات","ستائر","ديكور رمضان","ديكور العيد","عرض خاص - صالون كامل","توصيل وتركيب مجاني","تصميم مجاني","رأي زبون","قبل وبعد - ديكور","عرض العرس","عرض فيلا","عرض شقة","عرض مقهى","عرض مطعم","عرض صالون","زليج بلدي","زليج عصري","رخام","جبس","صباغة","نجارة","حدادة","عرض رمضان","عرض الصيف","Black Friday ديكور","عرض رأس السنة","عرض الحب","عرض عيد المرأة","بطاقة وفاء","خصم للمتابعين","افتتاح محل","عنوان المحل","مواعيد العمل","طلب عبر واتساب","تصميم 3D","أثمنة مناسبة","جودة عالية","ضمان 10 سنوات","ديكور مغربي أصيل","ديكور مودرن","آخر صيحات","كمية محدودة","آخر فرصة"]
-};
-let active=Object.keys(booksData)[0];
-function getSmartStats(title,index){
- let low=title.toLowerCase();
- let hot=["عروس","عرض","افتتاح","خصم","black","مجان","cv","marketing","pitch"].some(k=>low.includes(k));
- if(hot||index<5){
-   let s=210+Math.floor(Math.random()*180);
-   let r=(4.8+Math.random()*0.2).toFixed(1);
-   return{sales:s,rating:r,stars:"⭐⭐⭐⭐⭐",badge: currentLang==='ar'? "🔥 الأكثر مبيعا" : currentLang==='fr'? "🔥 Best-seller" : "🔥 Best seller"};
- } else if(index<15){
-   let s=75+Math.floor(Math.random()*90);
-   let r=(4.3+Math.random()*0.4).toFixed(1);
-   return{sales:s,rating:r,stars:"⭐⭐⭐⭐",badge: currentLang==='ar'? "👍 مطلوب" : currentLang==='fr'? "👍 Populaire" : "👍 Popular"};
- } else {
-   let s=15+Math.floor(Math.random()*40);
-   let r=(3.4+Math.random()*0.7).toFixed(1);
-   let st=parseFloat(r)>=3.8?"⭐⭐⭐⭐":"⭐⭐⭐";
-   return{sales:s,rating:r,stars:st,badge:""};
- }
+function render(){
+ document.getElementById('cats').innerHTML=DATA.map((d,i)=>`<button onclick="setCat(${i})" class="px-4 py-2 rounded-full text-[11px] font-black border ${i==activeIndex?'cat-active':''}">${d.cat[currentLang]}</button>`).join('');
+ document.getElementById('catInfo').innerText=DATA[activeIndex].cat[currentLang];
+ document.getElementById('buyCat').innerText=i18n[currentLang].buy_cat;
+ document.getElementById('buyCat').onclick=()=>{
+   let msg=`${currentLang==='fr'?'Je veux':'بغيت'} ${DATA[activeIndex].cat[currentLang]} - 49 DH`;
+   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+ };
+ document.getElementById('books').innerHTML=DATA[activeIndex].items.map((t,i)=>{
+   let sales=200+Math.floor(Math.random()*200);
+   return `<div onclick="openModal('${t[currentLang].replace(/'/g,"\\'")}','${i}')" class="border rounded-[16px] p-4 hover:border-black cursor-pointer"><div class="flex justify-between"><span class="text-[9px] bg-[#f6f6f6] px-2 py-1 rounded-full">#${i+1}</span><span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full font-black">19 DH</span></div><p class="font-black text-[13px] mt-3">${t[currentLang]}</p><div class="flex gap-2 mt-3 text-[10px]"><span>⭐⭐⭐⭐⭐ 4.9</span><span class="bg-[#f6f6f6] px-2 py-0.5 rounded-full">${sales} ${i18n[currentLang].downloads}</span></div></div>`;
+ }).join('');
 }
-function openModal(cat,title,num){
- const s=getSmartStats(title,parseInt(num));
+function setCat(i){activeIndex=i;render();}
+function openModal(title,num){
  document.getElementById('modalBook').innerText=title;
- document.getElementById('modalStats').innerHTML=`<div class="flex flex-wrap gap-2 mt-2"><span class="bg-[#f6f6f6] px-3 py-1 rounded-full text-[11px] font-black">${s.stars} ${s.rating}</span><span class="bg-green-50 text-green-700 border px-3 py-1 rounded-full text-[11px] font-black">🔥 ${s.sales} ${i18n[currentLang].downloads}</span><span class="bg-black text-white px-3 py-1 rounded-full text-[11px] font-black">19 DH</span>${s.badge?`<span class="bg-red-500 text-white px-3 py-1 rounded-full text-[10px] font-black">${s.badge}</span>`:""}</div>`;
  document.getElementById('modalBuy').innerText=i18n[currentLang].buy_one;
  document.getElementById('modalBuy').onclick=()=>{
-   let msg = currentLang==='fr'? `Bonjour je veux ce template:\n\n🎨 Niche: ${cat}\n📄 Template: ${title}\n⭐ Note: ${s.rating}\n🔥 ${s.sales} ${i18n[currentLang].downloads}\n💰 Prix: 19 DH` : `سلام بغيت هاد القالب:\n\n🎨 المجال: ${cat}\n📄 القالب: ${title}\n⭐ التقييم: ${s.rating}\n🔥 ${s.sales} ${i18n[currentLang].downloads}\n💰 الثمن: 19 درهم`;
-   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(title+' - 19 DH')}`,'_blank');
  };
  document.getElementById('modal').classList.remove('hidden');
 }
-function render(){
- document.getElementById('cats').innerHTML=Object.keys(booksData).map(c=>`<button onclick="setCat('${c.replace(/'/g,"\\'")}')" class="px-4 py-2 rounded-full text-[11px] font-black border ${c==active?'cat-active':''}">${c}</button>`).join('');
- document.getElementById('catInfo').innerText=active;
- let buyCatEl=document.getElementById('buyCat');
- buyCatEl.innerText=i18n[currentLang].buy_cat;
- buyCatEl.onclick=()=>{
-   let msg = currentLang==='fr'? `Bonjour je veux cette niche complète:\n\n📁 ${active}\n🎨 50 templates Canva\n💰 49 DH` : `سلام بغيت هاد المجال كامل:\n\n📁 ${active}\n🎨 50 قالب Canva\n💰 49 درهم`;
-   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
- };
- document.getElementById('books').innerHTML=booksData[active].map((t,i)=>{
-   const s=getSmartStats(t,i);
-   return `<div onclick="openModal('${active.replace(/'/g,"\\'")}','${t.replace(/'/g,"\\'")}','${i+1}')" class="border rounded-[16px] p-4 hover:border-black hover:bg-zinc-50 cursor-pointer transition"><div class="flex justify-between"><span class="text-[9px] bg-[#f6f6f6] px-2 py-1 rounded-full">#${i+1} ${s.badge}</span><span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full font-black">19 DH</span></div><p class="font-black text-[13px] mt-3 leading-tight">${t}</p><div class="flex items-center gap-2 mt-3"><span class="text-[11px]">${s.stars}</span><span class="text-[10px] font-black">${s.rating}</span><span class="text-[10px] text-zinc-400">•</span><span class="text-[10px] ${s.sales>180?'bg-black text-white':'bg-[#f6f6f6]'} px-2 py-0.5 rounded-full font-bold">${s.sales} ${i18n[currentLang].downloads}</span></div></div>`;
- }).join('');
-}
-function setCat(c){active=c;render();}
 setLang(currentLang);
 </script></body></html>
