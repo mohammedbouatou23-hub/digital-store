@@ -99,46 +99,69 @@ function setStars(n){
 selectedStars=n;
 document.querySelectorAll('#starInput span').forEach((s,i)=>{
 s.textContent=i<n?'★':'☆';
-s.style.color=i<n?'#facc15':'#000';
+s.style.color=i<n?'#facc15':'black';
 });
-document.getElementById('starText').textContent=n+' نجمات - '+(n==5?'ممتاز! 🔥':n==4?'جيد جدا':n==3?'جيد':n==2?'مقبول':'ضعيف');
+document.getElementById('starText').textContent=n+' نجمات';
 }
 
-function render(){
-if(comments.length>0){
-let avg=(comments.reduce((a,c)=>a+c.stars,0)/comments.length).toFixed(1);
-document.getElementById('avgStars').innerHTML='⭐ '+avg+'/5 من '+(1547+comments.length)+' تقييم - موثق';
-let box=document.getElementById('allComments');
-box.innerHTML=comments.map((c,i)=>`
-<div class="bg-white rounded-[20px] p-6 border border-green-100">
+function renderAll(){
+let box = document.getElementById('allComments');
+let html = '';
+
+// 1. التعليقات الجديدة ديال الزبناء أولا
+comments.forEach((c,i)=>{
+html += `
+<div class="bg-white rounded-[20px] p-6 border-2 border-green-200">
 <div class="flex gap-3 items-center">
-<div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-black">${c.name[0]}</div>
-<div><p class="font-bold text-sm">${c.name}</p><p class="text-yellow-400 text-xs">${'★'.repeat(c.stars)}${'☆'.repeat(5-c.stars)} • ${c.time}</p></div>
-<button onclick="deleteComment(${i})" class="mr-auto text-[10px] bg-red-50 text-red-600 px-2 py-1 rounded-full">مسح</button>
+<div class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-black">${c.name[0]}</div>
+<div><p class="font-bold text-sm">${c.name}</p><p class="text-yellow-400 text-xs">${'★'.repeat(c.stars)} • الآن • ✓ جديد</p></div>
+<button onclick="deleteComment(${i})" class="mr-auto text-[10px] bg-red-50 text-red-600 px-3 py-1 rounded-full">مسح 🗑️</button>
 </div>
 <p class="text-sm mt-3">"${c.msg}"</p>
-</div>`).join('') + box.innerHTML;
-}
+</div>`;
+});
+
+// 2. التعليقات الثابتة ديالك باش يبان عامر
+html += `
+<div class="bg-white rounded-[20px] p-6 border"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-black">A</div><div><p class="font-bold text-sm">أمين - كازا</p><p class="text-yellow-400 text-xs">★★★★★ • منذ يومين</p></div></div><p class="text-sm mt-3">"الله يعطيكم الصحة، ربحت 400 درهم فنهار"</p></div>
+<div class="bg-white rounded-[20px] p-6 border"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-zinc-800 text-white rounded-full flex items-center justify-center font-black">S</div><div><p class="font-bold text-sm">سارة - الرباط</p><p class="text-yellow-400 text-xs">★★★★★ • منذ 5 أيام</p></div></div><p class="text-sm mt-3">"التسليم كان فوري فواتساب"</p></div>
+<div class="bg-white rounded-[20px] p-6 border"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-zinc-600 text-white rounded-full flex items-center justify-center font-black">Y</div><div><p class="font-bold text-sm">يوسف - مراكش</p><p class="text-yellow-400 text-xs">★★★★★ • منذ أسبوع</p></div></div><p class="text-sm mt-3">"المتجر PRO واعر بزاف"</p></div>
+`;
+
+box.innerHTML = html;
+
+// المتوسط
+let total = 1547 + comments.length;
+let avg = comments.length>0 ? ((4.9*1547 + comments.reduce((a,c)=>a+c.stars,0))/total).toFixed(1) : "4.9";
+document.getElementById('avgStars').innerHTML = `⭐ ${avg}/5 من ${total} تقييم - موثق`;
 }
 
 function postComment(){
-let name=document.getElementById('cName').value;
-let msg=document.getElementById('cMsg').value;
-if(!name||!msg) return alert('عمر السمية والتعليق');
-if(selectedStars==0) return alert('⭐ اختار عدد النجمات أولا!');
-let time=new Date().toLocaleDateString('ar-MA');
-let newC={name,msg,time,stars:selectedStars};
-comments.unshift(newC);
+let name=document.getElementById('cName').value.trim();
+let msg=document.getElementById('cMsg').value.trim();
+if(!name) return alert('كتب سميتك');
+if(!msg) return alert('كتب تعليقك');
+if(selectedStars==0) return alert('اختار النجمات أولا ⭐');
+let time = new Date().toLocaleDateString('ar-MA');
+comments.unshift({name,msg,time,stars:selectedStars});
 localStorage.setItem('dm_comments',JSON.stringify(comments));
-document.getElementById('cName').value='';document.getElementById('cMsg').value='';selectedStars=0;setStars(0);
-render(); location.reload();
+document.getElementById('cName').value='';
+document.getElementById('cMsg').value='';
+selectedStars=0;
+setStars(0);
+renderAll();
 }
 
 function deleteComment(i){
-let p=prompt('كود المسؤول باش تمسح:');
+let p=prompt('كود المسؤول:');
 if(p!==ADMIN_PASS) return alert('كود غالط!');
-if(confirm('تمسح هاد التعليق؟')){comments.splice(i,1);localStorage.setItem('dm_comments',JSON.stringify(comments));location.reload();}
+comments.splice(i,1);
+localStorage.setItem('dm_comments',JSON.stringify(comments));
+renderAll();
 }
+
+// أول ما يحل الموقع
+renderAll();
 </script>
 </body>
 </html>
