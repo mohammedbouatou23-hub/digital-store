@@ -1,2 +1,22 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>شروط الاستخدام - DIGITAL MAROC</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"><style>body{font-family:'Tajawal',sans-serif}</style></head>
-<body class="bg-[#f6f6f6]"><div class="max-w-3xl mx-auto px-6 py-16"><a href="index.html" class="text-sm underline">← رجوع للمتجر</a><div class="bg-white rounded-[24px] p-10 mt-6 border"><h1 class="text-3xl font-black">شروط الاستخدام</h1><p class="text-sm text-zinc-500 mt-2">آخر تحديث: 2026</p><div class="mt-8 space-y-6 text-sm leading-relaxed"><p><b>1. طبيعة المنتجات:</b> جميع منتجاتنا رقمية (كتب، قوالب، مواقع) مع حقوق إعادة البيع PLR/MRR. التسليم فوري عبر Google Drive و واتساب.</p><p><b>2. حقوق إعادة البيع:</b> عند شرائك يحق لك بيع المنتج 100% والاحتفاظ بكل الأرباح باسمك.</p><p><b>3. الاسترجاع:</b> ضمان 7 أيام استرجاع كامل إذا لم تعجبك المنتجات. تواصل عبر واتساب 0719380106.</p><p><b>4. الدفع:</b> الدفع حاليا عبر CIH Bank وتأكيد عبر واتساب فقط.</p><p><b>5. الدعم:</b> دعم فني عبر واتساب 24/7.</p></div></div></body></html>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DIGITAL MAROC</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet"><style>body{font-family:'Tajawal',sans-serif}</style></head>
+<body class="bg-[#f6f6f6]">
+<div class="max-w-3xl mx-auto px-6 py-10">
+<div class="flex justify-between items-center"><a href="index.html" class="text-sm underline">← DIGITAL MAROC</a>
+<div class="flex bg-white rounded-full p-1 text-[11px] font-black border"><button onclick="setLang('ar')" id="btn-ar" class="px-3 py-1.5 rounded-full bg-black text-white">AR</button><button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1.5 rounded-full">FR</button><button onclick="setLang('en')" id="btn-en" class="px-3 py-1.5 rounded-full">EN</button></div></div>
+
+<div class="bg-white rounded-[24px] p-8 md:p-10 mt-6 border">
+<h1 data-i18n="t1" class="text-3xl font-black">شروط الاستخدام</h1>
+<p data-i18n="t2" class="text-sm text-zinc-500 mt-2">آخر تحديث: 2026</p>
+<div class="mt-8 space-y-5 text-sm leading-relaxed">
+<p data-i18n="t3"></p><p data-i18n="t4"></p><p data-i18n="t5"></p><p data-i18n="t6"></p><p data-i18n="t7"></p>
+</div>
+</div>
+</div>
+<script>
+const tr={
+ar:{t1:"شروط الاستخدام",t2:"آخر تحديث: 2026",t3:"<b>1. طبيعة المنتجات:</b> جميع منتجاتنا رقمية (كتب، قوالب، مواقع) مع حقوق إعادة البيع PLR/MRR. التسليم فوري عبر Google Drive و واتساب.",t4:"<b>2. حقوق إعادة البيع:</b> عند شرائك يحق لك بيع المنتج 100% والاحتفاظ بكل الأرباح باسمك.",t5:"<b>3. الاسترجاع:</b> ضمان 7 أيام استرجاع كامل إذا لم تعجبك المنتجات. تواصل عبر واتساب 0719380106.",t6:"<b>4. الدفع:</b> الدفع حاليا عبر CIH Bank وتأكيد عبر واتساب فقط.",t7:"<b>5. الدعم:</b> دعم فني عبر واتساب 24/7 - 0719380106"},
+fr:{t1:"Conditions d'utilisation",t2:"Dernière mise à jour: 2026",t3:"<b>1. Nature des produits:</b> Tous nos produits sont numériques (livres, templates, sites) avec droits de revente PLR/MRR. Livraison instantanée via Drive et WhatsApp.",t4:"<b>2. Droits de revente:</b> Vous pouvez revendre à 100% et garder tous les bénéfices.",t5:"<b>3. Remboursement:</b> Garantie 7 jours remboursement complet. Contact WhatsApp 0719380106.",t6:"<b>4. Paiement:</b> Paiement via CIH Bank et confirmation WhatsApp uniquement.",t7:"<b>5. Support:</b> Support 24/7 via WhatsApp."},
+en:{t1:"Terms of Use",t2:"Last update: 2026",t3:"<b>1. Nature of products:</b> All our products are digital (books, templates, websites) with PLR/MRR resell rights. Instant delivery via Drive & WhatsApp.",t4:"<b>2. Resell rights:</b> You can resell 100% and keep all profits.",t5:"<b>3. Refund:</b> 7-day full refund guarantee. Contact WhatsApp 0719380106.",t6:"<b>4. Payment:</b> Payment via CIH Bank and WhatsApp confirmation only.",t7:"<b>5. Support:</b> 24/7 support via WhatsApp."}
+};
+function setLang(l){localStorage.setItem('dm_lang',l);['ar','fr','en'].forEach(x=>document.getElementById('btn-'+x).className=x==l?'px-3 py-1.5 rounded-full bg-black text-white':'px-3 py-1.5 rounded-full');document.documentElement.lang=l;document.documentElement.dir=l=='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>{let k=e.getAttribute('data-i18n');if(tr[l][k])e.innerHTML=tr[l][k]});document.body.style.fontFamily=l=='ar'?"'Tajawal',sans-serif":"'Inter',sans-serif"}setLang(localStorage.getItem('dm_lang')||'ar');
+</script></body></html>
