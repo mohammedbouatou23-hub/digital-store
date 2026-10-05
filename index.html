@@ -69,6 +69,39 @@ let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);docu
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
+
+  <!-- DIGITAL MAROC LEAD POPUP - 3 سنين من 2024 -->
+<div id="leadPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:99999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:25px; border-radius:15px; max-width:380px; width:90%; text-align:center; font-family:Arial;">
+    <h2 style="margin:0;">مرحبا بيك فـ DIGITAL MAROC 🔥</h2>
+    <p>حنا 3 سنين من 2024 وحنا خدامين الحمد لله!</p>
+    <p>خلي النمرة ديالك ولا الإيميل ونعطيوك <b>-10% + مفاجآت</b></p>
+    <input id="leadInput" type="text" placeholder="0719380106 ولا الإيميل" style="width:100%; padding:12px; margin:12px 0; border-radius:8px; border:1px solid #ccc;">
+    <button onclick="saveLead()" style="width:100%; padding:12px; background:black; color:white; border-radius:8px; border:none; cursor:pointer; font-weight:bold;">بغيت كود الخصم</button>
+    <p onclick="closePopup()" style="font-size:12px; margin-top:10px; cursor:pointer; color:#666;">لا شكرا</p>
+  </div>
+</div>
+
+<script>
+  // كيبان من بعد 4 ثواني
+  window.onload = function(){
+    if(!localStorage.getItem('digital_maroc_lead')){
+      setTimeout(()=>{ document.getElementById('leadPopup').style.display='flex'; }, 4000);
+    }
+  }
+  function closePopup(){ document.getElementById('leadPopup').style.display='none'; }
+  function saveLead(){
+    let val = document.getElementById('leadInput').value;
+    if(!val){ alert('دخل النمرة ولا الإيميل'); return; }
+    localStorage.setItem('digital_maroc_lead', val);
+    // كنسجلوه فـ Google Sheet ولا كنصيفطوه لواتساب
+    fetch('https://api.whatsapp.com/send?phone=212719380106&text=Lead جديد: '+val);
+    alert('شكرا! تواصل معانا فالواتساب: 0719380106 باش تاخد الكود!');
+    closePopup();
+    window.open('https://wa.me/212719380106?text=سلام DIGITAL MAROC خليت ليكم النمرة ديالي '+val+' بغيت كود الخصم', '_blank');
+  }
+</script>
+<!-- نهاية الكود -->
   
 </body>
 </html>
