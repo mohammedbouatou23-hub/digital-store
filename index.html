@@ -65,5 +65,11 @@ setLang(localStorage.getItem('dm_lang')||'ar');
 // أرباح مرتبة كتطلع بصح
 let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10);}setInterval(updateProfit,3000);
 </script>
+
+<!-- DIGITAL MAROC AI ASSISTANT - Chatbase Bot -->
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BC1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
 </body>
 </html>
