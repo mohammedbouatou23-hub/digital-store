@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><title>لوحة التحكم - DIGITAL MAROC</title></head>
+<body style="font-family:Arial; padding:20px;">
+<h1>النمر اللي دخلو للموقع - DIGITAL MAROC (3 سنين خبرة)</h1>
+<p>النمرة ديالك: 0719380106</p>
+<table border="1" id="table" style="width:100%; border-collapse:collapse; margin-top:20px;">
+<tr><th>النمرة</th><th>التاريخ</th></tr>
+</table>
+<script>
+async function load(){
+  let r = await fetch('/api/save-lead');
+  let data = await r.json();
+  let t = document.getElementById('table');
+  data.forEach(l=>{
+    t.innerHTML += `<tr><td>${l.phone}</td><td>${l.date}</td></tr>`;
+  });
+}
+load();
+</script>
+</body></html>
