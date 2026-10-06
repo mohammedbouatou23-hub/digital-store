@@ -82,25 +82,35 @@ function setLang(l){localStorage.setItem('dm_lang',l);['ar','fr','en'].forEach(x
 setLang(localStorage.getItem('dm_lang')||'ar');
 let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10);}setInterval(updateProfit,3000);
 
-// === LEAD POPUP LOGIC - KHADDAM 100% ===
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
-const popup = document.getElementById('leadPopup');
-if(!localStorage.getItem('digital_maroc_lead')){
-  setTimeout(()=>{popup.style.display='flex';}, 800);
-}
-function saveLead(){
-let name=document.getElementById('leadName').value.trim();
-let phone=document.getElementById('leadPhone').value.trim();
-let age=document.getElementById('leadAge').value;
-if(name===""||phone.length<9||age===""){alert("عمر المعلومات / Remplis tout!");return;}
-localStorage.setItem('digital_maroc_lead','yes');
-popup.style.display='none';
-fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({name:name,phone:phone,age:age,date:new Date().toLocaleString(),lang:localStorage.getItem('dm_lang')||'ar'})});
-}
-</script>
-
+<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999999;display:flex;justify-content:center;align-items:center;">
+<div style="background:#fff;padding:25px;border-radius:15px;width:90%;max-width:360px;text-align:center;">
+<h3 style="margin:0 0 10px 0;font-weight:900;">DIGITAL MAROC 🔥</h3>
+<p style="font-size:13px;margin-bottom:15px;">دخل معلوماتك</p>
+<input id="leadName" type="text" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+<input id="leadPhone" type="tel" placeholder="0719380106" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+<option value="">شحال فعمرك؟</option>
+<option value="18-24">18-24</option>
+<option value="25-34">25-34</option>
+<option value="35-44">35-44</option>
+<option value="45+">45+</option>
+</select>
+<button id="btnSave" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
+</div></div>
 <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
+document.getElementById('btnSave').addEventListener('click', function(){
+ let name=document.getElementById('leadName').value.trim();
+ let phone=document.getElementById('leadPhone').value.trim();
+ let age=document.getElementById('leadAge').value;
+ if(!name || phone.length<9 || !age){ alert('عمر كاع المعلومات'); return; }
+ document.getElementById('leadPopup').style.display='none';
+ localStorage.setItem('digital_maroc_lead','yes');
+ fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({name:name,phone:phone,age:age,date:new Date().toLocaleString()})});
+});
+if(localStorage.getItem('digital_maroc_lead')){
+ // document.getElementById('leadPopup').style.display='none';
+}
 </script>
 </body>
 </html>
