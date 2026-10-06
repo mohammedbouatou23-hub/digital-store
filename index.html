@@ -82,35 +82,400 @@ function setLang(l){localStorage.setItem('dm_lang',l);['ar','fr','en'].forEach(x
 setLang(localStorage.getItem('dm_lang')||'ar');
 let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10);}setInterval(updateProfit,3000);
 
-<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999999;display:flex;justify-content:center;align-items:center;">
-<div style="background:#fff;padding:25px;border-radius:15px;width:90%;max-width:360px;text-align:center;">
-<h3 style="margin:0 0 10px 0;font-weight:900;">DIGITAL MAROC 🔥</h3>
-<p style="font-size:13px;margin-bottom:15px;">دخل معلوماتك</p>
-<input id="leadName" type="text" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-<input id="leadPhone" type="tel" placeholder="0719380106" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-<option value="">شحال فعمرك؟</option>
-<option value="18-24">18-24</option>
-<option value="25-34">25-34</option>
-<option value="35-44">35-44</option>
-<option value="45+">45+</option>
-</select>
-<button id="btnSave" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
-</div></div>
+<div id="leadPopup" style="
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+z-index:999999999;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:15px;
+">
+
+  <div style="
+  background:#fff;
+  padding:25px;
+  border-radius:15px;
+  width:100%;
+  max-width:380px;
+  text-align:center;
+  box-sizing:border-box;
+  box-shadow:0 15px 50px rgba(0,0,0,.3);
+  ">
+
+    <h3 id="popTitle" style="
+    margin:0 0 10px;
+    font-weight:900;
+    font-size:21px;
+    ">
+      DIGITAL MAROC 🔥
+    </h3>
+
+    <p id="popSub" style="
+    font-size:13px;
+    margin:0 0 15px;
+    color:#555;
+    ">
+      دخل معلوماتك
+    </p>
+
+    <input
+      id="leadName"
+      type="text"
+      autocomplete="name"
+      placeholder="سميتك"
+      style="
+      width:100%;
+      padding:12px;
+      margin:6px 0;
+      border-radius:8px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+      font-size:14px;
+      "
+    >
+
+    <input
+      id="leadPhone"
+      type="tel"
+      inputmode="tel"
+      autocomplete="tel"
+      placeholder="06XXXXXXXX"
+      maxlength="14"
+      style="
+      width:100%;
+      padding:12px;
+      margin:6px 0;
+      border-radius:8px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+      font-size:14px;
+      "
+    >
+
+    <select
+      id="leadAge"
+      style="
+      width:100%;
+      padding:12px;
+      margin:6px 0;
+      border-radius:8px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+      font-size:14px;
+      background:#fff;
+      "
+    >
+      <option value="">شحال فعمرك؟</option>
+      <option value="18-24">18-24</option>
+      <option value="25-34">25-34</option>
+      <option value="35-44">35-44</option>
+      <option value="45+">45+</option>
+    </select>
+
+    <button
+      id="btnSave"
+      type="button"
+      style="
+      width:100%;
+      padding:14px;
+      background:#000;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:10px;
+      font-weight:bold;
+      font-size:14px;
+      "
+    >
+      دخول للمتجر
+    </button>
+
+    <p id="formMsg" style="
+    display:none;
+    margin:10px 0 0;
+    font-size:12px;
+    ">
+    </p>
+
+  </div>
+</div>
+
+
 <script>
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
-document.getElementById('btnSave').addEventListener('click', function(){
- let name=document.getElementById('leadName').value.trim();
- let phone=document.getElementById('leadPhone').value.trim();
- let age=document.getElementById('leadAge').value;
- if(!name || phone.length<9 || !age){ alert('عمر كاع المعلومات'); return; }
- document.getElementById('leadPopup').style.display='none';
- localStorage.setItem('digital_maroc_lead','yes');
- fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({name:name,phone:phone,age:age,date:new Date().toLocaleString()})});
-});
-if(localStorage.getItem('digital_maroc_lead')){
- // document.getElementById('leadPopup').style.display='none';
+
+const SHEET_URL =
+"https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+const browserLang = navigator.language
+  ? navigator.language.toLowerCase()
+  : "ar";
+
+const siteLang =
+  localStorage.getItem("dm_lang") ||
+  (
+    browserLang.startsWith("fr")
+      ? "fr"
+      : browserLang.startsWith("en")
+      ? "en"
+      : "ar"
+  );
+
+
+const T = {
+
+  ar: {
+    title: "DIGITAL MAROC 🔥",
+    sub: "دخل معلوماتك باش تدخل للمتجر",
+    name: "سميتك",
+    phone: "06XXXXXXXX",
+    age: "شحال فعمرك؟",
+    btn: "دخول للمتجر",
+    error: "عمر جميع المعلومات بشكل صحيح",
+    phoneError: "دخل رقم هاتف مغربي صحيح",
+    sending: "جاري الإرسال...",
+    success: "تم التسجيل بنجاح"
+  },
+
+  fr: {
+    title: "DIGITAL MAROC 🔥",
+    sub: "Entrez vos informations pour accéder au store",
+    name: "Votre nom",
+    phone: "06XXXXXXXX",
+    age: "Votre âge ?",
+    btn: "Entrer au magasin",
+    error: "Veuillez remplir correctement tous les champs",
+    phoneError: "Entrez un numéro marocain valide",
+    sending: "Envoi en cours...",
+    success: "Inscription réussie"
+  },
+
+  en: {
+    title: "DIGITAL MAROC 🔥",
+    sub: "Enter your information to access the store",
+    name: "Your name",
+    phone: "06XXXXXXXX",
+    age: "Your age?",
+    btn: "Enter Store",
+    error: "Please fill in all fields correctly",
+    phoneError: "Enter a valid Moroccan phone number",
+    sending: "Sending...",
+    success: "Registration successful"
+  }
+
+};
+
+
+const L = T[siteLang] || T.ar;
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const popup = document.getElementById("leadPopup");
+const title = document.getElementById("popTitle");
+const sub = document.getElementById("popSub");
+const nameInput = document.getElementById("leadName");
+const phoneInput = document.getElementById("leadPhone");
+const ageInput = document.getElementById("leadAge");
+const btn = document.getElementById("btnSave");
+const msg = document.getElementById("formMsg");
+
+
+/* =========================
+   TRANSLATION
+========================= */
+
+title.innerText = L.title;
+sub.innerText = L.sub;
+
+nameInput.placeholder = L.name;
+phoneInput.placeholder = L.phone;
+ageInput.options[0].text = L.age;
+btn.innerText = L.btn;
+
+
+/* =========================
+   CHECK PREVIOUS LEAD
+========================= */
+
+if (localStorage.getItem("digital_maroc_lead") === "yes") {
+  popup.style.display = "none";
 }
+
+
+/* =========================
+   PHONE VALIDATION
+========================= */
+
+function isValidMoroccanPhone(phone) {
+
+  // نحيد المسافات والشرطات
+  phone = phone.replace(/[\s-]/g, "");
+
+  // 06xxxxxxxx / 07xxxxxxxx
+  const localFormat = /^(06|07)[0-9]{8}$/;
+
+  // +2126xxxxxxxx / +2127xxxxxxxx
+  const internationalFormat = /^\+212[67][0-9]{8}$/;
+
+  // 002126xxxxxxxx / 002127xxxxxxxx
+  const internationalFormat2 = /^00212[67][0-9]{8}$/;
+
+  return (
+    localFormat.test(phone) ||
+    internationalFormat.test(phone) ||
+    internationalFormat2.test(phone)
+  );
+}
+
+
+/* =========================
+   SHOW MESSAGE
+========================= */
+
+function showMessage(text, success = false) {
+
+  msg.style.display = "block";
+  msg.innerText = text;
+
+  if (success) {
+    msg.style.color = "#16803c";
+  } else {
+    msg.style.color = "#d93025";
+  }
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+btn.addEventListener("click", async function () {
+
+  if (btn.disabled) return;
+
+  let name = nameInput.value.trim();
+  let phone = phoneInput.value.trim();
+  let age = ageInput.value;
+
+  /* إزالة المسافات من الهاتف */
+  phone = phone.replace(/\s+/g, "");
+
+
+  /* الاسم */
+  if (name.length < 2) {
+    showMessage(L.error);
+    nameInput.focus();
+    return;
+  }
+
+
+  /* الهاتف */
+  if (!isValidMoroccanPhone(phone)) {
+    showMessage(L.phoneError);
+    phoneInput.focus();
+    return;
+  }
+
+
+  /* العمر */
+  if (!age) {
+    showMessage(L.error);
+    ageInput.focus();
+    return;
+  }
+
+
+  /* منع الضغط المتكرر */
+  btn.disabled = true;
+  btn.style.opacity = "0.6";
+  btn.style.cursor = "not-allowed";
+  btn.innerText = L.sending;
+
+
+  const data = {
+    name: name,
+    phone: phone,
+    age: age,
+    lang: siteLang,
+    date: new Date().toLocaleString("fr-MA")
+  };
+
+
+  try {
+
+    await fetch(SHEET_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    });
+
+
+    /*
+      no-cors لا يسمح لنا نعرف واش Google Apps Script
+      رجع success فعلاً، لذلك نسجلو بعد إرسال الطلب.
+    */
+
+    localStorage.setItem(
+      "digital_maroc_lead",
+      "yes"
+    );
+
+
+    showMessage(L.success, true);
+
+
+    setTimeout(function () {
+      popup.style.display = "none";
+    }, 700);
+
+
+  } catch (error) {
+
+    console.error("Lead error:", error);
+
+    showMessage(
+      "حدث خطأ، حاول مرة أخرى."
+    );
+
+    btn.disabled = false;
+    btn.style.opacity = "1";
+    btn.style.cursor = "pointer";
+    btn.innerText = L.btn;
+
+  }
+
+});
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+[nameInput, phoneInput].forEach(function(input) {
+
+  input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+      btn.click();
+    }
+
+  });
+
+});
+
 </script>
 </body>
 </html>
