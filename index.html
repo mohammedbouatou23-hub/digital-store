@@ -3,410 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIGITAL MAROC — Premium Digital Store</title>
+<title>DIGITAL MAROC</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config={theme:{extend:{fontFamily:{sans:["Inter","Tajawal","system-ui","sans-serif"]},colors:{ink:"#07070b",gum:"#ff5c8a",gold:"#f5d08a"}}}}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{--ink:#07070b}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',sans-serif;background:var(--ink);color:#f4f4f5}
-  html[lang="ar"] body,.ar-font{font-family:'Tajawal','Inter',sans-serif}
-  .mesh{
-    background:
-      radial-gradient(900px 500px at 15% -10%,rgba(255,92,138,.35),transparent 55%),
-      radial-gradient(700px 420px at 90% 10%,rgba(124,58,237,.4),transparent 50%),
-      radial-gradient(600px 400px at 50% 90%,rgba(34,211,238,.12),transparent 55%),
-      #07070b;
-  }
-  .glass{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(22px)}
-  .glass-strong{background:rgba(10,10,16,.72);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(28px)}
-  .float{animation:float 6s ease-in-out infinite}
-  .float-d{animation:float 7.2s ease-in-out infinite reverse}
-  .float-e{animation:float 5.4s ease-in-out infinite .8s}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-  .glow-card{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
-  .glow-card:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 24px 80px rgba(255,92,138,.18);border-color:rgba(255,92,138,.45)}
-  .live-dot{animation:live 1.5s infinite}
-  @keyframes live{0%,100%{opacity:1}50%{opacity:.25}}
-  .shimmer{background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.18) 45%,transparent 70%);background-size:200% 100%;animation:shimmer 3.2s linear infinite}
-  @keyframes shimmer{to{background-position:200% 0}}
-  .grad-text{background:linear-gradient(90deg,#fff 0%,#ffb4c8 40%,#c4b5fd 70%,#67e8f9 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hide-scroll::-webkit-scrollbar{display:none}
-  .hide-scroll{scrollbar-width:none}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Tajawal',sans-serif;scroll-behavior:smooth}.hero-gradient{background:radial-gradient(120% 120% at 0% 0%,#111 0%,#000 100%)}.live-dot{animation:live 1.5s infinite}@keyframes live{0%,100%{opacity:1}50%{opacity:0.3}}</style>
 </head>
-<body class="antialiased mesh min-h-screen">
+<body class="bg-white text-black antialiased">
+<div class="bg-[#0a0a0a] text-white py-2.5"><div class="max-w-[1200px] mx-auto px-6 flex justify-between text-[11px]"><span>🔒 SSL SECURE</span><span data-i18n="top" class="font-bold">المنصة الموثوقة رقم 1 بالمغرب</span></div></div>
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b"><div class="max-w-[1200px] mx-auto px-6 h-[72px] flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-9 h-9 bg-black rounded-lg flex items-center justify-center text-white font-black">D</div><span class="font-black text-[20px]">DIGITAL MAROC</span></div><div class="flex items-center gap-2"><div class="flex bg-[#f6f6f6] rounded-full p-1 text-[11px] font-black"><button onclick="setLang('ar')" id="btn-ar" class="px-3 py-1.5 rounded-full bg-black text-white">AR</button><button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1.5 rounded-full">FR</button><button onclick="setLang('en')" id="btn-en" class="px-3 py-1.5 rounded-full">EN</button></div><a href="https://wa.me/212719380106" class="bg-black text-white px-5 py-3 rounded-full text-sm font-bold">WhatsApp</a></div></div></header>
 
-<div class="border-b border-white/10 bg-black/40 backdrop-blur-md">
-  <div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center text-[11px] text-zinc-300">
-    <span class="tracking-widest">SSL SECURE · PLR / MRR</span>
-    <span data-i18n="top" class="font-semibold">المنصة الموثوقة رقم 1 بالمغرب</span>
-  </div>
+<section class="hero-gradient text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-[0.15]"><img src="pro.header.jpg" class="w-full h-full object-cover"></div>
+<div class="relative max-w-[1200px] mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h1 data-i18n="hero1" class="text-[48px] md:text-[60px] font-black leading-[0.9]">نحن لا نبيع<br>ملفات.<br><span class="text-white/70">نحن نبيع<br>مستقبل.</span></h1>
+<p data-i18n="heroDesc" class="text-zinc-300 text-lg mt-6">منصة مغربية احترافية توفر لك منتجات رقمية جاهزة بحقوق إعادة البيع 100%.</p>
+<a href="#products" data-i18n="start" class="inline-block mt-8 bg-white text-black px-8 py-4 rounded-full font-black hover:scale-105 transition">ابدأ الآن ↓</a>
+<div class="mt-4 flex gap-2 text-[10px]"><span class="bg-white/10 border border-white/10 px-3 py-1 rounded-full">✓ 342 متجر نشط</span><span class="bg-green-500/20 text-green-400 border border-green-500/20 px-3 py-1 rounded-full flex gap-1 items-center"><span class="w-1.5 h-1.5 bg-green-400 rounded-full live-dot"></span><span id="liveNow">19</span> <span data-i18n="viewing">يشاهد الآن</span></span></div>
 </div>
-
-<header class="sticky top-0 z-50 glass-strong">
-  <div class="max-w-6xl mx-auto px-4 h-[74px] flex items-center gap-3">
-    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-pink-400 via-fuchsia-500 to-violet-600 flex items-center justify-center font-black text-white shadow-[0_0_24px_rgba(255,92,138,.45)]">D</div>
-      <div>
-        <p class="font-black leading-none tracking-tight">DIGITAL MAROC</p>
-        <p class="text-[10px] text-pink-300/80 font-medium">Premium Store</p>
-      </div>
-    </a>
-    <div class="hidden md:flex flex-1 mx-4">
-      <div class="relative w-full">
-        <input id="navSearch" oninput="liveSearch(this.value)" data-ph="searchPh" placeholder="ابحث: كتب، Canva، AI، Excel..." class="w-full bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-sm outline-none focus:border-pink-400/60 placeholder:text-zinc-500">
-        <div id="navSugg" class="absolute top-full mt-2 w-full hidden glass-strong rounded-2xl overflow-hidden z-50"></div>
-      </div>
-    </div>
-    <div class="ms-auto flex items-center gap-2">
-      <div class="flex bg-white/5 rounded-full p-1 text-[11px] font-black border border-white/10">
-        <button onclick="setLang('ar')" id="btn-ar" class="px-3 py-1.5 rounded-full bg-white text-black">AR</button>
-        <button onclick="setLang('fr')" id="btn-fr" class="px-3 py-1.5 rounded-full">FR</button>
-        <button onclick="setLang('en')" id="btn-en" class="px-3 py-1.5 rounded-full">EN</button>
-      </div>
-      <a href="https://wa.me/212719380106" class="hidden sm:inline-flex bg-gradient-to-r from-pink-500 to-violet-600 text-white px-4 py-2.5 rounded-full text-sm font-bold hover:opacity-90">WhatsApp</a>
-    </div>
-  </div>
-</header>
-
-<section class="relative overflow-hidden">
-  <div class="absolute inset-0 opacity-30 pointer-events-none">
-    <img src="pro.header.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
-  </div>
-  <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <span class="inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-[11px] font-semibold text-pink-200">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot"></span>
-        <span data-i18n="badge">Gumroad-style marketplace · Morocco 2026</span>
-      </span>
-      <h1 data-i18n="hero1" class="mt-5 text-[44px] md:text-[64px] font-black leading-[0.92] tracking-tight">
-        نحن لا نبيع<br>ملفات.<br><span class="grad-text">نحن نبيع<br>مستقبل.</span>
-      </h1>
-      <p data-i18n="heroDesc" class="text-zinc-300 text-lg mt-6 max-w-lg">منصة مغربية احترافية توفر لك منتجات رقمية جاهزة بحقوق إعادة البيع 100%.</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#products" data-i18n="start" class="inline-flex items-center bg-white text-black px-7 py-3.5 rounded-full font-black hover:scale-[1.03] transition">ابدأ الآن ↓</a>
-        <button onclick="openCheckout('bundle','DIGITAL MAROC Bundle','149')" data-i18n="buyNow" class="inline-flex items-center glass px-7 py-3.5 rounded-full font-bold hover:bg-white/10">اطلب عبر واتساب</button>
-      </div>
-      <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
-        <span class="glass px-3 py-1.5 rounded-full">✓ 342 متجر نشط</span>
-        <span class="glass px-3 py-1.5 rounded-full text-emerald-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full live-dot"></span><span id="liveNow">19</span> <span data-i18n="viewing">يشاهد الآن</span></span>
-        <span class="glass px-3 py-1.5 rounded-full text-gold">★ 4.9 · 1,547</span>
-      </div>
-    </div>
-
-    <div class="relative h-[420px] md:h-[480px]">
-      <div class="absolute inset-8 rounded-[36px] bg-gradient-to-br from-pink-500/30 via-violet-600/20 to-cyan-400/10 blur-2xl"></div>
-      <a href="book.html" class="float glass glow-card absolute top-4 start-2 w-[58%] rounded-[24px] p-3 block">
-        <div class="h-28 rounded-2xl bg-gradient-to-br from-amber-200 to-orange-500 overflow-hidden relative">
-          <img src="book.header.jpg" class="absolute inset-0 w-full h-full object-cover opacity-70" onerror="this.remove()">
-          <div class="absolute inset-0 shimmer"></div>
-        </div>
-        <p class="mt-3 text-xs text-zinc-400" data-i18n="cardEbookK">EBOOKS</p>
-        <p class="font-black" data-i18n="cardEbook">500 كتاب PLR</p>
-        <p class="text-pink-300 font-bold text-sm">149 DH</p>
-      </a>
-      <a href="canva.html" class="float-d glass glow-card absolute top-16 end-0 w-[48%] rounded-[24px] p-3 block">
-        <div class="h-24 rounded-2xl bg-gradient-to-br from-fuchsia-400 to-violet-700 overflow-hidden relative">
-          <img src="canva.header.jpg" class="absolute inset-0 w-full h-full object-cover opacity-70" onerror="this.remove()">
-        </div>
-        <p class="mt-3 text-xs text-zinc-400">CANVA</p>
-        <p class="font-black text-sm" data-i18n="cardCanva">2000 قالب</p>
-        <p class="text-pink-300 font-bold text-sm">199 DH</p>
-      </a>
-      <a href="book.html?cat=ai" class="float-e glass glow-card absolute bottom-20 start-8 w-[46%] rounded-[24px] p-3 block">
-        <div class="h-20 rounded-2xl bg-gradient-to-br from-cyan-300 to-blue-700"></div>
-        <p class="mt-2 text-xs text-zinc-400">AI PROMPTS</p>
-        <p class="font-black text-sm" data-i18n="cardAi">برومبتات AI</p>
-      </a>
-      <a href="book.html?cat=excel" class="float glass glow-card absolute bottom-4 end-6 w-[44%] rounded-[24px] p-3 block">
-        <div class="h-16 rounded-2xl bg-gradient-to-br from-emerald-300 to-teal-800"></div>
-        <p class="mt-2 text-xs text-zinc-400">EXCEL</p>
-        <p class="font-black text-sm" data-i18n="cardExcel">قوالب Excel</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="max-w-6xl mx-auto px-4 pb-6 md:hidden">
-  <input id="mobSearch" oninput="liveSearch(this.value)" data-ph="searchPh" placeholder="ابحث..." class="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm outline-none">
-</section>
-
-<section id="products" class="max-w-6xl mx-auto px-4 py-10">
-  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-    <div>
-      <p class="text-pink-300 text-xs font-bold tracking-[0.2em]">CATALOG</p>
-      <h2 data-i18n="products" class="text-3xl md:text-5xl font-black mt-1">منتجات تصنع ثروة.</h2>
-    </div>
-    <div id="filters" class="flex gap-2 overflow-x-auto hide-scroll pb-1"></div>
-  </div>
-  <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8"></div>
-</section>
-
-<section class="max-w-6xl mx-auto px-4 py-16">
-  <div class="glass rounded-[32px] p-6 md:p-10 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <p class="text-pink-300 text-xs font-bold tracking-[0.2em]" data-i18n="dashK">LIVE DASHBOARD</p>
-      <h3 data-i18n="dash" class="text-3xl font-black mt-2">لوحة تحكم العميل</h3>
-      <p data-i18n="dashDesc" class="text-zinc-400 mt-3 text-sm">تصور أرباح إعادة البيع من منتجاتك الرقمية — نفس روح Gumroad، بهوية مغربية.</p>
-    </div>
-    <div class="rounded-[28px] bg-black/50 border border-white/10 p-6">
-      <div class="flex justify-between items-center">
-        <span data-i18n="profit" class="text-zinc-400">أرباحك</span>
-        <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded-full flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full live-dot"></span> LIVE</span>
-      </div>
-      <p class="font-black text-4xl mt-2" id="profit">3,740 DH</p>
-      <div class="mt-5 grid grid-cols-3 gap-2 text-center">
-        <div class="bg-white/5 rounded-2xl p-3"><p class="font-black" id="orders">23</p><p class="text-[10px] text-zinc-500">Orders</p></div>
-        <div class="bg-white/5 rounded-2xl p-3"><p class="font-black">3.2%</p><p class="text-[10px] text-zinc-500">CVR</p></div>
-        <div class="bg-white/5 rounded-2xl p-3"><p class="font-black" id="visitors">1,204</p><p class="text-[10px] text-zinc-500">Visitors</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="reviews" class="max-w-6xl mx-auto px-4 py-10">
-  <div class="flex justify-between items-end gap-4 mb-6">
-    <div>
-      <h3 data-i18n="reviews" class="text-3xl font-black">آراء عملائنا</h3>
-      <p id="avgStars" class="text-sm text-zinc-400 mt-1">★ 4.9/5 من 1,547 تقييم</p>
-    </div>
-  </div>
-  <div class="glass rounded-[28px] p-6 mb-8">
-    <p data-i18n="rate" class="font-bold mb-3">قيّم تجربتك</p>
-    <div class="flex gap-2 items-center">
-      <div id="starInput" class="flex gap-1 text-3xl cursor-pointer text-zinc-600">
-        <span onclick="setStars(1)">☆</span><span onclick="setStars(2)">☆</span><span onclick="setStars(3)">☆</span><span onclick="setStars(4)">☆</span><span onclick="setStars(5)">☆</span>
-      </div>
-      <span id="starText" class="text-xs text-zinc-500">1–5</span>
-    </div>
-    <div class="flex gap-3 mt-4 flex-wrap">
-      <input id="cName" data-ph="namePh" placeholder="اسمك" class="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm w-full md:w-[25%] outline-none">
-      <input id="cMsg" data-ph="commentPh" placeholder="رأيك" class="bg-white/5 border border-white/10 rounded-full px-4 py-3 text-sm flex-1 outline-none">
-      <button onclick="postComment()" data-i18n="publish" class="bg-white text-black px-8 py-3 rounded-full font-black text-sm">نشر</button>
-    </div>
-  </div>
-  <div id="allComments" class="grid md:grid-cols-3 gap-5"></div>
-</section>
-
-<section class="max-w-6xl mx-auto px-4 py-16">
-  <h3 data-i18n="daman" class="text-3xl md:text-4xl font-black text-center">ضمان DIGITAL MAROC الذهبي</h3>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-    <div class="glass rounded-[24px] p-6 text-center"><div class="text-3xl">🔒</div><h4 data-i18n="b1t" class="font-black mt-3 text-sm">SSL SECURE</h4><p data-i18n="b1d" class="text-[11px] text-zinc-400 mt-1">موقع محمي 100%</p></div>
-    <div class="glass rounded-[24px] p-6 text-center"><div class="text-3xl">🏢</div><h4 data-i18n="b2t" class="font-black mt-3 text-sm">VERIFIED BUSINESS</h4><p data-i18n="b2d" class="text-[11px] text-zinc-400 mt-1">شركة مغربية موثقة</p></div>
-    <div class="glass rounded-[24px] p-6 text-center"><div class="text-3xl">⚡</div><h4 data-i18n="b3t" class="font-black mt-3 text-sm">INSTANT DELIVERY</h4><p data-i18n="b3d" class="text-[11px] text-zinc-400 mt-1">تسليم أقل من 5 دقائق</p></div>
-    <div class="glass rounded-[24px] p-6 text-center border-pink-400/40"><div class="text-3xl">🛡️</div><h4 data-i18n="b4t" class="font-black mt-3 text-sm">GOLD GUARANTEE</h4><p data-i18n="b4d" class="text-[11px] text-zinc-400 mt-1">7 أيام استرجاع</p></div>
-  </div>
-</section>
-
-<section id="faq" class="max-w-3xl mx-auto px-4 py-10">
-  <h3 class="text-3xl font-black text-center" data-i18n="faq">الأسئلة الشائعة</h3>
-  <div class="mt-8 space-y-3" id="faqBox"></div>
-</section>
-
-<footer class="border-t border-white/10 mt-10 py-10 text-center text-zinc-400">
-  <div class="flex justify-center gap-6 text-xs font-bold mb-3">
-    <a href="terms.html" data-i18n="terms" class="hover:text-white">شروط الاستخدام</a>
-    <a href="privacy.html" data-i18n="privacy" class="hover:text-white">سياسة الخصوصية</a>
-    <a href="https://wa.me/212719380106">WhatsApp 0719380106</a>
-  </div>
-  <p class="text-[11px] text-zinc-600">© 2026 DIGITAL MAROC</p>
-</footer>
-
-<!-- Checkout -->
-<div id="checkout" class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-  <div class="glass-strong rounded-[28px] w-full max-w-md p-6">
-    <div class="flex justify-between items-center">
-      <h3 class="font-black text-xl" data-i18n="chkTitle">إتمام الطلب</h3>
-      <button onclick="closeCheckout()" class="w-9 h-9 rounded-full bg-white/10">✕</button>
-    </div>
-    <p id="chkProduct" class="mt-4 text-sm text-zinc-300"></p>
-    <p id="chkPrice" class="text-2xl font-black text-pink-300 mt-1"></p>
-    <input id="chkName" data-ph="namePh" placeholder="اسمك" class="mt-5 w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 outline-none">
-    <input id="chkPhone" type="tel" placeholder="06XXXXXXXX" class="mt-3 w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 outline-none">
-    <button onclick="sendWhatsApp()" data-i18n="chkBtn" class="mt-5 w-full bg-gradient-to-r from-pink-500 to-violet-600 py-3.5 rounded-2xl font-black">أرسل الطلب على واتساب</button>
-    <p class="text-[11px] text-zinc-500 mt-3 text-center" data-i18n="chkNote">الدفع عبر CIH بعد تأكيد الطلب على واتساب</p>
-  </div>
+<div class="bg-[#111] border border-white/10 rounded-[32px] p-3"><div class="bg-white rounded-[24px] p-7 text-black"><div class="flex justify-between items-center"><p data-i18n="dash" class="font-black">لوحة تحكم العميل</p><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full live-dot"></span> LIVE</span></div><div class="mt-6 bg-black text-white p-4 rounded-2xl flex justify-between items-center"><span data-i18n="profit">💰 أرباحك</span><span class="font-black text-[20px]" id="profit">3,740 DH</span></div><div class="mt-4 grid grid-cols-3 gap-2 text-center"><div class="bg-[#f6f6f6] p-3 rounded-xl"><p class="font-black" id="orders">23</p><p class="text-[10px]">طلبات</p></div><div class="bg-[#f6f6f6] p-3 rounded-xl"><p class="font-black">3.2%</p><p class="text-[10px]">تحويل</p></div><div class="bg-[#f6f6f6] p-3 rounded-xl"><p class="font-black" id="visitors">1,204</p><p class="text-[10px]">زوار</p></div></div></div></div>
 </div>
+</section>
 
-<!-- Lead popup -->
-<div id="leadPopup" class="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-  <div class="glass-strong rounded-[28px] w-full max-w-sm p-7 text-center">
-    <h3 id="popTitle" class="font-black text-2xl">DIGITAL MAROC</h3>
-    <p id="popSub" class="text-sm text-zinc-400 mt-2 mb-5">دخل معلوماتك</p>
-    <input id="leadName" type="text" autocomplete="name" placeholder="سميتك" class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 mb-2">
-    <input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06XXXXXXXX" maxlength="14" class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 mb-2">
-    <select id="leadAge" class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 mb-2">
-      <option value="">شحال فعمرك؟</option>
-      <option value="18-24">18-24</option><option value="25-34">25-34</option><option value="35-44">35-44</option><option value="45+">45+</option>
+<section id="products" class="max-w-[1200px] mx-auto px-6 py-20">
+<h2 data-i18n="products" class="text-4xl font-black">منتجات تصنع ثروة.</h2>
+<div class="grid md:grid-cols-3 gap-6 mt-10">
+<div class="border rounded-[28px] p-2"><div class="bg-[#f6f6f6] rounded-[20px] p-8 h-[180px] relative overflow-hidden"><img src="book.header.jpg" onerror="this.src='pro.header.jpg'" class="absolute inset-0 w-full h-full object-cover opacity-50"><div class="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent"></div><div class="relative z-10"><h3 data-i18n="book" class="font-black text-xl">📚 500 كتاب PLR</h3><p data-i18n="bookDesc" class="text-sm text-zinc-700 font-bold">مكتبة كاملة للبيع باسمك</p></div></div><div class="p-5 flex justify-between"><p class="text-2xl font-black">149 DH</p><a href="book.html" class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center">→</a></div></div>
+<div class="border rounded-[28px] p-2"><div class="bg-[#f6f6f6] rounded-[20px] p-8 h-[180px] relative overflow-hidden"><img src="canva.header.jpg" onerror="this.src='pro.header.jpg'" class="absolute inset-0 w-full h-full object-cover opacity-50"><div class="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent"></div><div class="relative z-10"><h3 data-i18n="canva" class="font-black text-xl">🎨 2000 قالب Canva</h3><p data-i18n="canvaDesc" class="text-sm text-zinc-700 font-bold">للشركات والانستغرام</p></div></div><div class="p-5 flex justify-between"><p class="text-2xl font-black">99 DH</p><a href="canva.html" class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center">→</a></div></div>
+<div class="border-2 border-black rounded-[28px] p-2"><div class="bg-black text-white rounded-[20px] p-8 h-[180px] relative overflow-hidden"><img src="pro.header.jpg" onerror="this.src='store-header.jpg'" class="absolute inset-0 w-full h-full object-cover opacity-40"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div><div class="relative z-10"><h3 data-i18n="pro" class="font-black text-xl">🚀 المتجر الجاهز PRO</h3><p data-i18n="proDesc" class="text-sm text-zinc-300">موقع + منتجات + دومين</p></div></div><div class="p-5 flex justify-between"><p class="text-2xl font-black">299 DH</p><a href="pro.html" class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center">→</a></div></div>
+</div>
+</section>
+
+<section id="reviews" class="bg-[#f6f6f6] py-16"><div class="max-w-[1200px] mx-auto px-6"><div class="flex justify-between items-center mb-6"><div><h3 data-i18n="reviews" class="text-3xl font-black">آراء عملائنا الحقيقيين ⭐</h3><p id="avgStars" class="text-sm font-bold mt-2">⭐ 4.9/5 من 1,547 تقييم</p></div></div><div class="bg-white border rounded-[24px] p-6 mb-8"><p data-i18n="rate" class="font-bold mb-3">⭐ قيّم تجربتك:</p><div class="flex gap-2 items-center"><div id="starInput" class="flex gap-1 text-3xl cursor-pointer"><span onclick="setStars(1)">☆</span><span onclick="setStars(2)">☆</span><span onclick="setStars(3)">☆</span><span onclick="setStars(4)">☆</span><span onclick="setStars(5)">☆</span></div><span id="starText" class="text-xs text-zinc-500">اختار 1-5</span></div><div class="flex gap-3 mt-4 flex-wrap"><input id="cName" data-ph="namePh" placeholder="سميتك - مثال: أمين كازا" class="bg-[#f6f6f6] border rounded-full px-4 py-3 text-sm w-full md:w-[25%]"><input id="cMsg" data-ph="commentPh" placeholder="شنو رأيك فالخدمة؟" class="bg-[#f6f6f6] border rounded-full px-4 py-3 text-sm flex-1"><button onclick="postComment()" data-i18n="publish" class="bg-black text-white px-8 py-3 rounded-full font-black text-sm">نشر تقييمي ⭐</button></div></div><div id="allComments" class="grid md:grid-cols-3 gap-6"></div></div></section>
+
+<section id="daman" class="max-w-[1200px] mx-auto px-6 py-20">
+<div class="text-center mb-10"><h3 data-i18n="daman" class="text-3xl md:text-4xl font-black tracking-tighter">ضمان DIGITAL MAROC الذهبي 🛡️</h3></div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white border rounded-[24px] p-6 text-center"><div class="w-16 h-16 mx-auto bg-green-50 rounded-2xl flex items-center justify-center text-3xl">🔒</div><h4 data-i18n="b1t" class="font-black mt-4 text-sm">SSL SECURE</h4><p data-i18n="b1d" class="text-[11px] text-zinc-500 mt-1">موقع محمي 100%<br>تشفير عالي</p><span data-i18n="b1b" class="inline-block mt-3 bg-green-100 text-green-700 text-[10px] px-3 py-1 rounded-full font-bold">✓ VERIFIED</span></div>
+<div class="bg-white border rounded-[24px] p-6 text-center"><div class="w-16 h-16 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center text-3xl">🏢</div><h4 data-i18n="b2t" class="font-black mt-4 text-sm">VERIFIED BUSINESS</h4><p data-i18n="b2d" class="text-[11px] text-zinc-500 mt-1">شركة مغربية<br>موثقة رسميا</p><span data-i18n="b2b" class="inline-block mt-3 bg-blue-100 text-blue-700 text-[10px] px-3 py-1 rounded-full font-bold">✓ MAROC 2026</span></div>
+<div class="bg-white border rounded-[24px] p-6 text-center"><div class="w-16 h-16 mx-auto bg-yellow-50 rounded-2xl flex items-center justify-center text-3xl">⚡</div><h4 data-i18n="b3t" class="font-black mt-4 text-sm">INSTANT DELIVERY</h4><p data-i18n="b3d" class="text-[11px] text-zinc-500 mt-1">تسليم فوري<br>أقل من 5 دقائق</p><span data-i18n="b3b" class="inline-block mt-3 bg-yellow-100 text-yellow-700 text-[10px] px-3 py-1 rounded-full font-bold">✓ 24/7 AUTO</span></div>
+<div class="bg-black text-white border border-black rounded-[24px] p-6 text-center"><div class="w-16 h-16 mx-auto bg-white/10 rounded-2xl flex items-center justify-center text-3xl">🛡️</div><h4 data-i18n="b4t" class="font-black mt-4 text-sm">GOLD GUARANTEE</h4><p data-i18n="b4d" class="text-[11px] text-zinc-400 mt-1">7 أيام استرجاع<br>بدون أسئلة</p><span data-i18n="b4b" class="inline-block mt-3 bg-white text-black text-[10px] px-3 py-1 rounded-full font-bold">✓ 100% SECURE</span></div>
+</div>
+</section>
+
+<div class="border-t mt-10 py-8 text-center"><div class="flex justify-center gap-6 text-xs font-bold mb-3"><a href="terms.html" data-i18n="terms" class="underline">شروط الاستخدام</a><a href="privacy.html" data-i18n="privacy" class="underline">سياسة الخصوصية</a><a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a></div><p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p></div>
+
+<!-- POPUP KHADDAM FINAL - 1 SEUL -->
+<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999999999;display:flex;justify-content:center;align-items:center;padding:15px;">
+  <div style="background:#fff;padding:25px;border-radius:15px;width:100%;max-width:380px;text-align:center;box-sizing:border-box;box-shadow:0 15px 50px rgba(0,0,0,.3);">
+    <h3 id="popTitle" style="margin:0 0 10px;font-weight:900;font-size:21px;">DIGITAL MAROC 🔥</h3>
+    <p id="popSub" style="font-size:13px;margin:0 0 15px;color:#555;">دخل معلوماتك</p>
+    <input id="leadName" type="text" autocomplete="name" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:14px;">
+    <input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06XXXXXXXX" maxlength="14" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:14px;">
+    <select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:14px;background:#fff;">
+      <option value="">شحال فعمرك؟</option><option value="18-24">18-24</option><option value="25-34">25-34</option><option value="35-44">35-44</option><option value="45+">45+</option>
     </select>
-    <button id="btnSave" type="button" class="w-full mt-3 bg-white text-black py-3.5 rounded-2xl font-black">دخول للمتجر</button>
-    <p id="formMsg" class="hidden mt-3 text-xs"></p>
+    <button id="btnSave" type="button" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;font-size:14px;">دخول للمتجر</button>
+    <p id="formMsg" style="display:none;margin:10px 0 0;font-size:12px;"></p>
   </div>
 </div>
 
 <script>
-const WA="212719380106";
-const ADMIN_PASS="7193";
-let selectedStars=0;
-let comments=JSON.parse(localStorage.getItem('dm_comments')||'[]');
-let activeCat="all";
-let chk={id:"",name:"",price:""};
-
-const PRODUCTS=[
-  {id:"ebook",cat:"ebook",price:149,old:499,href:"book.html",img:"book.header.jpg",grad:"from-amber-300 to-orange-700",
-    ar:{t:"500 كتاب PLR",d:"مكتبة كاملة للبيع باسمك",tag:"EBOOK"},
-    fr:{t:"500 Livres PLR",d:"Bibliothèque complète à revendre",tag:"EBOOK"},
-    en:{t:"500 PLR Books",d:"Full library with resell rights",tag:"EBOOK"}},
-  {id:"canva",cat:"canva",price:199,old:499,href:"canva.html",img:"canva.header.jpg",grad:"from-fuchsia-400 to-violet-800",
-    ar:{t:"2000 قالب Canva",d:"للشركات والانستغرام — بدون تكرار",tag:"CANVA"},
-    fr:{t:"2000 Templates Canva",d:"Business & Instagram, 100% uniques",tag:"CANVA"},
-    en:{t:"2000 Canva Templates",d:"Business & Instagram, 100% unique",tag:"CANVA"}},
-  {id:"ai",cat:"ai",price:49,old:99,href:"book.html?cat=ai",img:"",grad:"from-cyan-300 to-indigo-800",
-    ar:{t:"AI Prompts Pack",d:"50 كتاب برومبت ChatGPT و Midjourney",tag:"AI"},
-    fr:{t:"Pack AI Prompts",d:"50 ebooks ChatGPT & Midjourney",tag:"AI"},
-    en:{t:"AI Prompts Pack",d:"50 ChatGPT & Midjourney ebooks",tag:"AI"}},
-  {id:"excel",cat:"excel",price:49,old:99,href:"book.html?cat=excel",img:"",grad:"from-emerald-300 to-teal-900",
-    ar:{t:"Excel Templates",d:"50 قالب ميزانيات، مبيعات، داشبورد",tag:"EXCEL"},
-    fr:{t:"Templates Excel",d:"50 fichiers budget, ventes, dashboards",tag:"EXCEL"},
-    en:{t:"Excel Templates",d:"50 budget, sales & dashboard files",tag:"EXCEL"}},
-  {id:"pro",cat:"pro",price:299,old:599,href:"pro.html",img:"pro.header.jpg",grad:"from-zinc-200 to-zinc-900",
-    ar:{t:"المتجر الجاهز PRO",d:"موقع + منتجات + دومين + استضافة",tag:"PRO"},
-    fr:{t:"Boutique PRO prête",d:"Site + produits + domaine + hébergement",tag:"PRO"},
-    en:{t:"Ready PRO Store",d:"Website + products + domain + hosting",tag:"PRO"}}
-];
-
-const translations={
-ar:{top:"المنصة الموثوقة رقم 1 بالمغرب",badge:"متجر رقمي فاخر · المغرب 2026",hero1:"نحن لا نبيع<br>ملفات.<br><span class='grad-text'>نحن نبيع<br>مستقبل.</span>",heroDesc:"منصة مغربية احترافية توفر لك منتجات رقمية جاهزة بحقوق إعادة البيع 100%.",start:"تصفح المنتجات ↓",buyNow:"اطلب عبر واتساب",viewing:"يشاهد الآن",dashK:"لوحة مباشرة",dash:"لوحة تحكم العميل",dashDesc:"تصور أرباح إعادة البيع من منتجاتك الرقمية — روح Gumroad بهوية مغربية.",profit:"أرباحك",products:"منتجات تصنع ثروة.",cardEbookK:"كتب",cardEbook:"500 كتاب PLR",cardCanva:"2000 قالب",cardAi:"برومبتات AI",cardExcel:"قوالب Excel",reviews:"آراء عملائنا",rate:"قيّم تجربتك",namePh:"اسمك — مثال: أمين كازا",commentPh:"شنو رأيك فالخدمة؟",searchPh:"ابحث: كتب، Canva، AI، Excel...",publish:"نشر تقييمي",daman:"ضمان DIGITAL MAROC الذهبي",b1t:"SSL SECURE",b1d:"موقع محمي 100%<br>تشفير عالي",b2t:"VERIFIED BUSINESS",b2d:"شركة مغربية موثقة رسميا",b3t:"INSTANT DELIVERY",b3d:"تسليم فوري أقل من 5 دقائق",b4t:"GOLD GUARANTEE",b4d:"7 أيام استرجاع بدون أسئلة",terms:"شروط الاستخدام",privacy:"سياسة الخصوصية",faq:"الأسئلة الشائعة",chkTitle:"إتمام الطلب",chkBtn:"أرسل الطلب على واتساب",chkNote:"الدفع عبر CIH بعد تأكيد الطلب على واتساب",
-  fAll:"الكل",fEbook:"كتب",fCanva:"Canva",fAi:"AI",fExcel:"Excel",fPro:"PRO",
-  faq1q:"كيفاش كنستلم المنتج؟",faq1a:"فوراً عبر واتساب و Google Drive بعد تأكيد الدفع.",faq2q:"واش عندي حق إعادة البيع؟",faq2a:"نعم، PLR/MRR — تبيع باسمك وتحتفظ بكل الأرباح.",faq3q:"شنو طريقة الدفع؟",faq3a:"واتساب لتأكيد الطلب ثم CIH Bank.",faq4q:"واش كاين ضمان؟",faq4a:"استرجاع كامل خلال 7 أيام إذا المنتج ما ناسبكش."},
-fr:{top:"Plateforme N°1 au Maroc",badge:"Marketplace premium · Maroc 2026",hero1:"On ne vend pas<br>des fichiers.<br><span class='grad-text'>On vend<br>l'avenir.</span>",heroDesc:"Plateforme marocaine PRO avec droits de revente 100%.",start:"Voir le catalogue ↓",buyNow:"Commander sur WhatsApp",viewing:"en ligne",dashK:"DASHBOARD LIVE",dash:"Tableau de bord",dashDesc:"Visualisez vos profits de revente — esprit Gumroad, identité marocaine.",profit:"Vos gains",products:"Des produits qui créent de la richesse.",cardEbookK:"EBOOKS",cardEbook:"500 Livres PLR",cardCanva:"2000 Templates",cardAi:"Prompts IA",cardExcel:"Templates Excel",reviews:"Avis clients",rate:"Notez votre expérience",namePh:"Votre nom",commentPh:"Votre avis ?",searchPh:"Rechercher: livres, Canva, IA, Excel...",publish:"Publier",daman:"Garantie Or DIGITAL MAROC",b1t:"SSL SÉCURISÉ",b1d:"Site 100% sécurisé",b2t:"ENTREPRISE VÉRIFIÉE",b2d:"Entreprise marocaine vérifiée",b3t:"LIVRAISON INSTANTANÉE",b3d:"Livraison en moins de 5 min",b4t:"GARANTIE OR",b4d:"Remboursement 7 jours",terms:"Conditions",privacy:"Confidentialité",faq:"FAQ",chkTitle:"Finaliser la commande",chkBtn:"Envoyer sur WhatsApp",chkNote:"Paiement CIH après confirmation WhatsApp",
-  fAll:"Tous",fEbook:"Livres",fCanva:"Canva",fAi:"IA",fExcel:"Excel",fPro:"PRO",
-  faq1q:"Comment je reçois le produit ?",faq1a:"Instantanément via WhatsApp et Google Drive après paiement.",faq2q:"Ai-je le droit de revendre ?",faq2a:"Oui, PLR/MRR — vous vendez sous votre nom et gardez 100% des profits.",faq3q:"Quel paiement ?",faq3a:"WhatsApp pour confirmer, puis CIH Bank.",faq4q:"Y a-t-il une garantie ?",faq4a:"Remboursement intégral sous 7 jours."},
-en:{top:"Trusted #1 platform in Morocco",badge:"Premium digital marketplace · Morocco 2026",hero1:"We don't sell<br>files.<br><span class='grad-text'>We sell<br>the future.</span>",heroDesc:"Moroccan PRO platform with 100% resell rights.",start:"Browse products ↓",buyNow:"Order on WhatsApp",viewing:"viewing now",dashK:"LIVE DASHBOARD",dash:"Customer dashboard",dashDesc:"See resale profits from your digital products — Gumroad energy, Moroccan identity.",profit:"Your profit",products:"Products that build wealth.",cardEbookK:"EBOOKS",cardEbook:"500 PLR Books",cardCanva:"2000 Templates",cardAi:"AI Prompts",cardExcel:"Excel Templates",reviews:"Customer reviews",rate:"Rate your experience",namePh:"Your name",commentPh:"Your review",searchPh:"Search: books, Canva, AI, Excel...",publish:"Publish",daman:"DIGITAL MAROC gold guarantee",b1t:"SSL SECURE",b1d:"100% protected site",b2t:"VERIFIED BUSINESS",b2d:"Verified Moroccan company",b3t:"INSTANT DELIVERY",b3d:"Delivery in under 5 minutes",b4t:"GOLD GUARANTEE",b4d:"7-day no-questions refund",terms:"Terms",privacy:"Privacy",faq:"FAQ",chkTitle:"Complete order",chkBtn:"Send order on WhatsApp",chkNote:"Pay via CIH after WhatsApp confirmation",
-  fAll:"All",fEbook:"Ebooks",fCanva:"Canva",fAi:"AI",fExcel:"Excel",fPro:"PRO",
-  faq1q:"How do I receive the product?",faq1a:"Instantly via WhatsApp and Google Drive after payment.",faq2q:"Do I get resell rights?",faq2a:"Yes — PLR/MRR. Sell under your name and keep 100% profit.",faq3q:"How do I pay?",faq3a:"Confirm on WhatsApp, then CIH Bank.",faq4q:"Is there a guarantee?",faq4a:"Full refund within 7 days if it is not for you."}
-};
-
-function lang(){return localStorage.getItem('dm_lang')||'ar'}
-function t(k){return translations[lang()][k]||k}
-
-function setLang(l){
-  localStorage.setItem('dm_lang',l);
-  ['ar','fr','en'].forEach(x=>{
-    const b=document.getElementById('btn-'+x);
-    b.className=x===l?'px-3 py-1.5 rounded-full bg-white text-black':'px-3 py-1.5 rounded-full';
-  });
-  document.documentElement.lang=l;
-  document.documentElement.dir=l==='ar'?'rtl':'ltr';
-  document.body.classList.toggle('ar-font',l==='ar');
-  document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});
-  document.querySelectorAll('[data-ph]').forEach(e=>{const k=e.getAttribute('data-ph');if(translations[l][k])e.placeholder=translations[l][k]});
-  document.body.style.fontFamily=l==='ar'?"'Tajawal','Inter',sans-serif":"'Inter',sans-serif";
-  if(window.updatePopupLang) window.updatePopupLang(l);
-  renderFilters();
-  renderGrid();
-  renderFaq();
-}
-
-function renderFilters(){
-  const cats=[["all","fAll"],["ebook","fEbook"],["canva","fCanva"],["ai","fAi"],["excel","fExcel"],["pro","fPro"]];
-  document.getElementById('filters').innerHTML=cats.map(([id,k])=>`<button onclick="setCat('${id}')" class="shrink-0 px-4 py-2 rounded-full text-xs font-black border ${activeCat===id?'bg-white text-black border-white':'border-white/15 bg-white/5'}">${t(k)}</button>`).join('');
-}
-function setCat(id){activeCat=id;renderFilters();renderGrid();document.getElementById('products').scrollIntoView({behavior:'smooth'})}
-
-function productCard(p){
-  const L=p[lang()];
-  return `<article class="glow-card glass rounded-[28px] overflow-hidden flex flex-col">
-    <a href="${p.href}" class="block">
-      <div class="h-40 bg-gradient-to-br ${p.grad} relative overflow-hidden">
-        ${p.img?`<img src="${p.img}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-50" onerror="this.remove()">`:''}
-        <span class="absolute top-3 start-3 text-[10px] font-black bg-black/50 px-2 py-1 rounded-full">${L.tag}</span>
-      </div>
-      <div class="p-5">
-        <h3 class="font-black text-lg">${L.t}</h3>
-        <p class="text-sm text-zinc-400 mt-1">${L.d}</p>
-      </div>
-    </a>
-    <div class="px-5 pb-5 mt-auto flex items-center justify-between gap-2">
-      <div><span class="text-[11px] line-through text-zinc-500">${p.old} DH</span><p class="text-xl font-black">${p.price} DH</p></div>
-      <button onclick="openCheckout('${p.id}','${L.t.replace(/'/g,"\\'")}','${p.price}')" class="bg-white text-black text-xs font-black px-4 py-2.5 rounded-full">${t('buyNow').split(' ')[0]}</button>
-    </div>
-  </article>`;
-}
-
-function renderGrid(){
-  const q=(document.getElementById('navSearch')?.value||document.getElementById('mobSearch')?.value||'').toLowerCase();
-  let list=PRODUCTS.filter(p=>activeCat==='all'||p.cat===activeCat);
-  if(q) list=list.filter(p=> (p.ar.t+p.fr.t+p.en.t+p.ar.d+p.fr.d+p.en.d+p.cat).toLowerCase().includes(q));
-  const box=document.getElementById('grid');
-  box.innerHTML=list.length?list.map(productCard).join(''):`<p class="col-span-full text-center text-zinc-500 py-16">${t('searchPh')}</p>`;
-}
-
-function liveSearch(q){
-  const sugg=document.getElementById('navSugg');
-  const list=PRODUCTS.filter(p=>(p.ar.t+p.fr.t+p.en.t+p.cat).toLowerCase().includes((q||'').toLowerCase()));
-  if(q && sugg){
-    sugg.classList.remove('hidden');
-    sugg.innerHTML=list.slice(0,5).map(p=>`<a href="${p.href}" class="block px-4 py-3 hover:bg-white/5 border-b border-white/5 text-sm font-bold">${p[lang()].t} · ${p.price} DH</a>`).join('')||`<p class="px-4 py-3 text-sm text-zinc-500">—</p>`;
-  } else if(sugg) sugg.classList.add('hidden');
-  renderGrid();
-}
-document.addEventListener('click',e=>{if(!e.target.closest('#navSearch')&&!e.target.closest('#navSugg')) document.getElementById('navSugg')?.classList.add('hidden')});
-
-function renderFaq(){
-  const items=[['faq1q','faq1a'],['faq2q','faq2a'],['faq3q','faq3a'],['faq4q','faq4a']];
-  document.getElementById('faqBox').innerHTML=items.map(([q,a],i)=>`<details class="glass rounded-2xl px-5 py-4"><summary class="font-black cursor-pointer">${t(q)}</summary><p class="text-sm text-zinc-400 mt-2">${t(a)}</p></details>`).join('');
-}
-
-function openCheckout(id,name,price){
-  chk={id,name,price};
-  document.getElementById('chkProduct').textContent=name;
-  document.getElementById('chkPrice').textContent=price+' DH';
-  document.getElementById('checkout').classList.remove('hidden');
-  document.getElementById('checkout').classList.add('flex');
-}
-function closeCheckout(){document.getElementById('checkout').classList.add('hidden');document.getElementById('checkout').classList.remove('flex')}
-function sendWhatsApp(){
-  const n=document.getElementById('chkName').value.trim();
-  const p=document.getElementById('chkPhone').value.trim();
-  const l=lang();
-  const msg=l==='fr'
-    ?`Bonjour DIGITAL MAROC, je veux commander: ${chk.name} — ${chk.price} DH. Nom: ${n||'-'} Tél: ${p||'-'}`
-    :l==='en'
-    ?`Hi DIGITAL MAROC, I want to order: ${chk.name} — ${chk.price} DH. Name: ${n||'-'} Phone: ${p||'-'}`
-    :`السلام DIGITAL MAROC بغيت نطلب: ${chk.name} — ${chk.price} DH. الاسم: ${n||'-'} الهاتف: ${p||'-'}`;
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-function setStars(n){selectedStars=n;document.querySelectorAll('#starInput span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.style.color=i<n?'#facc15':'#52525b'});document.getElementById('starText').textContent=n+' ★'}
-function renderAll(){
-  const box=document.getElementById('allComments');
-  let html='';
-  comments.forEach((c,i)=>{html+=`<div class="glass rounded-[22px] p-5"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-violet-600 text-white rounded-full flex items-center justify-center font-black">${c.name[0]}</div><div><p class="font-bold text-sm">${c.name}</p><p class="text-yellow-400 text-xs">${'★'.repeat(c.stars)}</p></div><button onclick="deleteComment(${i})" class="ms-auto text-[10px] bg-red-500/15 text-red-300 px-2 py-1 rounded-full">✕</button></div><p class="text-sm mt-3 text-zinc-300">"${c.msg}"</p></div>`});
-  html+=`<div class="glass rounded-[22px] p-5"><p class="font-bold text-sm">أمين — كازا</p><p class="text-yellow-400 text-xs">★★★★★</p><p class="text-sm mt-2 text-zinc-300">"ربحت 400 درهم فنهار"</p></div>
-  <div class="glass rounded-[22px] p-5"><p class="font-bold text-sm">سارة — الرباط</p><p class="text-yellow-400 text-xs">★★★★★</p><p class="text-sm mt-2 text-zinc-300">"التسليم فوري"</p></div>
-  <div class="glass rounded-[22px] p-5"><p class="font-bold text-sm">يوسف — مراكش</p><p class="text-yellow-400 text-xs">★★★★★</p><p class="text-sm mt-2 text-zinc-300">"المتجر PRO واعر"</p></div>`;
-  box.innerHTML=html;
-  const total=1547+comments.length;
-  const avg=comments.length?((4.9*1547+comments.reduce((a,c)=>a+c.stars,0))/total).toFixed(1):"4.9";
-  document.getElementById('avgStars').innerHTML=`★ ${avg}/5 · ${total}`;
-}
-function postComment(){const n=document.getElementById('cName').value.trim();const m=document.getElementById('cMsg').value.trim();if(!n||!m)return alert('...');if(!selectedStars)return;comments.unshift({name:n,msg:m,stars:selectedStars});localStorage.setItem('dm_comments',JSON.stringify(comments));document.getElementById('cName').value='';document.getElementById('cMsg').value='';selectedStars=0;setStars(0);renderAll()}
-function deleteComment(i){if(prompt('PIN:')!==ADMIN_PASS)return;comments.splice(i,1);localStorage.setItem('dm_comments',JSON.stringify(comments));renderAll()}
+let ADMIN_PASS="7193";let selectedStars=0;let comments=JSON.parse(localStorage.getItem('dm_comments')||'[]');
+function setStars(n){selectedStars=n;document.querySelectorAll('#starInput span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.style.color=i<n?'#facc15':'black'});document.getElementById('starText').textContent=n+' نجمات'}
+function renderAll(){let box=document.getElementById('allComments');let html='';comments.forEach((c,i)=>{html+=`<div class="bg-white rounded-[20px] p-6 border-2 border-green-200"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-black">${c.name[0]}</div><div><p class="font-bold text-sm">${c.name}</p><p class="text-yellow-400 text-xs">${'★'.repeat(c.stars)} • جديد</p></div><button onclick="deleteComment(${i})" class="mr-auto text-[10px] bg-red-50 text-red-600 px-2 py-1 rounded-full">مسح</button></div><p class="text-sm mt-3">"${c.msg}"</p></div>`});html+=`<div class="bg-white rounded-[20px] p-6 border"><p class="font-bold text-sm">أمين - كازا</p><p class="text-yellow-400 text-xs">★★★★★</p><p class="text-sm mt-2">"ربحت 400 درهم فنهار"</p></div><div class="bg-white rounded-[20px] p-6 border"><p class="font-bold text-sm">سارة - الرباط</p><p class="text-yellow-400 text-xs">★★★★★</p><p class="text-sm mt-2">"التسليم فوري"</p></div><div class="bg-white rounded-[20px] p-6 border"><p class="font-bold text-sm">يوسف - مراكش</p><p class="text-yellow-400 text-xs">★★★★★</p><p class="text-sm mt-2">"المتجر PRO واعر"</p></div>`;box.innerHTML=html;let total=1547+comments.length;let avg=comments.length?((4.9*1547+comments.reduce((a,c)=>a+c.stars,0))/total).toFixed(1):"4.9";document.getElementById('avgStars').innerHTML=`⭐ ${avg}/5 من ${total} تقييم`;}
+function postComment(){let n=document.getElementById('cName').value.trim();let m=document.getElementById('cMsg').value.trim();if(!n||!m)return alert('عمر المعلومات');if(!selectedStars)return alert('اختار النجمات ⭐');comments.unshift({name:n,msg:m,stars:selectedStars});localStorage.setItem('dm_comments',JSON.stringify(comments));document.getElementById('cName').value='';document.getElementById('cMsg').value='';selectedStars=0;setStars(0);renderAll();}
+function deleteComment(i){if(prompt('كود المسؤول:')!==ADMIN_PASS)return alert('غالط!');comments.splice(i,1);localStorage.setItem('dm_comments',JSON.stringify(comments));renderAll();}
 renderAll();
 
-let profit=3740;
-function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10)}
-setInterval(updateProfit,3000);
-setLang(lang());
+const translations={
+ar:{top:"المنصة الموثوقة رقم 1 بالمغرب",hero1:"نحن لا نبيع<br>ملفات.<br><span class='text-white/70'>نحن نبيع<br>مستقبل.</span>",heroDesc:"منصة مغربية احترافية توفر لك منتجات رقمية جاهزة بحقوق إعادة البيع 100%.",start:"ابدأ الآن ↓",viewing:"يشاهد الآن",dash:"لوحة تحكم العميل",profit:"💰 أرباحك",products:"منتجات تصنع ثروة.",book:"📚 500 كتاب PLR",bookDesc:"مكتبة كاملة للبيع باسمك",canva:"🎨 2000 قالب Canva",canvaDesc:"للشركات والانستغرام",pro:"🚀 المتجر الجاهز PRO",proDesc:"موقع + منتجات + دومين",reviews:"آراء عملائنا الحقيقيين ⭐",rate:"⭐ قيّم تجربتك:",namePh:"سميتك - مثال: أمين كازا",commentPh:"شنو رأيك فالخدمة؟",publish:"نشر تقييمي ⭐",daman:"ضمان DIGITAL MAROC الذهبي 🛡️",b1t:"SSL SECURE",b1d:"موقع محمي 100%<br>تشفير عالي",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"شركة مغربية<br>موثقة رسميا",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"تسليم فوري<br>أقل من 5 دقائق",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7 أيام استرجاع<br>بدون أسئلة",b4b:"✓ 100% SECURE",terms:"شروط الاستخدام",privacy:"سياسة الخصوصية",popupTitle:"DIGITAL MAROC 🔥",popupSub:"دخل معلوماتك باش تدخل للمتجر - 3 سنين خبرة من 2024",popupBtn:"دخول للمتجر",ageQ:"شحال فعمرك؟"},
+fr:{top:"Plateforme N°1 au Maroc",hero1:"On ne vend pas<br>des fichiers.<br><span class='text-white/70'>On vend<br>l'avenir.</span>",heroDesc:"Plateforme marocaine PRO avec droits de revente 100%.",start:"Commencer ↓",viewing:"regardent",dash:"Tableau de bord",profit:"💰 Vos gains",products:"Des produits qui créent de la richesse.",book:"📚 500 Livres PLR",bookDesc:"Bibliothèque complète",canva:"🎨 2000 Templates",canvaDesc:"Pour business & Instagram",pro:"🚀 Boutique PRO prête",proDesc:"Site + produits + domaine",reviews:"Avis clients réels ⭐",rate:"⭐ Notez:",namePh:"Votre nom",commentPh:"Votre avis?",publish:"Publier ⭐",daman:"🛡️ Garantie Or",b1t:"SSL SÉCURISÉ",b1d:"Site 100% sécurisé",b1b:"✓ VÉRIFIÉ",b2t:"ENTREPRISE VÉRIFIÉE",b2d:"Entreprise vérifiée",b2b:"✓ MAROC 2026",b3t:"LIVRAISON INSTANTANÉE",b3d:"Livraison instantanée",b3b:"✓ 24/7 AUTO",b4t:"GARANTIE OR",b4d:"7 jours remboursement",b4b:"✓ 100% SÉCURISÉ",terms:"Conditions",privacy:"Confidentialité",popupTitle:"DIGITAL MAROC 🔥",popupSub:"Entrez vos infos pour accéder au store",popupBtn:"Entrer au magasin",ageQ:"Votre âge?"},
+en:{top:"Trusted #1 Platform in Morocco",hero1:"We don't sell<br>files.<br><span class='text-white/70'>We sell<br>future.</span>",heroDesc:"Moroccan PRO platform with 100% resell rights.",start:"Start now ↓",viewing:"viewing now",dash:"Customer Dashboard",profit:"💰 Your profit",products:"Products that build wealth.",book:"📚 500 PLR Books",bookDesc:"Full library",canva:"🎨 2000 Canva Templates",canvaDesc:"For business & Instagram",pro:"🚀 Ready PRO Store",proDesc:"Website + products + domain",reviews:"Real customer reviews ⭐",rate:"⭐ Rate:",namePh:"Your name",commentPh:"Your review?",publish:"Publish ⭐",daman:"🛡️ Gold Guarantee",b1t:"SSL SECURE",b1d:"100% Secure",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"Verified company",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"Instant delivery",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7-day refund",b4b:"✓ 100% SECURE",terms:"Terms",privacy:"Privacy",popupTitle:"DIGITAL MAROC 🔥",popupSub:"Enter your info to access the store",popupBtn:"Enter Store",ageQ:"Your age?"}
+};
+function setLang(l){
+  localStorage.setItem('dm_lang',l);
+  ['ar','fr','en'].forEach(x=>document.getElementById('btn-'+x).className=x==l?'px-3 py-1.5 rounded-full bg-black text-white':'px-3 py-1.5 rounded-full');
+  document.documentElement.lang=l;
+  document.documentElement.dir=l=='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(e=>{let k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});
+  document.querySelectorAll('[data-ph]').forEach(e=>{let k=e.getAttribute('data-ph');if(translations[l][k])e.placeholder=translations[l][k]});
+  document.body.style.fontFamily=l=='ar'?"'Tajawal',sans-serif":"'Inter',sans-serif";
+  // update popup translation too
+  if(window.updatePopupLang) window.updatePopupLang(l);
+}
+setLang(localStorage.getItem('dm_lang')||'ar');
+let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10);}setInterval(updateProfit,3000);
 </script>
 
 <script>
+// POPUP LOGIC FINAL
 const SHEET_URL="https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
 const popup=document.getElementById("leadPopup");
 const popTitle=document.getElementById("popTitle");
@@ -416,28 +102,46 @@ const phoneInput=document.getElementById("leadPhone");
 const ageInput=document.getElementById("leadAge");
 const btnSave=document.getElementById("btnSave");
 const formMsg=document.getElementById("formMsg");
+
 const T2={
-  ar:{title:"DIGITAL MAROC",sub:"دخل معلوماتك باش تدخل للمتجر",name:"سميتك",phone:"06XXXXXXXX",age:"شحال فعمرك؟",btn:"دخول للمتجر",err:"عمر كاع المعلومات",phoneErr:"رقم مغربي غالط",ok:"تم بنجاح"},
-  fr:{title:"DIGITAL MAROC",sub:"Entrez vos infos pour accéder au store",name:"Votre nom",phone:"06XXXXXXXX",age:"Votre âge ?",btn:"Entrer",err:"Remplis tout",phoneErr:"Numéro invalide",ok:"Succès"},
-  en:{title:"DIGITAL MAROC",sub:"Enter your info to access the store",name:"Your name",phone:"Phone",age:"Your age?",btn:"Enter store",err:"Fill all fields",phoneErr:"Invalid phone",ok:"Success"}
+  ar:{title:"DIGITAL MAROC 🔥",sub:"دخل معلوماتك باش تدخل للمتجر - 3 سنين خبرة",name:"سميتك",phone:"0719380106",age:"شحال فعمرك؟",btn:"دخول للمتجر",err:"عمر كاع المعلومات",phoneErr:"رقم مغربي غالط",ok:"تم بنجاح"},
+  fr:{title:"DIGITAL MAROC 🔥",sub:"Entrez vos infos pour accéder au store",name:"Votre nom",phone:"06XXXXXXXX",age:"Votre âge?",btn:"Entrer au magasin",err:"Remplis tout!",phoneErr:"Numéro invalide",ok:"Succès"},
+  en:{title:"DIGITAL MAROC 🔥",sub:"Enter your info to access the store",name:"Your name",phone:"Phone",age:"Your age?",btn:"Enter Store",err:"Fill all fields",phoneErr:"Invalid phone",ok:"Success"}
 };
-function updatePopupLang(l){const L=T2[l]||T2.ar;popTitle.innerText=L.title;popSub.innerText=L.sub;nameInput.placeholder=L.name;phoneInput.placeholder=L.phone;ageInput.options[0].text=L.age;btnSave.innerText=L.btn}
+
+function updatePopupLang(l){
+  const L=T2[l]||T2.ar;
+  popTitle.innerText=L.title;
+  popSub.innerText=L.sub;
+  nameInput.placeholder=L.name;
+  phoneInput.placeholder=L.phone;
+  ageInput.options[0].text=L.age;
+  btnSave.innerText=L.btn;
+}
 window.updatePopupLang=updatePopupLang;
 updatePopupLang(localStorage.getItem('dm_lang')||'ar');
-if(localStorage.getItem("digital_maroc_lead")==="yes"){popup.style.display="none"}
-function isValidMoroccanPhone(p){p=p.replace(/[\s-]/g,"");return /^(06|07)[0-9]{8}$/.test(p)||/^\+212[67][0-9]{8}$/.test(p)||/^00212[67][0-9]{8}$/.test(p)}
-btnSave.addEventListener("click",async()=>{
-  let curLang=localStorage.getItem('dm_lang')||'ar';let L=T2[curLang]||T2.ar;
-  let name=nameInput.value.trim();let phone=phoneInput.value.trim().replace(/\s+/g,"");let age=ageInput.value;
-  if(name.length<2||!isValidMoroccanPhone(phone)||!age){formMsg.style.display="block";formMsg.style.color="#fb7185";formMsg.innerText=isValidMoroccanPhone(phone)?L.err:L.phoneErr;return}
-  btnSave.disabled=true;btnSave.style.opacity="0.6";btnSave.innerText="...";
+
+if(localStorage.getItem("digital_maroc_lead")==="yes"){ popup.style.display="none"; }
+
+function isValidMoroccanPhone(p){ p=p.replace(/[\s-]/g,""); return /^(06|07)[0-9]{8}$/.test(p) || /^\+212[67][0-9]{8}$/.test(p) || /^00212[67][0-9]{8}$/.test(p); }
+
+btnSave.addEventListener("click", async ()=>{
+  let curLang=localStorage.getItem('dm_lang')||'ar';
+  let L=T2[curLang]||T2.ar;
+  let name=nameInput.value.trim();
+  let phone=phoneInput.value.trim().replace(/\s+/g,"");
+  let age=ageInput.value;
+  if(name.length<2||!isValidMoroccanPhone(phone)||!age){ formMsg.style.display="block"; formMsg.style.color="#d93025"; formMsg.innerText=isValidMoroccanPhone(phone)?L.err:L.phoneErr; return; }
+  btnSave.disabled=true; btnSave.style.opacity="0.6"; btnSave.innerText="...";
   try{
     await fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify({name,phone,age,lang:curLang,date:new Date().toLocaleString()})});
-    localStorage.setItem("digital_maroc_lead","yes");formMsg.style.display="block";formMsg.style.color="#4ade80";formMsg.innerText=L.ok;
-    setTimeout(()=>{popup.style.display="none"},600);
-  }catch(e){formMsg.style.display="block";formMsg.innerText="Error";btnSave.disabled=false;btnSave.style.opacity="1";updatePopupLang(curLang)}
+    localStorage.setItem("digital_maroc_lead","yes");
+    formMsg.style.display="block"; formMsg.style.color="green"; formMsg.innerText=L.ok;
+    setTimeout(()=>{popup.style.display="none";},600);
+  }catch(e){ formMsg.style.display="block"; formMsg.innerText="Error"; btnSave.disabled=false; btnSave.style.opacity="1"; updatePopupLang(curLang); }
 });
 </script>
+
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
