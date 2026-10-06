@@ -82,32 +82,46 @@ let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);docu
   </div>
 </div>
 
-<div id="leadPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:99999; justify-content:center; align-items:center;">
-  <div style="background:white; padding:25px; border-radius:15px; max-width:380px; width:90%; text-align:center;">
-    <h2>مرحبا فـ DIGITAL MAROC 🔥</h2>
-    <p>حنا 3 سنين من 2024 وحنا خدامين!</p>
-    <p>دخل نمرتك باش تكمل تشوف المنتوجات</p>
-    <input id="leadInput" type="text" placeholder="07XXXXXXXX" style="width:100%; padding:12px; margin:12px 0; border-radius:8px; border:1px solid #ccc;">
-    <button onclick="saveLead()" style="width:100%; padding:12px; background:black; color:white; border-radius:8px; border:none; cursor:pointer;">دخول للمتجر</button>
-  </div>
-</div>
+<div id="leadPopup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:99999;display:flex;justify-content:center;align-items:center;">
+<div style="background:white;padding:25px;border-radius:15px;width:90%;max-width:360px;text-align:center;font-family:Arial;">
+<h3 id="t_title" style="margin:0;">DIGITAL MAROC 🔥</h3>
+<p id="t_sub" style="font-size:13px;">3 سنين خبرة من 2024</p>
+<input id="leadName" type="text" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+<input id="leadPhone" type="tel" placeholder="07XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;"></select>
+<button id="t_btn" onclick="saveLead()" style="width:100%;padding:12px;background:black;color:white;border:none;border-radius:8px;cursor:pointer;margin-top:5px;"></button>
+</div></div>
 <script>
-  if(!localStorage.getItem('digital_maroc_lead')){
-    setTimeout(()=>{ document.getElementById('leadPopup').style.display='flex'; }, 2000);
-  }
-  async function saveLead(){
-    let num = document.getElementById('leadInput').value;
-    if(num.length < 9){ alert('دخل نمرة صحيحة'); return; }
-    localStorage.setItem('digital_maroc_lead', num);
-    document.getElementById('leadPopup').style.display='none';
-    // كنصيفطوها للسيرفر باش تبقا عندك
-    await fetch('/api/save-lead', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({phone:num, date:new Date().toLocaleString()})
-    });
-  }
-</script>  
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
+const userLang = navigator.language || navigator.userLanguage;
+let lang = 'ar';
+if(userLang.startsWith('fr')) lang='fr';
+else if(userLang.startsWith('en')) lang='en';
+else if(userLang.startsWith('ar')) lang='ar';
+
+const trans = {
+ ar: {title:"DIGITAL MAROC 🔥", sub:"دخل معلوماتك باش تدخل للمتجر", name:"السمية ديالك", ageLabel:"شحال فعمرك؟", btn:"دخول للمتجر", err:"عمر كاع المعلومات", ages:["18-24 سنة","25-34 سنة","35-44 سنة","45+ سنة"]},
+ fr: {title:"DIGITAL MAROC 🔥", sub:"Entrez vos infos pour accéder au store", name:"Votre nom", ageLabel:"Votre âge?", btn:"Entrer au magasin", err:"Veuillez remplir tout", ages:["18-24 ans","25-34 ans","35-44 ans","45+ ans"]},
+ en: {title:"DIGITAL MAROC 🔥", sub:"Enter your info to access the store", name:"Your name", ageLabel:"Your age?", btn:"Enter Store", err:"Please fill all fields", ages:["18-24 years","25-34 years","35-44 years","45+ years"]}
+};
+document.getElementById('t_title').innerText = trans[lang].title;
+document.getElementById('t_sub').innerText = trans[lang].sub;
+document.getElementById('leadName').placeholder = trans[lang].name;
+document.getElementById('t_btn').innerText = trans[lang].btn;
+let ageSelect = document.getElementById('leadAge');
+ageSelect.innerHTML = `<option value="">${trans[lang].ageLabel}</option>` + trans[lang].ages.map(a=>`<option value="${a}">${a}</option>`).join('');
+
+if(localStorage.getItem('digital_maroc_lead')){document.getElementById('leadPopup').style.display='none';}
+async function saveLead(){
+let name=document.getElementById('leadName').value;
+let phone=document.getElementById('leadPhone').value;
+let age=document.getElementById('leadAge').value;
+if(name.length<2||phone.length<9||!age){alert(trans[lang].err);return;}
+localStorage.setItem('digital_maroc_lead',phone);
+document.getElementById('leadPopup').style.display='none';
+fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({name:name,phone:phone,age:age,lang:lang,date:new Date().toLocaleString()})});
+}
+</script>
   
 </body>
 </html>
