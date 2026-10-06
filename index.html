@@ -48,22 +48,20 @@
 
 <div class="border-t mt-10 py-8 text-center"><div class="flex justify-center gap-6 text-xs font-bold mb-3"><a href="terms.html" data-i18n="terms" class="underline">شروط الاستخدام</a><a href="privacy.html" data-i18n="privacy" class="underline">سياسة الخصوصية</a><a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a></div><p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p></div>
 
-<!-- POPUP WA7D KHADDAM - TRANSLATABLE -->
-<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:none;justify-content:center;align-items:center;">
-<div style="background:#fff;padding:25px;border-radius:15px;width:90%;max-width:360px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.3);">
-<h3 data-i18n="popupTitle" style="margin:0 0 10px 0;font-weight:900;font-size:20px;">DIGITAL MAROC 🔥</h3>
-<p data-i18n="popupSub" style="font-size:13px;margin-bottom:15px;color:#666;">دخل معلوماتك باش تدخل للمتجر - 3 سنين خبرة من 2024</p>
-<input id="leadName" type="text" data-ph="namePh" placeholder="سميتك - مثال: أمين" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
-<input id="leadPhone" type="tel" placeholder="06XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
-<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
-<option value="" data-i18n="ageQ">شحال فعمرك؟</option>
-<option value="18-24">18-24</option>
-<option value="25-34">25-34</option>
-<option value="35-44">35-44</option>
-<option value="45+">45+</option>
-</select>
-<button onclick="saveLead()" data-i18n="popupBtn" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
-</div></div>
+<!-- POPUP KHADDAM FINAL - 1 SEUL -->
+<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999999999;display:flex;justify-content:center;align-items:center;padding:15px;">
+  <div style="background:#fff;padding:25px;border-radius:15px;width:100%;max-width:380px;text-align:center;box-sizing:border-box;box-shadow:0 15px 50px rgba(0,0,0,.3);">
+    <h3 id="popTitle" style="margin:0 0 10px;font-weight:900;font-size:21px;">DIGITAL MAROC 🔥</h3>
+    <p id="popSub" style="font-size:13px;margin:0 0 15px;color:#555;">دخل معلوماتك</p>
+    <input id="leadName" type="text" autocomplete="name" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:14px;">
+    <input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06XXXXXXXX" maxlength="14" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:14px;">
+    <select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:14px;background:#fff;">
+      <option value="">شحال فعمرك؟</option><option value="18-24">18-24</option><option value="25-34">25-34</option><option value="35-44">35-44</option><option value="45+">45+</option>
+    </select>
+    <button id="btnSave" type="button" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;font-size:14px;">دخول للمتجر</button>
+    <p id="formMsg" style="display:none;margin:10px 0 0;font-size:12px;"></p>
+  </div>
+</div>
 
 <script>
 let ADMIN_PASS="7193";let selectedStars=0;let comments=JSON.parse(localStorage.getItem('dm_comments')||'[]');
@@ -78,404 +76,74 @@ ar:{top:"المنصة الموثوقة رقم 1 بالمغرب",hero1:"نحن ل
 fr:{top:"Plateforme N°1 au Maroc",hero1:"On ne vend pas<br>des fichiers.<br><span class='text-white/70'>On vend<br>l'avenir.</span>",heroDesc:"Plateforme marocaine PRO avec droits de revente 100%.",start:"Commencer ↓",viewing:"regardent",dash:"Tableau de bord",profit:"💰 Vos gains",products:"Des produits qui créent de la richesse.",book:"📚 500 Livres PLR",bookDesc:"Bibliothèque complète",canva:"🎨 2000 Templates",canvaDesc:"Pour business & Instagram",pro:"🚀 Boutique PRO prête",proDesc:"Site + produits + domaine",reviews:"Avis clients réels ⭐",rate:"⭐ Notez:",namePh:"Votre nom",commentPh:"Votre avis?",publish:"Publier ⭐",daman:"🛡️ Garantie Or",b1t:"SSL SÉCURISÉ",b1d:"Site 100% sécurisé",b1b:"✓ VÉRIFIÉ",b2t:"ENTREPRISE VÉRIFIÉE",b2d:"Entreprise vérifiée",b2b:"✓ MAROC 2026",b3t:"LIVRAISON INSTANTANÉE",b3d:"Livraison instantanée",b3b:"✓ 24/7 AUTO",b4t:"GARANTIE OR",b4d:"7 jours remboursement",b4b:"✓ 100% SÉCURISÉ",terms:"Conditions",privacy:"Confidentialité",popupTitle:"DIGITAL MAROC 🔥",popupSub:"Entrez vos infos pour accéder au store",popupBtn:"Entrer au magasin",ageQ:"Votre âge?"},
 en:{top:"Trusted #1 Platform in Morocco",hero1:"We don't sell<br>files.<br><span class='text-white/70'>We sell<br>future.</span>",heroDesc:"Moroccan PRO platform with 100% resell rights.",start:"Start now ↓",viewing:"viewing now",dash:"Customer Dashboard",profit:"💰 Your profit",products:"Products that build wealth.",book:"📚 500 PLR Books",bookDesc:"Full library",canva:"🎨 2000 Canva Templates",canvaDesc:"For business & Instagram",pro:"🚀 Ready PRO Store",proDesc:"Website + products + domain",reviews:"Real customer reviews ⭐",rate:"⭐ Rate:",namePh:"Your name",commentPh:"Your review?",publish:"Publish ⭐",daman:"🛡️ Gold Guarantee",b1t:"SSL SECURE",b1d:"100% Secure",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"Verified company",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"Instant delivery",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7-day refund",b4b:"✓ 100% SECURE",terms:"Terms",privacy:"Privacy",popupTitle:"DIGITAL MAROC 🔥",popupSub:"Enter your info to access the store",popupBtn:"Enter Store",ageQ:"Your age?"}
 };
-function setLang(l){localStorage.setItem('dm_lang',l);['ar','fr','en'].forEach(x=>document.getElementById('btn-'+x).className=x==l?'px-3 py-1.5 rounded-full bg-black text-white':'px-3 py-1.5 rounded-full');document.documentElement.lang=l;document.documentElement.dir=l=='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>{let k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});document.querySelectorAll('[data-ph]').forEach(e=>{let k=e.getAttribute('data-ph');if(translations[l][k])e.placeholder=translations[l][k]});document.body.style.fontFamily=l=='ar'?"'Tajawal',sans-serif":"'Inter',sans-serif";}
+function setLang(l){
+  localStorage.setItem('dm_lang',l);
+  ['ar','fr','en'].forEach(x=>document.getElementById('btn-'+x).className=x==l?'px-3 py-1.5 rounded-full bg-black text-white':'px-3 py-1.5 rounded-full');
+  document.documentElement.lang=l;
+  document.documentElement.dir=l=='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(e=>{let k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});
+  document.querySelectorAll('[data-ph]').forEach(e=>{let k=e.getAttribute('data-ph');if(translations[l][k])e.placeholder=translations[l][k]});
+  document.body.style.fontFamily=l=='ar'?"'Tajawal',sans-serif":"'Inter',sans-serif";
+  // update popup translation too
+  if(window.updatePopupLang) window.updatePopupLang(l);
+}
 setLang(localStorage.getItem('dm_lang')||'ar');
 let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10);}setInterval(updateProfit,3000);
-
-<div id="leadPopup" style="
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-z-index:999999999;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:15px;
-">
-
-  <div style="
-  background:#fff;
-  padding:25px;
-  border-radius:15px;
-  width:100%;
-  max-width:380px;
-  text-align:center;
-  box-sizing:border-box;
-  box-shadow:0 15px 50px rgba(0,0,0,.3);
-  ">
-
-    <h3 id="popTitle" style="
-    margin:0 0 10px;
-    font-weight:900;
-    font-size:21px;
-    ">
-      DIGITAL MAROC 🔥
-    </h3>
-
-    <p id="popSub" style="
-    font-size:13px;
-    margin:0 0 15px;
-    color:#555;
-    ">
-      دخل معلوماتك
-    </p>
-
-    <input
-      id="leadName"
-      type="text"
-      autocomplete="name"
-      placeholder="سميتك"
-      style="
-      width:100%;
-      padding:12px;
-      margin:6px 0;
-      border-radius:8px;
-      border:1px solid #ccc;
-      box-sizing:border-box;
-      font-size:14px;
-      "
-    >
-
-    <input
-      id="leadPhone"
-      type="tel"
-      inputmode="tel"
-      autocomplete="tel"
-      placeholder="06XXXXXXXX"
-      maxlength="14"
-      style="
-      width:100%;
-      padding:12px;
-      margin:6px 0;
-      border-radius:8px;
-      border:1px solid #ccc;
-      box-sizing:border-box;
-      font-size:14px;
-      "
-    >
-
-    <select
-      id="leadAge"
-      style="
-      width:100%;
-      padding:12px;
-      margin:6px 0;
-      border-radius:8px;
-      border:1px solid #ccc;
-      box-sizing:border-box;
-      font-size:14px;
-      background:#fff;
-      "
-    >
-      <option value="">شحال فعمرك؟</option>
-      <option value="18-24">18-24</option>
-      <option value="25-34">25-34</option>
-      <option value="35-44">35-44</option>
-      <option value="45+">45+</option>
-    </select>
-
-    <button
-      id="btnSave"
-      type="button"
-      style="
-      width:100%;
-      padding:14px;
-      background:#000;
-      color:#fff;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      margin-top:10px;
-      font-weight:bold;
-      font-size:14px;
-      "
-    >
-      دخول للمتجر
-    </button>
-
-    <p id="formMsg" style="
-    display:none;
-    margin:10px 0 0;
-    font-size:12px;
-    ">
-    </p>
-
-  </div>
-</div>
-
+</script>
 
 <script>
+// POPUP LOGIC FINAL
+const SHEET_URL="https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
+const popup=document.getElementById("leadPopup");
+const popTitle=document.getElementById("popTitle");
+const popSub=document.getElementById("popSub");
+const nameInput=document.getElementById("leadName");
+const phoneInput=document.getElementById("leadPhone");
+const ageInput=document.getElementById("leadAge");
+const btnSave=document.getElementById("btnSave");
+const formMsg=document.getElementById("formMsg");
 
-const SHEET_URL =
-"https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
-
-
-/* =========================
-   LANGUAGE
-========================= */
-
-const browserLang = navigator.language
-  ? navigator.language.toLowerCase()
-  : "ar";
-
-const siteLang =
-  localStorage.getItem("dm_lang") ||
-  (
-    browserLang.startsWith("fr")
-      ? "fr"
-      : browserLang.startsWith("en")
-      ? "en"
-      : "ar"
-  );
-
-
-const T = {
-
-  ar: {
-    title: "DIGITAL MAROC 🔥",
-    sub: "دخل معلوماتك باش تدخل للمتجر",
-    name: "سميتك",
-    phone: "06XXXXXXXX",
-    age: "شحال فعمرك؟",
-    btn: "دخول للمتجر",
-    error: "عمر جميع المعلومات بشكل صحيح",
-    phoneError: "دخل رقم هاتف مغربي صحيح",
-    sending: "جاري الإرسال...",
-    success: "تم التسجيل بنجاح"
-  },
-
-  fr: {
-    title: "DIGITAL MAROC 🔥",
-    sub: "Entrez vos informations pour accéder au store",
-    name: "Votre nom",
-    phone: "06XXXXXXXX",
-    age: "Votre âge ?",
-    btn: "Entrer au magasin",
-    error: "Veuillez remplir correctement tous les champs",
-    phoneError: "Entrez un numéro marocain valide",
-    sending: "Envoi en cours...",
-    success: "Inscription réussie"
-  },
-
-  en: {
-    title: "DIGITAL MAROC 🔥",
-    sub: "Enter your information to access the store",
-    name: "Your name",
-    phone: "06XXXXXXXX",
-    age: "Your age?",
-    btn: "Enter Store",
-    error: "Please fill in all fields correctly",
-    phoneError: "Enter a valid Moroccan phone number",
-    sending: "Sending...",
-    success: "Registration successful"
-  }
-
+const T2={
+  ar:{title:"DIGITAL MAROC 🔥",sub:"دخل معلوماتك باش تدخل للمتجر - 3 سنين خبرة",name:"سميتك",phone:"0719380106",age:"شحال فعمرك؟",btn:"دخول للمتجر",err:"عمر كاع المعلومات",phoneErr:"رقم مغربي غالط",ok:"تم بنجاح"},
+  fr:{title:"DIGITAL MAROC 🔥",sub:"Entrez vos infos pour accéder au store",name:"Votre nom",phone:"06XXXXXXXX",age:"Votre âge?",btn:"Entrer au magasin",err:"Remplis tout!",phoneErr:"Numéro invalide",ok:"Succès"},
+  en:{title:"DIGITAL MAROC 🔥",sub:"Enter your info to access the store",name:"Your name",phone:"Phone",age:"Your age?",btn:"Enter Store",err:"Fill all fields",phoneErr:"Invalid phone",ok:"Success"}
 };
 
-
-const L = T[siteLang] || T.ar;
-
-
-/* =========================
-   ELEMENTS
-========================= */
-
-const popup = document.getElementById("leadPopup");
-const title = document.getElementById("popTitle");
-const sub = document.getElementById("popSub");
-const nameInput = document.getElementById("leadName");
-const phoneInput = document.getElementById("leadPhone");
-const ageInput = document.getElementById("leadAge");
-const btn = document.getElementById("btnSave");
-const msg = document.getElementById("formMsg");
-
-
-/* =========================
-   TRANSLATION
-========================= */
-
-title.innerText = L.title;
-sub.innerText = L.sub;
-
-nameInput.placeholder = L.name;
-phoneInput.placeholder = L.phone;
-ageInput.options[0].text = L.age;
-btn.innerText = L.btn;
-
-
-/* =========================
-   CHECK PREVIOUS LEAD
-========================= */
-
-if (localStorage.getItem("digital_maroc_lead") === "yes") {
-  popup.style.display = "none";
+function updatePopupLang(l){
+  const L=T2[l]||T2.ar;
+  popTitle.innerText=L.title;
+  popSub.innerText=L.sub;
+  nameInput.placeholder=L.name;
+  phoneInput.placeholder=L.phone;
+  ageInput.options[0].text=L.age;
+  btnSave.innerText=L.btn;
 }
+window.updatePopupLang=updatePopupLang;
+updatePopupLang(localStorage.getItem('dm_lang')||'ar');
 
+if(localStorage.getItem("digital_maroc_lead")==="yes"){ popup.style.display="none"; }
 
-/* =========================
-   PHONE VALIDATION
-========================= */
+function isValidMoroccanPhone(p){ p=p.replace(/[\s-]/g,""); return /^(06|07)[0-9]{8}$/.test(p) || /^\+212[67][0-9]{8}$/.test(p) || /^00212[67][0-9]{8}$/.test(p); }
 
-function isValidMoroccanPhone(phone) {
-
-  // نحيد المسافات والشرطات
-  phone = phone.replace(/[\s-]/g, "");
-
-  // 06xxxxxxxx / 07xxxxxxxx
-  const localFormat = /^(06|07)[0-9]{8}$/;
-
-  // +2126xxxxxxxx / +2127xxxxxxxx
-  const internationalFormat = /^\+212[67][0-9]{8}$/;
-
-  // 002126xxxxxxxx / 002127xxxxxxxx
-  const internationalFormat2 = /^00212[67][0-9]{8}$/;
-
-  return (
-    localFormat.test(phone) ||
-    internationalFormat.test(phone) ||
-    internationalFormat2.test(phone)
-  );
-}
-
-
-/* =========================
-   SHOW MESSAGE
-========================= */
-
-function showMessage(text, success = false) {
-
-  msg.style.display = "block";
-  msg.innerText = text;
-
-  if (success) {
-    msg.style.color = "#16803c";
-  } else {
-    msg.style.color = "#d93025";
-  }
-}
-
-
-/* =========================
-   SAVE
-========================= */
-
-btn.addEventListener("click", async function () {
-
-  if (btn.disabled) return;
-
-  let name = nameInput.value.trim();
-  let phone = phoneInput.value.trim();
-  let age = ageInput.value;
-
-  /* إزالة المسافات من الهاتف */
-  phone = phone.replace(/\s+/g, "");
-
-
-  /* الاسم */
-  if (name.length < 2) {
-    showMessage(L.error);
-    nameInput.focus();
-    return;
-  }
-
-
-  /* الهاتف */
-  if (!isValidMoroccanPhone(phone)) {
-    showMessage(L.phoneError);
-    phoneInput.focus();
-    return;
-  }
-
-
-  /* العمر */
-  if (!age) {
-    showMessage(L.error);
-    ageInput.focus();
-    return;
-  }
-
-
-  /* منع الضغط المتكرر */
-  btn.disabled = true;
-  btn.style.opacity = "0.6";
-  btn.style.cursor = "not-allowed";
-  btn.innerText = L.sending;
-
-
-  const data = {
-    name: name,
-    phone: phone,
-    age: age,
-    lang: siteLang,
-    date: new Date().toLocaleString("fr-MA")
-  };
-
-
-  try {
-
-    await fetch(SHEET_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    });
-
-
-    /*
-      no-cors لا يسمح لنا نعرف واش Google Apps Script
-      رجع success فعلاً، لذلك نسجلو بعد إرسال الطلب.
-    */
-
-    localStorage.setItem(
-      "digital_maroc_lead",
-      "yes"
-    );
-
-
-    showMessage(L.success, true);
-
-
-    setTimeout(function () {
-      popup.style.display = "none";
-    }, 700);
-
-
-  } catch (error) {
-
-    console.error("Lead error:", error);
-
-    showMessage(
-      "حدث خطأ، حاول مرة أخرى."
-    );
-
-    btn.disabled = false;
-    btn.style.opacity = "1";
-    btn.style.cursor = "pointer";
-    btn.innerText = L.btn;
-
-  }
-
+btnSave.addEventListener("click", async ()=>{
+  let curLang=localStorage.getItem('dm_lang')||'ar';
+  let L=T2[curLang]||T2.ar;
+  let name=nameInput.value.trim();
+  let phone=phoneInput.value.trim().replace(/\s+/g,"");
+  let age=ageInput.value;
+  if(name.length<2||!isValidMoroccanPhone(phone)||!age){ formMsg.style.display="block"; formMsg.style.color="#d93025"; formMsg.innerText=isValidMoroccanPhone(phone)?L.err:L.phoneErr; return; }
+  btnSave.disabled=true; btnSave.style.opacity="0.6"; btnSave.innerText="...";
+  try{
+    await fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify({name,phone,age,lang:curLang,date:new Date().toLocaleString()})});
+    localStorage.setItem("digital_maroc_lead","yes");
+    formMsg.style.display="block"; formMsg.style.color="green"; formMsg.innerText=L.ok;
+    setTimeout(()=>{popup.style.display="none";},600);
+  }catch(e){ formMsg.style.display="block"; formMsg.innerText="Error"; btnSave.disabled=false; btnSave.style.opacity="1"; updatePopupLang(curLang); }
 });
+</script>
 
-
-/* =========================
-   ENTER KEY
-========================= */
-
-[nameInput, phoneInput].forEach(function(input) {
-
-  input.addEventListener("keydown", function(event) {
-
-    if (event.key === "Enter") {
-      btn.click();
-    }
-
-  });
-
-});
-
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 </body>
 </html>
