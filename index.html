@@ -48,6 +48,23 @@
 
 <div class="border-t mt-10 py-8 text-center"><div class="flex justify-center gap-6 text-xs font-bold mb-3"><a href="terms.html" data-i18n="terms" class="underline">شروط الاستخدام</a><a href="privacy.html" data-i18n="privacy" class="underline">سياسة الخصوصية</a><a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a></div><p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p></div>
 
+<!-- POPUP WA7D KHADDAM - TRANSLATABLE -->
+<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:none;justify-content:center;align-items:center;">
+<div style="background:#fff;padding:25px;border-radius:15px;width:90%;max-width:360px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.3);">
+<h3 data-i18n="popupTitle" style="margin:0 0 10px 0;font-weight:900;font-size:20px;">DIGITAL MAROC 🔥</h3>
+<p data-i18n="popupSub" style="font-size:13px;margin-bottom:15px;color:#666;">دخل معلوماتك باش تدخل للمتجر - 3 سنين خبرة من 2024</p>
+<input id="leadName" type="text" data-ph="namePh" placeholder="سميتك - مثال: أمين" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
+<input id="leadPhone" type="tel" placeholder="06XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
+<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
+<option value="" data-i18n="ageQ">شحال فعمرك؟</option>
+<option value="18-24">18-24</option>
+<option value="25-34">25-34</option>
+<option value="35-44">35-44</option>
+<option value="45+">45+</option>
+</select>
+<button onclick="saveLead()" data-i18n="popupBtn" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
+</div></div>
+
 <script>
 let ADMIN_PASS="7193";let selectedStars=0;let comments=JSON.parse(localStorage.getItem('dm_comments')||'[]');
 function setStars(n){selectedStars=n;document.querySelectorAll('#starInput span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.style.color=i<n?'#facc15':'black'});document.getElementById('starText').textContent=n+' نجمات'}
@@ -55,63 +72,35 @@ function renderAll(){let box=document.getElementById('allComments');let html='';
 function postComment(){let n=document.getElementById('cName').value.trim();let m=document.getElementById('cMsg').value.trim();if(!n||!m)return alert('عمر المعلومات');if(!selectedStars)return alert('اختار النجمات ⭐');comments.unshift({name:n,msg:m,stars:selectedStars});localStorage.setItem('dm_comments',JSON.stringify(comments));document.getElementById('cName').value='';document.getElementById('cMsg').value='';selectedStars=0;setStars(0);renderAll();}
 function deleteComment(i){if(prompt('كود المسؤول:')!==ADMIN_PASS)return alert('غالط!');comments.splice(i,1);localStorage.setItem('dm_comments',JSON.stringify(comments));renderAll();}
 renderAll();
+
 const translations={
-ar:{top:"المنصة الموثوقة رقم 1 بالمغرب",hero1:"نحن لا نبيع<br>ملفات.<br><span class='text-white/70'>نحن نبيع<br>مستقبل.</span>",heroDesc:"منصة مغربية احترافية توفر لك منتجات رقمية جاهزة بحقوق إعادة البيع 100%.",start:"ابدأ الآن ↓",viewing:"يشاهد الآن",dash:"لوحة تحكم العميل",profit:"💰 أرباحك",products:"منتجات تصنع ثروة.",book:"📚 500 كتاب PLR",bookDesc:"مكتبة كاملة للبيع باسمك",canva:"🎨 2000 قالب Canva",canvaDesc:"للشركات والانستغرام",pro:"🚀 المتجر الجاهز PRO",proDesc:"موقع + منتجات + دومين",reviews:"آراء عملائنا الحقيقيين ⭐",rate:"⭐ قيّم تجربتك:",namePh:"سميتك - مثال: أمين كازا",commentPh:"شنو رأيك فالخدمة؟",publish:"نشر تقييمي ⭐",daman:"ضمان DIGITAL MAROC الذهبي 🛡️",b1t:"SSL SECURE",b1d:"موقع محمي 100%<br>تشفير عالي",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"شركة مغربية<br>موثقة رسميا",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"تسليم فوري<br>أقل من 5 دقائق",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7 أيام استرجاع<br>بدون أسئلة",b4b:"✓ 100% SECURE",terms:"شروط الاستخدام",privacy:"سياسة الخصوصية"},
-fr:{top:"Plateforme N°1 au Maroc",hero1:"On ne vend pas<br>des fichiers.<br><span class='text-white/70'>On vend<br>l'avenir.</span>",heroDesc:"Plateforme marocaine PRO avec droits de revente 100%.",start:"Commencer ↓",viewing:"regardent",dash:"Tableau de bord",profit:"💰 Vos gains",products:"Des produits qui créent de la richesse.",book:"📚 500 Livres PLR",bookDesc:"Bibliothèque complète",canva:"🎨 2000 Templates",canvaDesc:"Pour business & Instagram",pro:"🚀 Boutique PRO prête",proDesc:"Site + produits + domaine",reviews:"Avis clients réels ⭐",rate:"⭐ Notez:",namePh:"Votre nom",commentPh:"Votre avis?",publish:"Publier ⭐",daman:"🛡️ Garantie Or",b1t:"SSL SÉCURISÉ",b1d:"Site 100% sécurisé",b1b:"✓ VÉRIFIÉ",b2t:"ENTREPRISE VÉRIFIÉE",b2d:"Entreprise vérifiée",b2b:"✓ MAROC 2026",b3t:"LIVRAISON INSTANTANÉE",b3d:"Livraison instantanée",b3b:"✓ 24/7 AUTO",b4t:"GARANTIE OR",b4d:"7 jours remboursement",b4b:"✓ 100% SÉCURISÉ",terms:"Conditions",privacy:"Confidentialité"},
-en:{top:"Trusted #1 Platform in Morocco",hero1:"We don't sell<br>files.<br><span class='text-white/70'>We sell<br>future.</span>",heroDesc:"Moroccan PRO platform with 100% resell rights.",start:"Start now ↓",viewing:"viewing now",dash:"Customer Dashboard",profit:"💰 Your profit",products:"Products that build wealth.",book:"📚 500 PLR Books",bookDesc:"Full library",canva:"🎨 2000 Canva Templates",canvaDesc:"For business & Instagram",pro:"🚀 Ready PRO Store",proDesc:"Website + products + domain",reviews:"Real customer reviews ⭐",rate:"⭐ Rate:",namePh:"Your name",commentPh:"Your review?",publish:"Publish ⭐",daman:"🛡️ Gold Guarantee",b1t:"SSL SECURE",b1d:"100% Secure",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"Verified company",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"Instant delivery",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7-day refund",b4b:"✓ 100% SECURE",terms:"Terms",privacy:"Privacy"}
+ar:{top:"المنصة الموثوقة رقم 1 بالمغرب",hero1:"نحن لا نبيع<br>ملفات.<br><span class='text-white/70'>نحن نبيع<br>مستقبل.</span>",heroDesc:"منصة مغربية احترافية توفر لك منتجات رقمية جاهزة بحقوق إعادة البيع 100%.",start:"ابدأ الآن ↓",viewing:"يشاهد الآن",dash:"لوحة تحكم العميل",profit:"💰 أرباحك",products:"منتجات تصنع ثروة.",book:"📚 500 كتاب PLR",bookDesc:"مكتبة كاملة للبيع باسمك",canva:"🎨 2000 قالب Canva",canvaDesc:"للشركات والانستغرام",pro:"🚀 المتجر الجاهز PRO",proDesc:"موقع + منتجات + دومين",reviews:"آراء عملائنا الحقيقيين ⭐",rate:"⭐ قيّم تجربتك:",namePh:"سميتك - مثال: أمين كازا",commentPh:"شنو رأيك فالخدمة؟",publish:"نشر تقييمي ⭐",daman:"ضمان DIGITAL MAROC الذهبي 🛡️",b1t:"SSL SECURE",b1d:"موقع محمي 100%<br>تشفير عالي",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"شركة مغربية<br>موثقة رسميا",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"تسليم فوري<br>أقل من 5 دقائق",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7 أيام استرجاع<br>بدون أسئلة",b4b:"✓ 100% SECURE",terms:"شروط الاستخدام",privacy:"سياسة الخصوصية",popupTitle:"DIGITAL MAROC 🔥",popupSub:"دخل معلوماتك باش تدخل للمتجر - 3 سنين خبرة من 2024",popupBtn:"دخول للمتجر",ageQ:"شحال فعمرك؟"},
+fr:{top:"Plateforme N°1 au Maroc",hero1:"On ne vend pas<br>des fichiers.<br><span class='text-white/70'>On vend<br>l'avenir.</span>",heroDesc:"Plateforme marocaine PRO avec droits de revente 100%.",start:"Commencer ↓",viewing:"regardent",dash:"Tableau de bord",profit:"💰 Vos gains",products:"Des produits qui créent de la richesse.",book:"📚 500 Livres PLR",bookDesc:"Bibliothèque complète",canva:"🎨 2000 Templates",canvaDesc:"Pour business & Instagram",pro:"🚀 Boutique PRO prête",proDesc:"Site + produits + domaine",reviews:"Avis clients réels ⭐",rate:"⭐ Notez:",namePh:"Votre nom",commentPh:"Votre avis?",publish:"Publier ⭐",daman:"🛡️ Garantie Or",b1t:"SSL SÉCURISÉ",b1d:"Site 100% sécurisé",b1b:"✓ VÉRIFIÉ",b2t:"ENTREPRISE VÉRIFIÉE",b2d:"Entreprise vérifiée",b2b:"✓ MAROC 2026",b3t:"LIVRAISON INSTANTANÉE",b3d:"Livraison instantanée",b3b:"✓ 24/7 AUTO",b4t:"GARANTIE OR",b4d:"7 jours remboursement",b4b:"✓ 100% SÉCURISÉ",terms:"Conditions",privacy:"Confidentialité",popupTitle:"DIGITAL MAROC 🔥",popupSub:"Entrez vos infos pour accéder au store",popupBtn:"Entrer au magasin",ageQ:"Votre âge?"},
+en:{top:"Trusted #1 Platform in Morocco",hero1:"We don't sell<br>files.<br><span class='text-white/70'>We sell<br>future.</span>",heroDesc:"Moroccan PRO platform with 100% resell rights.",start:"Start now ↓",viewing:"viewing now",dash:"Customer Dashboard",profit:"💰 Your profit",products:"Products that build wealth.",book:"📚 500 PLR Books",bookDesc:"Full library",canva:"🎨 2000 Canva Templates",canvaDesc:"For business & Instagram",pro:"🚀 Ready PRO Store",proDesc:"Website + products + domain",reviews:"Real customer reviews ⭐",rate:"⭐ Rate:",namePh:"Your name",commentPh:"Your review?",publish:"Publish ⭐",daman:"🛡️ Gold Guarantee",b1t:"SSL SECURE",b1d:"100% Secure",b1b:"✓ VERIFIED",b2t:"VERIFIED BUSINESS",b2d:"Verified company",b2b:"✓ MAROC 2026",b3t:"INSTANT DELIVERY",b3d:"Instant delivery",b3b:"✓ 24/7 AUTO",b4t:"GOLD GUARANTEE",b4d:"7-day refund",b4b:"✓ 100% SECURE",terms:"Terms",privacy:"Privacy",popupTitle:"DIGITAL MAROC 🔥",popupSub:"Enter your info to access the store",popupBtn:"Enter Store",ageQ:"Your age?"}
 };
 function setLang(l){localStorage.setItem('dm_lang',l);['ar','fr','en'].forEach(x=>document.getElementById('btn-'+x).className=x==l?'px-3 py-1.5 rounded-full bg-black text-white':'px-3 py-1.5 rounded-full');document.documentElement.lang=l;document.documentElement.dir=l=='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>{let k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});document.querySelectorAll('[data-ph]').forEach(e=>{let k=e.getAttribute('data-ph');if(translations[l][k])e.placeholder=translations[l][k]});document.body.style.fontFamily=l=='ar'?"'Tajawal',sans-serif":"'Inter',sans-serif";}
 setLang(localStorage.getItem('dm_lang')||'ar');
-// أرباح مرتبة كتطلع بصح
 let profit=3740;function updateProfit(){profit+=Math.floor(Math.random()*7);document.getElementById('profit').textContent=profit.toLocaleString()+' DH';document.getElementById('orders').textContent=23+Math.floor(Math.random()*3);document.getElementById('visitors').textContent=1204+Math.floor(Math.random()*30);document.getElementById('liveNow').textContent=15+Math.floor(Math.random()*10);}setInterval(updateProfit,3000);
+
+// === LEAD POPUP LOGIC - KHADDAM 100% ===
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
+const popup = document.getElementById('leadPopup');
+if(!localStorage.getItem('digital_maroc_lead')){
+  setTimeout(()=>{popup.style.display='flex';}, 800);
+}
+function saveLead(){
+let name=document.getElementById('leadName').value.trim();
+let phone=document.getElementById('leadPhone').value.trim();
+let age=document.getElementById('leadAge').value;
+if(name===""||phone.length<9||age===""){alert("عمر المعلومات / Remplis tout!");return;}
+localStorage.setItem('digital_maroc_lead','yes');
+popup.style.display='none';
+fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({name:name,phone:phone,age:age,date:new Date().toLocaleString(),lang:localStorage.getItem('dm_lang')||'ar'})});
+}
 </script>
 
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
-
-  <!-- DIGITAL MAROC LEAD POPUP - 3 سنين من 2024 -->
-<div id="leadPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:99999; justify-content:center; align-items:center;">
-  <div style="background:white; padding:25px; border-radius:15px; max-width:380px; width:90%; text-align:center; font-family:Arial;">
-    <h2 style="margin:0;">مرحبا بيك فـ DIGITAL MAROC 🔥</h2>
-    <p>حنا 3 سنين من 2024 وحنا خدامين الحمد لله!</p>
-    <p>خلي النمرة ديالك ولا الإيميل ونعطيوك <b>-10% + مفاجآت</b></p>
-    <input id="leadInput" type="text" placeholder="0719380106 ولا الإيميل" style="width:100%; padding:12px; margin:12px 0; border-radius:8px; border:1px solid #ccc;">
-    <button onclick="saveLead()" style="width:100%; padding:12px; background:black; color:white; border-radius:8px; border:none; cursor:pointer; font-weight:bold;">بغيت كود الخصم</button>
-    <p onclick="closePopup()" style="font-size:12px; margin-top:10px; cursor:pointer; color:#666;">لا شكرا</p>
-  </div>
-</div>
-
-<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:flex;justify-content:center;align-items:center;">
-<div style="background:#fff;padding:25px;border-radius:15px;width:90%;max-width:360px;text-align:center;">
-<h3 style="margin:0 0 10px 0;">DIGITAL MAROC 🔥</h3>
-<p id="t_sub" style="font-size:14px;margin-bottom:15px;">Entrez vos infos pour accéder au store</p>
-<input id="leadName" type="text" placeholder="Votre nom" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
-<input id="leadPhone" type="tel" placeholder="06XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
-<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;">
-<option value="">Votre âge?</option>
-<option value="18-24">18-24 ans</option>
-<option value="25-34">25-34 ans</option>
-<option value="35-44">35-44 ans</option>
-<option value="45+">45+ ans</option>
-</select>
-<button onclick="saveLead()" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-weight:bold;">Entrer au magasin</button>
-</div></div>
-<script>
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec";
-function saveLead(){
-let name=document.getElementById('leadName').value.trim();
-let phone=document.getElementById('leadPhone').value.trim();
-let age=document.getElementById('leadAge').value;
-if(name===""||phone.length<9||age===""){alert("3amar ga3 lma3loumat! / Remplis tout!");return;}
-localStorage.setItem('digital_maroc_lead','yes');
-document.getElementById('leadPopup').style.display='none';
-fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({name:name,phone:phone,age:age,date:new Date().toLocaleString()})}).then(()=>{console.log("saved")});
-}
-// إلا بغيتي تجرب من جديد مسح التخزين
-// localStorage.removeItem('digital_maroc_lead');
-if(localStorage.getItem('digital_maroc_lead')){document.getElementById('leadPopup').style.display='none';}
-</script>
-  
 </body>
 </html>
