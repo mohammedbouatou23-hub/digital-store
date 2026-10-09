@@ -48,19 +48,15 @@
 <div class="border-2 border-[#0A1931] rounded-[28px] p-2"><div class="bg-[#0A1931] text-white rounded-[20px] p-0 h-[200px] relative overflow-hidden"><img src="pro.header.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div><div class="relative p-8"><h3 class="font-black text-xl">🚀 المتجر الجاهز PRO</h3></div></div><div class="p-5 flex justify-between"><p class="text-2xl font-black">299 DH</p><a href="pro.html" class="bg-[#0A1931] text-white w-10 h-10 rounded-full flex items-center justify-center">→</a></div></div>
 </div>
 </section>
-<section class="bg-[#0A1931] py-16 relative overflow-hidden">
-<div class="max-w-[1200px] mx-auto px-6 relative">
+<section class="bg-[#0A1931] py-16">
+<div class="max-w-[1200px] mx-auto px-6">
 <div class="grid md:grid-cols-2 gap-10 items-center">
 <div class="text-white">
 <h3 class="text-4xl font-black leading-[1.1]">قصة نجاح<br><span class="text-yellow-400">DIGITAL MAROC™</span></h3>
 <p class="text-zinc-300 mt-4 text-sm leading-7">بدأت DIGITAL MAROC بفكرة بسيطة ف 2024: علاش المغاربة كيشريو منتجات رقمية من برا بالدولار و حنا عندنا الكفاءة باش نديرو حسن منهم و بالدرهم؟</p>
 </div>
-<div class="relative">
 <div class="bg-black rounded-[24px] p-2 shadow-2xl">
-<video controls poster="pro.header.jpg" class="w-full h-[260px] object-cover rounded-[16px]">
-<source src="digital-maroc-story.mp4" type="video/mp4">
-</video>
-</div>
+<video controls poster="pro.header.jpg" class="w-full h-[260px] object-cover rounded-[16px]"><source src="digital-maroc-story.mp4" type="video/mp4"></video>
 </div>
 </div>
 </div>
@@ -115,11 +111,15 @@ function setStars(n){
 }
 async function loadReviews(){
   const box = document.getElementById('allComments');
+  const status = document.getElementById('statusMsg');
   try{
+    status.textContent = "كانجيبو التعليقات...";
     const res = await fetch(`${SB_URL}/rest/v1/reviews?select=*&order=created_at.desc`,{
       headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY}
     });
+    if(!res.ok) throw new Error(await res.text());
     const data = await res.json();
+    status.textContent = "";
     if(!data || data.length===0){
       box.innerHTML = `<p class='text-center col-span-3 py-10 text-zinc-400'>مازال حتى تعليق - كون نتا الأول 👇</p>`;
       return;
@@ -129,15 +129,18 @@ async function loadReviews(){
       box.innerHTML += `<div class='bg-white rounded-[20px] p-6 border shadow-sm'><div class='flex justify-between items-center'><span style='color:#FFB800'>${'★'.repeat(c.stars)}<span style='color:#eee'>${'★'.repeat(5-c.stars)}</span></span><p class='font-black text-sm'>${c.name}</p></div><p class='text-[13px] mt-3 text-zinc-700 leading-6'>${c.comment}</p><p class='text-[10px] text-zinc-400 mt-3'>${new Date(c.created_at).toLocaleDateString('ar-MA')}</p></div>`;
     });
   }catch(e){
-    box.innerHTML = `<p class='text-center col-span-3 text-red-500 text-xs'>${e.message}</p>`;
+    console.error(e);
+    status.textContent = "";
+    box.innerHTML = `<p class='text-center col-span-3 text-red-500 text-xs'>خطأ: ${e.message}</p>`;
   }
 }
 async function postComment(){
   const name = document.getElementById('cName').value.trim();
   const comment = document.getElementById('cMsg').value.trim();
   const btn = document.getElementById('btnPublish');
+  const status = document.getElementById('statusMsg');
   if(!name ||!comment){ alert('عمر سميتك وتعليقك'); return; }
-  btn.textContent = "جاري النشر..."; btn.disabled = true;
+  btn.textContent = "جاري النشر..."; btn.disabled = true; status.textContent="";
   try{
     const res = await fetch(`${SB_URL}/rest/v1/reviews`,{
       method:"POST",
@@ -146,8 +149,14 @@ async function postComment(){
     });
     if(!res.ok) throw new Error(await res.text());
     document.getElementById('cName').value=""; document.getElementById('cMsg').value="";
-    setStars(5); await loadReviews();
-  }catch(e){ alert("خطأ: "+e.message); }
+    setStars(5);
+    status.textContent = "✅ تم النشر بنجاح";
+    await loadReviews();
+  }catch(e){
+    console.error(e);
+    alert("خطأ: "+e.message);
+    status.textContent = "Failed: "+e.message;
+  }
   finally{ btn.textContent="نشر تعليقي 🚀"; btn.disabled=false; }
 }
 document.addEventListener('DOMContentLoaded',()=>{
@@ -171,9 +180,6 @@ localStorage.setItem('digital_maroc_lead','yes');
 document.getElementById('leadPopup').style.display='none';
 fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name,phone,age})});
 });
-</script>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 </body>
 </html>
