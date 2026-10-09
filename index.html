@@ -77,65 +77,133 @@
 </div>
 </div>
 
-<!-- TA3LI9AT F BLAST AR9AM -->
-<div class="mt-12">
+<!-- TA3LI9AT ONLINE REAL - DIGITAL MAROC PRO -->
+<section id="reviews-section" class="mt-12">
 <h4 class="text-white font-black text-xl text-center mb-6">آراء عملائنا ⭐</h4>
 
 <div class="max-w-[600px] mx-auto bg-white/10 backdrop-blur p-6 rounded-[20px] border border-white/10">
-<div id="starInput" class="flex gap-1 text-2xl cursor-pointer justify-center"><span onclick="setStars(1)">☆</span><span onclick="setStars(2)">☆</span><span onclick="setStars(3)">☆</span><span onclick="setStars(4)">☆</span><span onclick="setStars(5)">☆</span></div>
-<input id="cName" placeholder="سميتك" class="w-full mt-3 p-3 rounded-xl border text-black text-sm">
-<textarea id="cMsg" placeholder="شنو رأيك ف المتجر؟" class="w-full mt-3 p-3 rounded-xl border text-black text-sm"></textarea>
-<button onclick="postComment()" class="w-full mt-3 bg-yellow-400 text-black py-3 rounded-xl font-black">نشر تعليق 🚀</button>
+<div id="starInput" class="flex gap-2 text-3xl cursor-pointer justify-center mb-2">
+<span class="star" data-val="1">★</span>
+<span class="star" data-val="2">★</span>
+<span class="star" data-val="3">★</span>
+<span class="star" data-val="4">★</span>
+<span class="star" data-val="5">★</span>
+</div>
+<input id="cName" placeholder="سميتك" class="w-full mt-3 p-3 rounded-xl border text-black text-sm font-bold outline-none">
+<textarea id="cMsg" placeholder="شنو رأيك ف المتجر؟" class="w-full mt-3 p-3 rounded-xl border text-black text-sm outline-none"></textarea>
+<button id="btnPublish" class="w-full mt-3 bg-[#FFEB00] text-black py-3 rounded-xl font-black hover:bg-yellow-300 transition">نشر تعليق 🚀</button>
 </div>
 
-<div id="allComments" class="grid md:grid-cols-3 gap-4 mt-8"></div>
+<div id="allComments" class="grid md:grid-cols-3 gap-4 mt-8 max-w-5xl mx-auto px-4">
+<p class="text-white/40 text-center col-span-3">...kanjibo ta3ali9</p>
 </div>
 </div>
-</section>
-<footer class="border-t py-8 text-center bg-[#fafafa]"><div class="flex justify-center gap-6 text-xs font-bold mb-3"><a href="terms.html" class="underline">شروط الاستخدام</a><a href="privacy.html" class="underline">سياسة الخصوصية</a><a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a></div><p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p></footer>
-<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999999999;display:none;justify-content:center;align-items:center;padding:15px;">
-<div style="background:#fff;padding:25px;border-radius:15px;width:100%;max-width:380px;text-align:center;position:relative;">
-<button onclick="closePopup()" style="position:absolute;top:12px;left:12px;background:#f1f1f1;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;">✕</button>
-<h3 style="font-weight:900;font-size:21px;">DIGITAL MAROC 🔥</h3>
-<input id="leadName" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-<input id="leadPhone" placeholder="06XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-<select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;"><option value="">شحال فعمرك؟</option><option>18-24</option><option>25-34</option><option>35-44</option><option>45+</option></select>
-<button id="btnSave" style="width:100%;padding:14px;background:#0A1931;color:#fff;border:none;border-radius:8px;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
-<button onclick="closePopup()" style="width:100%;padding:10px;background:transparent;color:#777;border:none;margin-top:8px;text-decoration:underline;font-size:12px;">تخطي الآن - دخول مباشر</button>
-<p id="formMsg" style="display:none;margin:10px 0 0;font-size:12px;"></p>
-</div>
-</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-let selectedStars=0;
-let comments=JSON.parse(localStorage.getItem('dm_comments')||'[]');
-function setStars(n){selectedStars=n;document.querySelectorAll('#starInput span').forEach((s,i)=>{s.textContent=i<n?'★':'☆'})}
-function renderAll(){
-let box=document.getElementById('allComments');
-let html='';
-comments.forEach(c=>{html+=`<div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">${c.name}</p><p>${'★'.repeat(c.stars)}</p><p class="text-sm mt-2">${c.msg}</p></div>`});
-if(comments.length===0){html+=`<div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">Fouad ouazzane</p><p>★★★★★</p><p class="text-sm mt-2">3takom lah saha li 3jbni hwa lmantojat dyalkom aslyn omawto9in omndmin</p></div><div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">سارة - الرباط</p><p>★★★★★</p><p>المتجر PRO واعر</p></div><div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">أمين - كازا</p><p>★★★★★</p><p>خدمة ممتازة</p></div>`;}
-box.innerHTML=html;
+const SUPABASE_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
+const SUPABASE_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
+const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let myOwnerId = localStorage.getItem("dm_owner_id");
+if(!myOwnerId){ myOwnerId = "owner_"+Date.now()+"_"+Math.random().toString(36).slice(2); localStorage.setItem("dm_owner_id", myOwnerId); }
+
+let selectedStars = 5;
+function refreshStars(){
+ document.querySelectorAll('#starInput.star').forEach(el=>{
+  el.style.color = parseInt(el.dataset.val) <= selectedStars? "#FFEB00" : "#555";
+  el.style.textShadow = parseInt(el.dataset.val) <= selectedStars? "0 0 8px #FFEB00" : "none";
+ });
 }
-function postComment(){let n=document.getElementById('cName').value.trim();let m=document.getElementById('cMsg').value.trim();if(!n||!m)return alert('عمر المعلومات');if(!selectedStars)return alert('اختار النجمات');comments.unshift({name:n,msg:m,stars:selectedStars});localStorage.setItem('dm_comments',JSON.stringify(comments));renderAll();}
-renderAll();
-function toggleLangMenu(){document.getElementById('langMenu').classList.toggle('hidden')}
-function setLang(l){localStorage.setItem('dm_lang',l);document.getElementById('langMainBtn').innerText=l.toUpperCase();document.getElementById('langMenu').classList.add('hidden');}
-function toggleFaq(btn){const c=btn.nextElementSibling;const open=c.classList.contains('faq-active');document.querySelectorAll('#faq div.max-h-0, #faq div.faq-active').forEach(x=>x.classList.remove('faq-active'));document.querySelectorAll('#faq button span').forEach(s=>s.innerText='+');if(!open){c.classList.add('faq-active');btn.querySelector('span').innerText='-';}}
-function closePopup(){document.getElementById('leadPopup').style.display='none';localStorage.setItem('digital_maroc_closed','yes');}
-if(localStorage.getItem('digital_maroc_lead')==='yes' || localStorage.getItem('digital_maroc_closed')==='yes'){document.getElementById('leadPopup').style.display='none';} else {setTimeout(()=>{document.getElementById('leadPopup').style.display='flex';},15000);}
+document.querySelectorAll('#starInput.star').forEach(s=>{
+ s.addEventListener('click', ()=>{ selectedStars = parseInt(s.dataset.val); refreshStars(); });
+});
+refreshStars();
+
+async function loadReviews(){
+ const { data } = await supa.from("reviews").select("*").order("created_at",{ascending:false});
+ const box = document.getElementById('allComments');
+ box.innerHTML = "";
+ if(!data || data.length===0){ box.innerHTML = `<p class="text-white/40 text-center col-span-3">Mazal ta ta3li9 - koun nta lwel!</p>`; return; }
+ data.forEach(c=>{
+  const isMine = c.owner_id === myOwnerId;
+  const safeName = c.name.replace(/'/g,"&#39;");
+  box.innerHTML += `<div class="bg-white rounded-[20px] p-6 border text-right">
+   <div class="flex justify-between items-center"><span style="color:#FFEB00">${"★".repeat(c.stars)}<span style="color:#ddd">${"★".repeat(5-c.stars)}</span></span><p class="font-bold text-black">${c.name}</p></div>
+   <p class="text-sm mt-3 text-gray-700">${c.comment}</p>
+   ${isMine? `<div class="flex gap-2 mt-3 justify-end border-t pt-3"><button onclick="editComment('${c.id}','${safeName}','${c.comment.replace(/`/g,'').replace(/'/g,'')} ',${c.stars})" class="text-xs bg-black text-white px-3 py-1 rounded-full">تعديل</button><button onclick="delComment('${c.id}')" class="text-xs bg-red-500 text-white px-3 py-1 rounded-full">مسح</button></div>` : ""}
+  </div>`;
+ });
+}
+
+document.getElementById('btnPublish').addEventListener('click', async ()=>{
+ let n = document.getElementById('cName').value.trim();
+ let m = document.getElementById('cMsg').value.trim();
+ if(!n||!m) return alert('3amer smiya w ta3li9');
+ if(!selectedStars) return alert('khtar njoum');
+ const btn = document.getElementById('btnPublish');
+ btn.textContent = "جاري النشر..."; btn.disabled = true;
+ await supa.from("reviews").insert({ owner_id: myOwnerId, name: n, comment: m, stars: selectedStars });
+ btn.textContent = "نشر تعليق 🚀"; btn.disabled = false;
+ document.getElementById('cName').value = ""; document.getElementById('cMsg').value = ""; selectedStars = 5; refreshStars();
+ loadReviews();
+});
+
+async function delComment(id){ if(!confirm("Tms7 ta3li9 dyalek?")) return; await supa.from("reviews").delete().eq("id", id); loadReviews(); }
+function editComment(id,name,msg,stars){ document.getElementById('cName').value=name; document.getElementById('cMsg').value=msg; selectedStars=stars; refreshStars(); supa.from("reviews").delete().eq("id",id).then(()=>loadReviews()); window.scrollTo({top:document.getElementById('reviews-section').offsetTop-20, behavior:'smooth'}); }
+
+supa.channel('reviews-live').on('postgres_changes',{event:'*',schema:'public',table:'reviews'},()=>loadReviews()).subscribe();
+loadReviews();
+</script>
+<!-- FIN TA3LI9AT ONLINE -->
+</body>
+</html>
+  </section>
+
+<footer class="border-t py-8 text-center bg-[#fafafa]">
+  <div class="flex justify-center gap-6 text-xs font-bold mb-3">
+    <a href="terms.html" class="underline">شروط الاستخدام</a>
+    <a href="privacy.html" class="underline">سياسة الخصوصية</a>
+    <a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a>
+  </div>
+  <p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p>
+</footer>
+
+<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999999999;display:none;justify-content:center;align-items:center;padding:15px;">
+  <div style="background:#fff;padding:25px;border-radius:15px;width:100%;max-width:380px;text-align:center;position:relative;">
+    <button onclick="closePopup()" style="position:absolute;top:12px;left:12px;background:#f1f1f1;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;">✕</button>
+    <h3 style="font-weight:900;font-size:21px;">DIGITAL MAROC 🔥</h3>
+    <input id="leadName" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+    <input id="leadPhone" placeholder="06XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+    <select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
+      <option value="">شحال فعمرك؟</option><option>18-24</option><option>25-34</option><option>35-44</option><option>45+</option>
+    </select>
+    <button id="btnSave" style="width:100%;padding:14px;background:#0A1931;color:#fff;border:none;border-radius:8px;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
+    <button onclick="closePopup()" style="width:100%;padding:10px;background:transparent;color:#777;border:none;margin-top:8px;text-decoration:underline;font-size:12px;">تخطي الآن - دخول مباشر</button>
+    <p id="formMsg" style="display:none;margin:10px 0 0;font-size:12px;"></p>
+  </div>
+</div>
+
+<script>
+function toggleLangMenu(){ const m=document.getElementById('langMenu'); if(m) m.classList.toggle('hidden'); }
+function setLang(l){ localStorage.setItem('dm_lang',l); const b=document.getElementById('langMainBtn'); if(b) b.innerText=l.toUpperCase(); const m=document.getElementById('langMenu'); if(m) m.classList.add('hidden'); }
+function toggleFaq(btn){ const c=btn.nextElementSibling; const open=c.classList.contains('faq-active'); document.querySelectorAll('#faq div.max-h-0, #faq div.faq-active').forEach(x=>x.classList.remove('faq-active')); document.querySelectorAll('#faq button span').forEach(s=>s.innerText='+'); if(!open){ c.classList.add('faq-active'); btn.querySelector('span').innerText='-'; } }
+function closePopup(){ document.getElementById('leadPopup').style.display='none'; localStorage.setItem('digital_maroc_closed','yes'); }
+if(localStorage.getItem('digital_maroc_lead')==='yes' || localStorage.getItem('digital_maroc_closed')==='yes'){ document.getElementById('leadPopup').style.display='none'; } else { setTimeout(()=>{ document.getElementById('leadPopup').style.display='flex'; },15000); }
 document.getElementById('btnSave').addEventListener('click', ()=>{
-let name=document.getElementById('leadName').value.trim();
-let phone=document.getElementById('leadPhone').value.trim();
-let age=document.getElementById('leadAge').value;
-if(name.length<2||phone.length<10||!age){document.getElementById('formMsg').style.display='block';document.getElementById('formMsg').innerText='عمر المعلومات';return;}
-localStorage.setItem('digital_maroc_lead','yes');
-document.getElementById('leadPopup').style.display='none';
-fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name,phone,age})});
+  let name=document.getElementById('leadName').value.trim();
+  let phone=document.getElementById('leadPhone').value.trim();
+  let age=document.getElementById('leadAge').value;
+  if(name.length<2||phone.length<10||!age){ document.getElementById('formMsg').style.display='block'; document.getElementById('formMsg').innerText='عمر المعلومات'; return; }
+  localStorage.setItem('digital_maroc_lead','yes');
+  document.getElementById('leadPopup').style.display='none';
+  fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name,phone,age})});
 });
 </script>
+
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
+
 </body>
 </html>
-  
