@@ -1,33 +1,107 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DIGITAL MAROC</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"><style>body{font-family:'Tajawal',sans-serif}.star{cursor:pointer;transition:.2s}</style></head>
-<body class="bg-white">
-<div class="bg-[#0A1931] text-white py-2.5 text-center text-[11px]">🔒 SSL SECURE</div>
+<!-- ===== BDAYA TA3LI9AT - SECURISE 100% ===== -->
 <section id="reviews-section" class="bg-[#0A1931] py-12">
-<h4 class="text-white font-black text-xl text-center mb-6">آراء عملائنا ⭐</h4>
-<div class="max-w-[600px] mx-auto bg-white/10 p-6 rounded-[20px] border border-white/10">
-<div id="starInput" class="flex gap-2 text-3xl justify-center mb-2 select-none">
-<span class="star" data-val="1">★</span><span class="star" data-val="2">★</span><span class="star" data-val="3">★</span><span class="star" data-val="4">★</span><span class="star" data-val="5">★</span>
-</div>
-<input id="cName" placeholder="سميتك" class="w-full mt-3 p-3 rounded-xl text-black font-bold outline-none">
-<textarea id="cMsg" placeholder="شنو رأيك ف المتجر؟" class="w-full mt-3 p-3 rounded-xl text-black outline-none"></textarea>
-<button id="btnPublish" class="w-full mt-3 bg-[#FFEB00] text-black py-3 rounded-xl font-black">نشر تعليق 🚀</button>
-</div>
-<div id="allComments" class="grid md:grid-cols-3 gap-4 mt-8 max-w-5xl mx-auto px-4"><p class="text-white/40 text-center col-span-3">...كانجيبو التعليقات</p></div>
+  <h4 class="text-white font-black text-xl text-center mb-6">آراء عملائنا ⭐</h4>
+
+  <div class="max-w-[600px] mx-auto bg-white/10 backdrop-blur p-6 rounded-[20px] border border-white/10">
+    <!-- Njoum - M9ad b espace -->
+    <div id="starInput" class="flex gap-2 text-3xl cursor-pointer justify-center mb-2 select-none">
+      <span class="star" data-val="1">★</span>
+      <span class="star" data-val="2">★</span>
+      <span class="star" data-val="3">★</span>
+      <span class="star" data-val="4">★</span>
+      <span class="star" data-val="5">★</span>
+    </div>
+
+    <input id="cName" placeholder="سميتك" class="w-full mt-3 p-3 rounded-xl border text-black text-sm font-bold outline-none">
+    <textarea id="cMsg" placeholder="شنو رأيك ف المتجر؟" class="w-full mt-3 p-3 rounded-xl border text-black text-sm outline-none"></textarea>
+    <button id="btnPublish" class="w-full mt-3 bg-[#FFEB00] text-black py-3 rounded-xl font-black hover:bg-yellow-300 transition">نشر تعليق 🚀</button>
+  </div>
+
+  <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-8 max-w-5xl mx-auto px-4">
+    <p class="text-white/40 text-center col-span-3">...كانجيبو التعليقات</p>
+  </div>
 </section>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL="https://tonkzmlrdmhtekvqdjsjh.supabase.co";
-const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbmt6bWxyZG1odGVrdnFkc2poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NTQxNDUsImV4cCI6MjEwNzEzMDE0NX0.6qgDEOgCRSyviwoZeRW_vueTNSztUsy2LIDif0pH7eM";
-const supa=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-let selectedStars=5;
-function refreshStars(){document.querySelectorAll('#starInput.star').forEach(el=>{let v=parseInt(el.dataset.val);el.style.color=v<=selectedStars?"#FFEB00":"#555";el.style.textShadow=v<=selectedStars?"0 0 12px #FFEB00":"none";});}
-document.querySelectorAll('#starInput.star').forEach(s=>{s.addEventListener('click',()=>{selectedStars=parseInt(s.dataset.val);refreshStars();});});
-refreshStars();
-async function loadReviews(){try{const {data,error}=await supa.from("reviews").select("*").order("created_at",{ascending:false});if(error)throw error;const box=document.getElementById('allComments');box.innerHTML="";if(!data||!data.length){box.innerHTML="<p class='text-white/40 text-center col-span-3'>مازال تا تعليق - كون نتا الأول!</p>";return;}data.forEach(c=>{box.innerHTML+=`<div class="bg-white rounded-[20px] p-6 text-right shadow"><div class="flex justify-between"><span style="color:#FFEB00">${"★".repeat(c.stars)}</span><p class="font-bold">${c.name}</p></div><p class="text-sm mt-3">${c.comment}</p></div>`;});}catch(e){console.error(e);}}
-document.getElementById('btnPublish').addEventListener('click',async()=>{let n=document.getElementById('cName').value.trim();let m=document.getElementById('cMsg').value.trim();if(!n||!m)return alert('عمر سميتك و تعليق');let btn=document.getElementById('btnPublish');btn.textContent="جاري النشر...";btn.disabled=true;const {error}=await supa.from("reviews").insert({name:n,comment:m,stars:selectedStars});if(error){alert(error.message);}else{document.getElementById('cName').value="";document.getElementById('cMsg').value="";selectedStars=5;refreshStars();loadReviews();}btn.textContent="نشر تعليق 🚀";btn.disabled=false;});
+// === CONFIG - ANON AMN ===
+const SUPABASE_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbmt6bWxyZG1odGVrdnFkc2poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NTQxNDUsImV4cCI6MjEwNzEzMDE0NX0.6qgDEOgCRSyviwoZeRW_vueTNSztUsy2LIDif0pH7eM";
+const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let selectedStars = 5;
+
+// 1. Tlwin njoum b sfar - HNA FIN KAN LGHALAT SLA7NAH
+function refreshStars(){
+  document.querySelectorAll('#starInput.star').forEach(el=>{ // <== HNA ESPACE MOHIM
+    const v = parseInt(el.dataset.val);
+    el.style.color = v <= selectedStars? "#FFEB00" : "#555";
+    el.style.textShadow = v <= selectedStars? "0 0 12px #FFEB00" : "none";
+  });
+}
+
+// 2. Tfa3il click 3la njoum
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('#starInput.star').forEach(s=>{
+    s.addEventListener('click', ()=>{
+      selectedStars = parseInt(s.dataset.val);
+      refreshStars();
+    });
+  });
+  refreshStars();
+  loadReviews();
+});
+
+// 3. Jib ta3li9at men Supabase
+async function loadReviews(){
+  const box = document.getElementById('allComments');
+  try{
+    const { data, error } = await supa.from("reviews").select("*").order("created_at",{ascending:false});
+    if(error) throw error;
+    box.innerHTML = "";
+    if(!data || data.length===0){
+      box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق - كون نتا الأول!</p>`;
+      return;
+    }
+    data.forEach(c=>{
+      box.innerHTML += `
+      <div class="bg-white rounded-[20px] p-6 border text-right shadow-sm">
+        <div class="flex justify-between items-center">
+          <span style="color:#FFEB00">${"★".repeat(c.stars)}</span>
+          <p class="font-bold text-black">${c.name}</p>
+        </div>
+        <p class="text-sm mt-3 text-gray-700">${c.comment}</p>
+      </div>`;
+    });
+  }catch(e){
+    box.innerHTML = `<p class="text-red-300 text-center col-span-3 text-xs">Error: ${e.message}</p>`;
+  }
+}
+
+// 4. Sift ta3li9 jdid
+document.getElementById('btnPublish').addEventListener('click', async ()=>{
+  const name = document.getElementById('cName').value.trim();
+  const msg = document.getElementById('cMsg').value.trim();
+  if(!name ||!msg) return alert('عمر سميتك و تعليق عافاك');
+
+  const btn = document.getElementById('btnPublish');
+  btn.textContent="جاري النشر..."; btn.disabled=true;
+
+  try{
+    const { error } = await supa.from("reviews").insert({ name: name, comment: msg, stars: selectedStars });
+    if(error) throw error;
+    document.getElementById('cName').value="";
+    document.getElementById('cMsg').value="";
+    selectedStars=5; refreshStars();
+    await loadReviews();
+  }catch(e){
+    alert("Error: " + e.message);
+  }finally{
+    btn.textContent="نشر تعليق 🚀"; btn.disabled=false;
+  }
+});
+
+// 5. Realtime - ila wa7ed kteb ta3li9 yban lkolchi bla refresh
 supa.channel('reviews-live').on('postgres_changes',{event:'*',schema:'public',table:'reviews'},()=>loadReviews()).subscribe();
-loadReviews();
 </script>
-</body>
-</html>
+<!-- ===== NIHAYA TA3LI9AT ===== -->
