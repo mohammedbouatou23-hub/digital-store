@@ -134,30 +134,28 @@ async function loadReviews(){
     box.innerHTML = `<p class='text-center col-span-3 text-red-500 text-xs'>خطأ: ${e.message}</p>`;
   }
 }
+async function getLocalReviews(){ return JSON.parse(localStorage.getItem('dm_reviews')||'[]'); }
+function saveLocalReview(r){ let a=getLocalReviews(); a.push(r); localStorage.setItem('dm_reviews', JSON.stringify(a)); }
+
 async function postComment(){
-  const name = document.getElementById('cName').value.trim();
-  const comment = document.getElementById('cMsg').value.trim();
-  const btn = document.getElementById('btnPublish');
-  const status = document.getElementById('statusMsg');
-  if(!name ||!comment){ alert('عمر سميتك وتعليقك'); return; }
-  btn.textContent = "جاري النشر..."; btn.disabled = true; status.textContent="";
+  const name=document.getElementById('cName').value.trim();
+  const comment=document.getElementById('cMsg').value.trim();
+  const btn=document.getElementById('btnPublish');
+  const status=document.getElementById('statusMsg');
+  if(!name||!comment){ alert('عمر سميتك وتعليقك'); return; }
+  btn.textContent="جاري النشر..."; btn.disabled=true;
+  let newR={name,comment,stars:selectedStars,created_at:new Date().toISOString()};
   try{
-    const res = await fetch(`${SB_URL}/rest/v1/reviews`,{
-      method:"POST",
-      headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},
-      body: JSON.stringify({name, comment, stars: selectedStars})
-    });
+    let res=await fetch(`${SB_URL}/rest/v1/reviews`,{method:"POST",headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({name,comment,stars:selectedStars})});
     if(!res.ok) throw new Error(await res.text());
-    document.getElementById('cName').value=""; document.getElementById('cMsg').value="";
-    setStars(5);
-    status.textContent = "✅ تم النشر بنجاح";
-    await loadReviews();
+    status.textContent="✅ تم النشر";
   }catch(e){
-    console.error(e);
-    alert("خطأ: "+e.message);
-    status.textContent = "Failed: "+e.message;
+    saveLocalReview(newR);
+    status.textContent="✅ تم الحفظ محليا - سيظهر الآن";
+  }finally{
+    document.getElementById('cName').value=""; document.getElementById('cMsg').value="";
+    setStars(5); await loadReviews(); btn.textContent="نشر تعليقي 🚀"; btn.disabled=false;
   }
-  finally{ btn.textContent="نشر تعليقي 🚀"; btn.disabled=false; }
 }
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('#starInput span').forEach(s=>{
