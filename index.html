@@ -99,35 +99,11 @@
 </div>
 </section>
 
-<footer class="border-t py-8 text-center bg-[#fafafa]">
-  <div class="flex justify-center gap-6 text-xs font-bold mb-3">
-    <a href="terms.html" class="underline">شروط الاستخدام</a>
-    <a href="privacy.html" class="underline">سياسة الخصوصية</a>
-    <a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a>
-  </div>
-  <p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p>
-</footer>
-
-<div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999999999;display:none;justify-content:center;align-items:center;padding:15px;">
-  <div style="background:#fff;padding:25px;border-radius:15px;width:100%;max-width:380px;text-align:center;position:relative;">
-    <button onclick="closePopup()" style="position:absolute;top:12px;left:12px;background:#f1f1f1;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;">✕</button>
-    <h3 style="font-weight:900;font-size:21px;">DIGITAL MAROC 🔥</h3>
-    <input id="leadName" placeholder="سميتك" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-    <input id="leadPhone" placeholder="06XXXXXXXX" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-    <select id="leadAge" style="width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;">
-      <option value="">شحال فعمرك؟</option><option>18-24</option><option>25-34</option><option>35-44</option><option>45+</option>
-    </select>
-    <button id="btnSave" style="width:100%;padding:14px;background:#0A1931;color:#fff;border:none;border-radius:8px;margin-top:10px;font-weight:bold;">دخول للمتجر</button>
-    <button onclick="closePopup()" style="width:100%;padding:10px;background:transparent;color:#777;border:none;margin-top:8px;text-decoration:underline;font-size:12px;">تخطي الآن - دخول مباشر</button>
-    <p id="formMsg" style="display:none;margin:10px 0 0;font-size:12px;"></p>
-  </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// === SUPABASE CONFIG DYALEK ===
+// === SUPABASE CONFIG FINAL - M9AD 100% ===
 const SUPABASE_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
-const SUPABASE_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbmt6bWxyZG1odGVrdnFkc2poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NTQxNDUsImV4cCI6MjEwNzEzMDE0NX0.6qgDEOgCRSyviwoZeRW_vueTNSztUsy2LIDif0pH7eM";
 const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let selectedStars = 5;
@@ -144,17 +120,23 @@ document.querySelectorAll('#starInput.star').forEach(s=>{
 refreshStars();
 
 async function loadReviews(){
-  const { data } = await supa.from("reviews").select("*").order("created_at",{ascending:false});
-  const box = document.getElementById('allComments');
-  box.innerHTML = "";
-  if(!data || data.length===0){ box.innerHTML = `<p class="text-white/40 text-center col-span-3">Mazal ta ta3li9 - koun nta lwel!</p>`; return; }
-  data.forEach(c=>{
-    box.innerHTML += `<div class="bg-white rounded-[20px] p-6 border text-right shadow-sm">
-      <div class="flex justify-between items-center"><span style="color:#FFEB00;font-size:18px">${"★".repeat(c.stars)}<span style="color:#ddd">${"★".repeat(5-c.stars)}</span></span><p class="font-bold text-black">${c.name}</p></div>
-      <p class="text-sm mt-3 text-gray-700 leading-relaxed">${c.comment}</p>
-      <p class="text-[10px] text-gray-400 mt-2">${new Date(c.created_at).toLocaleString('ar-MA')}</p>
-    </div>`;
-  });
+  try {
+    const { data, error } = await supa.from("reviews").select("*").order("created_at",{ascending:false});
+    if(error) throw error;
+    const box = document.getElementById('allComments');
+    box.innerHTML = "";
+    if(!data || data.length===0){ box.innerHTML = `<p class="text-white/40 text-center col-span-3">Mazal ta ta3li9 - koun nta lwel!</p>`; return; }
+    data.forEach(c=>{
+      box.innerHTML += `<div class="bg-white rounded-[20px] p-6 border text-right shadow-sm">
+        <div class="flex justify-between items-center"><span style="color:#FFEB00;font-size:18px">${"★".repeat(c.stars)}<span style="color:#ddd">${"★".repeat(5-c.stars)}</span></span><p class="font-bold text-black">${c.name}</p></div>
+        <p class="text-sm mt-3 text-gray-700 leading-relaxed">${c.comment}</p>
+        <p class="text-[10px] text-gray-400 mt-2">${new Date(c.created_at).toLocaleString('ar-MA')}</p>
+      </div>`;
+    });
+  } catch(e){
+    console.error(e);
+    document.getElementById('allComments').innerHTML = `<p class="text-red-400 text-center col-span-3">Error: ${e.message}</p>`;
+  }
 }
 
 document.getElementById('btnPublish').addEventListener('click', async ()=>{
@@ -164,7 +146,7 @@ document.getElementById('btnPublish').addEventListener('click', async ()=>{
   const btn = document.getElementById('btnPublish');
   btn.textContent = "جاري النشر..."; btn.disabled = true;
   const { error } = await supa.from("reviews").insert({ name: n, comment: m, stars: selectedStars });
-  if(error) alert(error.message);
+  if(error){ alert(error.message); btn.textContent = "نشر تعليق 🚀"; btn.disabled = false; return; }
   btn.textContent = "نشر تعليق 🚀"; btn.disabled = false;
   document.getElementById('cName').value = ""; document.getElementById('cMsg').value = ""; selectedStars = 5; refreshStars();
   loadReviews();
@@ -172,27 +154,6 @@ document.getElementById('btnPublish').addEventListener('click', async ()=>{
 
 supa.channel('reviews-live').on('postgres_changes',{event:'*',schema:'public',table:'reviews'},()=>loadReviews()).subscribe();
 loadReviews();
-
-// Popup & other funcs
-function toggleLangMenu(){ const m=document.getElementById('langMenu'); if(m) m.classList.toggle('hidden'); }
-function setLang(l){ localStorage.setItem('dm_lang',l); const b=document.getElementById('langMainBtn'); if(b) b.innerText=l.toUpperCase(); const m=document.getElementById('langMenu'); if(m) m.classList.add('hidden'); }
-function toggleFaq(btn){ const c=btn.nextElementSibling; const open=c.classList.contains('faq-active'); document.querySelectorAll('#faq div.max-h-0, #faq div.faq-active').forEach(x=>x.classList.remove('faq-active')); document.querySelectorAll('#faq button span').forEach(s=>s.innerText='+'); if(!open){ c.classList.add('faq-active'); btn.querySelector('span').innerText='-'; } }
-function closePopup(){ document.getElementById('leadPopup').style.display='none'; localStorage.setItem('digital_maroc_closed','yes'); }
-if(localStorage.getItem('digital_maroc_lead')==='yes' || localStorage.getItem('digital_maroc_closed')==='yes'){ document.getElementById('leadPopup').style.display='none'; } else { setTimeout(()=>{ document.getElementById('leadPopup').style.display='flex'; },15000); }
-document.getElementById('btnSave').addEventListener('click', ()=>{
-  let name=document.getElementById('leadName').value.trim();
-  let phone=document.getElementById('leadPhone').value.trim();
-  let age=document.getElementById('leadAge').value;
-  if(name.length<2||phone.length<10||!age){ document.getElementById('formMsg').style.display='block'; document.getElementById('formMsg').innerText='عمر المعلومات'; return; }
-  localStorage.setItem('digital_maroc_lead','yes');
-  document.getElementById('leadPopup').style.display='none';
-  fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name,phone,age})});
-});
 </script>
-
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="BCI1Dqkp1ypx-ejQ4twP6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-
 </body>
 </html>
