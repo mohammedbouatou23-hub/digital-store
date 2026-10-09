@@ -85,6 +85,31 @@
 </div>
 </div>
 </section>
+  <!-- REVIEWS REAL - SUPABASE -->
+<section id="reviews-section" class="bg-[#f9f9f9] py-20">
+<div class="max-w-[1200px] mx-auto px-6">
+<div class="text-center mb-10">
+<h2 class="text-4xl font-black">آراء عملائنا ⭐</h2>
+<p class="text-zinc-500 mt-2 text-sm">تعليقات حقيقية - كاتبان مباشرة</p>
+</div>
+<div class="max-w-[600px] mx-auto bg-white p-6 rounded-[28px] border-2 border-black/5 shadow-sm">
+<div id="starInput" class="flex gap-2 text-4xl justify-center mb-5 cursor-pointer">
+<span class="star" data-val="1">☆</span>
+<span class="star" data-val="2">☆</span>
+<span class="star" data-val="3">☆</span>
+<span class="star" data-val="4">☆</span>
+<span class="star" data-val="5">★</span>
+</div>
+<input id="cName" placeholder="سميتك" class="w-full p-4 rounded-xl bg-[#f6f6f6] text-sm font-bold outline-none border">
+<textarea id="cMsg" placeholder="شنو رأيك؟" rows="3" class="w-full mt-3 p-4 rounded-xl bg-[#f6f6f6] text-sm outline-none border"></textarea>
+<button id="btnPublish" class="w-full mt-4 bg-[#0A1931] text-white py-4 rounded-xl font-black">نشر تعليقي 🚀</button>
+<p id="statusMsg" class="text-center text-xs mt-3 text-zinc-400"></p>
+</div>
+<div id="allComments" class="grid md:grid-cols-3 gap-4 mt-10">
+<p class="text-center col-span-3 py-10 text-zinc-400 text-sm">...كانجيبو التعليقات</p>
+</div>
+</div>
+</section>
 <footer class="border-t py-8 text-center bg-[#fafafa]"><div class="flex justify-center gap-6 text-xs font-bold mb-3"><a href="terms.html" class="underline">شروط الاستخدام</a><a href="privacy.html" class="underline">سياسة الخصوصية</a><a href="https://wa.me/212719380106" class="underline">واتساب: 0719380106</a></div><p class="text-[11px] text-zinc-400">© 2026 DIGITAL MAROC</p></footer>
 <div id="leadPopup" style="position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999999999;display:none;justify-content:center;align-items:center;padding:15px;">
 <div style="background:#fff;padding:25px;border-radius:15px;width:100%;max-width:380px;text-align:center;position:relative;">
@@ -99,18 +124,48 @@
 </div>
 </div>
 <script>
-let selectedStars=0;
-let comments=JSON.parse(localStorage.getItem('dm_comments')||'[]');
-function setStars(n){selectedStars=n;document.querySelectorAll('#starInput span').forEach((s,i)=>{s.textContent=i<n?'★':'☆'})}
-function renderAll(){
-let box=document.getElementById('allComments');
-let html='';
-comments.forEach(c=>{html+=`<div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">${c.name}</p><p>${'★'.repeat(c.stars)}</p><p class="text-sm mt-2">${c.msg}</p></div>`});
-if(comments.length===0){html+=`<div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">Fouad ouazzane</p><p>★★★★★</p><p class="text-sm mt-2">3takom lah saha li 3jbni hwa lmantojat dyalkom aslyn omawto9in omndmin</p></div><div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">سارة - الرباط</p><p>★★★★★</p><p>المتجر PRO واعر</p></div><div class="bg-white rounded-[20px] p-6 border"><p class="font-bold">أمين - كازا</p><p>★★★★★</p><p>خدمة ممتازة</p></div>`;}
-box.innerHTML=html;
+const SB_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
+const SB_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
+let selectedStars=5;
+function setStars(n){
+  selectedStars=n;
+  document.querySelectorAll('#starInput.star').forEach((s,i)=>{
+    s.textContent=i<n?'★':'☆';
+    s.style.color=i<n?'#FFB800':'#ccc';
+  });
 }
-function postComment(){let n=document.getElementById('cName').value.trim();let m=document.getElementById('cMsg').value.trim();if(!n||!m)return alert('عمر المعلومات');if(!selectedStars)return alert('اختار النجمات');comments.unshift({name:n,msg:m,stars:selectedStars});localStorage.setItem('dm_comments',JSON.stringify(comments));renderAll();}
-renderAll();
+async function loadReviews(){
+  const box=document.getElementById('allComments');
+  try{
+    const res=await fetch(`${SB_URL}/rest/v1/reviews?select=*&order=created_at.desc`,{
+      headers:{"apikey":SB_KEY,"Authorization":`Bearer ${SB_KEY}`}
+    });
+    const data=await res.json();
+    if(!data.length){box.innerHTML=`<p class="text-center col-span-3 py-10 text-zinc-400">مازال حتى تعليق - كون نتا الأول 👇</p>`;return;}
+    box.innerHTML="";
+    data.forEach(c=>{
+      box.innerHTML+=`<div class="bg-white rounded-[20px] p-6 border"><div class="flex justify-between"><span style="color:#FFB800">${"★".repeat(c.stars)}</span><p class="font-black text-sm">${c.name}</p></div><p class="text-[13px] mt-3">${c.comment}</p></div>`;
+    });
+  }catch(e){box.innerHTML=`<p class="text-center col-span-3">خطأ</p>`}
+}
+async function postComment(){
+  const name=document.getElementById('cName').value.trim();
+  const comment=document.getElementById('cMsg').value.trim();
+  if(!name||!comment)return alert('عمر المعلومات');
+  const btn=document.getElementById('btnPublish');btn.textContent="جاري النشر...";btn.disabled=true;
+  const res=await fetch(`${SB_URL}/rest/v1/reviews`,{
+    method:"POST",
+    headers:{"apikey":SB_KEY,"Authorization":`Bearer ${SB_KEY}`,"Content-Type":"application/json","Prefer":"return=minimal"},
+    body:JSON.stringify({name,comment,stars:selectedStars})
+  });
+  if(res.ok){document.getElementById('cName').value="";document.getElementById('cMsg').value="";setStars(5);await loadReviews();}
+  btn.textContent="نشر تعليقي 🚀";btn.disabled=false;
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#starInput.star').forEach(s=>{s.addEventListener('click',()=>setStars(parseInt(s.dataset.val)))});
+  setStars(5);loadReviews();
+  document.getElementById('btnPublish')?.addEventListener('click',postComment);
+});
 function toggleLangMenu(){document.getElementById('langMenu').classList.toggle('hidden')}
 function setLang(l){localStorage.setItem('dm_lang',l);document.getElementById('langMainBtn').innerText=l.toUpperCase();document.getElementById('langMenu').classList.add('hidden');}
 function toggleFaq(btn){const c=btn.nextElementSibling;const open=c.classList.contains('faq-active');document.querySelectorAll('#faq div.max-h-0, #faq div.faq-active').forEach(x=>x.classList.remove('faq-active'));document.querySelectorAll('#faq button span').forEach(s=>s.innerText='+');if(!open){c.classList.add('faq-active');btn.querySelector('span').innerText='-';}}
