@@ -70,6 +70,78 @@
 
 <footer class="py-10 text-center text-gray-400 text-sm">© 2026 DIGITAL MAROC - جميع الحقوق محفوظة</footer>
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIGITAL MAROC - منتجات رقمية أصلية</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>*{font-family:'Tajawal',sans-serif}</style>
+</head>
+<body class="bg-[#F5F7FB] text-black">
+
+<!-- HEADER -->
+<header class="bg-[#0A1931] text-white py-4 sticky top-0 z-50">
+  <div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
+    <h1 class="font-black text-xl tracking-widest">DIGITAL MAROC</h1>
+    <a href="#reviews-section" class="bg-[#FFEB00] text-black px-5 py-2 rounded-full text-sm font-black">التعليقات</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="bg-[#0A1931] text-white py-20 text-center">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 class="text-4xl md:text-6xl font-black leading-tight">أفضل المتاجر الرقمية<br><span class="text-[#FFEB00]">في المغرب</span></h2>
+    <p class="text-white/60 mt-5 max-w-[600px] mx-auto">اشتراكات أصلية، تفعيل فوري، دعم 24/7 - Netflix, Spotify, Canva, YouTube Premium و أكثر</p>
+    <div class="mt-8 flex gap-3 justify-center">
+      <a href="#products" class="bg-[#FFEB00] text-black px-8 py-3.5 rounded-full font-black">تصفح المنتجات</a>
+      <a href="https://wa.me/212600000000" class="bg-white/10 border border-white/20 px-8 py-3.5 rounded-full font-bold">تواصل واتساب</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="py-16 max-w-[1200px] mx-auto px-6">
+  <h3 class="font-black text-2xl mb-8 text-center">منتجاتنا الأكثر مبيعاً 🔥</h3>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="bg-white p-6 rounded-[24px] shadow-sm border text-center"><div class="text-4xl">🎬</div><h4 class="font-black mt-3">Netflix Premium</h4><p class="text-sm text-gray-500 mt-1">4K - حساب خاص</p><p class="font-black text-xl mt-3">99 MAD / شهر</p><a href="https://wa.me/212600000000" class="block mt-4 bg-black text-white py-3 rounded-xl font-bold">اطلب الآن</a></div>
+    <div class="bg-white p-6 rounded-[24px] shadow-sm border text-center"><div class="text-4xl">🎨</div><h4 class="font-black mt-3">Canva Pro</h4><p class="text-sm text-gray-500 mt-1">سنة كاملة - تفعيل رسمي</p><p class="font-black text-xl mt-3">149 MAD / سنة</p><a href="https://wa.me/212600000000" class="block mt-4 bg-black text-white py-3 rounded-xl font-bold">اطلب الآن</a></div>
+    <div class="bg-white p-6 rounded-[24px] shadow-sm border text-center"><div class="text-4xl">🎵</div><h4 class="font-black mt-3">Spotify Premium</h4><p class="text-sm text-gray-500 mt-1">بدون إعلانات</p><p class="font-black text-xl mt-3">29 MAD / شهر</p><a href="https://wa.me/212600000000" class="block mt-4 bg-black text-white py-3 rounded-xl font-bold">اطلب الآن</a></div>
+  </div>
+</section>
+
+<!-- REVIEWS - HADI LI KHADDAMNA -->
+<section id="reviews-section" class="bg-[#0A1931] py-16">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 class="text-white font-black text-3xl text-center mb-2">آراء عملائنا ⭐</h2>
+    <p class="text-white/60 text-center text-sm mb-10">أكثر من 1500 عميل يثق بنا</p>
+
+    <!-- FORM -->
+    <div class="max-w-[600px] mx-auto bg-white/10 backdrop-blur p-7 rounded-[28px] border border-white/10">
+      <div id="starInput" class="flex gap-2 text-4xl justify-center mb-6 cursor-pointer select-none">
+        <span class="star" data-val="1">★</span>
+        <span class="star" data-val="2">★</span>
+        <span class="star" data-val="3">★</span>
+        <span class="star" data-val="4">★</span>
+        <span class="star" data-val="5">★</span>
+      </div>
+      <input id="cName" placeholder="الإسم ديالك" class="w-full p-4 rounded-xl text-black text-sm font-bold outline-none bg-white">
+      <textarea id="cMsg" placeholder="كتب رأيك هنا..." rows="4" class="w-full mt-3 p-4 rounded-xl text-black text-sm outline-none bg-white"></textarea>
+      <button id="btnPublish" class="w-full mt-4 bg-[#FFEB00] hover:bg-[#FFE000] text-black py-4 rounded-xl font-black transition text-[15px]">نشر تعليقي 🚀</button>
+      <p id="statusMsg" class="text-white/50 text-center text-xs mt-3"></p>
+    </div>
+
+    <!-- LIST -->
+    <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-12">
+      <p class="text-white/40 text-center col-span-3 py-10">...كانجيبو التعليقات</p>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 text-center text-gray-400 text-sm">© 2026 DIGITAL MAROC - جميع الحقوق محفوظة</footer>
+
 <script>
 const SB_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
 const SB_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
