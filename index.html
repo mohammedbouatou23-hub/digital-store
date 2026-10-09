@@ -77,8 +77,8 @@
 </div>
 </div>
 
-<!-- TA3LI9AT ONLINE REAL - DIGITAL MAROC PRO -->
-<section id="reviews-section" class="mt-12">
+<!-- TA3LI9AT ONLINE - PLAY STORE STYLE - DIGITAL MAROC PRO -->
+<section id="reviews-section" class="mt-12 pb-10">
 <h4 class="text-white font-black text-xl text-center mb-6">آراء عملائنا ⭐</h4>
 
 <div class="max-w-[600px] mx-auto bg-white/10 backdrop-blur p-6 rounded-[20px] border border-white/10">
@@ -95,70 +95,9 @@
 </div>
 
 <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-8 max-w-5xl mx-auto px-4">
-<p class="text-white/40 text-center col-span-3">...kanjibo ta3ali9</p>
+<p class="text-white/40 text-center col-span-3 animate-pulse">...kanjibo ta3ali9</p>
 </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPABASE_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
-const SUPABASE_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
-const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-let myOwnerId = localStorage.getItem("dm_owner_id");
-if(!myOwnerId){ myOwnerId = "owner_"+Date.now()+"_"+Math.random().toString(36).slice(2); localStorage.setItem("dm_owner_id", myOwnerId); }
-
-let selectedStars = 5;
-function refreshStars(){
- document.querySelectorAll('#starInput.star').forEach(el=>{
-  el.style.color = parseInt(el.dataset.val) <= selectedStars? "#FFEB00" : "#555";
-  el.style.textShadow = parseInt(el.dataset.val) <= selectedStars? "0 0 8px #FFEB00" : "none";
- });
-}
-document.querySelectorAll('#starInput.star').forEach(s=>{
- s.addEventListener('click', ()=>{ selectedStars = parseInt(s.dataset.val); refreshStars(); });
-});
-refreshStars();
-
-async function loadReviews(){
- const { data } = await supa.from("reviews").select("*").order("created_at",{ascending:false});
- const box = document.getElementById('allComments');
- box.innerHTML = "";
- if(!data || data.length===0){ box.innerHTML = `<p class="text-white/40 text-center col-span-3">Mazal ta ta3li9 - koun nta lwel!</p>`; return; }
- data.forEach(c=>{
-  const isMine = c.owner_id === myOwnerId;
-  const safeName = c.name.replace(/'/g,"&#39;");
-  box.innerHTML += `<div class="bg-white rounded-[20px] p-6 border text-right">
-   <div class="flex justify-between items-center"><span style="color:#FFEB00">${"★".repeat(c.stars)}<span style="color:#ddd">${"★".repeat(5-c.stars)}</span></span><p class="font-bold text-black">${c.name}</p></div>
-   <p class="text-sm mt-3 text-gray-700">${c.comment}</p>
-   ${isMine? `<div class="flex gap-2 mt-3 justify-end border-t pt-3"><button onclick="editComment('${c.id}','${safeName}','${c.comment.replace(/`/g,'').replace(/'/g,'')} ',${c.stars})" class="text-xs bg-black text-white px-3 py-1 rounded-full">تعديل</button><button onclick="delComment('${c.id}')" class="text-xs bg-red-500 text-white px-3 py-1 rounded-full">مسح</button></div>` : ""}
-  </div>`;
- });
-}
-
-document.getElementById('btnPublish').addEventListener('click', async ()=>{
- let n = document.getElementById('cName').value.trim();
- let m = document.getElementById('cMsg').value.trim();
- if(!n||!m) return alert('3amer smiya w ta3li9');
- if(!selectedStars) return alert('khtar njoum');
- const btn = document.getElementById('btnPublish');
- btn.textContent = "جاري النشر..."; btn.disabled = true;
- await supa.from("reviews").insert({ owner_id: myOwnerId, name: n, comment: m, stars: selectedStars });
- btn.textContent = "نشر تعليق 🚀"; btn.disabled = false;
- document.getElementById('cName').value = ""; document.getElementById('cMsg').value = ""; selectedStars = 5; refreshStars();
- loadReviews();
-});
-
-async function delComment(id){ if(!confirm("Tms7 ta3li9 dyalek?")) return; await supa.from("reviews").delete().eq("id", id); loadReviews(); }
-function editComment(id,name,msg,stars){ document.getElementById('cName').value=name; document.getElementById('cMsg').value=msg; selectedStars=stars; refreshStars(); supa.from("reviews").delete().eq("id",id).then(()=>loadReviews()); window.scrollTo({top:document.getElementById('reviews-section').offsetTop-20, behavior:'smooth'}); }
-
-supa.channel('reviews-live').on('postgres_changes',{event:'*',schema:'public',table:'reviews'},()=>loadReviews()).subscribe();
-loadReviews();
-</script>
-<!-- FIN TA3LI9AT ONLINE -->
-</body>
-</html>
-  </section>
+</section>
 
 <footer class="border-t py-8 text-center bg-[#fafafa]">
   <div class="flex justify-center gap-6 text-xs font-bold mb-3">
@@ -184,7 +123,57 @@ loadReviews();
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// === SUPABASE CONFIG DYALEK ===
+const SUPABASE_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
+const SUPABASE_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
+const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let selectedStars = 5;
+function refreshStars(){
+  document.querySelectorAll('#starInput.star').forEach(el=>{
+    const v = parseInt(el.dataset.val);
+    el.style.color = v <= selectedStars? "#FFEB00" : "#555";
+    el.style.textShadow = v <= selectedStars? "0 0 8px #FFEB00" : "none";
+  });
+}
+document.querySelectorAll('#starInput.star').forEach(s=>{
+  s.addEventListener('click', ()=>{ selectedStars = parseInt(s.dataset.val); refreshStars(); });
+});
+refreshStars();
+
+async function loadReviews(){
+  const { data } = await supa.from("reviews").select("*").order("created_at",{ascending:false});
+  const box = document.getElementById('allComments');
+  box.innerHTML = "";
+  if(!data || data.length===0){ box.innerHTML = `<p class="text-white/40 text-center col-span-3">Mazal ta ta3li9 - koun nta lwel!</p>`; return; }
+  data.forEach(c=>{
+    box.innerHTML += `<div class="bg-white rounded-[20px] p-6 border text-right shadow-sm">
+      <div class="flex justify-between items-center"><span style="color:#FFEB00;font-size:18px">${"★".repeat(c.stars)}<span style="color:#ddd">${"★".repeat(5-c.stars)}</span></span><p class="font-bold text-black">${c.name}</p></div>
+      <p class="text-sm mt-3 text-gray-700 leading-relaxed">${c.comment}</p>
+      <p class="text-[10px] text-gray-400 mt-2">${new Date(c.created_at).toLocaleString('ar-MA')}</p>
+    </div>`;
+  });
+}
+
+document.getElementById('btnPublish').addEventListener('click', async ()=>{
+  let n = document.getElementById('cName').value.trim();
+  let m = document.getElementById('cMsg').value.trim();
+  if(!n||!m) return alert('3amer smiya w ta3li9 3afak');
+  const btn = document.getElementById('btnPublish');
+  btn.textContent = "جاري النشر..."; btn.disabled = true;
+  const { error } = await supa.from("reviews").insert({ name: n, comment: m, stars: selectedStars });
+  if(error) alert(error.message);
+  btn.textContent = "نشر تعليق 🚀"; btn.disabled = false;
+  document.getElementById('cName').value = ""; document.getElementById('cMsg').value = ""; selectedStars = 5; refreshStars();
+  loadReviews();
+});
+
+supa.channel('reviews-live').on('postgres_changes',{event:'*',schema:'public',table:'reviews'},()=>loadReviews()).subscribe();
+loadReviews();
+
+// Popup & other funcs
 function toggleLangMenu(){ const m=document.getElementById('langMenu'); if(m) m.classList.toggle('hidden'); }
 function setLang(l){ localStorage.setItem('dm_lang',l); const b=document.getElementById('langMainBtn'); if(b) b.innerText=l.toUpperCase(); const m=document.getElementById('langMenu'); if(m) m.classList.add('hidden'); }
 function toggleFaq(btn){ const c=btn.nextElementSibling; const open=c.classList.contains('faq-active'); document.querySelectorAll('#faq div.max-h-0, #faq div.faq-active').forEach(x=>x.classList.remove('faq-active')); document.querySelectorAll('#faq button span').forEach(s=>s.innerText='+'); if(!open){ c.classList.add('faq-active'); btn.querySelector('span').innerText='-'; } }
