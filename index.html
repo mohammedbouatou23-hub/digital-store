@@ -3,54 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIGITAL MAROC™ | أول متجر رقمي بالمغرب</title>
+<title>DIGITAL MAROC - منتجات رقمية أصلية</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>body{font-family:'Tajawal',sans-serif;overflow-x:hidden}.star{cursor:pointer;transition:all.2s}.cart-drawer{transform:translateX(100%);transition:.3s}.cart-drawer.open{transform:translateX(0)}</style>
+<style>*{font-family:'Tajawal',sans-serif}</style>
 </head>
-<body class="bg-white text-black">
-<div class="bg-[#0A1931] text-white py-2.5 text-center text-[11px]">🔒 SSL SECURE - المنصة الموثوقة رقم 1 بالمغرب</div>
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b"><div class="max-w-[1200px] mx-auto px-4 h-[72px] flex justify-between items-center"><div class="flex items-center gap-3"><button id="openCart" class="relative w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center"><i class="fa-solid fa-bag-shopping"></i><span id="cartCount" class="absolute -top-1 -right-1 bg-[#FFEB00] text-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span></button><button id="langToggle" class="text-xs font-bold border px-3 py-2 rounded-full">FR</button><a href="https://wa.me/212719380106" class="bg-[#0A1931] text-white px-5 py-2.5 rounded-full text-sm font-bold">WhatsApp</a></div><div class="flex items-center gap-3"><span class="font-black text-[18px] leading-[1] text-right">DIGITAL<br>MAROC</span><div class="w-12 h-12 rounded-xl bg-[#0A1931] text-white flex items-center justify-center font-black">DM</div></div></div></header>
-<section class="bg-[#0A1931] text-white"><div class="max-w-[1200px] mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center"><div><div class="inline-flex bg-white/10 border border-white/10 px-3 py-1 rounded-full text-[10px] mb-4">⭐ 4.9/5 من 1273 زبون</div><h1 class="text-[42px] md:text-[56px] font-black leading-[0.9]">نحن لا نبيع ملفات.<br><span class="text-white/60">نحن نبيع مستقبل.</span></h1><p class="text-white/60 mt-5 text-sm">6 حزم رقمية احترافية - دفع عند الاستلام - تسليم فوري</p><div class="flex gap-3 mt-8"><a href="#products" class="bg-[#FFEB00] text-black px-8 py-4 rounded-full font-black text-sm">تصفح الحزم 🚀</a><a href="#reviews-section" class="bg-white/10 border border-white/20 px-8 py-4 rounded-full font-bold text-sm">آراء العملاء</a></div></div><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" class="rounded-[32px] border border-white/10" alt=""></div></section>
-<section id="products" class="max-w-[1200px] mx-auto px-6 py-16"><h2 class="font-black text-2xl text-center mb-8">حزمنا الأكثر مبيعاً</h2><div class="grid md:grid-cols-3 gap-6"><div class="border rounded-[24px] p-6 bg-white"><div class="w-12 h-12 rounded-xl bg-[#0A1931] text-white flex items-center justify-center mb-4"><i class="fa-solid fa-store"></i></div><h3 class="font-black">باك متجر إلكتروني</h3><p class="text-xs text-zinc-500 mt-2">متجر جاهز 100%</p><div class="flex justify-between mt-6"><span class="font-black text-xl">299 DH</span><button onclick="addToCart('باك متجر إلكتروني',299)" class="bg-[#0A1931] text-white px-4 py-2 rounded-full text-xs font-bold">أضف للسلة</button></div></div><div class="border-2 border-[#FFEB00] rounded-[24px] p-6 bg-[#FFEB00]/10 relative"><span class="absolute -top-3 left-6 bg-[#FFEB00] text-black text-[10px] px-3 py-1 rounded-full font-black">الأكثر مبيعاً</span><div class="w-12 h-12 rounded-xl bg-[#0A1931] text-white flex items-center justify-center mb-4"><i class="fa-solid fa-rocket"></i></div><h3 class="font-black">باك النمو الشامل</h3><p class="text-xs mt-2">متجر + إعلانات + سكريبتات</p><div class="flex justify-between mt-6"><span class="font-black text-xl">599 DH</span><button onclick="addToCart('باك النمو الشامل',599)" class="bg-[#FFEB00] text-black px-4 py-2 rounded-full text-xs font-black">أضف للسلة</button></div></div><div class="border rounded-[24px] p-6 bg-white"><div class="w-12 h-12 rounded-xl bg-[#0A1931] text-white flex items-center justify-center mb-4"><i class="fa-solid fa-video"></i></div><h3 class="font-black">باك المحتوى</h3><p class="text-xs text-zinc-500 mt-2">100 فيديو faceless</p><div class="flex justify-between mt-6"><span class="font-black text-xl">199 DH</span><button onclick="addToCart('باك المحتوى',199)" class="bg-[#0A1931] text-white px-4 py-2 rounded-full text-xs font-bold">أضف للسلة</button></div></div></div></section>
-<section id="reviews-section" class="bg-[#0A1931] py-16">
+<body class="bg-[#F5F7FB] text-black">
+
+<!-- HEADER -->
+<header class="bg-[#0A1931] text-white py-4 sticky top-0 z-50">
+  <div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
+    <h1 class="font-black text-xl tracking-widest">DIGITAL MAROC</h1>
+    <a href="#reviews-section" class="bg-[#FFEB00] text-black px-5 py-2 rounded-full text-sm font-black">التعليقات</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="bg-[#0A1931] text-white py-20 text-center">
   <div class="max-w-[1200px] mx-auto px-6">
-    <h2 class="text-white font-black text-2xl text-center mb-2">آراء عملائنا ⭐</h2>
-    <div class="max-w-[600px] mx-auto bg-white/10 p-6 rounded-[24px] border border-white/10">
-      <div id="starInput" class="flex gap-2 text-4xl justify-center mb-4 select-none">
-        <span class="star" data-val="1">★</span><span class="star" data-val="2">★</span><span class="star" data-val="3">★</span><span class="star" data-val="4">★</span><span class="star" data-val="5">★</span>
-      </div>
-      <input id="cName" placeholder="سميتك" class="w-full p-3 rounded-xl text-black text-sm font-bold">
-      <textarea id="cMsg" placeholder="شنو رأيك؟" rows="3" class="w-full mt-3 p-3 rounded-xl text-black text-sm"></textarea>
-      <button id="btnPublish" class="w-full mt-4 bg-[#FFEB00] text-black py-3.5 rounded-xl font-black">نشر تعليق 🚀</button>
+    <h2 class="text-4xl md:text-6xl font-black leading-tight">أفضل المتاجر الرقمية<br><span class="text-[#FFEB00]">في المغرب</span></h2>
+    <p class="text-white/60 mt-5 max-w-[600px] mx-auto">اشتراكات أصلية، تفعيل فوري، دعم 24/7 - Netflix, Spotify, Canva, YouTube Premium و أكثر</p>
+    <div class="mt-8 flex gap-3 justify-center">
+      <a href="#products" class="bg-[#FFEB00] text-black px-8 py-3.5 rounded-full font-black">تصفح المنتجات</a>
+      <a href="https://wa.me/212600000000" class="bg-white/10 border border-white/20 px-8 py-3.5 rounded-full font-bold">تواصل واتساب</a>
     </div>
-    <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-10"><p class="text-white/40 text-center col-span-3">...كانجيبو التعليقات</p></div>
   </div>
 </section>
+
+<!-- PRODUCTS -->
+<section id="products" class="py-16 max-w-[1200px] mx-auto px-6">
+  <h3 class="font-black text-2xl mb-8 text-center">منتجاتنا الأكثر مبيعاً 🔥</h3>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="bg-white p-6 rounded-[24px] shadow-sm border text-center"><div class="text-4xl">🎬</div><h4 class="font-black mt-3">Netflix Premium</h4><p class="text-sm text-gray-500 mt-1">4K - حساب خاص</p><p class="font-black text-xl mt-3">99 MAD / شهر</p><a href="https://wa.me/212600000000" class="block mt-4 bg-black text-white py-3 rounded-xl font-bold">اطلب الآن</a></div>
+    <div class="bg-white p-6 rounded-[24px] shadow-sm border text-center"><div class="text-4xl">🎨</div><h4 class="font-black mt-3">Canva Pro</h4><p class="text-sm text-gray-500 mt-1">سنة كاملة - تفعيل رسمي</p><p class="font-black text-xl mt-3">149 MAD / سنة</p><a href="https://wa.me/212600000000" class="block mt-4 bg-black text-white py-3 rounded-xl font-bold">اطلب الآن</a></div>
+    <div class="bg-white p-6 rounded-[24px] shadow-sm border text-center"><div class="text-4xl">🎵</div><h4 class="font-black mt-3">Spotify Premium</h4><p class="text-sm text-gray-500 mt-1">بدون إعلانات</p><p class="font-black text-xl mt-3">29 MAD / شهر</p><a href="https://wa.me/212600000000" class="block mt-4 bg-black text-white py-3 rounded-xl font-bold">اطلب الآن</a></div>
+  </div>
+</section>
+
+<!-- REVIEWS - HADI LI KHADDAMNA -->
 <section id="reviews-section" class="bg-[#0A1931] py-16">
   <div class="max-w-[1200px] mx-auto px-6">
-    <h2 class="text-white font-black text-2xl text-center mb-2">آراء عملائنا ⭐</h2>
-    <p class="text-white/60 text-center text-sm mb-8">شوفو شنو كيقولو علينا زبائننا</p>
+    <h2 class="text-white font-black text-3xl text-center mb-2">آراء عملائنا ⭐</h2>
+    <p class="text-white/60 text-center text-sm mb-10">أكثر من 1500 عميل يثق بنا</p>
 
-    <div class="max-w-[600px] mx-auto bg-white/10 p-6 rounded-[24px] border border-white/10">
-      <div id="starInput" class="flex gap-2 text-4xl justify-center mb-4 cursor-pointer select-none">
+    <!-- FORM -->
+    <div class="max-w-[600px] mx-auto bg-white/10 backdrop-blur p-7 rounded-[28px] border border-white/10">
+      <div id="starInput" class="flex gap-2 text-4xl justify-center mb-6 cursor-pointer select-none">
         <span class="star" data-val="1">★</span>
         <span class="star" data-val="2">★</span>
         <span class="star" data-val="3">★</span>
         <span class="star" data-val="4">★</span>
         <span class="star" data-val="5">★</span>
       </div>
-      <input id="cName" placeholder="سميتك" class="w-full p-3.5 rounded-xl text-black text-sm font-bold outline-none">
-      <textarea id="cMsg" placeholder="شنو رأيك في المنتج؟" rows="3" class="w-full mt-3 p-3.5 rounded-xl text-black text-sm outline-none"></textarea>
-      <button id="btnPublish" class="w-full mt-4 bg-[#FFEB00] hover:bg-[#FFE000] text-black py-3.5 rounded-xl font-black transition">نشر تعليق 🚀</button>
+      <input id="cName" placeholder="الإسم ديالك" class="w-full p-4 rounded-xl text-black text-sm font-bold outline-none bg-white">
+      <textarea id="cMsg" placeholder="كتب رأيك هنا..." rows="4" class="w-full mt-3 p-4 rounded-xl text-black text-sm outline-none bg-white"></textarea>
+      <button id="btnPublish" class="w-full mt-4 bg-[#FFEB00] hover:bg-[#FFE000] text-black py-4 rounded-xl font-black transition text-[15px]">نشر تعليقي 🚀</button>
+      <p id="statusMsg" class="text-white/50 text-center text-xs mt-3"></p>
     </div>
 
-    <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-10">
-      <p class="text-white/40 text-center col-span-3">...كانجيبو التعليقات</p>
+    <!-- LIST -->
+    <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-12">
+      <p class="text-white/40 text-center col-span-3 py-10">...كانجيبو التعليقات</p>
     </div>
   </div>
 </section>
+
+<footer class="py-10 text-center text-gray-400 text-sm">© 2026 DIGITAL MAROC - جميع الحقوق محفوظة</footer>
 
 <script>
 const SB_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
@@ -61,13 +79,16 @@ function refreshStars(){
   document.querySelectorAll('#starInput.star').forEach(el=>{
     const v = parseInt(el.dataset.val);
     el.style.color = v <= selectedStars? "#FFEB00" : "#555";
-    el.style.textShadow = v <= selectedStars? "0 0 10px #FFEB00" : "none";
+    el.style.textShadow = v <= selectedStars? "0 0 12px #FFEB00" : "none";
   });
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
   document.querySelectorAll('#starInput.star').forEach(s=>{
-    s.onclick = ()=>{ selectedStars = parseInt(s.dataset.val); refreshStars(); };
+    s.addEventListener('click', ()=>{
+      selectedStars = parseInt(s.dataset.val);
+      refreshStars();
+    });
   });
   refreshStars();
   loadReviews();
@@ -77,40 +98,41 @@ async function loadReviews(){
   const box = document.getElementById('allComments');
   try{
     const res = await fetch(`${SB_URL}/rest/v1/reviews?select=*&order=created_at.desc`, {
-      headers: {
-        "apikey": SB_KEY,
-        "Authorization": `Bearer ${SB_KEY}`
-      }
+      headers: { "apikey": SB_KEY, "Authorization": `Bearer ${SB_KEY}` }
     });
+    if(!res.ok) throw new Error("fetch failed");
     const data = await res.json();
     if(!data.length){
-      box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق - كون نتا الأول! 👇</p>`;
+      box.innerHTML = `<p class="text-white/40 text-center col-span-3 py-10">مازال تا تعليق - كون نتا الأول! 👇</p>`;
       return;
     }
     box.innerHTML = "";
     data.forEach(c=>{
       box.innerHTML += `
-        <div class="bg-white rounded-[24px] p-6 border text-right shadow">
+        <div class="bg-white rounded-[24px] p-6 border text-right shadow-sm">
           <div class="flex justify-between items-center">
-            <span style="color:#FFEB00">${"★".repeat(c.stars)}</span>
+            <span style="color:#FFB800; font-size:18px">${"★".repeat(c.stars)}<span style="color:#ddd">${"★".repeat(5-c.stars)}</span></span>
             <p class="font-black text-[#0A1931] text-sm">${c.name}</p>
           </div>
-          <p class="text-[13px] mt-3 text-gray-700 leading-6">${c.comment}</p>
+          <p class="text-[13px] mt-3 text-gray-700 leading-7">${c.comment}</p>
+          <p class="text-[11px] text-gray-400 mt-3">${new Date(c.created_at).toLocaleDateString('ar-MA')}</p>
         </div>`;
     });
   }catch(e){
-    console.log(e);
-    box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق</p>`;
+    box.innerHTML = `<p class="text-white/40 text-center col-span-3 py-10">مازال تا تعليق - كون نتا الأول! 👇</p>`;
   }
 }
 
 document.getElementById('btnPublish').onclick = async ()=>{
-  const name = document.getElementById('cName').value.trim();
-  const comment = document.getElementById('cMsg').value.trim();
-  if(!name ||!comment) return alert('عمر سميتك و تعليق');
+  const nameEl = document.getElementById('cName');
+  const msgEl = document.getElementById('cMsg');
+  const status = document.getElementById('statusMsg');
+  const name = nameEl.value.trim();
+  const comment = msgEl.value.trim();
+  if(!name ||!comment){ alert('عمر سميتك و تعليق'); return; }
 
   const btn = document.getElementById('btnPublish');
-  btn.textContent = "جاري النشر..."; btn.disabled = true;
+  btn.textContent = "جاري النشر..."; btn.disabled = true; status.textContent = "";
 
   try{
     const res = await fetch(`${SB_URL}/rest/v1/reviews`, {
@@ -123,17 +145,22 @@ document.getElementById('btnPublish').onclick = async ()=>{
       },
       body: JSON.stringify({ name, comment, stars: selectedStars })
     });
-    if(!res.ok) throw new Error(await res.text());
-
-    document.getElementById('cName').value = "";
-    document.getElementById('cMsg').value = "";
-    selectedStars = 5; refreshStars();
+    if(!res.ok){
+      const txt = await res.text();
+      throw new Error(txt);
+    }
+    nameEl.value = ""; msgEl.value = ""; selectedStars = 5; refreshStars();
+    status.textContent = "✅ تم النشر بنجاح!";
     await loadReviews();
-    alert('تم النشر بنجاح! ✅');
+    setTimeout(()=> status.textContent="", 3000);
   }catch(e){
-    alert("Error: " + e.message);
+    alert("خطأ: " + e.message);
+    status.textContent = "❌ فشل النشر: " + e.message;
   }finally{
-    btn.textContent = "نشر تعليق 🚀"; btn.disabled = false;
+    btn.textContent = "نشر تعليقي 🚀"; btn.disabled = false;
   }
 };
 </script>
+
+</body>
+</html>
