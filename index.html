@@ -28,52 +28,83 @@
     <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-10"><p class="text-white/40 text-center col-span-3">...كانجيبو التعليقات</p></div>
   </div>
 </section>
+<section id="reviews-section" class="bg-[#0A1931] py-16">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 class="text-white font-black text-2xl text-center mb-2">آراء عملائنا ⭐</h2>
+    <p class="text-white/60 text-center text-sm mb-8">شوفو شنو كيقولو علينا زبائننا</p>
+
+    <div class="max-w-[600px] mx-auto bg-white/10 p-6 rounded-[24px] border border-white/10">
+      <div id="starInput" class="flex gap-2 text-4xl justify-center mb-4 cursor-pointer select-none">
+        <span class="star" data-val="1">★</span>
+        <span class="star" data-val="2">★</span>
+        <span class="star" data-val="3">★</span>
+        <span class="star" data-val="4">★</span>
+        <span class="star" data-val="5">★</span>
+      </div>
+      <input id="cName" placeholder="سميتك" class="w-full p-3.5 rounded-xl text-black text-sm font-bold outline-none">
+      <textarea id="cMsg" placeholder="شنو رأيك في المنتج؟" rows="3" class="w-full mt-3 p-3.5 rounded-xl text-black text-sm outline-none"></textarea>
+      <button id="btnPublish" class="w-full mt-4 bg-[#FFEB00] hover:bg-[#FFE000] text-black py-3.5 rounded-xl font-black transition">نشر تعليق 🚀</button>
+    </div>
+
+    <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-10">
+      <p class="text-white/40 text-center col-span-3">...كانجيبو التعليقات</p>
+    </div>
+  </div>
+</section>
 
 <script>
-// === CONFIG JDIDA SA7I7A - bla Authorization ===
 const SB_URL = "https://tonkzmlrdmhtekvqdjsjh.supabase.co";
-const SB_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f"; // clé dyalek jdida
+const SB_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
 
 let selectedStars = 5;
 function refreshStars(){
   document.querySelectorAll('#starInput.star').forEach(el=>{
     const v = parseInt(el.dataset.val);
     el.style.color = v <= selectedStars? "#FFEB00" : "#555";
-    el.style.textShadow = v <= selectedStars? "0 0 12px #FFEB00" : "none";
+    el.style.textShadow = v <= selectedStars? "0 0 10px #FFEB00" : "none";
   });
 }
-document.addEventListener('DOMContentLoaded',()=>{
+
+document.addEventListener('DOMContentLoaded', ()=>{
   document.querySelectorAll('#starInput.star').forEach(s=>{
-    s.addEventListener('click',()=>{ selectedStars = parseInt(s.dataset.val); refreshStars(); });
+    s.onclick = ()=>{ selectedStars = parseInt(s.dataset.val); refreshStars(); };
   });
-  refreshStars(); loadReviews();
+  refreshStars();
+  loadReviews();
 });
 
-// JIB TA3LI9AT - ghir apikey bla Authorization
 async function loadReviews(){
   const box = document.getElementById('allComments');
   try{
     const res = await fetch(`${SB_URL}/rest/v1/reviews?select=*&order=created_at.desc`, {
       headers: {
         "apikey": SB_KEY,
-        "Content-Type": "application/json"
+        "Authorization": `Bearer ${SB_KEY}`
       }
     });
-    if(!res.ok) throw new Error(res.status);
     const data = await res.json();
+    if(!data.length){
+      box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق - كون نتا الأول! 👇</p>`;
+      return;
+    }
     box.innerHTML = "";
-    if(!data.length){ box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق</p>`; return; }
     data.forEach(c=>{
-      box.innerHTML += `<div class="bg-white rounded-[24px] p-6 border text-right"><div class="flex justify-between"><span style="color:#FFEB00">${"★".repeat(c.stars)}</span><p class="font-black">${c.name}</p></div><p class="text-sm mt-3">${c.comment}</p></div>`;
+      box.innerHTML += `
+        <div class="bg-white rounded-[24px] p-6 border text-right shadow">
+          <div class="flex justify-between items-center">
+            <span style="color:#FFEB00">${"★".repeat(c.stars)}</span>
+            <p class="font-black text-[#0A1931] text-sm">${c.name}</p>
+          </div>
+          <p class="text-[13px] mt-3 text-gray-700 leading-6">${c.comment}</p>
+        </div>`;
     });
   }catch(e){
-    box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق - كون نتا الأول!</p>`;
-    console.log("load error", e);
+    console.log(e);
+    box.innerHTML = `<p class="text-white/40 text-center col-span-3">مازال تا تعليق</p>`;
   }
 }
 
-// SIFT TA3LI9 - ghir apikey bla Authorization
-document.getElementById('btnPublish').addEventListener('click', async ()=>{
+document.getElementById('btnPublish').onclick = async ()=>{
   const name = document.getElementById('cName').value.trim();
   const comment = document.getElementById('cMsg').value.trim();
   if(!name ||!comment) return alert('عمر سميتك و تعليق');
@@ -86,24 +117,23 @@ document.getElementById('btnPublish').addEventListener('click', async ()=>{
       method: "POST",
       headers: {
         "apikey": SB_KEY,
+        "Authorization": `Bearer ${SB_KEY}`,
         "Content-Type": "application/json",
         "Prefer": "return=minimal"
       },
       body: JSON.stringify({ name, comment, stars: selectedStars })
     });
-    if(!res.ok){
-      const txt = await res.text();
-      throw new Error(txt);
-    }
+    if(!res.ok) throw new Error(await res.text());
+
     document.getElementById('cName').value = "";
     document.getElementById('cMsg').value = "";
     selectedStars = 5; refreshStars();
     await loadReviews();
+    alert('تم النشر بنجاح! ✅');
   }catch(e){
     alert("Error: " + e.message);
-    console.error(e);
   }finally{
     btn.textContent = "نشر تعليق 🚀"; btn.disabled = false;
   }
-});
+};
 </script>
