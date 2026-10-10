@@ -179,5 +179,37 @@ document.getElementById('leadPopup').style.display='none';
 fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name,phone,age})});
 });
 </script>
+```html
+<script>
+(function(){
+  if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+    window.chatbase = (...args) => {
+      if(!window.chatbase.q) window.chatbase.q = [];
+      window.chatbase.q.push(args);
+    };
+    window.chatbase = new Proxy(window.chatbase, {
+      get(target, prop){
+        if(prop === "q") return target.q;
+        return (...args) => target(prop, ...args);
+      }
+    });
+  }
+
+  const onLoad = function(){
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "BCI1Dqkp1ypx-ejQ4twP6";
+    script.domain = "www.chatbase.co";
+    document.body.appendChild(script);
+  };
+
+  if(document.readyState === "complete"){
+    onLoad();
+  } else {
+    window.addEventListener("load", onLoad);
+  }
+})();
+</script>
+```
 </body>
 </html>
