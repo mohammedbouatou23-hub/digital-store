@@ -794,10 +794,12 @@ updateStars();
 /* =========================
    تسجيل مستخدم مجهول
 ========================= */
-
 async function initializeUser() {
   try {
-    const { data: sessionData } = await db.auth.getSession();
+    const { data: sessionData, error: sessionError } =
+      await db.auth.getSession();
+
+    if (sessionError) throw sessionError;
 
     if (sessionData.session?.user) {
       currentUserId = sessionData.session.user.id;
@@ -812,16 +814,11 @@ async function initializeUser() {
     return Boolean(currentUserId);
 
   } catch (error) {
-       console.error('loadReviews:', error);
-    box.replaceChildren();
-    addText(
-      box, 'p',
-      'ما قدرناش نحملو التعليقات والإعجابات. تأكد من إعدادات Supabase وحاول من بعد.',
-      'text-center col-span-3 py-8 text-red-500 text-sm'
-    );
+    console.error('initializeUser:', error);
+    return false;
   }
 }
-
+  
 /* Publish review */
 async function postComment() {
   const name = document.getElementById('cName').value.trim();
