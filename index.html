@@ -814,154 +814,136 @@ async function initializeUser() {
     return Boolean(currentUserId);
 
   } catch (error) {
-    console.error('خطأ في تسجيل المستخدم:', error);
-    alert(error.message);
-    return false;
+       console.error('loadReviews:', error);
+    box.replaceChildren();
+    addText(
+      box, 'p',
+      'ما قدرناش نحملو التعليقات والإعجابات. تأكد من إعدادات Supabase وحاول من بعد.',
+      'text-center col-span-3 py-8 text-red-500 text-sm'
+    );
   }
 }
 
+/* Publish review */
+async function postComment() {
+  const name = document.getElementById('cName').value.trim();
+  const comment = document.getElementById('cMsg').value.trim();
+  const button = document.getElementById('btnPublish');
 
-/* =========================
-   تحميل التعليقات والإعجابات
-========================= */
-
-async function loadReviews() {
-  const container = document.getElementById('allComments');
-
-  container.innerHTML = `
-    <p class="text-center text-slate-400">جاري تحميل التعليقات...</p>
-  `;
-
-  try {
-    const { data: reviewData, error: reviewError } = await db
-      .from('reviews')
-      .select('id,name,comment,stars,created_at,owner_id,admin_likes')
-      .order('created_at', { ascending: false });
-
-    if (reviewError) throw reviewError;
-
-    reviews = reviewData || [];
-
-    likeCounts = new Map();
-    likedReviewIds = new Set();
-
-    // الإعجابات الإدارية
-    for (const review of reviews) {
-      likeCounts.set(
-        review.id,
-        Math.max(0, Number(review.admin_likes) || 0)
-      );
-    }
-
-    if (currentUserId) {
-      const { data: userLikes, error: likesError } = await db
-        .from('review_likes')
-        .select('review_id')
-        .eq('user_id', currentUserId);
-
-      if (likesError) throw likesError;
-
-      for (const like of userLikes || []) {
-        likedReviewIds.add(like.review_id);
-      }
-    }
-
-    const { data: allLikes, error: allLikesError } = await db
-      .from('review_likes')
-      .select('review_id');
-
-    if (allLikesError) throw allLikesError;
-
-    // إضافة إعجابات المستخدمين إلى الإعجابات الإدارية
-    for (const like of allLikes || []) {
-      const oldCount = likeCounts.get(like.review_id) || 0;
-      likeCounts.set(like.review_id, oldCount + 1);
-    }
-
-    renderReviews();
-
-  } catch (error) {
-    console.error('خطأ في تحميل التعليقات:', error);
-
-    container.innerHTML = `
-      <p class="text-center text-red-400">
-        تعذر تحميل التعليقات. تحقق من إعدادات Supabase.
-      </p>
-    `;
-  }
-}
-
-
-/* =========================
-   عرض التعليقات
-========================= */
-
-function renderReviews() {
-  const container = document.getElementById('allComments');
-
-  if (!reviews.length) {
-    container.innerHTML = `
-      <p class="text-center text-slate-400">
-        لا توجد تعليقات بعد. كن أول من يشارك رأيه.
-      </p>
-    `;
+  if (name.length < 2 || name.length > 80 || !comment ||
+      comment.length > 1500 || !Number.isInteger(selectedStars) ||
+      selectedStars < 1 || selectedStars > 5) {
+    setStatus('دخل اسم صحيح وتعليق، واختار النجوم.', true);
     return;
   }
 
-  container.innerHTML = reviews.map(review => {
-    const stars = Math.max(1, Math.min(5, Number(review.stars) || 5));
-    const count = likeCounts.get(review.id) || 0;
-    const liked = likedReviewIds.has(review.id);
-    const isOwner = currentUserId &&
-      review.owner_id === currentUserId;
+  button.disabled = true;
+  button.textContent = 'جاري النشر...';
+  setStatus('');
 
-    const safeName = escapeHTML(review.name || 'مستخدم');
-    const safeComment = escapeHTML(review.comment || '');
+  try {
+    const user = await ensureAnonymousUser();
 
-    const date = review.created_at
-      ? new Date(review.created_at).toLocaleDateString('ar-MA')
-      : '';
+    const { error } = await db.from('reviews').insert({
+      name,
+      comment,
+      stars: selectedStars,
+      owner_id: user.id
+    });
 
-    return `
-      <article class="review-card">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <h3 class="font-bold">${safeName}</h3>
-            <p class="text-xs text-slate-400 mt-1">${date}</p>
-          </div>
+    if (error) throw error;
 
-          <div class="star" aria-label="${stars} من 5">
-            ${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}
-          </div>
-        </div>
+    document.getElementById('cName').value = '';
+    document.getElementById('cMsg').value = '';
+    setStars(5);
 
-        <p class="text-slate-200 leading-8 mt-4 whitespace-pre-wrap">${safeComment}</p>
-
-        <div class="flex items-center gap-3 mt-4">
-          <button
-            type="button"
-            class="outline-btn text-sm"
-            onclick="toggleLike('${review.id}')"
-            aria-pressed="${liked}"
-          >
-            ${liked ? '❤️' : '♡'} إعجاب (${count})
-          </button>
-
-          ${isOwner ? `
-            <button
-              type="button"
-              class="text-sm text-red-400"
-              onclick="deleteReview('${review.id}')"
-            >
-              حذف تعليقي
-            </button>
-          ` : ''}
-        </div>
-      </article>
-    `;
-  }).join('');
+    setStatus('تم نشر التعليق بنجاح.');
+    await loadReviews();
+  } catch (error) {
+    console.error('postComment:', error);
+    setStatus(
+      'تعذر نشر التعليق. تأكد من إعدادات الهوية المجهولة وسياسات RLS.',
+      true
+    );
+  } finally {
+    button.disabled = false;
+    button.textContent = 'نشر تعليقي 🚀';
+  }
 }
 
+/* Like / unlike */
+async function toggleLike(reviewId) {
+  if (busyLikes.has(reviewId)) return;
+
+  busyLikes.add(reviewId);
+  setStatus('');
+
+  try {
+    const user = await ensureAnonymousUser();
+
+    if (likedReviewIds.has(reviewId)) {
+      const { error } = await db
+        .from('review_likes')
+        .delete()
+        .eq('review_id', reviewId)
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+    } else {
+      const { error } = await db
+        .from('review_likes')
+        .insert({
+          review_id: reviewId,
+          user_id: user.id
+        });
+
+      /* Unique constraint also prevents duplicate likes */
+      if (error && error.code !== '23505') throw error;
+    }
+
+    await loadReviews();
+  } catch (error) {
+    console.error('toggleLike:', error);
+    setStatus('ما قدرناش نبدلو الإعجاب. تأكد من إعدادات Supabase.', true);
+  } finally {
+    busyLikes.delete(reviewId);
+  }
+}
+
+/* Delete only the current user's own review */
+async function deleteReview(reviewId) {
+  if (busyDeletes.has(reviewId)) return;
+
+  if (!confirm('واش متأكد بغيتي تحذف هاد التعليق؟')) return;
+
+  busyDeletes.add(reviewId);
+
+  try {
+    const user = await ensureAnonymousUser();
+
+    const { data, error } = await db
+      .from('reviews')
+      .delete()
+      .eq('id', reviewId)
+      .eq('owner_id', user.id)
+      .select('id');
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      setStatus('ما تحذفش التعليق. يمكن ماشي تابع لهاد الهوية.', true);
+      return;
+    }
+
+    setStatus('تم حذف التعليق.');
+    await loadReviews();
+  } catch (error) {
+    console.error('deleteReview:', error);
+    setStatus('تعذر حذف التعليق. حاول مرة أخرى.', true);
+  } finally {
+    busyDeletes.delete(reviewId);
+  }
+}
 
 /* =========================
    حماية النصوص من HTML
