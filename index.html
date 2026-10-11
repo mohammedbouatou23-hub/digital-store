@@ -1174,7 +1174,43 @@ leadForm.addEventListener('submit', async event => {
 /* =========================
    بدء الموقع
 ========================= */
+```js
+async function loadReviews() {
+  const box = document.getElementById('allComments');
 
+  try {
+    const { data, error } = await db
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    box.innerHTML = '';
+
+    if (!data || data.length === 0) {
+      box.textContent = 'ما كاين حتى تعليق دابا.';
+      return;
+    }
+
+    data.forEach(review => {
+      const item = document.createElement('div');
+      item.className = 'p-4 rounded-xl border';
+      const name = document.createElement('p');
+      name.textContent = review.name || 'زائر';
+      name.className = 'font-bold mb-2';
+
+      const comment = document.createElement('p');
+      comment.textContent = review.comment || '';
+
+      item.append(name, comment);
+      box.appendChild(item);
+    });
+  } catch (error) {
+    console.error('خطأ في تحميل التعليقات:', error);
+  }
+}
+```
 (async function startSite() {
   await initializeUser();
   await loadReviews();
