@@ -919,20 +919,28 @@ async function postComment() {
     document.getElementById('cMsg').value = '';
     setStars(5);
 
-    setStatus('تم نشر التعليق بنجاح.');
-    await loadReviews();
-  } catch (error) {
-    console.error('postComment:', error);
-    setStatus(
-      'تعذر نشر التعليق. تأكد من إعدادات الهوية المجهولة وسياسات RLS.',
-      true
-    );
-  } finally {
-    button.disabled = false;
-    button.textContent = 'نشر تعليقي 🚀';
-  }
-}
+  
+/* =========================
+   نشر التعليق
+========================= */
 
+async function postComment() {
+  const nameInput = document.getElementById('cName');
+  const commentInput = document.getElementById('cMsg');
+  const button = document.getElementById('btnPublish');
+
+  const name = nameInput.value.trim();
+  const comment = commentInput.value.trim();
+
+  if (
+    name.length
+    name.length < 2 ||
+    name.length > 80 ||
+    !comment ||
+    comment.length > 1500 ||
+    !Number.isInteger(selectedStars) ||
+    selectedStars < 1 ||
+    selectedStars > 5
 /* Like / unlike */
 async function toggleLike(reviewId) {
   if (busyLikes.has(reviewId)) return;
@@ -1021,145 +1029,315 @@ function escapeHTML(value) {
   })[char]);
 }
 
+/* =========================
+   إعدادات التعليقات
+========================= */
+
+let currentUserId = null;
+let reviews = [];
+const likedReviewIds = new Set();
+const busyLikes = new Set();
+const busyDeletes = new Set();
+
+/* تسجيل مستخدم مجهول */
+async function initializeUser() {
+  try {
+    const { data: sessionData, error: sessionError } =
+      await db.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    if (sessionData.session?.user) {
+      currentUserId = sessionData.session.user.id;
+      return true;
+    }
+
+    const { data, error } = await db.auth.signInAnonymously();
+    if (error) throw error;
+
+    currentUserId = data.user?.id || null;
+    return Boolean(currentUserId);
+  } catch (error) {
+    console.error('initializeUser:', error);
+    return false;
+  }
+}
+
+async function ensureAnonymousUser() {
+  if (currentUserId) {
+    const { data, error } = await db.auth.getSession();
+    if (!error && data.session?.user?.id) {
+      currentUserId = data.session.user.id;
+      return data.session.user;
+    }
+    currentUserId = null;
+  }
+
+  const initialized = await initializeUser();
+  if (!initialized) throw new Error('تعذر تسجيل المستخدم.');
+
+  const { data, error } = await db.auth.getUser();
+  if (error || !data.user) {
+    throw error || new Error('المستخدم غير موجود.');
+  }
+
+  currentUserId = data.user.id;
+  return data.user;
+}
+
+/* رسالة الحالة */
+function setStatus(message = '', isError = false) {
+  const status = document.getElementById('statusMsg');
+  if (!status) return;
+
+  status.textContent = message;
+  status.style.color = isError ? '#dc2626' : '#16a34a';
+}
+
+/* النجوم */
+function setStars(value) {
+  selectedStars = value;
+  if (typeof updateStars === 'function') {
+    updateStars();
+  }
+}
 
 /* =========================
    نشر تعليق
 ========================= */
 
-document.getElementById('btnPublish').addEventListener('click', async () => {
+async function postComment() {
   const nameInput = document.getElementById('cName');
   const commentInput = document.getElementById('cMsg');
-  const status = document.getElementById('statusMsg');
   const button = document.getElementById('btnPublish');
 
   const name = nameInput.value.trim();
   const comment = commentInput.value.trim();
 
-  if (!name || !comment) {
-    status.textContent = 'يرجى إدخال الاسم والتعليق.';
-    return;
-  }
-
-  if (comment.length > 1000) {
-    status.textContent = 'التعليق طويل جداً.';
+  if (
+    name.length < 2 ||
+    name.length > 80 ||
+    !comment ||
+    comment.length > 1500 ||
+    !Number.isInteger(selectedStars) ||
+    selectedStars < 1 ||
+    selectedStars > 5
+  ) {
+    setStatus('دخل اسم صحيح وتعليق، واختار النجوم.', true);
     return;
   }
 
   button.disabled = true;
-  status.textContent = 'جاري نشر التعليق...';
+  button.textContent = 'جاري النشر...';
+  setStatus('');
 
   try {
-    if (!currentUserId) {
-      const initialized = await initializeUser();
+    const user = await ensureAnonymousUser();
 
-      if (!initialized) {
-        throw new Error('تعذر تسجيل المستخدم.');
-      }
-    }
-
-    const { error } = await db
-      .from('reviews')
-      .insert({
-        name,
-        comment,
-        stars: selectedStars,
-        owner_id: currentUserId
-      });
+    const { error } = await db.from('reviews').insert({
+      name,
+      comment,
+      stars: selectedStars,
+      owner_id: user.id
+    });
 
     if (error) throw error;
 
     nameInput.value = '';
     commentInput.value = '';
-    selectedStars = 5;
-    updateStars();
+    setStars(5);
 
-    status.textContent = 'تم نشر التعليق بنجاح.';
+    setStatus('تم نشر التعليق بنجاح.');
     await loadReviews();
-
   } catch (error) {
-    console.error('خطأ في النشر:', error);
-    status.textContent = 'تعذر نشر التعليق. تحقق من إعدادات Supabase.';
+    console.error('postComment:', error);
+    setStatus('تعذر نشر التعليق. تحقق من إعدادات Supabase وRLS.', true);
   } finally {
     button.disabled = false;
+    button.textContent = 'نشر تعليقي 🚀';
   }
-});
+}
 
+/* ربط زر النشر مرة واحدة */
+document.getElementById('btnPublish')
+  ?.addEventListener('click', postComment);
 
 /* =========================
-   إضافة أو إزالة إعجاب
+   الإعجاب وإزالته
 ========================= */
 
 async function toggleLike(reviewId) {
-  if (!currentUserId) {
-    const initialized = await initializeUser();
+  if (busyLikes.has(reviewId)) return;
 
-    if (!initialized) {
-      alert('تعذر تسجيل المستخدم. حاول مرة أخرى.');
-      return;
-    }
-  }
+  busyLikes.add(reviewId);
 
   try {
+    const user = await ensureAnonymousUser();
+
     if (likedReviewIds.has(reviewId)) {
       const { error } = await db
         .from('review_likes')
         .delete()
         .eq('review_id', reviewId)
-        .eq('user_id', currentUserId);
+        .eq('user_id', user.id);
 
       if (error) throw error;
-
     } else {
       const { error } = await db
         .from('review_likes')
         .insert({
           review_id: reviewId,
-          user_id: currentUserId
+          user_id: user.id
         });
 
-      if (error) throw error;
+      if (error && error.code !== '23505') throw error;
     }
 
     await loadReviews();
-
   } catch (error) {
-    console.error('خطأ في الإعجاب:', error);
-    alert('تعذر تحديث الإعجاب.');
+    console.error('toggleLike:', error);
+    setStatus('تعذر تحديث الإعجاب. تحقق من سياسات RLS.', true);
+  } finally {
+    busyLikes.delete(reviewId);
   }
 }
-
 
 /* =========================
    حذف تعليق المستخدم
 ========================= */
 
 async function deleteReview(reviewId) {
-  const review = reviews.find(item => item.id === reviewId);
+  if (busyDeletes.has(reviewId)) return;
 
-  if (!review || review.owner_id !== currentUserId) {
-    alert('يمكنك حذف تعليقاتك فقط.');
+  const review = reviews.find(item => item.id === reviewId);
+  if (!review) return;
+
+  const user = await ensureAnonymousUser();
+
+  if (review.owner_id !== user.id) {
+    setStatus('يمكنك حذف تعليقاتك فقط.', true);
     return;
   }
 
-  if (!confirm('واش متأكد بغيتي تحذف التعليق؟')) return;
+  if (!confirm('واش متأكد بغيتي تحذف هاد التعليق؟')) return;
+
+  busyDeletes.add(reviewId);
 
   try {
-    const { error } = await db
+    const { data, error } = await db
       .from('reviews')
       .delete()
       .eq('id', reviewId)
-      .eq('owner_id', currentUserId);
+      .eq('owner_id', user.id)
+      .select('id');
 
     if (error) throw error;
 
-    await loadReviews();
+    if (!data || data.length === 0) {
+      setStatus('ما تحذفش التعليق. تحقق من سياسة RLS.', true);
+      return;
+    }
 
+    setStatus('تم حذف التعليق.');
+    await loadReviews();
   } catch (error) {
-    console.error('خطأ في حذف التعليق:', error);
-    alert('تعذر حذف التعليق.');
+    console.error('deleteReview:', error);
+    setStatus('تعذر حذف التعليق.', true);
+  } finally {
+    busyDeletes.delete(reviewId);
   }
 }
 
+/* =========================
+   عرض التعليقات
+========================= */
+
+async function loadReviews() {
+  const box = document.getElementById('allComments');
+  if (!box) return;
+
+  try {
+    const user = await ensureAnonymousUser();
+
+    const { data, error } = await db
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    reviews = data || [];
+    likedReviewIds.clear();
+
+    const { data: likes, error: likesError } = await db
+      .from('review_likes')
+      .select('review_id')
+      .eq('user_id', user.id);
+
+    if (likesError) throw likesError;
+
+    (likes || []).forEach(like => likedReviewIds.add(like.review_id));
+
+    box.replaceChildren();
+
+    if (reviews.length === 0) {
+      box.textContent = 'ما كاين حتى تعليق دابا.';
+      return;
+    }
+
+    reviews.slice(0, 3).forEach(review => {
+      const item = document.createElement('div');
+      item.className = 'p-4 rounded-xl border mb-3';
+
+      const name = document.createElement('p');
+      name.className = 'font-bold mb-2';
+      name.textContent = review.name || 'زائر';
+
+      const stars = document.createElement('p');
+      stars.className = 'mb-2';
+      stars.textContent = '⭐'.repeat(
+        Math.max(0, Math.min(5, Number(review.stars) || 0))
+      );
+
+      const comment = document.createElement('p');
+      comment.className = 'mb-3';
+      comment.textContent = review.comment || '';
+
+      const actions = document.createElement('div');
+      actions.className = 'flex gap-3 items-center';
+
+      const likeButton = document.createElement('button');
+      likeButton.type = 'button';
+      likeButton.textContent =
+        (likedReviewIds.has(review.id) ? '❤️' : '🤍') + ' إعجاب';
+      likeButton.addEventListener('click', () => toggleLike(review.id));
+
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.textContent = '🗑️ حذف';
+
+      if (review.owner_id === user.id) {
+        deleteButton.addEventListener('click', () => deleteReview(review.id));
+      } else {
+        deleteButton.disabled = true;
+        deleteButton.style.display = 'none';
+      }
+
+      actions.append(likeButton, deleteButton);
+      item.append(name, stars, comment, actions);
+      box.appendChild(item);
+    });
+  } catch (error) {
+    console.error('loadReviews:', error);
+    setStatus('تعذر تحميل التعليقات. تحقق من إعدادات Supabase.', true);
+  }
+}
+
+/* بدء التعليقات */
+(async function startReviews() {
+  const initialized = await initializeUser();
+  if (initialized) await loadReviews();
+})();
 
 /* =========================
    نافذة معلومات التواصل
@@ -1233,56 +1411,6 @@ leadForm.addEventListener('submit', async event => {
     button.disabled = false;
   }
 });
-
-
-/* Load reviews and likes */
-async function loadReviews() {
-  const box = document.getElementById('allComments');
-
-  if (!box) {
-    console.error('العنصر allComments غير موجود');
-    return;
-  }
-
-  try {
-    const { data, error } = await db
-      .from('reviews')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) throw error;
-
-    box.replaceChildren();
-
-    if (!data || data.length === 0) {
-      box.textContent = 'ما كاين حتى تعليق دابا.';
-      return;
-    }
-
-    data.forEach(review => {
-      const item = document.createElement('div');
-      item.className = 'p-4 rounded-xl border';
-
-      const name = document.createElement('p');
-      name.className = 'font-bold mb-2';
-      name.textContent = review.name || 'زائر';
-
-      const comment = document.createElement('p');
-      comment.textContent = review.comment || '';
-
-      item.append(name, comment);
-      box.appendChild(item);
-    });
-  } catch (error) {
-    console.error('خطأ في تحميل التعليقات:', error);
-  }
-}
-  
-(async function startSite() {
-  await initializeUser();
-  await loadReviews();
-})();
-
 
 /* =========================
    Chatbase
