@@ -168,17 +168,33 @@ document.addEventListener('DOMContentLoaded',()=>{
 function toggleLangMenu(){document.getElementById('langMenu').classList.toggle('hidden')}
 function setLang(l){localStorage.setItem('dm_lang',l);document.getElementById('langMainBtn').innerText=l.toUpperCase();document.getElementById('langMenu').classList.add('hidden');}
 function closePopup(){document.getElementById('leadPopup').style.display='none';localStorage.setItem('digital_maroc_closed','yes');}
-if(localStorage.getItem('digital_maroc_lead')==='yes' || localStorage.getItem('digital_maroc_closed')==='yes'){document.getElementById('leadPopup').style.display='none';} else {setTimeout(()=>{document.getElementById('leadPopup').style.display='flex';},15000);}
-document.getElementById('btnSave')?.addEventListener('click', ()=>{
-let name=document.getElementById('leadName').value.trim();
-let phone=document.getElementById('leadPhone').value.trim();
-let age=document.getElementById('leadAge').value;
-if(name.length<2||phone.length<10||!age){document.getElementById('formMsg').style.display='block';document.getElementById('formMsg').innerText='عمر المعلومات';return;}
-localStorage.setItem('digital_maroc_lead','yes');
-document.getElementById('leadPopup').style.display='none';
-fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name,phone,age})});
+```javascript
+document.getElementById('leadPopup').style.display = 'none';
+
+setTimeout(() => {
+  document.getElementById('leadPopup').style.display = 'flex';
+}, 5000);
+
+document.getElementById('btnSave')?.addEventListener('click', () => {
+  let name = document.getElementById('leadName').value.trim();
+  let phone = document.getElementById('leadPhone').value.trim();
+  let age = document.getElementById('leadAge').value;
+
+  if (name.length < 2 || phone.length < 10 || !age) {
+    document.getElementById('formMsg').style.display = 'block';
+    document.getElementById('formMsg').innerText = 'عمر المعلومات';
+    return;
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({ name, phone, age })
+  });
+
+  document.getElementById('leadPopup').style.display = 'none';
 });
-</script>
+```
 ```html
 <script>
 (function(){
