@@ -1171,12 +1171,14 @@ leadForm.addEventListener('submit', async event => {
 });
 
 
-/* =========================
-   بدء الموقع
-========================= */
 ```js
 async function loadReviews() {
   const box = document.getElementById('allComments');
+
+  if (!box) {
+    console.error('العنصر allComments غير موجود');
+    return;
+  }
 
   try {
     const { data, error } = await db
@@ -1186,7 +1188,7 @@ async function loadReviews() {
 
     if (error) throw error;
 
-    box.innerHTML = '';
+    box.replaceChildren();
 
     if (!data || data.length === 0) {
       box.textContent = 'ما كاين حتى تعليق دابا.';
@@ -1196,9 +1198,10 @@ async function loadReviews() {
     data.forEach(review => {
       const item = document.createElement('div');
       item.className = 'p-4 rounded-xl border';
+
       const name = document.createElement('p');
-      name.textContent = review.name || 'زائر';
       name.className = 'font-bold mb-2';
+      name.textContent = review.name || 'زائر';
 
       const comment = document.createElement('p');
       comment.textContent = review.comment || '';
