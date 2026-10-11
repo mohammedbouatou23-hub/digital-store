@@ -1,1209 +1,1219 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0A1931">
-<meta name="description" content="DIGITAL MAROC - منتجات رقمية وخدمات إعلانية للمشاريع المغربية">
-<title>DIGITAL MAROC™ | متجر رقمي مغربي</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A1931">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <title>DIGITAL MAROC | المنتجات الرقمية</title>
+  <meta name="description" content="اكتشف منتجات DIGITAL MAROC الرقمية وابدأ تطوير مشروعك الرقمي.">
 
-<style>
-body{font-family:'Tajawal',sans-serif}
-#leadPopup{display:none}
-#leadPopup input,#leadPopup select{box-sizing:border-box}
-button:disabled{opacity:.6;cursor:wait}
-.review-action{transition:background .2s}
-.review-action:disabled{cursor:wait}
-.lang-menu{z-index:10000}
-</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0A1931;
+      --navy-light: #10284A;
+      --gold: #F5C542;
+      --white: #FFFFFF;
+      --muted: #AAB7CA;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .gold-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 10px;
+      font-weight: 800;
+      transition: .2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .gold-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .outline-btn:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .section {
+      padding: 75px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.9;
+    }
+
+    .product-card {
+      background: #10213B;
+      border: 1px solid rgba(245, 197, 66, .18);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #172D4B;
+    }
+
+    .product-content {
+      padding: 22px;
+    }
+
+    .product-price {
+      color: var(--gold);
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .form-field {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #D5DCE5;
+      border-radius: 9px;
+      background: white;
+      color: #142033;
+      outline: none;
+    }
+
+    .form-field:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245, 197, 66, .18);
+    }
+
+    .review-card {
+      background: #10213B;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .star {
+      color: var(--gold);
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 55px 16px;
+      }
+
+      .product-image {
+        height: 190px;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900">
+<body>
 
-<!-- ANNOUNCEMENT -->
-<div class="bg-[#0A1931] text-white text-center py-2 px-4 text-sm">
-  🔒 DIGITAL MAROC - متجر المنتجات الرقمية
-</div>
+  <!-- رأس الموقع -->
+  <header class="sticky top-0 z-50 border-b border-white/10"
+          style="background:rgba(10,25,49,.96);backdrop-filter:blur(12px);">
 
-<!-- HEADER -->
-<header class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="logo-final.png" alt="DIGITAL MAROC" class="w-11 h-11 object-contain"
-           onerror="this.style.display='none'">
-      <span class="font-black text-lg leading-tight">
-        <span class="text-blue-900">DIGITAL</span>
-        <span class="text-amber-500">MAROC</span>
-      </span>
-    </a>
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
 
-    <div class="flex items-center gap-2">
-      <div class="relative">
-        <button id="langMainBtn" onclick="toggleLangMenu()"
-          class="border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold"
-          aria-label="Change language">AR ▾</button>
+      <a href="index.html" class="flex items-center gap-3">
+        <img
+          src="logo-final.png"
+          alt="DIGITAL MAROC"
+          class="w-11 h-11 rounded-full object-cover"
+        >
 
-        <div id="langMenu"
-          class="lang-menu hidden absolute left-0 top-full mt-2 bg-white shadow-xl rounded-xl border p-2 min-w-28">
-          <button onclick="setLang('ar')" class="block w-full text-right px-3 py-2 hover:bg-slate-100 rounded-lg">العربية</button>
-          <button onclick="setLang('fr')" class="block w-full text-right px-3 py-2 hover:bg-slate-100 rounded-lg">Français</button>
-          <button onclick="setLang('en')" class="block w-full text-right px-3 py-2 hover:bg-slate-100 rounded-lg">English</button>
-        </div>
-      </div>
-
-      <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-         class="bg-green-500 hover:bg-green-600 text-white rounded-xl px-3 py-2 text-sm font-bold">
-        WhatsApp
-      </a>
-    </div>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="bg-gradient-to-br from-[#0A1931] via-blue-950 to-blue-800 text-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-
-    <div>
-      <span data-i18n="heroBadge"
-        class="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm mb-5">
-        🚀 بوابتك نحو العالم الرقمي
-      </span>
-
-      <h1 data-i18n="heroTitle"
-        class="text-4xl md:text-6xl font-black leading-tight mb-6">
-        نحن لا نبيع ملفات. نحن نبيع مستقبل.
-      </h1>
-
-      <p data-i18n="heroDesc" class="text-blue-100 text-lg leading-8 mb-8">
-        منصة مغربية للمنتجات الرقمية وخدمات الفيديوهات الإعلانية لمساعدتك على تطوير مشروعك.
-      </p>
-
-      <a href="#products" data-i18n="heroCta"
-        class="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-black rounded-xl px-6 py-4">
-        اكتشف المنتجات ↓
-      </a>
-
-      <div class="flex flex-wrap gap-3 mt-8 text-sm">
-        <span data-i18n="badgeBooks" class="bg-white/10 rounded-full px-4 py-2">📚 منتجات رقمية</span>
-        <span data-i18n="badgeSupport" class="bg-white/10 rounded-full px-4 py-2">💬 دعم العملاء</span>
-        <span data-i18n="badgeVideo" class="bg-white/10 rounded-full px-4 py-2">🎬 خدمات الفيديو</span>
-      </div>
-    </div>
-
-    <div class="bg-white/10 border border-white/20 rounded-3xl p-5 md:p-8 shadow-2xl">
-      <div class="flex justify-between items-center mb-6">
         <div>
-          <p class="text-blue-200 text-sm">DIGITAL MAROC™</p>
-          <h2 class="text-2xl font-black">Dashboard</h2>
-        </div>
-        <span class="bg-amber-400 text-slate-950 rounded-lg px-3 py-1 font-black text-sm">PRO</span>
-      </div>
-
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-white rounded-2xl p-5 text-slate-900">
-          <div class="text-3xl mb-3">📚</div>
-          <p data-i18n="dashBooks" class="font-bold">كتب رقمية</p>
-          <span class="text-xs text-slate-500">PDF</span>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 text-slate-900">
-          <div class="text-3xl mb-3">🎬</div>
-          <p data-i18n="dashVideo" class="font-bold">إعلانات</p>
-          <span class="text-xs text-slate-500">VIDEO</span>
-        </div>
-
-        <div class="col-span-2 bg-amber-400 text-slate-950 rounded-2xl p-5">
-          <div class="flex items-center justify-between gap-3">
-            <div>
-              <p data-i18n="dashStore" class="font-black text-xl">متجر جاهز</p>
-              <p data-i18n="dashStoreDesc" class="text-sm mt-1">ابدأ مشروعك الرقمي</p>
-            </div>
-            <span class="text-4xl">🚀</span>
+          <div class="font-black text-lg tracking-wide">
+            DIGITAL <span class="gold">MAROC</span>
           </div>
+          <div class="text-xs text-slate-400">عالم المنتجات الرقمية</div>
         </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products" class="max-w-7xl mx-auto px-4 py-16 md:py-20">
-  <div class="text-center mb-10">
-    <h2 data-i18n="productsTitle" class="text-3xl md:text-4xl font-black mb-4">اكتشف منتجاتنا</h2>
-    <p data-i18n="productsDesc" class="text-slate-500">اختار المنتج المناسب لمشروعك.</p>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-6">
-
-    <article class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition">
-      <img src="book.header.jpg" alt="500 كتاب PLR"
-        class="w-full h-52 object-cover" loading="lazy">
-      <div class="p-6">
-        <h3 data-i18n="bookTitle" class="text-xl font-black mb-3">📚 500 كتاب PLR</h3>
-        <p data-i18n="bookDesc" class="text-slate-500 mb-5">مجموعة كتب رقمية لمشروعك.</p>
-        <div class="flex items-center justify-between gap-3">
-          <span class="text-2xl font-black text-blue-900">149 DH</span>
-          <a href="book.html" data-i18n="discover"
-            class="bg-[#0A1931] hover:bg-blue-900 text-white rounded-xl px-4 py-3 font-bold">اكتشف</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition">
-      <div class="relative">
-        <img src="pro.header.jpg" alt="VIDEO ADS PRO"
-          class="w-full h-52 object-cover" loading="lazy">
-        <span data-i18n="monthlyService"
-          class="absolute top-4 right-4 bg-amber-400 text-slate-950 rounded-lg px-3 py-2 text-xs font-black">
-          SERVICE MENSUEL
-        </span>
-      </div>
-      <div class="p-6">
-        <h3 data-i18n="videoTitle" class="text-xl font-black mb-3">🎬 VIDEO ADS PRO</h3>
-        <p data-i18n="videoDesc" class="text-slate-500 mb-5">خدمات الفيديوهات الإعلانية</p>
-        <div class="flex items-center justify-between gap-3">
-          <div>
-            <span class="text-2xl font-black text-blue-900">999 DH</span>
-            <span data-i18n="perMonth" class="block text-sm text-slate-500">شهرياً</span>
-          </div>
-          <a href="video-ads-pro.html" data-i18n="discover"
-            class="bg-[#0A1931] hover:bg-blue-900 text-white rounded-xl px-4 py-3 font-bold">اكتشف</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition">
-      <img src="pro.header.jpg" alt="المتجر الجاهز PRO"
-        class="w-full h-52 object-cover" loading="lazy">
-      <div class="p-6">
-        <h3 data-i18n="storeTitle" class="text-xl font-black mb-3">🚀 المتجر الجاهز PRO</h3>
-        <p data-i18n="storeDesc" class="text-slate-500 mb-5">حل للانطلاق في التجارة الرقمية.</p>
-        <div class="flex items-center justify-between gap-3">
-          <span class="text-2xl font-black text-blue-900">299 DH</span>
-          <a href="pro.html" data-i18n="discover"
-            class="bg-[#0A1931] hover:bg-blue-900 text-white rounded-xl px-4 py-3 font-bold">اكتشف</a>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="bg-[#0A1931] text-white">
-  <div class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
-
-    <div>
-      <p data-i18n="aboutLabel" class="text-amber-400 font-bold mb-3">من نحن؟</p>
-      <h2 data-i18n="aboutTitle" class="text-3xl md:text-4xl font-black mb-6">
-        قصة DIGITAL MAROC™
-      </h2>
-      <p data-i18n="aboutDesc" class="text-blue-100 leading-8 mb-7">
-        DIGITAL MAROC منصة مغربية تهدف إلى توفير المنتجات الرقمية والخدمات الإعلانية لمساعدة أصحاب المشاريع على تطوير أعمالهم في العالم الرقمي.
-      </p>
-      <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-        data-i18n="contactUs"
-        class="inline-block bg-green-500 hover:bg-green-600 text-white rounded-xl px-6 py-3 font-bold">
-        تواصل معنا عبر WhatsApp
       </a>
-    </div>
 
-    <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-      <video controls preload="metadata" poster="pro.header.jpg" class="w-full">
-        <source src="digital-maroc-story.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la vidéo.
-      </video>
-    </div>
+      <div class="flex items-center gap-2">
 
-  </div>
-</section>
+        <!-- زر اللغة يبقى ظاهراً -->
+        <div class="relative">
+          <button
+            id="langMainBtn"
+            type="button"
+            class="border border-yellow-400 text-yellow-400 rounded-lg px-3 py-2 font-bold"
+          >
+            AR
+          </button>
 
-<!-- REVIEWS -->
-<section id="reviews-section" class="max-w-4xl mx-auto px-4 py-16">
-  <div class="text-center mb-10">
-    <h2 data-i18n="reviewsTitle" class="text-3xl md:text-4xl font-black mb-3">آراء العملاء ⭐</h2>
-    <p data-i18n="reviewsDesc" class="text-slate-500">شارك تجربتك مع DIGITAL MAROC</p>
-  </div>
+          <div
+            id="langMenu"
+            class="hidden absolute left-0 mt-2 w-28 rounded-lg overflow-hidden shadow-xl"
+            style="background:#10213B;border:1px solid rgba(245,197,66,.3);"
+          >
+            <button type="button" onclick="setLang('ar')"
+              class="block w-full text-right px-4 py-3 hover:bg-white/10">
+              العربية
+            </button>
 
-  <!-- REVIEW FORM -->
-  <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 md:p-8 mb-8">
-    <h3 data-i18n="writeReview" class="text-xl font-black mb-4">شاركنا رأيك</h3>
+            <button type="button" onclick="setLang('fr')"
+              class="block w-full text-right px-4 py-3 hover:bg-white/10">
+              Français
+            </button>
 
-    <div class="mb-5">
-      <label data-i18n="ratingLabel" class="block font-bold mb-2">التقييم</label>
-      <div id="starInput" class="flex gap-2 text-3xl" aria-label="Rating">
-        <button type="button" data-star="1" aria-label="1 star">★</button>
-        <button type="button" data-star="2" aria-label="2 stars">★</button>
-        <button type="button" data-star="3" aria-label="3 stars">★</button>
-        <button type="button" data-star="4" aria-label="4 stars">★</button>
-        <button type="button" data-star="5" aria-label="5 stars">★</button>
+            <button type="button" onclick="setLang('en')"
+              class="block w-full text-right px-4 py-3 hover:bg-white/10">
+              English
+            </button>
+          </div>
+        </div>
+
+        <a
+          href="https://wa.me/212719380106"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="gold-btn text-sm"
+        >
+          واتساب
+        </a>
       </div>
     </div>
+  </header>
 
-    <form id="reviewForm" class="space-y-4">
-      <div>
-        <label for="cName" data-i18n="nameLabel" class="block font-bold mb-2">الاسم</label>
-        <input id="cName" maxlength="80" required
-          data-i18n-placeholder="namePlaceholder"
-          placeholder="اكتب اسمك"
-          class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-500">
+
+  <!-- الواجهة الرئيسية -->
+  <main>
+
+    <section class="section">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+        <div>
+          <div class="inline-flex items-center gap-2 border border-yellow-400/30
+                      rounded-full px-4 py-2 text-sm mb-6">
+            <span class="gold">✦</span>
+            <span>مرحباً بك في DIGITAL MAROC</span>
+          </div>
+
+          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
+            نحن لا نبيع ملفات.
+            <span class="gold">نحن نبيع مستقبلاً.</span>
+          </h1>
+
+          <p class="text-slate-300 text-lg leading-9 mb-8">
+            اكتشف منتجات رقمية تساعدك على تطوير مهاراتك،
+            وتنظيم عملك، والانطلاق في مشاريعك الرقمية.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <a href="#products" class="gold-btn">
+              اكتشف المنتجات
+              <span>←</span>
+            </a>
+
+            <a
+              href="https://wa.me/212719380106"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="outline-btn"
+            >
+              تواصل معنا
+            </a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 mt-10">
+            <div class="border-r-2 border-yellow-400 pr-3">
+              <div class="gold text-2xl font-black">500+</div>
+              <div class="text-sm text-slate-400">كتاب رقمي</div>
+            </div>
+
+            <div class="border-r-2 border-yellow-400 pr-3">
+              <div class="gold text-2xl font-black">PRO</div>
+              <div class="text-sm text-slate-400">منتجات احترافية</div>
+            </div>
+
+            <div class="border-r-2 border-yellow-400 pr-3">
+              <div class="gold text-2xl font-black">24/7</div>
+              <div class="text-sm text-slate-400">تواصل رقمي</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl p-5 md:p-8"
+             style="background:linear-gradient(145deg,#142B4B,#091426);
+                    border:1px solid rgba(245,197,66,.25);">
+
+          <div class="flex justify-between items-center mb-6">
+            <span class="font-bold">لوحة المنتجات الرقمية</span>
+            <span class="gold">● متاح</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+
+            <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
+              <div class="text-3xl mb-3">📚</div>
+              <div class="font-bold mb-1">الكتب الرقمية</div>
+              <div class="text-sm text-slate-400">مكتبة متنوعة</div>
+            </div>
+
+            <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
+              <div class="text-3xl mb-3">🎬</div>
+              <div class="font-bold mb-1">الإعلانات</div>
+              <div class="text-sm text-slate-400">محتوى تسويقي</div>
+            </div>
+
+            <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
+              <div class="text-3xl mb-3">🛍️</div>
+              <div class="font-bold mb-1">المتاجر</div>
+              <div class="text-sm text-slate-400">حلول رقمية</div>
+            </div>
+
+            <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
+              <div class="text-3xl mb-3">🚀</div>
+              <div class="font-bold mb-1">تطوير المشاريع</div>
+              <div class="text-sm text-slate-400">انطلق بفكرتك</div>
+            </div>
+
+          </div>
+
+          <div class="mt-5 rounded-xl p-4 flex items-center justify-between"
+               style="background:rgba(245,197,66,.1);">
+            <span class="text-sm">ابدأ رحلتك الرقمية اليوم</span>
+            <span class="gold text-xl">✦</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- المنتجات -->
+    <section id="products" class="section"
+             style="background:#081426;">
+
+      <div class="max-w-7xl mx-auto">
+
+        <h2 class="section-title">
+          منتجاتنا <span class="gold">الرقمية</span>
+        </h2>
+
+        <p class="section-subtitle">
+          اختر المنتج المناسب لك واكتشف تفاصيله.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <!-- المنتج الأول -->
+          <article class="product-card">
+            <img
+              src="book.header.jpg"
+              alt="مجموعة الكتب الرقمية"
+              class="product-image"
+              loading="lazy"
+            >
+
+            <div class="product-content">
+              <div class="text-sm gold font-bold mb-3">مكتبة رقمية</div>
+
+              <h3 class="text-xl font-black mb-3">
+                500 كتاب رقمي PLR
+              </h3>
+
+              <p class="text-slate-400 leading-7 mb-5">
+                مجموعة من الكتب الرقمية في مجالات متنوعة
+                للاستفادة منها وتطوير معارفك.
+              </p>
+
+              <div class="flex items-center justify-between gap-3">
+                <span class="product-price">149 DH</span>
+
+                <a href="book.html" class="gold-btn">
+                  اكتشف المنتج
+                </a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- المنتج الثاني -->
+          <article class="product-card">
+            <img
+              src="pro.header.jpg"
+              alt="خدمة VIDEO ADS PRO"
+              class="product-image"
+              loading="lazy"
+            >
+
+            <div class="product-content">
+              <div class="text-sm gold font-bold mb-3">حلول إعلانية</div>
+
+              <h3 class="text-xl font-black mb-3">
+                VIDEO ADS PRO
+              </h3>
+
+              <p class="text-slate-400 leading-7 mb-5">
+                خدمة مخصصة لمساعدتك على الاستفادة
+                من محتوى الفيديو في التسويق الرقمي.
+              </p>
+
+              <div class="flex items-center justify-between gap-3">
+                <span class="product-price">999 DH/شهر</span>
+
+                <a href="video-ads-pro.html" class="gold-btn">
+                  اكتشف المنتج
+                </a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- المنتج الثالث -->
+          <article class="product-card">
+            <img
+              src="pro.header.jpg"
+              alt="متجر رقمي جاهز"
+              class="product-image"
+              loading="lazy"
+            >
+
+            <div class="product-content">
+              <div class="text-sm gold font-bold mb-3">مشروع رقمي</div>
+
+              <h3 class="text-xl font-black mb-3">
+                متجر جاهز PRO
+              </h3>
+
+              <p class="text-slate-400 leading-7 mb-5">
+                حل رقمي جاهز لمساعدتك على الانطلاق
+                في مشروعك الخاص.
+              </p>
+
+              <div class="flex items-center justify-between gap-3">
+                <span class="product-price">299 DH</span>
+
+                <a href="pro.html" class="gold-btn">
+                  اكتشف المنتج
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- من نحن -->
+    <section id="about" class="section">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black mb-6">
+            لماذا <span class="gold">DIGITAL MAROC؟</span>
+          </h2>
+
+          <p class="text-slate-300 leading-9 mb-5">
+            نهدف إلى توفير منتجات رقمية تساعدك على اكتشاف
+            فرص جديدة وتطوير مهاراتك ومشاريعك.
+          </p>
+
+          <div class="space-y-4 mb-7">
+            <div class="flex items-start gap-3">
+              <span class="gold text-xl">✓</span>
+              <span>منتجات رقمية في مجالات مختلفة.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="gold text-xl">✓</span>
+              <span>معلومات واضحة حول المنتجات والأسعار.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="gold text-xl">✓</span>
+              <span>إمكانية التواصل معنا عبر واتساب.</span>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/212719380106"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gold-btn"
+          >
+            تواصل معنا عبر واتساب
+          </a>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <video
+            class="w-full block"
+            controls
+            preload="metadata"
+            poster="pro.header.jpg"
+          >
+            <source src="digital-maroc-story.mp4" type="video/mp4">
+            المتصفح ديالك لا يدعم تشغيل الفيديو.
+          </video>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- آراء العملاء -->
+    <section id="reviews" class="section"
+             style="background:#081426;">
+
+      <div class="max-w-4xl mx-auto">
+
+        <h2 class="section-title">
+          آراء <span class="gold">العملاء</span>
+        </h2>
+
+        <p class="section-subtitle">
+          شارك تجربتك مع منتجات DIGITAL MAROC.
+        </p>
+
+        <div class="rounded-2xl p-6 md:p-8 mb-8"
+             style="background:#10213B;border:1px solid rgba(245,197,66,.2);">
+
+          <h3 class="text-xl font-bold mb-5">أضف تعليقك</h3>
+
+          <label for="cName" class="block mb-2">الاسم</label>
+          <input
+            id="cName"
+            type="text"
+            maxlength="60"
+            class="form-field mb-5"
+            placeholder="أدخل اسمك"
+          >
+
+          <label class="block mb-2">التقييم</label>
+
+          <div id="starSelector"
+               class="flex gap-2 text-3xl mb-5"
+               aria-label="اختيار التقييم">
+
+            <button type="button" class="star" data-star="1" aria-label="نجمة واحدة">★</button>
+            <button type="button" class="star" data-star="2" aria-label="نجمتان">★</button>
+            <button type="button" class="star" data-star="3" aria-label="ثلاث نجوم">★</button>
+            <button type="button" class="star" data-star="4" aria-label="أربع نجوم">★</button>
+            <button type="button" class="star" data-star="5" aria-label="خمس نجوم">★</button>
+
+          </div>
+
+          <label for="cMsg" class="block mb-2">التعليق</label>
+
+          <textarea
+            id="cMsg"
+            rows="4"
+            maxlength="1000"
+            class="form-field mb-5"
+            placeholder="اكتب تعليقك هنا..."
+          ></textarea>
+
+          <button id="btnPublish" type="button" class="gold-btn">
+            نشر التعليق
+          </button>
+
+          <p id="statusMsg" class="text-sm mt-4" aria-live="polite"></p>
+        </div>
+
+        <div id="allComments" class="space-y-4">
+          <p class="text-center text-slate-400">
+            جاري تحميل التعليقات...
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- تذييل الموقع -->
+  <footer class="border-t border-white/10 px-5 py-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row
+                items-center justify-between gap-5">
+
+      <div class="font-black text-lg">
+        DIGITAL <span class="gold">MAROC</span>
       </div>
 
-      <div>
-        <label for="cMsg" data-i18n="commentLabel" class="block font-bold mb-2">التعليق</label>
-        <textarea id="cMsg" rows="4" maxlength="2000" required
-          data-i18n-placeholder="commentPlaceholder"
-          placeholder="اكتب تجربتك هنا..."
-          class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-500"></textarea>
+      <div class="flex flex-wrap justify-center gap-5 text-sm text-slate-300">
+        <a href="terms.html" class="hover:text-yellow-400">
+          شروط الاستخدام
+        </a>
+
+        <a href="privacy.html" class="hover:text-yellow-400">
+          سياسة الخصوصية
+        </a>
+
+        <a
+          href="https://wa.me/212719380106"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-yellow-400"
+        >
+          اتصل بنا
+        </a>
       </div>
 
-      <button id="btnPublish" type="submit" data-i18n="publish"
-        class="bg-[#0A1931] hover:bg-blue-900 text-white rounded-xl px-6 py-3 font-bold">
-        نشر تعليقي 🚀
-      </button>
-
-      <p id="statusMsg" class="text-sm" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-
-  <!-- COMMENTS -->
-  <div id="allComments" class="space-y-4">
-    <p data-i18n="loadingComments" class="text-center text-slate-500 py-6">جاري تحميل التعليقات...</p>
-  </div>
-
-  <div id="showMoreWrap" class="text-center mt-6 hidden">
-    <button id="showMoreBtn" type="button" data-i18n="showMore"
-      class="bg-white border border-slate-200 hover:bg-slate-100 rounded-xl px-6 py-3 font-bold">
-      عرض المزيد من التعليقات
-    </button>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-slate-950 text-slate-300">
-  <div class="max-w-7xl mx-auto px-4 py-10">
-    <div class="flex flex-col md:flex-row justify-between gap-6">
-      <div>
-        <p class="text-white text-xl font-black">DIGITAL MAROC™</p>
-        <p data-i18n="footerDesc" class="text-sm mt-2">منتجات رقمية وخدمات للمشاريع المغربية.</p>
-      </div>
-
-      <div class="flex flex-wrap gap-4 text-sm">
-        <a href="terms.html" data-i18n="terms" class="hover:text-white">الشروط والأحكام</a>
-        <a href="privacy.html" data-i18n="privacy" class="hover:text-white">سياسة الخصوصية</a>
-        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-          class="hover:text-white">WhatsApp</a>
-      </div>
-    </div>
-
-    <p class="border-t border-white/10 mt-8 pt-6 text-xs text-center">
-      © <span id="currentYear"></span> DIGITAL MAROC™.
-      <span data-i18n="rights">جميع الحقوق محفوظة.</span>
-    </p>
-  </div>
-</footer>
-
-<!-- LEAD POPUP -->
-<div id="leadPopup" class="fixed inset-0 bg-black/80 z-[99999] items-center justify-center p-4">
-  <div class="bg-white rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
-    <button id="btnClosePopup" type="button"
-      class="absolute top-3 left-4 text-2xl text-slate-400 hover:text-slate-900"
-      aria-label="Close">&times;</button>
-
-    <div class="text-center pt-4">
-      <div class="text-4xl mb-3">🚀</div>
-      <h2 data-i18n="popupTitle" class="text-2xl font-black mb-3">مرحباً بك في DIGITAL MAROC</h2>
-      <p data-i18n="popupDesc" class="text-slate-500 text-sm leading-7 mb-5">
-        أدخل معلوماتك للمتابعة إلى المتجر.
+      <p class="text-sm text-slate-500">
+        © DIGITAL MAROC
       </p>
+
     </div>
+  </footer>
 
-    <form id="leadForm" class="space-y-3">
-      <input id="leadName" maxlength="100" required
-        data-i18n-placeholder="leadNamePlaceholder"
-        placeholder="الاسم الكامل"
-        class="w-full border rounded-xl px-4 py-3">
 
-      <input id="leadPhone" type="tel" maxlength="30" required
-        data-i18n-placeholder="leadPhonePlaceholder"
-        placeholder="رقم الهاتف"
-        class="w-full border rounded-xl px-4 py-3">
+  <!-- نافذة جمع معلومات التواصل -->
+  <div
+    id="leadPopup"
+    style="position:fixed;inset:0;background:rgba(0,0,0,.85);
+           z-index:999999;display:none;justify-content:center;
+           align-items:center;padding:16px;"
+  >
 
-      <select id="leadAge" required class="w-full border rounded-xl px-4 py-3">
-        <option value="" data-i18n="chooseAge">اختر الفئة العمرية</option>
-        <option value="18-24">18–24</option>
-        <option value="25-34">25–34</option>
-        <option value="35-44">35–44</option>
-        <option value="45+">45+</option>
-      </select>
+    <div
+      style="background:#fff;color:#142033;padding:25px;
+             border-radius:15px;width:100%;max-width:360px;
+             text-align:center;max-height:90vh;overflow-y:auto;"
+    >
 
-      <button id="btnSave" type="submit" data-i18n="enterStore"
-        class="w-full bg-[#0A1931] hover:bg-blue-900 text-white rounded-xl py-3 font-bold">
-        دخول للمتجر
-      </button>
+      <h3 id="popTitle" class="text-2xl font-black mb-3">
+        مرحباً بك في DIGITAL MAROC
+      </h3>
 
-      <p id="formMsg" class="text-sm text-center" role="status" aria-live="polite"></p>
-
-      <p data-i18n="privacyNote" class="text-xs text-slate-400 text-center">
-        تُستخدم المعلومات للتواصل معك بخصوص خدماتنا.
+      <p class="text-sm text-slate-600 mb-5">
+        أدخل معلوماتك للتواصل معك حول منتجاتنا.
       </p>
 
-      <button id="btnSkipPopup" type="button" data-i18n="skipPopup"
-        class="w-full text-slate-500 text-sm py-2">المتابعة بدون تسجيل</button>
-    </form>
+      <form id="leadForm">
+
+        <input
+          id="leadName"
+          name="name"
+          type="text"
+          maxlength="80"
+          class="form-field mb-3"
+          placeholder="الاسم"
+          autocomplete="name"
+          required
+        >
+
+        <input
+          id="leadPhone"
+          name="phone"
+          type="tel"
+          maxlength="20"
+          class="form-field mb-3"
+          placeholder="رقم الهاتف"
+          autocomplete="tel"
+          required
+        >
+
+        <select
+          id="leadAge"
+          name="age"
+          class="form-field mb-4"
+          required
+        >
+          <option value="">اختر الفئة العمرية</option>
+          <option value="18-24">18–24 سنة</option>
+          <option value="25-34">25–34 سنة</option>
+          <option value="35-44">35–44 سنة</option>
+          <option value="45+">45 سنة فما فوق</option>
+        </select>
+
+        <button
+          id="btnSave"
+          type="submit"
+          class="gold-btn w-full mb-3"
+        >
+          إرسال المعلومات
+        </button>
+
+        <button
+          id="btnSkipPopup"
+          type="button"
+          class="w-full py-2 text-slate-500"
+        >
+          تخطي
+        </button>
+
+        <p id="formMsg" class="text-sm mt-3" aria-live="polite"></p>
+
+      </form>
+    </div>
   </div>
-</div>
+
+  <!-- الجزء الثاني يبدأ هنا: JavaScript وSupabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 /* =========================
-   DIGITAL MAROC — CONFIG
+   إعدادات Supabase
 ========================= */
 
-const SB_URL = "https://tonkzmlrdmhtekvqdsjh.supabase.co";
-const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbmt6bWxyZG1odGVrdnFkc2poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NTQxNDUsImV4cCI6MjEwNzEzMDE0NX0.6qgDEOgCRSyviwoZeRW_vueTNSztUsy2LIDif0pH7eM";
+const SUPABASE_URL = 'https://tonkzmlrdmhtekvqdsjh.supabase.co';
 
-const db = window.supabase.createClient(SB_URL, SB_KEY, {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: false
-  }
-});
+const SUPABASE_ANON_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbmt6bWxyZG1odGVrdnNkamhfTk9UX1JFQUxfS0VZX0VYQU1QTEU';
+
+const GOOGLE_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec';
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
 let selectedStars = 5;
-let currentUser = null;
-let allReviews = [];
-let likedReviewIds = new Set();
+let currentUserId = null;
+let reviews = [];
 let likeCounts = new Map();
-let busyLikes = new Set();
-let busyDeletes = new Set();
+let likedReviewIds = new Set();
 
-const REVIEWS_PER_PAGE = 4;
-let visibleReviewsCount = REVIEWS_PER_PAGE;
-let currentLang = "ar";
 
 /* =========================
-   TRANSLATIONS
+   زر اللغة
+   المحتوى يبقى بالعربية
 ========================= */
 
-const translations = {
-  ar: {
-    heroBadge: "🚀 بوابتك نحو العالم الرقمي",
-    heroTitle: "نحن لا نبيع ملفات. نحن نبيع مستقبل.",
-    heroDesc: "منصة مغربية للمنتجات الرقمية وخدمات الفيديوهات الإعلانية لمساعدتك على تطوير مشروعك.",
-    heroCta: "اكتشف المنتجات ↓",
-    badgeBooks: "📚 منتجات رقمية",
-    badgeSupport: "💬 دعم العملاء",
-    badgeVideo: "🎬 خدمات الفيديو",
-    dashBooks: "كتب رقمية",
-    dashVideo: "إعلانات",
-    dashStore: "متجر جاهز",
-    dashStoreDesc: "ابدأ مشروعك الرقمي",
-    productsTitle: "اكتشف منتجاتنا",
-    productsDesc: "اختار المنتج المناسب لمشروعك.",
-    bookTitle: "📚 500 كتاب PLR",
-    bookDesc: "مجموعة كتب رقمية لمشروعك.",
-    videoTitle: "🎬 VIDEO ADS PRO",
-    videoDesc: "خدمات الفيديوهات الإعلانية",
-    storeTitle: "🚀 المتجر الجاهز PRO",
-    storeDesc: "حل للانطلاق في التجارة الرقمية.",
-    discover: "اكتشف",
-    monthlyService: "خدمة شهرية",
-    perMonth: "شهرياً",
-    aboutLabel: "من نحن؟",
-    aboutTitle: "قصة DIGITAL MAROC™",
-    aboutDesc: "DIGITAL MAROC منصة مغربية تهدف إلى توفير المنتجات الرقمية والخدمات الإعلانية لمساعدة أصحاب المشاريع على تطوير أعمالهم في العالم الرقمي.",
-    contactUs: "تواصل معنا عبر WhatsApp",
-    reviewsTitle: "آراء العملاء ⭐",
-    reviewsDesc: "شارك تجربتك مع DIGITAL MAROC",
-    writeReview: "شاركنا رأيك",
-    ratingLabel: "التقييم",
-    nameLabel: "الاسم",
-    namePlaceholder: "اكتب اسمك",
-    commentLabel: "التعليق",
-    commentPlaceholder: "اكتب تجربتك هنا...",
-    publish: "نشر تعليقي 🚀",
-    loadingComments: "جاري تحميل التعليقات...",
-    showMore: "عرض المزيد من التعليقات",
-    showLess: "لا توجد تعليقات إضافية",
-    noReviews: "لا توجد تعليقات بعد. كن أول من يشارك رأيه!",
-    footerDesc: "منتجات رقمية وخدمات للمشاريع المغربية.",
-    terms: "الشروط والأحكام",
-    privacy: "سياسة الخصوصية",
-    rights: "جميع الحقوق محفوظة.",
-    popupTitle: "مرحباً بك في DIGITAL MAROC",
-    popupDesc: "أدخل معلوماتك للمتابعة إلى المتجر.",
-    leadNamePlaceholder: "الاسم الكامل",
-    leadPhonePlaceholder: "رقم الهاتف",
-    chooseAge: "اختر الفئة العمرية",
-    enterStore: "دخول للمتجر",
-    privacyNote: "تُستخدم المعلومات للتواصل معك بخصوص خدماتنا.",
-    skipPopup: "المتابعة بدون تسجيل",
-    like: "إعجاب",
-    unlike: "إلغاء الإعجاب",
-    delete: "حذف",
-    confirmDelete: "واش متأكد أنك باغي تحذف هاد التعليق؟",
-    nameRequired: "المرجو إدخال الاسم والتعليق.",
-    commentPublished: "تم نشر تعليقك بنجاح.",
-    commentError: "تعذر نشر التعليق. تحقق من الاتصال والصلاحيات.",
-    authError: "تعذر الاتصال بنظام التعليقات. حاول مرة أخرى.",
-    deleteError: "تعذر حذف التعليق.",
-    deleteSuccess: "تم حذف التعليق.",
-    popupSuccess: "تم إرسال المعلومات.",
-    popupError: "تعذر إرسال المعلومات. حاول مرة أخرى.",
-    sending: "جارٍ الإرسال...",
-    deleting: "جارٍ الحذف...",
-    dateLocale: "ar-MA",
-    videoFallback: "المتصفح ديالك ما كيدعمش تشغيل الفيديو."
-  },
+const langMainBtn = document.getElementById('langMainBtn');
+const langMenu = document.getElementById('langMenu');
 
-  fr: {
-    heroBadge: "🚀 Votre porte vers le monde numérique",
-    heroTitle: "Nous ne vendons pas des fichiers. Nous vendons l'avenir.",
-    heroDesc: "Une plateforme marocaine de produits numériques et de services vidéo publicitaires pour développer votre projet.",
-    heroCta: "Découvrir les produits ↓",
-    badgeBooks: "📚 Produits numériques",
-    badgeSupport: "💬 Assistance client",
-    badgeVideo: "🎬 Services vidéo",
-    dashBooks: "Livres numériques",
-    dashVideo: "Publicités",
-    dashStore: "Boutique prête",
-    dashStoreDesc: "Lancez votre projet numérique",
-    productsTitle: "Découvrez nos produits",
-    productsDesc: "Choisissez le produit adapté à votre projet.",
-    bookTitle: "📚 500 livres PLR",
-    bookDesc: "Une collection de livres numériques pour votre projet.",
-    videoTitle: "🎬 VIDEO ADS PRO",
-    videoDesc: "Services de vidéos publicitaires",
-    storeTitle: "🚀 Boutique prête PRO",
-    storeDesc: "Une solution pour démarrer dans le commerce numérique.",
-    discover: "Découvrir",
-    monthlyService: "Service mensuel",
-    perMonth: "par mois",
-    aboutLabel: "Qui sommes-nous ?",
-    aboutTitle: "L'histoire de DIGITAL MAROC™",
-    aboutDesc: "DIGITAL MAROC est une plateforme marocaine qui propose des produits numériques et des services publicitaires pour aider les entrepreneurs à développer leurs activités en ligne.",
-    contactUs: "Contactez-nous sur WhatsApp",
-    reviewsTitle: "Avis des clients ⭐",
-    reviewsDesc: "Partagez votre expérience avec DIGITAL MAROC",
-    writeReview: "Donnez votre avis",
-    ratingLabel: "Note",
-    nameLabel: "Nom",
-    namePlaceholder: "Saisissez votre nom",
-    commentLabel: "Commentaire",
-    commentPlaceholder: "Écrivez votre expérience ici...",
-    publish: "Publier mon avis 🚀",
-    loadingComments: "Chargement des commentaires...",
-    showMore: "Afficher plus de commentaires",
-    showLess: "Aucun autre commentaire",
-    noReviews: "Aucun commentaire pour le moment. Soyez le premier à donner votre avis !",
-    footerDesc: "Produits numériques et services pour les projets marocains.",
-    terms: "Conditions générales",
-    privacy: "Politique de confidentialité",
-    rights: "Tous droits réservés.",
-    popupTitle: "Bienvenue chez DIGITAL MAROC",
-    popupDesc: "Saisissez vos informations pour continuer vers la boutique.",
-    leadNamePlaceholder: "Nom complet",
-    leadPhonePlaceholder: "Numéro de téléphone",
-    chooseAge: "Choisissez votre tranche d'âge",
-    enterStore: "Accéder à la boutique",
-    privacyNote: "Ces informations servent à vous contacter au sujet de nos services.",
-    skipPopup: "Continuer sans inscription",
-    like: "J'aime",
-    unlike: "Je n'aime plus",
-    delete: "Supprimer",
-    confirmDelete: "Voulez-vous vraiment supprimer ce commentaire ?",
-    nameRequired: "Veuillez saisir votre nom et votre commentaire.",
-    commentPublished: "Votre commentaire a été publié.",
-    commentError: "Publication impossible. Vérifiez votre connexion et vos autorisations.",
-    authError: "Connexion au système de commentaires impossible. Réessayez.",
-    deleteError: "Impossible de supprimer ce commentaire.",
-    deleteSuccess: "Commentaire supprimé.",
-    popupSuccess: "Informations envoyées.",
-    popupError: "Envoi impossible. Veuillez réessayer.",
-    sending: "Envoi en cours...",
-    deleting: "Suppression...",
-    dateLocale: "fr-FR",
-    videoFallback: "Votre navigateur ne prend pas en charge la vidéo."
-  },
-
-  en: {
-    heroBadge: "🚀 Your gateway to the digital world",
-    heroTitle: "We don't sell files. We sell the future.",
-    heroDesc: "A Moroccan platform for digital products and video advertising services to help grow your business.",
-    heroCta: "Explore products ↓",
-    badgeBooks: "📚 Digital products",
-    badgeSupport: "💬 Customer support",
-    badgeVideo: "🎬 Video services",
-    dashBooks: "Digital books",
-    dashVideo: "Ads",
-    dashStore: "Ready-made store",
-    dashStoreDesc: "Start your digital business",
-    productsTitle: "Explore our products",
-    productsDesc: "Choose the product that suits your project.",
-    bookTitle: "📚 500 PLR Books",
-    bookDesc: "A collection of digital books for your project.",
-    videoTitle: "🎬 VIDEO ADS PRO",
-    videoDesc: "Video advertising services",
-    storeTitle: "🚀 PRO Ready-Made Store",
-    storeDesc: "A solution to get started in digital commerce.",
-    discover: "Explore",
-    monthlyService: "Monthly service",
-    perMonth: "per month",
-    aboutLabel: "About us",
-    aboutTitle: "The DIGITAL MAROC™ story",
-    aboutDesc: "DIGITAL MAROC is a Moroccan platform offering digital products and advertising services to help entrepreneurs grow their businesses online.",
-    contactUs: "Contact us on WhatsApp",
-    reviewsTitle: "Customer reviews ⭐",
-    reviewsDesc: "Share your experience with DIGITAL MAROC",
-    writeReview: "Write a review",
-    ratingLabel: "Rating",
-    nameLabel: "Name",
-    namePlaceholder: "Enter your name",
-    commentLabel: "Comment",
-    commentPlaceholder: "Write your experience here...",
-    publish: "Publish my review 🚀",
-    loadingComments: "Loading comments...",
-    showMore: "Show more comments",
-    showLess: "No more comments",
-    noReviews: "No comments yet. Be the first to share your opinion!",
-    footerDesc: "Digital products and services for Moroccan businesses.",
-    terms: "Terms and conditions",
-    privacy: "Privacy policy",
-    rights: "All rights reserved.",
-    popupTitle: "Welcome to DIGITAL MAROC",
-    popupDesc: "Enter your information to continue to the store.",
-    leadNamePlaceholder: "Full name",
-    leadPhonePlaceholder: "Phone number",
-    chooseAge: "Choose your age group",
-    enterStore: "Enter the store",
-    privacyNote: "Your information is used to contact you about our services.",
-    skipPopup: "Continue without registering",
-    like: "Like",
-    unlike: "Unlike",
-    delete: "Delete",
-    confirmDelete: "Are you sure you want to delete this comment?",
-    nameRequired: "Please enter your name and comment.",
-    commentPublished: "Your comment has been published.",
-    commentError: "Could not publish the comment. Check your connection and permissions.",
-    authError: "Could not connect to the comments service. Please try again.",
-    deleteError: "Could not delete the comment.",
-    deleteSuccess: "Comment deleted.",
-    popupSuccess: "Information submitted.",
-    popupError: "Could not submit your information. Please try again.",
-    sending: "Sending...",
-    deleting: "Deleting...",
-    dateLocale: "en-GB",
-    videoFallback: "Your browser does not support video playback."
-  }
-};
-
-function t(key) {
-  return translations[currentLang]?.[key] || translations.ar[key] || key;
-}
-
-function applyLanguage(language) {
-  currentLang = translations[language] ? language : "ar";
-
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-
-  document.getElementById("langMainBtn").textContent =
-    currentLang.toUpperCase() + " ▾";
-
-  document.querySelectorAll("[data-i18n]").forEach(element => {
-    const key = element.dataset.i18n;
-    if (t(key)) element.textContent = t(key);
-  });
-
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
-    const key = element.dataset.i18nPlaceholder;
-    if (t(key)) element.placeholder = t(key);
-  });
-
-  document.getElementById("langMenu").classList.add("hidden");
-
-  try {
-    localStorage.setItem("dm_lang", currentLang);
-  } catch (error) {
-    console.warn("Language preference could not be saved.");
-  }
-
-  renderReviews();
-}
-
-function toggleLangMenu() {
-  document.getElementById("langMenu").classList.toggle("hidden");
-}
+langMainBtn.addEventListener('click', () => {
+  langMenu.classList.toggle('hidden');
+});
 
 function setLang(language) {
-  applyLanguage(language);
+  if (!['ar', 'fr', 'en'].includes(language)) return;
+
+  localStorage.setItem('dm_lang', language);
+  langMainBtn.textContent = language.toUpperCase();
+  langMenu.classList.add('hidden');
 }
 
-/* Close language menu when clicking outside */
-document.addEventListener("click", event => {
-  const menu = document.getElementById("langMenu");
-  const button = document.getElementById("langMainBtn");
+setLang(localStorage.getItem('dm_lang') || 'ar');
 
-  if (!menu.contains(event.target) && !button.contains(event.target)) {
-    menu.classList.add("hidden");
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('#langMainBtn') &&
+      !event.target.closest('#langMenu')) {
+    langMenu.classList.add('hidden');
   }
 });
 
+
 /* =========================
-   STARS AND STATUS
+   اختيار النجوم
 ========================= */
 
-function setStars(number) {
-  selectedStars = number;
-
-  document.querySelectorAll("#starInput [data-star]").forEach(button => {
-    const starNumber = Number(button.dataset.star);
-    button.textContent = starNumber <= number ? "★" : "☆";
-    button.style.color = starNumber <= number ? "#f59e0b" : "#cbd5e1";
-    button.setAttribute("aria-pressed", starNumber <= number ? "true" : "false");
-  });
-}
-
-document.querySelectorAll("#starInput [data-star]").forEach(button => {
-  button.addEventListener("click", () => {
-    setStars(Number(button.dataset.star));
+document.querySelectorAll('[data-star]').forEach(button => {
+  button.addEventListener('click', () => {
+    selectedStars = Number(button.dataset.star);
+    updateStars();
   });
 });
 
-function setStatus(message, error = false) {
-  const element = document.getElementById("statusMsg");
-  element.textContent = message;
-  element.className = "text-sm " + (error ? "text-red-600" : "text-green-600");
+function updateStars() {
+  document.querySelectorAll('[data-star]').forEach(button => {
+    const active = Number(button.dataset.star) <= selectedStars;
+
+    button.style.color = active ? '#F5C542' : '#9CA3AF';
+  });
 }
 
-function addText(parent, tag, text, className = "") {
-  const element = document.createElement(tag);
-  element.textContent = text;
-  if (className) element.className = className;
-  parent.appendChild(element);
-  return element;
-}
+updateStars();
+
 
 /* =========================
-   SUPABASE AUTH
+   تسجيل مستخدم مجهول
 ========================= */
 
-async function ensureAnonymousUser() {
-  const { data, error } = await db.auth.getSession();
+async function initializeUser() {
+  try {
+    const { data: sessionData } = await db.auth.getSession();
 
-  if (error) throw error;
+    if (sessionData.session?.user) {
+      currentUserId = sessionData.session.user.id;
+      return true;
+    }
 
-  if (data.session?.user) {
-    currentUser = data.session.user;
-    return currentUser;
+    const { data, error } = await db.auth.signInAnonymously();
+
+    if (error) throw error;
+
+    currentUserId = data.user?.id || null;
+    return Boolean(currentUserId);
+
+  } catch (error) {
+    console.error('تعذر تسجيل المستخدم:', error);
+    return false;
   }
-
-  const result = await db.auth.signInAnonymously();
-
-  if (result.error) throw result.error;
-
-  currentUser = result.data.user;
-  return currentUser;
 }
 
+
 /* =========================
-   LOAD REVIEWS AND LIKES
+   تحميل التعليقات والإعجابات
 ========================= */
 
 async function loadReviews() {
-  const container = document.getElementById("allComments");
+  const container = document.getElementById('allComments');
 
-  container.replaceChildren();
-  addText(container, "p", t("loadingComments"),
-    "text-center text-slate-500 py-6");
+  container.innerHTML = `
+    <p class="text-center text-slate-400">جاري تحميل التعليقات...</p>
+  `;
 
   try {
-    await ensureAnonymousUser();
+    const { data: reviewData, error: reviewError } = await db
+      .from('reviews')
+      .select('id,name,comment,stars,created_at,owner_id,admin_likes')
+      .order('created_at', { ascending: false });
 
-    /*
-      admin_likes is included so administrative likes
-      are counted together with ordinary user likes.
-    */
-    const { data: reviews, error: reviewsError } = await db
-      .from("reviews")
-      .select("id,name,comment,stars,created_at,owner_id,admin_likes")
-      .order("created_at", { ascending: false });
+    if (reviewError) throw reviewError;
 
-    if (reviewsError) throw reviewsError;
+    reviews = reviewData || [];
 
-    const { data: likes, error: likesError } = await db
-      .from("review_likes")
-      .select("review_id,user_id");
-
-    if (likesError) throw likesError;
-
-    allReviews = reviews || [];
-    likedReviewIds = new Set();
     likeCounts = new Map();
+    likedReviewIds = new Set();
 
-    (likes || []).forEach(like => {
-      const reviewId = like.review_id;
-      likeCounts.set(reviewId, (likeCounts.get(reviewId) || 0) + 1);
+    // الإعجابات الإدارية
+    for (const review of reviews) {
+      likeCounts.set(
+        review.id,
+        Math.max(0, Number(review.admin_likes) || 0)
+      );
+    }
 
-      if (like.user_id === currentUser?.id) {
-        likedReviewIds.add(reviewId);
+    if (currentUserId) {
+      const { data: userLikes, error: likesError } = await db
+        .from('review_likes')
+        .select('review_id')
+        .eq('user_id', currentUserId);
+
+      if (likesError) throw likesError;
+
+      for (const like of userLikes || []) {
+        likedReviewIds.add(like.review_id);
       }
-    });
+    }
+
+    const { data: allLikes, error: allLikesError } = await db
+      .from('review_likes')
+      .select('review_id');
+
+    if (allLikesError) throw allLikesError;
+
+    // إضافة إعجابات المستخدمين إلى الإعجابات الإدارية
+    for (const like of allLikes || []) {
+      const oldCount = likeCounts.get(like.review_id) || 0;
+      likeCounts.set(like.review_id, oldCount + 1);
+    }
 
     renderReviews();
 
   } catch (error) {
-    console.error("Could not load reviews:", error);
+    console.error('خطأ في تحميل التعليقات:', error);
 
-    container.replaceChildren();
-
-    addText(
-      container,
-      "p",
-      t("authError"),
-      "text-center text-red-600 py-6"
-    );
+    container.innerHTML = `
+      <p class="text-center text-red-400">
+        تعذر تحميل التعليقات. تحقق من إعدادات Supabase.
+      </p>
+    `;
   }
 }
 
+
 /* =========================
-   RENDER REVIEWS
+   عرض التعليقات
 ========================= */
 
 function renderReviews() {
-  const container = document.getElementById("allComments");
-  const showMoreWrap = document.getElementById("showMoreWrap");
-  const showMoreBtn = document.getElementById("showMoreBtn");
+  const container = document.getElementById('allComments');
 
-  if (!container) return;
-
-  container.replaceChildren();
-
-  if (allReviews.length === 0) {
-    addText(
-      container,
-      "p",
-      t("noReviews"),
-      "text-center text-slate-500 py-6"
-    );
-
-    showMoreWrap.classList.add("hidden");
+  if (!reviews.length) {
+    container.innerHTML = `
+      <p class="text-center text-slate-400">
+        لا توجد تعليقات بعد. كن أول من يشارك رأيه.
+      </p>
+    `;
     return;
   }
 
-  const reviewsToShow = allReviews.slice(0, visibleReviewsCount);
+  container.innerHTML = reviews.map(review => {
+    const stars = Math.max(1, Math.min(5, Number(review.stars) || 5));
+    const count = likeCounts.get(review.id) || 0;
+    const liked = likedReviewIds.has(review.id);
+    const isOwner = currentUserId &&
+      review.owner_id === currentUserId;
 
-  reviewsToShow.forEach(review => {
-    const card = document.createElement("article");
-    card.className =
-      "bg-white border border-slate-200 rounded-2xl p-5 shadow-sm";
+    const safeName = escapeHTML(review.name || 'مستخدم');
+    const safeComment = escapeHTML(review.comment || '');
 
-    const top = document.createElement("div");
-    top.className =
-      "flex flex-wrap items-start justify-between gap-3 mb-3";
+    const date = review.created_at
+      ? new Date(review.created_at).toLocaleDateString('ar-MA')
+      : '';
 
-    const authorInfo = document.createElement("div");
+    return `
+      <article class="review-card">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 class="font-bold">${safeName}</h3>
+            <p class="text-xs text-slate-400 mt-1">${date}</p>
+          </div>
 
-    addText(
-      authorInfo,
-      "h3",
-      review.name || "Anonymous",
-      "font-black text-slate-900"
-    );
+          <div class="star" aria-label="${stars} من 5">
+            ${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}
+          </div>
+        </div>
 
-    const stars = document.createElement("div");
-    stars.className = "text-amber-500 text-lg";
-    stars.textContent = "★".repeat(
-      Math.max(0, Math.min(5, Number(review.stars) || 0))
-    ) + "☆".repeat(
-      5 - Math.max(0, Math.min(5, Number(review.stars) || 0))
-    );
+        <p class="text-slate-200 leading-8 mt-4 whitespace-pre-wrap">${safeComment}</p>
 
-    stars.setAttribute("aria-label", `${review.stars || 0}/5`);
-    authorInfo.appendChild(stars);
-    top.appendChild(authorInfo);
+        <div class="flex items-center gap-3 mt-4">
+          <button
+            type="button"
+            class="outline-btn text-sm"
+            onclick="toggleLike('${review.id}')"
+            aria-pressed="${liked}"
+          >
+            ${liked ? '❤️' : '♡'} إعجاب (${count})
+          </button>
 
-    const date = document.createElement("time");
-    date.className = "text-xs text-slate-400";
-
-    if (review.created_at) {
-      const dateValue = new Date(review.created_at);
-
-      if (!Number.isNaN(dateValue.getTime())) {
-        date.dateTime = dateValue.toISOString();
-        date.textContent = dateValue.toLocaleDateString(
-          t("dateLocale"),
-          { year: "numeric", month: "short", day: "numeric" }
-        );
-      }
-    }
-
-    top.appendChild(date);
-    card.appendChild(top);
-
-    addText(
-      card,
-      "p",
-      review.comment || "",
-      "text-slate-700 leading-7 whitespace-pre-wrap break-words"
-    );
-
-    const actions = document.createElement("div");
-    actions.className = "flex flex-wrap items-center gap-3 mt-4";
-
-    const alreadyLiked = likedReviewIds.has(review.id);
-    const userLikes = likeCounts.get(review.id) || 0;
-    const adminLikes = Math.max(0, Number(review.admin_likes) || 0);
-    const totalLikes = userLikes + adminLikes;
-
-    const likeButton = document.createElement("button");
-    likeButton.type = "button";
-    likeButton.className =
-      "review-action rounded-xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50";
-
-    likeButton.textContent =
-      `${alreadyLiked ? "❤️" : "🤍"} ${alreadyLiked ? t("unlike") : t("like")} (${totalLikes})`;
-
-    likeButton.disabled = busyLikes.has(review.id);
-    likeButton.addEventListener("click", () => toggleLike(review.id));
-
-    actions.appendChild(likeButton);
-
-    if (currentUser && review.owner_id === currentUser.id) {
-      const deleteButton = document.createElement("button");
-      deleteButton.type = "button";
-      deleteButton.className =
-        "review-action rounded-xl border border-red-200 text-red-600 px-4 py-2 text-sm font-bold hover:bg-red-50";
-
-      deleteButton.textContent = t("delete");
-      deleteButton.disabled = busyDeletes.has(review.id);
-      deleteButton.addEventListener("click", () => deleteReview(review.id));
-
-      actions.appendChild(deleteButton);
-    }
-
-    card.appendChild(actions);
-    container.appendChild(card);
-  });
-
-  if (allReviews.length > visibleReviewsCount) {
-    showMoreWrap.classList.remove("hidden");
-    showMoreBtn.disabled = false;
-    showMoreBtn.textContent = t("showMore");
-  } else {
-    showMoreWrap.classList.add("hidden");
-  }
+          ${isOwner ? `
+            <button
+              type="button"
+              class="text-sm text-red-400"
+              onclick="deleteReview('${review.id}')"
+            >
+              حذف تعليقي
+            </button>
+          ` : ''}
+        </div>
+      </article>
+    `;
+  }).join('');
 }
 
-/* Show the next 4 comments */
-document.getElementById("showMoreBtn").addEventListener("click", () => {
-  visibleReviewsCount += REVIEWS_PER_PAGE;
-  renderReviews();
-});
 
 /* =========================
-   PUBLISH A REVIEW
+   حماية النصوص من HTML
 ========================= */
 
-document.getElementById("reviewForm").addEventListener("submit", async event => {
-  event.preventDefault();
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  })[char]);
+}
 
-  const nameInput = document.getElementById("cName");
-  const commentInput = document.getElementById("cMsg");
-  const publishButton = document.getElementById("btnPublish");
+
+/* =========================
+   نشر تعليق
+========================= */
+
+document.getElementById('btnPublish').addEventListener('click', async () => {
+  const nameInput = document.getElementById('cName');
+  const commentInput = document.getElementById('cMsg');
+  const status = document.getElementById('statusMsg');
+  const button = document.getElementById('btnPublish');
 
   const name = nameInput.value.trim();
   const comment = commentInput.value.trim();
 
   if (!name || !comment) {
-    setStatus(t("nameRequired"), true);
+    status.textContent = 'يرجى إدخال الاسم والتعليق.';
     return;
   }
 
-  publishButton.disabled = true;
+  if (comment.length > 1000) {
+    status.textContent = 'التعليق طويل جداً.';
+    return;
+  }
+
+  button.disabled = true;
+  status.textContent = 'جاري نشر التعليق...';
 
   try {
-    const user = await ensureAnonymousUser();
+    if (!currentUserId) {
+      const initialized = await initializeUser();
+
+      if (!initialized) {
+        throw new Error('تعذر تسجيل المستخدم.');
+      }
+    }
 
     const { error } = await db
-      .from("reviews")
+      .from('reviews')
       .insert({
         name,
         comment,
         stars: selectedStars,
-        owner_id: user.id
+        owner_id: currentUserId
       });
 
     if (error) throw error;
 
-    document.getElementById("reviewForm").reset();
-    setStars(5);
-    visibleReviewsCount = Math.max(visibleReviewsCount, REVIEWS_PER_PAGE);
+    nameInput.value = '';
+    commentInput.value = '';
+    selectedStars = 5;
+    updateStars();
 
-    setStatus(t("commentPublished"));
+    status.textContent = 'تم نشر التعليق بنجاح.';
     await loadReviews();
 
   } catch (error) {
-    console.error("Could not publish review:", error);
-    setStatus(t("commentError"), true);
+    console.error('خطأ في النشر:', error);
+    status.textContent = 'تعذر نشر التعليق. تحقق من إعدادات Supabase.';
   } finally {
-    publishButton.disabled = false;
+    button.disabled = false;
   }
 });
 
+
 /* =========================
-   LIKE / UNLIKE
+   إضافة أو إزالة إعجاب
 ========================= */
 
 async function toggleLike(reviewId) {
-  if (busyLikes.has(reviewId)) return;
+  if (!currentUserId) {
+    const initialized = await initializeUser();
 
-  busyLikes.add(reviewId);
-  renderReviews();
+    if (!initialized) {
+      alert('تعذر تسجيل المستخدم. حاول مرة أخرى.');
+      return;
+    }
+  }
 
   try {
-    const user = await ensureAnonymousUser();
-    const alreadyLiked = likedReviewIds.has(reviewId);
-
-    if (alreadyLiked) {
+    if (likedReviewIds.has(reviewId)) {
       const { error } = await db
-        .from("review_likes")
+        .from('review_likes')
         .delete()
-        .eq("review_id", reviewId)
-        .eq("user_id", user.id);
+        .eq('review_id', reviewId)
+        .eq('user_id', currentUserId);
 
       if (error) throw error;
 
-      likedReviewIds.delete(reviewId);
-
     } else {
       const { error } = await db
-        .from("review_likes")
+        .from('review_likes')
         .insert({
           review_id: reviewId,
-          user_id: user.id
+          user_id: currentUserId
         });
 
-      if (error && error.code !== "23505") throw error;
+      if (error) throw error;
     }
 
     await loadReviews();
 
   } catch (error) {
-    console.error("Could not update like:", error);
-    alert(t("authError"));
-  } finally {
-    busyLikes.delete(reviewId);
-    renderReviews();
+    console.error('خطأ في الإعجاب:', error);
+    alert('تعذر تحديث الإعجاب.');
   }
 }
 
+
 /* =========================
-   DELETE OWN REVIEW
+   حذف تعليق المستخدم
 ========================= */
 
 async function deleteReview(reviewId) {
-  if (busyDeletes.has(reviewId)) return;
-  if (!confirm(t("confirmDelete"))) return;
+  const review = reviews.find(item => item.id === reviewId);
 
-  busyDeletes.add(reviewId);
-  renderReviews();
+  if (!review || review.owner_id !== currentUserId) {
+    alert('يمكنك حذف تعليقاتك فقط.');
+    return;
+  }
+
+  if (!confirm('واش متأكد بغيتي تحذف التعليق؟')) return;
 
   try {
-    const user = await ensureAnonymousUser();
-
-    const { data, error } = await db
-      .from("reviews")
+    const { error } = await db
+      .from('reviews')
       .delete()
-      .eq("id", reviewId)
-      .eq("owner_id", user.id)
-      .select("id");
+      .eq('id', reviewId)
+      .eq('owner_id', currentUserId);
 
     if (error) throw error;
 
-    if (!data || data.length === 0) {
-      throw new Error("No review deleted. Check the RLS policy.");
-    }
-
-    allReviews = allReviews.filter(review => review.id !== reviewId);
-
-    alert(t("deleteSuccess"));
-    renderReviews();
+    await loadReviews();
 
   } catch (error) {
-    console.error("Could not delete review:", error);
-    alert(t("deleteError"));
-  } finally {
-    busyDeletes.delete(reviewId);
-    renderReviews();
+    console.error('خطأ في حذف التعليق:', error);
+    alert('تعذر حذف التعليق.');
   }
 }
+
 
 /* =========================
-   LEAD POPUP
+   نافذة معلومات التواصل
 ========================= */
 
-const popup = document.getElementById("leadPopup");
-const leadForm = document.getElementById("leadForm");
-const formMsg = document.getElementById("formMsg");
-const saveButton = document.getElementById("btnSave");
+const leadPopup = document.getElementById('leadPopup');
+const leadForm = document.getElementById('leadForm');
 
-function showPopup() {
-  try {
-    if (localStorage.getItem("digital_maroc_lead") === "submitted") return;
-    if (sessionStorage.getItem("dm_popup_closed") === "1") return;
-  } catch (error) {
-    // Continue without local storage.
-  }
-
-  popup.style.display = "flex";
+function closeLeadPopup() {
+  leadPopup.style.display = 'none';
+  localStorage.setItem('dm_popup_seen', '1');
 }
 
-function closePopup() {
-  popup.style.display = "none";
+document.getElementById('btnSkipPopup').addEventListener('click', closeLeadPopup);
 
-  try {
-    sessionStorage.setItem("dm_popup_closed", "1");
-  } catch (error) {
-    // Ignore unavailable storage.
-  }
-}
-
-document.getElementById("btnClosePopup").addEventListener("click", closePopup);
-document.getElementById("btnSkipPopup").addEventListener("click", closePopup);
-
-popup.addEventListener("click", event => {
-  if (event.target === popup) closePopup();
-});
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && popup.style.display === "flex") {
-    closePopup();
+window.addEventListener('load', () => {
+  if (!localStorage.getItem('dm_popup_seen')) {
+    setTimeout(() => {
+      if (!localStorage.getItem('dm_popup_seen')) {
+        leadPopup.style.display = 'flex';
+      }
+    }, 5000);
   }
 });
 
-leadForm.addEventListener("submit", async event => {
+leadForm.addEventListener('submit', async event => {
   event.preventDefault();
 
-  const name = document.getElementById("leadName").value.trim();
-  const phone = document.getElementById("leadPhone").value.trim();
-  const age = document.getElementById("leadAge").value;
+  const button = document.getElementById('btnSave');
+  const message = document.getElementById('formMsg');
 
-  if (!name || !phone || !age) return;
+  const name = document.getElementById('leadName').value.trim();
+  const phone = document.getElementById('leadPhone').value.trim();
+  const age = document.getElementById('leadAge').value;
 
-  saveButton.disabled = true;
-  saveButton.textContent = t("sending");
-  formMsg.textContent = "";
-  formMsg.className = "text-sm text-center";
+  if (!name || !phone || !age) {
+    message.textContent = 'يرجى ملء جميع المعلومات.';
+    return;
+  }
+
+  button.disabled = true;
+  message.textContent = 'جاري الإرسال...';
 
   try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify({ name, phone, age })
-      }
-    );
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: new URLSearchParams({ name, phone, age }).toString()
+    });
 
     /*
-      no-cors responses are opaque: the browser cannot confirm
-      whether the server actually stored the submitted information.
+      في no-cors ما نقدرش نتحقق من جواب Google Apps Script.
+      لذلك ما كنعتابروش الإرسال ناجحاً بشكل مؤكد.
     */
-    formMsg.textContent = t("popupSuccess");
-    formMsg.className = "text-sm text-center text-green-600";
+    message.textContent =
+      'تم إرسال الطلب. إذا لم تتوصل بتأكيد، تحقق من إعدادات الخدمة.';
 
-    try {
-      localStorage.setItem("digital_maroc_lead", "submitted");
-    } catch (error) {
-      // Ignore unavailable storage.
-    }
+    localStorage.setItem('dm_popup_seen', '1');
 
-    setTimeout(closePopup, 1200);
+    setTimeout(() => {
+      leadPopup.style.display = 'none';
+    }, 1800);
 
   } catch (error) {
-    console.error("Lead submission failed:", error);
-
-    formMsg.textContent = t("popupError");
-    formMsg.className = "text-sm text-center text-red-600";
-
+    console.error('خطأ في إرسال المعلومات:', error);
+    message.textContent = 'تعذر الإرسال. حاول مرة أخرى.';
   } finally {
-    saveButton.disabled = false;
-    saveButton.textContent = t("enterStore");
+    button.disabled = false;
   }
 });
 
+
 /* =========================
-   INITIALIZATION
+   بدء الموقع
 ========================= */
 
-document.getElementById("currentYear").textContent =
-  new Date().getFullYear();
-
-async function initializePage() {
-  setStars(5);
-
-  let savedLanguage = "ar";
-
-  try {
-    savedLanguage = localStorage.getItem("dm_lang") || "ar";
-  } catch (error) {
-    // Use Arabic by default.
-  }
-
-  applyLanguage(savedLanguage);
-
+(async function startSite() {
+  await initializeUser();
   await loadReviews();
+})();
 
-  /* Show the lead popup after 5 seconds when appropriate. */
-  setTimeout(showPopup, 5000);
-}
-
-initializePage();
 
 /* =========================
-   CHATBASE
+   Chatbase
 ========================= */
 
 (function () {
-  if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-    window.chatbase = (...args) => {
-      if (!window.chatbase.q) window.chatbase.q = [];
-      window.chatbase.q.push(args);
-    };
+  if (document.getElementById('chatbase-script')) return;
 
-    window.chatbase = new Proxy(window.chatbase, {
-      get(target, prop) {
-        if (prop === "q") return target.q;
-        return (...args) => target(prop, ...args);
-      }
-    });
-  }
+  const script = document.createElement('script');
+  script.id = 'chatbase-script';
+  script.src = 'https://www.chatbase.co/embed.min.js';
+  script.setAttribute('chatbotId', 'BCI1Dqkp1ypx-ejQ4twP6');
+  script.defer = true;
 
-  function loadChatbase() {
-    if (document.getElementById("BCI1Dqkp1ypx-ejQ4twP6")) return;
-
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js";
-    script.id = "BCI1Dqkp1ypx-ejQ4twP6";
-    script.domain = "www.chatbase.co";
-
-    document.body.appendChild(script);
-  }
-
-  if (document.readyState === "complete") {
-    loadChatbase();
-  } else {
-    window.addEventListener("load", loadChatbase);
-  }
+  document.body.appendChild(script);
 })();
 </script>
 
