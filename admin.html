@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html dir="rtl" lang="ar">
 <head>
@@ -6,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>لوحة تحكم DIGITAL MAROC™</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<style>body{font-family:Arial}</style>
+<style>
+body{font-family:Arial,sans-serif}
+button:disabled{opacity:.5;cursor:not-allowed}
+</style>
 </head>
+
 <body class="bg-[#0A1931] min-h-screen">
 
 <!-- LOGIN -->
@@ -16,13 +19,11 @@
     <h2 class="text-black font-black text-2xl mb-2">DIGITAL MAROC™</h2>
     <p class="text-gray-500 text-sm mb-6">لوحة تحكم الإدارة</p>
 
-    <input id="emailInput" type="email" required
-      autocomplete="username"
+    <input id="emailInput" type="email" required autocomplete="username"
       placeholder="البريد الإلكتروني"
       class="w-full p-4 border-2 rounded-xl text-black outline-none focus:border-yellow-400 text-center font-bold mb-3">
 
-    <input id="passInput" type="password" required
-      autocomplete="current-password"
+    <input id="passInput" type="password" required autocomplete="current-password"
       placeholder="كلمة السر"
       class="w-full p-4 border-2 rounded-xl text-black outline-none focus:border-yellow-400 text-center font-bold">
 
@@ -35,33 +36,33 @@
   </form>
 </div>
 
-<!-- PANEL -->
+<!-- ADMIN PANEL -->
 <div id="panel" class="hidden">
-  <header class="bg-white p-4 flex justify-between items-center">
+  <header class="bg-white p-4 flex justify-between items-center gap-3">
     <h1 class="font-black text-black">DIGITAL MAROC - ADMIN</h1>
-    <button onclick="logoutAdmin()"
-      class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded-full font-bold">
+    <button id="logoutBtn"
+      class="text-xs bg-red-50 text-red-600 px-3 py-2 rounded-full font-bold">
       خروج
     </button>
   </header>
 
   <div class="flex gap-2 p-4 max-w-5xl mx-auto">
-    <button id="tabLeadsBtn" onclick="showTab('leads')"
+    <button id="tabLeadsBtn"
       class="flex-1 py-3 rounded-xl font-black bg-[#FFEB00] text-black">
       📞 العملاء (Leads)
     </button>
-    <button id="tabReviewsBtn" onclick="showTab('reviews')"
+    <button id="tabReviewsBtn"
       class="flex-1 py-3 rounded-xl font-black bg-white/10 text-white">
       ⭐ التعليقات
     </button>
   </div>
 
-  <!-- LEADS TAB -->
+  <!-- LEADS -->
   <div id="leadsTab" class="max-w-5xl mx-auto p-4">
     <div class="bg-white rounded-[20px] p-4 overflow-x-auto">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="font-black text-black text-lg">لائحة العملاء - 0719380106</h2>
-        <button onclick="loadLeads()"
+      <div class="flex justify-between items-center mb-4 gap-3">
+        <h2 class="font-black text-black text-lg">لائحة العملاء</h2>
+        <button id="refreshLeadsBtn"
           class="text-xs bg-black text-white px-4 py-2 rounded-full">
           تحديث 🔄
         </button>
@@ -86,24 +87,27 @@
       </table>
 
       <p class="text-[11px] text-gray-400 mt-4 text-center">
-        العملاء كيتسجلو فـ Google Sheet + Supabase.
-        إلا ما بانو هنا شوف Google Sheet ديالك.
+        العملاء كيتسجلو فـ Google Sheet أو Supabase حسب إعدادات الموقع.
       </p>
     </div>
   </div>
 
-  <!-- REVIEWS TAB -->
+  <!-- REVIEWS -->
   <div id="reviewsTab" class="hidden max-w-5xl mx-auto p-4">
     <div class="bg-white rounded-[20px] p-4">
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex justify-between items-center mb-4 gap-3">
         <h2 class="font-black text-black text-lg">
-          إدارة التعليقات - Play Store Style
+          إدارة التعليقات ⭐
         </h2>
-        <button onclick="loadReviews()"
+        <button id="refreshReviewsBtn"
           class="text-xs bg-black text-white px-4 py-2 rounded-full">
           تحديث 🔄
         </button>
       </div>
+
+      <p class="text-xs text-gray-500 mb-4">
+        إعجابات الإدارة منفصلة عن إعجابات المستخدمين.
+      </p>
 
       <div id="reviewsList" class="grid gap-3">
         <p class="text-center text-gray-400 p-8">...كنجيبو التعليقات</p>
@@ -120,55 +124,94 @@ const SUPABASE_KEY = "sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f";
 
 const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// --- ADMIN LOGIN ---
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
+const $ = id => document.getElementById(id);
+
+let busy = false;
+
+// عرض رسالة الخطأ
+function showError(message) {
+  const box = $("err");
+  box.textContent = message;
+  box.classList.remove("hidden");
+}
+
+// إنشاء عنصر نصي آمن
+function textElement(tag, className, value) {
+  const el = document.createElement(tag);
+  el.className = className;
+  el.textContent = value ?? "";
+  return el;
+}
+
+// التحقق من جلسة الإدارة
+async function verifyAdmin() {
+  const { data: { user }, error: userError } =
+    await supa.auth.getUser();
+
+  if (userError || !user) return false;
+
+  const { data, error } = await supa.rpc("is_admin");
+
+  if (error) {
+    throw new Error("تعذر التحقق من صلاحية Admin: " + error.message);
+  }
+
+  return data === true;
+}
+
+// إظهار لوحة الإدارة
+async function openAdminPanel() {
+  const allowed = await verifyAdmin();
+
+  if (!allowed) {
+    await supa.auth.signOut();
+    throw new Error("هاد الحساب ما عندوش صلاحية الإدارة.");
+  }
+
+  $("loginBox").classList.add("hidden");
+  $("panel").classList.remove("hidden");
+
+  await loadLeads();
+  await loadReviews();
+}
+
+// تسجيل الدخول
+$("loginForm").addEventListener("submit", async e => {
   e.preventDefault();
 
-  const errBox = document.getElementById('err');
-  const loginBtn = document.getElementById('loginBtn');
+  if (busy) return;
+  busy = true;
 
-  errBox.classList.add('hidden');
-  loginBtn.disabled = true;
-  loginBtn.textContent = 'جاري التحقق...';
+  $("err").classList.add("hidden");
+  $("loginBtn").disabled = true;
+  $("loginBtn").textContent = "جاري التحقق...";
 
   try {
-    const email = document.getElementById('emailInput').value.trim();
-    const password = document.getElementById('passInput').value;
+    const email = $("emailInput").value.trim();
+    const password = $("passInput").value;
 
-    const { error: loginError } = await supa.auth.signInWithPassword({
+    const { error } = await supa.auth.signInWithPassword({
       email,
       password
     });
 
-    if (loginError) throw loginError;
+    if (error) throw error;
 
-    const { data: isAdmin, error: adminError } =
-      await supa.rpc('is_admin');
-
-    if (adminError) throw adminError;
-
-    if (isAdmin !== true) {
-      await supa.auth.signOut();
-      throw new Error('هاد الحساب ما عندوش صلاحية الإدارة.');
-    }
-
-    document.getElementById('loginBox').classList.add('hidden');
-    document.getElementById('panel').classList.remove('hidden');
-
-    await loadLeads();
-    await loadReviews();
+    await openAdminPanel();
 
   } catch (error) {
-    errBox.textContent = error.message || 'فشل تسجيل الدخول.';
-    errBox.classList.remove('hidden');
+    $("panel").classList.add("hidden");
+    $("loginBox").classList.remove("hidden");
+    showError(error.message || "فشل تسجيل الدخول.");
   } finally {
-    loginBtn.disabled = false;
-    loginBtn.textContent = 'دخول 🔐';
+    busy = false;
+    $("loginBtn").disabled = false;
+    $("loginBtn").textContent = "دخول 🔐";
   }
 });
 
-// --- LOGOUT ---
-async function logoutAdmin() {
+// تسجيل الخروج
+$("logoutBtn").addEventListener("click", async () => {
   const { error } = await supa.auth.signOut();
 
   if (error) {
@@ -177,179 +220,309 @@ async function logoutAdmin() {
   }
 
   location.reload();
+});
+
+// التبويبات
+function showTab(tab) {
+  $("leadsTab").classList.toggle("hidden", tab !== "leads");
+  $("reviewsTab").classList.toggle("hidden", tab !== "reviews");
+
+  $("tabLeadsBtn").className = tab === "leads"
+    ? "flex-1 py-3 rounded-xl font-black bg-[#FFEB00] text-black"
+    : "flex-1 py-3 rounded-xl font-black bg-white/10 text-white";
+
+  $("tabReviewsBtn").className = tab === "reviews"
+    ? "flex-1 py-3 rounded-xl font-black bg-[#FFEB00] text-black"
+    : "flex-1 py-3 rounded-xl font-black bg-white/10 text-white";
 }
 
-// --- TABS ---
-function showTab(t) {
-  document.getElementById('leadsTab').classList.toggle('hidden', t !== 'leads');
-  document.getElementById('reviewsTab').classList.toggle('hidden', t !== 'reviews');
+$("tabLeadsBtn").addEventListener("click", () => showTab("leads"));
+$("tabReviewsBtn").addEventListener("click", () => showTab("reviews"));
+$("refreshLeadsBtn").addEventListener("click", loadLeads);
+$("refreshReviewsBtn").addEventListener("click", loadReviews);
 
-  document.getElementById('tabLeadsBtn').className =
-    t === 'leads'
-      ? "flex-1 py-3 rounded-xl font-black bg-[#FFEB00] text-black"
-      : "flex-1 py-3 rounded-xl font-black bg-white/10 text-white";
-
-  document.getElementById('tabReviewsBtn').className =
-    t === 'reviews'
-      ? "flex-1 py-3 rounded-xl font-black bg-[#FFEB00] text-black"
-      : "flex-1 py-3 rounded-xl font-black bg-white/10 text-white";
-}
-
-// --- LEADS ---
+// تحميل العملاء
 async function loadLeads() {
-  const body = document.getElementById('leadsBody');
+  const body = $("leadsBody");
 
+  body.replaceChildren(
+    textElement("tr", "", "")
+  );
+  body.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-gray-400">جاري التحميل...</td></tr>`;
+
+  // المصدر الأول: API ديال الموقع
   try {
-    const res = await fetch('/api/save-lead');
-    const json = await res.json();
+    const response = await fetch("/api/save-lead");
+    if (response.ok) {
+      const result = await response.json();
 
-    if (Array.isArray(json) && json.length > 0) {
-      body.innerHTML = "";
+      if (Array.isArray(result) && result.length > 0) {
+        body.replaceChildren();
 
-      json.forEach(l => {
-        body.innerHTML += `<tr class="border-b">
-          <td class="p-3 text-xs">${l.تاريخ || l.date || ''}</td>
-          <td class="p-3 font-bold">${l.اسم || l.name || l.مقد || ''}</td>
-          <td class="p-3">
-            <a href="https://wa.me/${l.هاتف || l.phone}"
-              class="text-green-600 font-bold underline">
-              ${l.هاتف || l.phone || ''}
-            </a>
-          </td>
-          <td class="p-3">${l.عمر || l.age || ''}</td>
-        </tr>`;
-      });
+        result.forEach(l => {
+          const row = document.createElement("tr");
+          row.className = "border-b";
 
-      return;
+          const date = textElement("td", "p-3 text-xs",
+            l["تاريخ"] || l.date || "");
+          const name = textElement("td", "p-3 font-bold",
+            l["اسم"] || l.name || l["مقد"] || "");
+          const phoneValue = l["هاتف"] || l.phone || "";
+          const phone = document.createElement("td");
+          phone.className = "p-3";
+
+          if (phoneValue) {
+            const link = document.createElement("a");
+            link.href = "https://wa.me/" +
+              String(phoneValue).replace(/\D/g, "");
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.className = "text-green-600 font-bold underline";
+            link.textContent = phoneValue;
+            phone.appendChild(link);
+          }
+
+          const age = textElement("td", "p-3",
+            l["عمر"] || l.age || "");
+
+          row.append(date, name, phone, age);
+          body.appendChild(row);
+        });
+        return;
+      }
     }
-  } catch (e) {}
+  } catch (error) {
+    console.warn("API clients:", error.message);
+  }
 
-  // Fallback: Supabase leads table
+  // المصدر الثاني: جدول Supabase
   try {
     const { data, error } = await supa
       .from("leads")
       .select("*")
       .order("created_at", { ascending: false });
 
-    if (!error && data && data.length > 0) {
-      body.innerHTML = "";
+    if (error) throw error;
+
+    if (data && data.length > 0) {
+      body.replaceChildren();
 
       data.forEach(l => {
-        body.innerHTML += `<tr class="border-b">
-          <td class="p-3 text-xs">${new Date(l.created_at).toLocaleString('ar-MA')}</td>
-          <td class="p-3 font-bold">${l.name || ''}</td>
-          <td class="p-3">
-            <a href="https://wa.me/${l.phone}"
-              class="text-green-600 font-bold underline">
-              ${l.phone || ''}
-            </a>
-          </td>
-          <td class="p-3">${l.age || ''}</td>
-        </tr>`;
-      });
+        const row = document.createElement("tr");
+        row.className = "border-b";
 
+        const date = textElement("td", "p-3 text-xs",
+          l.created_at
+            ? new Date(l.created_at).toLocaleString("ar-MA")
+            : "");
+
+        const name = textElement("td", "p-3 font-bold", l.name || "");
+        const phone = document.createElement("td");
+        phone.className = "p-3";
+
+        if (l.phone) {
+          const link = document.createElement("a");
+          link.href = "https://wa.me/" +
+            String(l.phone).replace(/\D/g, "");
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.className = "text-green-600 font-bold underline";
+          link.textContent = l.phone;
+          phone.appendChild(link);
+        }
+
+        const age = textElement("td", "p-3", l.age || "");
+        row.append(date, name, phone, age);
+        body.appendChild(row);
+      });
       return;
     }
-  } catch (e) {}
+  } catch (error) {
+    console.warn("Supabase clients:", error.message);
+  }
 
   body.innerHTML = `<tr>
     <td colspan="4" class="p-8 text-center text-gray-400">
-      ما كاين حتى عميل دابا - العملاء كاينين ف Google Sheet
-      <br>
-      <a href="https://docs.google.com/spreadsheets/"
-        target="_blank" rel="noopener noreferrer"
-        class="underline text-blue-600">
-        فتح Google Sheet
-      </a>
+      ما قدرناش نجيبو العملاء. تحقق من إعدادات API والصلاحيات.
     </td>
   </tr>`;
 }
 
-// --- REVIEWS ---
+// تحميل التعليقات
 async function loadReviews() {
-  const box = document.getElementById('reviewsList');
+  const box = $("reviewsList");
 
-  box.innerHTML =
-    '<p class="text-center text-gray-400 p-8">...كنجيبو التعليقات</p>';
+  box.replaceChildren(
+    textElement("p", "text-center text-gray-400 p-8", "جاري تحميل التعليقات...")
+  );
 
-  const { data, error } = await supa
-    .from("reviews")
-    .select("*")
-    .order("created_at", { ascending: false });
+  try {
+    const { data, error } = await supa
+      .from("reviews")
+      .select("id,name,comment,stars,created_at,admin_likes")
+      .order("created_at", { ascending: false });
 
-  if (error) {
-    box.innerHTML = `<p class="text-center text-red-500 p-8">
-      تعذر تحميل التعليقات: ${error.message}
-    </p>`;
-    return;
-  }
+    if (error) throw error;
 
-  box.innerHTML = "";
+    box.replaceChildren();
 
-  if (!data || data.length === 0) {
-    box.innerHTML =
-      '<p class="text-center text-gray-400 p-8">ما كاين حتى تعليق</p>';
-    return;
-  }
+    if (!data || data.length === 0) {
+      box.appendChild(
+        textElement("p", "text-center text-gray-400 p-8",
+          "ما كاين حتى تعليق دابا")
+      );
+      return;
+    }
 
-  data.forEach(r => {
-    const card = document.createElement('div');
-    card.className =
-      "border p-4 rounded-xl flex justify-between items-start gap-3";
+    data.forEach(r => {
+      const card = document.createElement("div");
+      card.className = "border p-4 rounded-xl flex justify-between items-start gap-3";
 
-    const content = document.createElement('div');
-    content.className = "flex-1 text-right";
+      const content = document.createElement("div");
+      content.className = "flex-1 text-right min-w-0";
 
-    const author = document.createElement('b');
-    author.className = "text-black";
-    author.textContent = r.name || '';
+      const author = textElement("b", "text-black", r.name || "");
 
-    const rating = document.createElement('span');
-    rating.style.color = "#D4A900";
-    rating.textContent = " " + "★".repeat(
-      Math.max(0, Math.min(5, Number(r.stars) || 0))
+      const rating = textElement("span", "text-yellow-600",
+        " " + "★".repeat(Math.max(0, Math.min(5, Number(r.stars) || 0))));
+
+      const comment = textElement("p", "text-sm text-gray-700 mt-1",
+        r.comment || "");
+      comment.style.whiteSpace = "pre-wrap";
+      comment.style.overflowWrap = "anywhere";
+
+      const date = textElement("p", "text-[10px] text-gray-400 mt-1",
+        (r.created_at
+          ? new Date(r.created_at).toLocaleString("ar-MA")
+          : "") + " - ID: " + String(r.id).slice(0, 8));
+
+      content.append(author, rating, comment, date);
+
+      // أزرار إعجابات الإدارة
+      const likesRow = document.createElement("div");
+      likesRow.className = "flex flex-wrap items-center gap-3 mt-3";
+
+      const label = textElement("span", "text-sm font-bold text-gray-700",
+        "إعجابات الإدارة:");
+
+      const count = textElement("span", "font-black text-blue-700 text-lg",
+        String(Math.max(0, Number(r.admin_likes) || 0)));
+
+      const minus = document.createElement("button");
+      minus.type = "button";
+      minus.textContent = "−";
+      minus.title = "نقص إعجاب إداري";
+      minus.setAttribute("aria-label", "نقص إعجاب إداري");
+      minus.className = "bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg font-black text-lg";
+      minus.disabled = Number(r.admin_likes) <= 0;
+
+      minus.addEventListener("click", () => {
+        changeAdminLikes(r.id, -1, minus, plus);
+      });
+
+      const plus = document.createElement("button");
+      plus.type = "button";
+      plus.textContent = "+";
+      plus.title = "زيد إعجاب إداري";
+      plus.setAttribute("aria-label", "زيد إعجاب إداري");
+      plus.className = "bg-[#FFEB00] hover:bg-yellow-300 px-4 py-2 rounded-lg font-black text-lg";
+
+      plus.addEventListener("click", () => {
+        changeAdminLikes(r.id, 1, minus, plus);
+      });
+
+      likesRow.append(label, count, minus, plus);
+      content.appendChild(likesRow);
+
+      // زر حذف التعليق
+      const deleteBtn = document.createElement("button");
+      deleteBtn.type = "button";
+      deleteBtn.className = "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0";
+      deleteBtn.textContent = "مسح 🗑️";
+      deleteBtn.addEventListener("click", () => deleteReview(r.id));
+
+      card.append(content, deleteBtn);
+      box.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Load reviews error:", error);
+
+    box.replaceChildren(
+      textElement("p", "text-center text-red-500 p-8",
+        "تعذر تحميل التعليقات: " + error.message)
     );
-
-    const comment = document.createElement('p');
-    comment.className = "text-sm text-gray-700 mt-1";
-    comment.textContent = r.comment || '';
-
-    const date = document.createElement('p');
-    date.className = "text-[10px] text-gray-400 mt-1";
-    date.textContent =
-      (r.created_at ? new Date(r.created_at).toLocaleString('ar-MA') : '') +
-      " - ID: " + String(r.id).slice(0, 8);
-
-    content.append(author, rating, comment, date);
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className =
-      "bg-red-500 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0";
-    deleteBtn.textContent = "مسح 🗑️";
-    deleteBtn.addEventListener('click', () => deleteReview(r.id));
-
-    card.append(content, deleteBtn);
-    box.appendChild(card);
-  });
+  }
 }
 
-// --- DELETE REVIEW ---
-async function deleteReview(id) {
-  if (!confirm("واش بغيتي تمسح هاد التعليق نهائيا من Supabase؟")) {
-    return;
-  }
+// زيادة أو نقصان إعجابات الإدارة عبر وظيفة Supabase المحمية
+async function changeAdminLikes(reviewId, delta, minusBtn, plusBtn) {
+  minusBtn.disabled = true;
+  plusBtn.disabled = true;
 
-  const { error } = await supa
-    .from("reviews")
-    .delete()
-    .eq("id", id);
+  try {
+    const { data, error } = await supa.rpc("set_admin_likes", {
+      p_review_id: reviewId,
+      p_delta: delta
+    });
 
-  if (error) {
-    alert("ما قدرناش نمسحو التعليق: " + error.message);
-  } else {
+    if (error) throw error;
+
+    if (typeof data !== "number") {
+      throw new Error("ما توصلناش بالعدد الجديد من Supabase.");
+    }
+
     await loadReviews();
+
+  } catch (error) {
+    console.error("Change admin likes error:", error);
+    alert("ما قدرناش نعدلو الإعجابات: " + error.message);
+    await loadReviews();
+  } finally {
+    minusBtn.disabled = false;
+    plusBtn.disabled = false;
   }
 }
+
+// حذف تعليق
+async function deleteReview(id) {
+  if (!confirm("واش بغيتي تمسح هاد التعليق نهائياً؟")) return;
+
+  try {
+    // التحقق من صلاحية Admin قبل الطلب
+    const allowed = await verifyAdmin();
+
+    if (!allowed) {
+      throw new Error("ما عندكش صلاحية الإدارة.");
+    }
+
+    const { error } = await supa
+      .from("reviews")
+      .delete()
+      .eq("id", id);
+
+    if (error) throw error;
+
+    await loadReviews();
+
+  } catch (error) {
+    alert("ما قدرناش نمسحو التعليق: " + error.message);
+  }
+}
+
+// إذا كانت كاينة جلسة سابقة، نتحققو منها
+(async function restoreAdminSession() {
+  try {
+    const { data: { session } } = await supa.auth.getSession();
+
+    if (session) {
+      await openAdminPanel();
+    }
+  } catch (error) {
+    console.warn("Admin session:", error.message);
+    await supa.auth.signOut();
+  }
+})();
 </script>
 </body>
 </html>
