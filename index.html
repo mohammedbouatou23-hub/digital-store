@@ -814,7 +814,8 @@ async function initializeUser() {
     return Boolean(currentUserId);
 
   } catch (error) {
-    console
+    console.error('خطأ في تسجيل المستخدم:', error);
+    alert(error.message);
     return false;
   }
 }
