@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -9,6 +9,7 @@
 <title>DIGITAL MAROC™ | متجر رقمي مغربي</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -16,6 +17,8 @@ body{font-family:'Tajawal',sans-serif}
 #leadPopup{display:none}
 #leadPopup input,#leadPopup select{box-sizing:border-box}
 button:disabled{opacity:.6;cursor:wait}
+.review-action{transition:background .2s}
+.review-action:disabled{cursor:wait}
 </style>
 </head>
 
@@ -221,11 +224,11 @@ class="w-full p-4 rounded-xl bg-gray-100 text-sm font-bold outline-none border f
 <textarea id="cMsg" maxlength="1500" placeholder="شنو رأيك في خدماتنا؟" rows="3"
 class="w-full mt-3 p-4 rounded-xl bg-gray-100 text-sm outline-none border focus:border-black"></textarea>
 
-<button id="btnPublish" class="w-full mt-4 bg-[#0A1931] text-white py-4 rounded-xl font-black">
+<button id="btnPublish" type="button" class="w-full mt-4 bg-[#0A1931] text-white py-4 rounded-xl font-black">
 نشر تعليقي 🚀
 </button>
 
-<p id="statusMsg" role="status" class="text-center text-xs mt-3 text-gray-500"></p>
+<p id="statusMsg" role="status" aria-live="polite" class="text-center text-xs mt-3 text-gray-500"></p>
 </div>
 
 <div id="allComments" class="grid md:grid-cols-3 gap-4 mt-10">
@@ -304,7 +307,20 @@ style="width:100%;padding:10px;background:transparent;color:#777;border:none;mar
 const SB_URL = "https://tonkzmlrdmhtekvqdsjh.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbmt6bWxyZG1odGVrdnFkc2poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NTQxNDUsImV4cCI6MjEwNzEzMDE0NX0.6qgDEOgCRSyviwoZeRW_vueTNSztUsy2LIDif0pH7eM";
 
+const db = window.supabase.createClient(SB_URL, SB_KEY, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: false
+  }
+});
+
 let selectedStars = 5;
+let currentUser = null;
+let likedReviewIds = new Set();
+let likeCounts = new Map();
+let busyLikes = new Set();
+let busyDeletes = new Set();
 
 function setStars(n) {
   selectedStars = n;
@@ -314,7 +330,6 @@ function setStars(n) {
   });
 }
 
-/* Safe text rendering for reviews */
 function addText(parent, tag, text, className = '') {
   const el = document.createElement(tag);
   el.textContent = text ?? '';
@@ -323,108 +338,275 @@ function addText(parent, tag, text, className = '') {
   return el;
 }
 
+function setStatus(message, error = false) {
+  const status = document.getElementById('statusMsg');
+  status.textContent = message;
+  status.className = 'text-center text-xs mt-3 ' +
+    (error ? 'text-red-600' : 'text-gray-500');
+}
+
+/* Anonymous identity: stored by Supabase in this browser */
+async function ensureAnonymousUser() {
+  const { data: { session }, error: sessionError } =
+    await db.auth.getSession();
+
+  if (sessionError) throw sessionError;
+
+  if (session?.user) {
+    currentUser = session.user;
+    return currentUser;
+  }
+
+  const { data, error } = await db.auth.signInAnonymously();
+
+  if (error) throw error;
+  if (!data.user) throw new Error('ما قدرناش ننشئو الهوية المجهولة.');
+
+  currentUser = data.user;
+  return currentUser;
+}
+
+/* Load reviews and likes */
 async function loadReviews() {
   const box = document.getElementById('allComments');
-  const status = document.getElementById('statusMsg');
 
   try {
-    const response = await fetch(
-      `${SB_URL}/rest/v1/reviews?select=id,name,comment,stars,created_at&order=created_at.desc`,
-      {
-        headers: {
-          apikey: SB_KEY,
-          Authorization: 'Bearer ' + SB_KEY
-        }
+    const { data: reviews, error: reviewsError } = await db
+      .from('reviews')
+      .select('id,name,comment,stars,created_at,owner_id')
+      .order('created_at', { ascending: false });
+
+    if (reviewsError) throw reviewsError;
+
+    const { data: likes, error: likesError } = await db
+      .from('review_likes')
+      .select('review_id,user_id');
+
+    if (likesError) throw likesError;
+
+    likeCounts = new Map();
+    likedReviewIds = new Set();
+
+    for (const like of (likes || [])) {
+      likeCounts.set(
+        like.review_id,
+        (likeCounts.get(like.review_id) || 0) + 1
+      );
+
+      if (currentUser && like.user_id === currentUser.id) {
+        likedReviewIds.add(like.review_id);
       }
-    );
+    }
 
-    if (!response.ok) throw new Error('تعذر تحميل التعليقات.');
-
-    const reviews = await response.json();
     box.replaceChildren();
 
-    if (!reviews.length) {
-      addText(box, 'p', 'مازال ما كاين حتى تعليق. كون نتا الأول!', 'text-center col-span-3 py-10 text-gray-400');
+    if (!reviews || reviews.length === 0) {
+      addText(
+        box, 'p',
+        'مازال ما كاين حتى تعليق. كون نتا الأول!',
+        'text-center col-span-3 py-10 text-gray-400'
+      );
       return;
     }
 
-    reviews.forEach(review => {
+    for (const review of reviews) {
       const card = document.createElement('article');
       card.className = 'bg-white rounded-[20px] p-6 border shadow-sm';
 
       const header = document.createElement('div');
       header.className = 'flex justify-between items-center gap-3';
 
+      addText(header, 'p', review.name, 'font-black text-sm');
+
       const stars = document.createElement('span');
       stars.style.color = '#FFB800';
-      stars.textContent = '★'.repeat(Math.max(0, Math.min(5, Number(review.stars) || 0)));
+      stars.setAttribute('aria-label', `${review.stars} من 5 نجوم`);
+      stars.textContent = '★'.repeat(
+        Math.max(0, Math.min(5, Number(review.stars) || 0))
+      );
 
-      addText(header, 'p', review.name, 'font-black text-sm');
       header.appendChild(stars);
       card.appendChild(header);
 
-      addText(card, 'p', review.comment, 'text-[13px] mt-3 text-gray-700 leading-6');
+      addText(
+        card, 'p', review.comment,
+        'text-[13px] mt-3 text-gray-700 leading-6 whitespace-pre-wrap break-words'
+      );
 
       const date = new Date(review.created_at);
-      addText(card, 'p',
+      addText(
+        card,
+        'p',
         Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString('ar-MA'),
         'text-[10px] text-gray-400 mt-3'
       );
 
+      const actions = document.createElement('div');
+      actions.className = 'flex items-center justify-between gap-3 mt-4 pt-3 border-t';
+
+      const likeButton = document.createElement('button');
+      const alreadyLiked = likedReviewIds.has(review.id);
+      likeButton.type = 'button';
+      likeButton.className =
+        'review-action rounded-full px-4 py-2 text-sm font-bold ' +
+        (alreadyLiked
+          ? 'bg-pink-50 text-pink-600'
+          : 'bg-gray-100 text-gray-700');
+
+      likeButton.textContent =
+        `${alreadyLiked ? '❤️' : '🤍'} إعجاب (${likeCounts.get(review.id) || 0})`;
+
+      likeButton.setAttribute(
+        'aria-label',
+        alreadyLiked ? 'إلغاء الإعجاب' : 'إعجاب بالتعليق'
+      );
+
+      likeButton.addEventListener('click', () => toggleLike(review.id));
+      actions.appendChild(likeButton);
+
+      /* Only show delete to the owner of this review */
+      if (currentUser && review.owner_id === currentUser.id) {
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.className =
+          'review-action rounded-full px-4 py-2 text-sm font-bold bg-red-50 text-red-600';
+        deleteButton.textContent = '🗑️ حذف';
+        deleteButton.addEventListener('click', () => deleteReview(review.id));
+        actions.appendChild(deleteButton);
+      }
+
+      card.appendChild(actions);
       box.appendChild(card);
-    });
+    }
   } catch (error) {
-    console.error(error);
+    console.error('loadReviews:', error);
     box.replaceChildren();
-    addText(box, 'p', 'ما قدرناش نحملو التعليقات دابا. حاول من بعد.',
-      'text-center col-span-3 py-8 text-red-500 text-sm');
+    addText(
+      box, 'p',
+      'ما قدرناش نحملو التعليقات والإعجابات. تأكد من إعدادات Supabase وحاول من بعد.',
+      'text-center col-span-3 py-8 text-red-500 text-sm'
+    );
   }
 }
 
+/* Publish review */
 async function postComment() {
   const name = document.getElementById('cName').value.trim();
   const comment = document.getElementById('cMsg').value.trim();
   const button = document.getElementById('btnPublish');
-  const status = document.getElementById('statusMsg');
 
-  if (name.length < 2 || !comment) {
-    status.textContent = 'عمر الاسم والتعليق.';
+  if (name.length < 2 || name.length > 80 || !comment ||
+      comment.length > 1500 || !Number.isInteger(selectedStars) ||
+      selectedStars < 1 || selectedStars > 5) {
+    setStatus('دخل اسم صحيح وتعليق، واختار النجوم.', true);
     return;
   }
 
   button.disabled = true;
   button.textContent = 'جاري النشر...';
-  status.textContent = '';
+  setStatus('');
 
   try {
-    const response = await fetch(`${SB_URL}/rest/v1/reviews`, {
-      method: 'POST',
-      headers: {
-        apikey: SB_KEY,
-        Authorization: 'Bearer ' + SB_KEY,
-        'Content-Type': 'application/json',
-        Prefer: 'return=minimal'
-      },
-      body: JSON.stringify({
-        name: name,
-        comment: comment,
-        stars: selectedStars
-      })
+    const user = await ensureAnonymousUser();
+
+    const { error } = await db.from('reviews').insert({
+      name,
+      comment,
+      stars: selectedStars,
+      owner_id: user.id
     });
 
-    if (!response.ok) throw new Error('تعذر نشر التعليق. تحقق من إعدادات Supabase.');
+    if (error) throw error;
 
     document.getElementById('cName').value = '';
     document.getElementById('cMsg').value = '';
     setStars(5);
-    status.textContent = 'تم نشر التعليق بنجاح.';
+
+    setStatus('تم نشر التعليق بنجاح.');
     await loadReviews();
   } catch (error) {
-    console.error(error);
-    status.textContent = error.message || 'وقع خطأ أثناء النشر.';
+    console.error('postComment:', error);
+    setStatus(
+      'تعذر نشر التعليق. تأكد من إعدادات الهوية المجهولة وسياسات RLS.',
+      true
+    );
   } finally {
     button.disabled = false;
     button.textContent = 'نشر تعليقي 🚀';
+  }
+}
+
+/* Like / unlike */
+async function toggleLike(reviewId) {
+  if (busyLikes.has(reviewId)) return;
+
+  busyLikes.add(reviewId);
+  setStatus('');
+
+  try {
+    const user = await ensureAnonymousUser();
+
+    if (likedReviewIds.has(reviewId)) {
+      const { error } = await db
+        .from('review_likes')
+        .delete()
+        .eq('review_id', reviewId)
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+    } else {
+      const { error } = await db
+        .from('review_likes')
+        .insert({
+          review_id: reviewId,
+          user_id: user.id
+        });
+
+      /* Unique constraint also prevents duplicate likes */
+      if (error && error.code !== '23505') throw error;
+    }
+
+    await loadReviews();
+  } catch (error) {
+    console.error('toggleLike:', error);
+    setStatus('ما قدرناش نبدلو الإعجاب. تأكد من إعدادات Supabase.', true);
+  } finally {
+    busyLikes.delete(reviewId);
+  }
+}
+
+/* Delete only the current user's own review */
+async function deleteReview(reviewId) {
+  if (busyDeletes.has(reviewId)) return;
+
+  if (!confirm('واش متأكد بغيتي تحذف هاد التعليق؟')) return;
+
+  busyDeletes.add(reviewId);
+
+  try {
+    const user = await ensureAnonymousUser();
+
+    const { data, error } = await db
+      .from('reviews')
+      .delete()
+      .eq('id', reviewId)
+      .eq('owner_id', user.id)
+      .select('id');
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      setStatus('ما تحذفش التعليق. يمكن ماشي تابع لهاد الهوية.', true);
+      return;
+    }
+
+    setStatus('تم حذف التعليق.');
+    await loadReviews();
+  } catch (error) {
+    console.error('deleteReview:', error);
+    setStatus('تعذر حذف التعليق. حاول مرة أخرى.', true);
+  } finally {
+    busyDeletes.delete(reviewId);
   }
 }
 
@@ -464,13 +646,10 @@ popup.addEventListener('click', function(event) {
   if (event.target === popup) closePopup();
 });
 
-/* Show the form after 5 seconds on every page visit */
+/* Keep the existing popup behavior */
 setTimeout(showPopup, 5000);
 
-/*
-  This endpoint is the existing Google Apps Script.
-  no-cors does not allow the browser to confirm whether the data was saved.
-*/
+/* Existing Google Apps Script endpoint */
 leadForm.addEventListener('submit', async function(event) {
   event.preventDefault();
 
@@ -502,12 +681,9 @@ leadForm.addEventListener('submit', async function(event) {
       }
     );
 
-    /*
-      Opaque no-cors responses cannot confirm that the server saved the lead.
-      Show an honest message instead of claiming confirmed success.
-    */
     formMsg.style.color = '#8a5a00';
-    formMsg.textContent = 'تم إرسال الطلب. ما زال خاصنا نتأكدو من تسجيل المعلومات فاللائحة.';
+    formMsg.textContent =
+      'تم إرسال الطلب. ما زال خاصنا نتأكدو من تسجيل المعلومات فاللائحة.';
     localStorage.setItem('digital_maroc_lead', 'submitted');
     closePopup();
   } catch (error) {
@@ -521,7 +697,7 @@ leadForm.addEventListener('submit', async function(event) {
 });
 
 /* INITIALIZE */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   document.querySelectorAll('#starInput span').forEach(star => {
     star.addEventListener('click', () => {
       setStars(Number(star.dataset.val));
@@ -529,11 +705,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   setStars(5);
-  loadReviews();
-  document.getElementById('btnPublish').addEventListener('click', postComment);
 
   const savedLanguage = localStorage.getItem('dm_lang') || 'ar';
   document.getElementById('langMainBtn').textContent = savedLanguage.toUpperCase();
+
+  try {
+    await ensureAnonymousUser();
+    await loadReviews();
+  } catch (error) {
+    console.error('Anonymous sign-in:', error);
+    document.getElementById('allComments').replaceChildren();
+
+    addText(
+      document.getElementById('allComments'),
+      'p',
+      'تعذر الاتصال بنظام التعليقات. تأكد أن Anonymous Sign-ins مفعّل في Supabase.',
+      'text-center col-span-3 py-8 text-red-500 text-sm'
+    );
+
+    setStatus('نظام التعليقات غير متاح حالياً.', true);
+  }
+
+  document.getElementById('btnPublish').addEventListener('click', postComment);
 });
 </script>
 
@@ -572,4 +765,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
-```
