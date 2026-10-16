@@ -1,5 +1,6 @@
+from pathlib import Path
 
-<!DOCTYPE html>
+html = r'''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -8,446 +9,209 @@
   <title>DIGITAL MAROC | المنتجات الرقمية</title>
   <meta name="description" content="اكتشف منتجات DIGITAL MAROC الرقمية وابدأ تطوير مشروعك الرقمي.">
   <meta property="og:site_name" content="DIGITAL MAROC">
-
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "DIGITAL MAROC",
-    "alternateName": "Digital Maroc",
-    "url": "https://digital-maroc-store.vercel.app/"
-  }
+  {"@context":"https://schema.org","@type":"WebSite","name":"DIGITAL MAROC","alternateName":"Digital Maroc","url":"https://digital-maroc-store.vercel.app/"}
   </script>
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --navy: #0A1931;
-      --navy-light: #10284A;
-      --gold: #F5C542;
-      --white: #FFFFFF;
-      --muted: #AAB7CA;
+    :root{--navy:#0A1931;--navy-light:#10284A;--gold:#F5C542;--white:#FFFFFF;--muted:#AAB7CA}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;font-family:'Tajawal',sans-serif;background:#071326;color:var(--white);background-image:radial-gradient(ellipse at 50% -15%,rgba(35,76,126,.55),transparent 55%),linear-gradient(180deg,#0A1931 0%,#071326 65%,#0A1931 100%)}
+    a{text-decoration:none}
+    button,input,textarea,select{font-family:inherit}
+    button:disabled{opacity:.55;cursor:not-allowed}
+    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #F5C542;outline-offset:3px}
+    .gold{color:var(--gold)}
+    .gold-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;background:linear-gradient(135deg,#FFDF79,#F5C542);color:#0A1931;border-radius:11px;font-weight:900;transition:transform .2s,box-shadow .2s,filter .2s;cursor:pointer;border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 22px rgba(245,197,66,.13)}
+    .gold-btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 12px 28px rgba(245,197,66,.2)}
+    .outline-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 20px;border:1px solid rgba(245,197,66,.7);border-radius:11px;color:var(--gold);font-weight:800;transition:.2s;background:rgba(245,197,66,.035)}
+    .outline-btn:hover{background:var(--gold);color:var(--navy)}
+    .section{padding:76px 20px}
+    .section-title{text-align:center;font-size:clamp(27px,4vw,39px);font-weight:900;margin-bottom:12px;letter-spacing:-.4px}
+    .section-subtitle{text-align:center;color:var(--muted);margin-bottom:36px;line-height:1.9}
+    .hero-section{position:relative;overflow:hidden;padding-top:88px;padding-bottom:82px}
+    .hero-section:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(245,197,66,.055);filter:blur(5px);top:0;right:-190px;pointer-events:none}
+    .hero-section:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(48,105,170,.12);filter:blur(12px);bottom:-170px;left:-100px;pointer-events:none}
+    .hero-content{position:relative;z-index:1}
+    .trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}
+    .trust-chip{border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.035);color:#D8E1EF;border-radius:999px;padding:9px 14px;font-size:13px}
+    .product-card{background:linear-gradient(160deg,rgba(20,42,72,.98),rgba(12,29,52,.98));border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;box-shadow:0 12px 32px rgba(0,0,0,.12);display:flex;flex-direction:column;min-width:0}
+    .product-card:hover{transform:translateY(-5px);border-color:rgba(245,197,66,.65);box-shadow:0 18px 38px rgba(0,0,0,.24)}
+    .product-image{width:100%;height:220px;object-fit:cover;display:block;background:#172D4B}
+    .product-content{padding:22px;display:flex;flex-direction:column;flex:1}
+    .product-price{color:var(--gold);font-size:23px;font-weight:900}
+    .offer-pricing{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+    .offer-old-price{color:#AAB7CA;font-size:14px;text-decoration:line-through;text-decoration-color:#F87171;text-decoration-thickness:1.5px}
+    .offer-current-price{color:var(--gold);font-size:23px;font-weight:900;line-height:1.3}
+    .offer-badge{display:inline-flex;align-items:center;justify-content:center;width:fit-content;padding:5px 9px;border-radius:7px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#FCA5A5;font-size:12px;font-weight:800}
+    .form-field{width:100%;padding:12px 14px;border:1px solid #D5DCE5;border-radius:10px;background:white;color:#142033;outline:none}
+    .form-field:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,197,66,.18)}
+    .review-card{background:linear-gradient(145deg,#10213B,#0D1D34);border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:18px}
+    .star{color:var(--gold)}
+    #leadPopup{overscroll-behavior:contain}
+    .search-panel{max-width:720px;margin:0 auto 30px}
+    .search-wrap{position:relative}
+    .search-input{width:100%;padding:15px 48px 15px 46px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:#10213B;color:white;outline:none;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+    .search-input::placeholder{color:#AAB7CA}
+    .search-input:focus{border-color:rgba(245,197,66,.8);box-shadow:0 0 0 3px rgba(245,197,66,.12)}
+    .search-icon{position:absolute;right:17px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:19px;pointer-events:none}
+    .search-clear{position:absolute;left:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#D8E1EF;padding:7px 10px;border-radius:8px;cursor:pointer}
+    .search-clear:hover{background:rgba(255,255,255,.08)}
+    #searchStatus{min-height:24px;color:#AAB7CA;font-size:13px;margin-top:9px;text-align:center}
+    #noProducts{display:none;text-align:center;border:1px dashed rgba(255,255,255,.2);border-radius:16px;padding:28px;color:#D8E1EF;background:rgba(255,255,255,.025)}
+    .info-panel{border:1px solid rgba(255,255,255,.09);background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border-radius:18px}
+    @media(max-width:640px){
+      body{font-size:14px}
+      header .max-w-7xl{padding:8px 12px;gap:8px}
+      header img{width:36px;height:36px}
+      .section{padding:38px 12px}
+      .hero-section{padding-top:48px;padding-bottom:42px}
+      .section-title{font-size:25px;margin-bottom:8px}
+      .section-subtitle{font-size:13px;margin-bottom:22px}
+      h1{font-size:29px!important;line-height:1.45!important}
+      h2{line-height:1.5}
+      .product-image{height:175px}
+      .product-content{padding:15px}
+      .product-price{font-size:18px}
+      .offer-current-price{font-size:18px}
+      .offer-old-price{font-size:12px}
+      .gold-btn,.outline-btn{padding:10px 12px;font-size:13px}
+      input,textarea,select{font-size:14px!important}
+      .review-card{padding:12px}
+      #leadPopup>div{padding:20px!important;max-width:360px}
+      .trust-chip{font-size:12px;padding:8px 10px}
+      .search-input{padding-top:13px;padding-bottom:13px}
     }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    a { text-decoration: none; }
-    button, input, textarea, select { font-family: inherit; }
-    button:disabled { opacity: .55; cursor: not-allowed; }
-    .gold { color: var(--gold); }
-
-    .gold-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 22px;
-      background: var(--gold);
-      color: var(--navy);
-      border-radius: 10px;
-      font-weight: 800;
-      transition: .2s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .gold-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.06);
-    }
-
-    .outline-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 20px;
-      border: 1px solid var(--gold);
-      border-radius: 10px;
-      color: var(--gold);
-      font-weight: 700;
-      transition: .2s;
-    }
-
-    .outline-btn:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .section { padding: 75px 20px; }
-
-    .section-title {
-      text-align: center;
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 40px;
-      line-height: 1.9;
-    }
-
-    .product-card {
-      background: #10213B;
-      border: 1px solid rgba(245,197,66,.18);
-      border-radius: 18px;
-      overflow: hidden;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-    }
-
-    .product-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      background: #172D4B;
-    }
-
-    .product-content { padding: 22px; }
-
-    .product-price {
-      color: var(--gold);
-      font-size: 23px;
-      font-weight: 900;
-    }
-
-    /* تنسيق أثمنة العروض */
-    .offer-pricing {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-      min-width: 0;
-    }
-
-    .offer-old-price {
-      color: #AAB7CA;
-      font-size: 14px;
-      text-decoration: line-through;
-      text-decoration-color: #F87171;
-      text-decoration-thickness: 1.5px;
-    }
-
-    .offer-current-price {
-      color: var(--gold);
-      font-size: 23px;
-      font-weight: 900;
-      line-height: 1.3;
-    }
-
-    .offer-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      padding: 5px 9px;
-      border-radius: 7px;
-      background: rgba(248,113,113,.12);
-      border: 1px solid rgba(248,113,113,.35);
-      color: #FCA5A5;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .form-field {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #D5DCE5;
-      border-radius: 9px;
-      background: white;
-      color: #142033;
-      outline: none;
-    }
-
-    .form-field:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(245,197,66,.18);
-    }
-
-    .review-card {
-      background: #10213B;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      padding: 18px;
-    }
-
-    .star { color: var(--gold); }
-    #leadPopup { overscroll-behavior: contain; }
-
-    @media (max-width: 640px) {
-      body { font-size: 14px; }
-
-      header .max-w-7xl {
-        padding: 8px 12px;
-        gap: 8px;
-      }
-
-      header img {
-        width: 36px;
-        height: 36px;
-      }
-
-      .section { padding: 32px 12px; }
-
-      .section-title {
-        font-size: 25px;
-        margin-bottom: 8px;
-      }
-
-      .section-subtitle {
-        font-size: 13px;
-        margin-bottom: 22px;
-      }
-
-      h1 {
-        font-size: 29px !important;
-        line-height: 1.45 !important;
-      }
-
-      h2 { line-height: 1.5; }
-
-      .product-image { height: 155px; }
-      .product-content { padding: 14px; }
-      .product-price { font-size: 18px; }
-
-      .offer-current-price { font-size: 18px; }
-      .offer-old-price { font-size: 12px; }
-
-      .gold-btn, .outline-btn {
-        padding: 9px 12px;
-        font-size: 13px;
-      }
-
-      input, textarea, select { font-size: 14px !important; }
-      .review-card { padding: 12px; }
-
-      #leadPopup > div {
-        padding: 20px !important;
-        max-width: 360px;
-      }
-    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
   </style>
 </head>
-
 <body>
-  <header class="sticky top-0 z-50 border-b border-white/10"
-          style="background:rgba(10,25,49,.96);backdrop-filter:blur(12px)">
+  <header class="sticky top-0 z-50 border-b border-white/10" style="background:rgba(7,19,38,.94);backdrop-filter:blur(16px)">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3" aria-label="DIGITAL MAROC - الصفحة الرئيسية">
         <img src="logo-final.png" alt="DIGITAL MAROC" class="w-11 h-11 rounded-full object-cover">
         <div>
           <div class="font-black text-lg tracking-wide">DIGITAL <span class="gold">MAROC</span></div>
           <div class="text-xs text-slate-400">عالم المنتجات الرقمية</div>
         </div>
       </a>
-
       <div class="flex items-center gap-2">
         <div class="relative">
-          <button id="langMainBtn" type="button"
-                  class="border border-yellow-400 text-yellow-400 rounded-lg px-3 py-2 font-bold">AR</button>
-
-          <div id="langMenu"
-               class="hidden absolute left-0 mt-2 w-28 rounded-lg overflow-hidden shadow-xl"
-               style="background:#10213B;border:1px solid rgba(245,197,66,.3)">
+          <button id="langMainBtn" type="button" class="border border-yellow-400/70 text-yellow-400 rounded-lg px-3 py-2 font-bold" aria-expanded="false" aria-controls="langMenu">AR</button>
+          <div id="langMenu" class="hidden absolute left-0 mt-2 w-28 rounded-lg overflow-hidden shadow-xl z-50" style="background:#10213B;border:1px solid rgba(245,197,66,.3)">
             <button type="button" onclick="setLang('ar')" class="block w-full text-right px-4 py-3 hover:bg-white/10">العربية</button>
             <button type="button" onclick="setLang('fr')" class="block w-full text-right px-4 py-3 hover:bg-white/10">Français</button>
             <button type="button" onclick="setLang('en')" class="block w-full text-right px-4 py-3 hover:bg-white/10">English</button>
           </div>
         </div>
-
-        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-           class="gold-btn text-sm">واتساب</a>
+        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="gold-btn text-sm">واتساب</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section">
-      <div class="max-w-7xl mx-auto">
+    <section class="section hero-section">
+      <div class="max-w-7xl mx-auto hero-content">
         <div class="max-w-4xl mx-auto text-center">
-          <div class="inline-flex items-center gap-2 border border-yellow-400/30 rounded-full px-4 py-2 text-sm mb-6">
-            <span class="gold">✦</span>
-            <span>مرحباً بك في DIGITAL MAROC</span>
+          <div class="inline-flex items-center gap-2 border border-yellow-400/30 rounded-full px-4 py-2 text-sm mb-6" style="background:rgba(245,197,66,.045)">
+            <span class="gold">✦</span><span>مرحباً بك في DIGITAL MAROC</span>
           </div>
-
-          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
-            نحن لا نبيع ملفات. <span class="gold">نحن نبيع مستقبلاً.</span>
-          </h1>
-
-          <p class="text-slate-300 text-lg leading-9 mb-8">
-            اكتشف منتجات رقمية تساعدك على تطوير مهاراتك، وتنظيم عملك، والانطلاق في مشاريعك الرقمية.
-          </p>
-
+          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">موارد رقمية تساعدك على <span class="gold">التقدم بثقة.</span></h1>
+          <p class="text-slate-300 text-lg leading-9 mb-8">اكتشف منتجات رقمية تساعدك على تطوير مهاراتك، وتنظيم عملك، والانطلاق في مشاريعك الرقمية. اطلع على تفاصيل كل عرض قبل اتخاذ قرارك.</p>
           <div class="flex flex-wrap justify-center gap-3">
-            <a href="#products" class="gold-btn">اكتشف المنتجات <span>←</span></a>
-            <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-               class="outline-btn">تواصل معنا</a>
+            <a href="#products" class="gold-btn">اكتشف المنتجات <span aria-hidden="true">←</span></a>
+            <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="outline-btn">تواصل معنا</a>
+          </div>
+          <div class="trust-strip" aria-label="معلومات عن تجربة المتجر">
+            <span class="trust-chip">✓ تفاصيل واضحة للمنتجات</span>
+            <span class="trust-chip">✓ أثمنة ظاهرة قبل الطلب</span>
+            <span class="trust-chip">✓ تواصل مباشر عبر واتساب</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="products" class="section" style="background:#081426">
+    <section id="products" class="section" style="background:rgba(4,13,27,.48);border-top:1px solid rgba(255,255,255,.045);border-bottom:1px solid rgba(255,255,255,.045)">
       <div class="max-w-7xl mx-auto">
         <h2 class="section-title">منتجاتنا <span class="gold">الرقمية</span></h2>
-        <p class="section-subtitle">اختر المنتج المناسب لك واكتشف تفاصيله.</p>
+        <p class="section-subtitle">ابحث عن المنتج المناسب لك، ثم افتح صفحة العرض للاطلاع على التفاصيل.</p>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="search-panel">
+          <label for="productSearch" class="block text-sm font-bold text-slate-300 mb-2">البحث في المنتجات</label>
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="productSearch" class="search-input" type="search" autocomplete="off" placeholder="قلب على مكتبة رقمية، فيديو، متجر جاهز..." aria-describedby="searchStatus">
+            <button id="clearSearch" class="search-clear" type="button" aria-label="مسح البحث" hidden>✕</button>
+          </div>
+          <p id="searchStatus" aria-live="polite">تقدر تبحث باسم المنتج أو نوع الخدمة.</p>
+        </div>
 
-          <!-- المنتج الأول: مكتبة رقمية متكاملة -->
-          <article class="product-card">
-            <img src="book.header.jpg"
-                 alt="مكتبة DIGITAL MAROC الرقمية"
-                 class="product-image"
-                 loading="lazy">
-
+        <div id="productGrid" class="grid md:grid-cols-3 gap-6">
+          <article class="product-card" data-search="مكتبة رقمية كتب plr وثائق إدارية ملخصات الكتب أدلة المشاريع الرقمية مكتبة موارد كتب رقمية">
+            <img src="book.header.jpg" alt="مكتبة DIGITAL MAROC الرقمية" class="product-image" loading="lazy">
             <div class="product-content">
               <div class="text-sm gold font-bold mb-3">📚 مكتبة رقمية متكاملة</div>
-
-              <p class="text-slate-300 leading-7 mb-5">
-                مكتبة رقمية تجمع موارد عملية تساعدك على تطوير معارفك
-                وتنظيم أعمالك واكتشاف فرص المشاريع الرقمية.
-              </p>
-
+              <p class="text-slate-300 leading-7 mb-5">مكتبة رقمية تجمع موارد عملية تساعدك على تطوير معارفك وتنظيم أعمالك واكتشاف فرص المشاريع الرقمية.</p>
               <div class="grid grid-cols-1 gap-3 mb-5">
-                <div class="rounded-xl p-3 border border-white/10 bg-white/5">
-                  <div class="gold font-bold mb-1">📄 وثائق إدارية</div>
-                  <p class="text-sm text-slate-400 leading-6">
-                    نماذج ووثائق عملية للاستعمال والتنظيم.
-                  </p>
-                </div>
-
-                <div class="rounded-xl p-3 border border-white/10 bg-white/5">
-                  <div class="gold font-bold mb-1">📖 ملخصات الكتب</div>
-                  <p class="text-sm text-slate-400 leading-6">
-                    ملخصات كتب معروفة في مجالات متنوعة.
-                  </p>
-                </div>
-
-                <div class="rounded-xl p-3 border border-white/10 bg-white/5">
-                  <div class="gold font-bold mb-1">💻 أدلة المشاريع الرقمية</div>
-                  <p class="text-sm text-slate-400 leading-6">
-                    موارد حول إنشاء صفحات الهبوط، والمتاجر الإلكترونية
-                    وتطوير المشاريع الرقمية.
-                  </p>
-                </div>
-
-                <div class="rounded-xl p-3 border border-white/10 bg-white/5">
-                  <div class="gold font-bold mb-1">📚 كتب PLR رقمية</div>
-                  <p class="text-sm text-slate-400 leading-6">
-                    محتوى رقمي للاستفادة منه وفق شروط الترخيص الخاص به.
-                  </p>
-                </div>
+                <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="gold font-bold mb-1">📄 وثائق إدارية</div><p class="text-sm text-slate-400 leading-6">نماذج ووثائق عملية للاستعمال والتنظيم.</p></div>
+                <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="gold font-bold mb-1">📖 ملخصات الكتب</div><p class="text-sm text-slate-400 leading-6">ملخصات كتب معروفة في مجالات متنوعة.</p></div>
+                <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="gold font-bold mb-1">💻 أدلة المشاريع الرقمية</div><p class="text-sm text-slate-400 leading-6">موارد حول إنشاء صفحات الهبوط، والمتاجر الإلكترونية وتطوير المشاريع الرقمية.</p></div>
+                <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="gold font-bold mb-1">📚 كتب PLR رقمية</div><p class="text-sm text-slate-400 leading-6">محتوى رقمي للاستفادة منه وفق شروط الترخيص الخاص به.</p></div>
               </div>
-
-              <div class="flex items-center justify-between gap-3 border-t border-white/10 pt-5">
-                <div class="offer-pricing">
-                  <span class="text-xs text-slate-400">ثمن المكتبة</span>
-                  <span class="offer-old-price">399 DH</span>
-                  <span class="offer-current-price">149 DH</span>
-                  <span class="offer-badge">تخفيض 63%</span>
-                </div>
-
+              <div class="flex items-center justify-between gap-3 border-t border-white/10 pt-5 mt-auto">
+                <div class="offer-pricing"><span class="text-xs text-slate-400">ثمن المكتبة</span><span class="offer-old-price">399 DH</span><span class="offer-current-price">149 DH</span><span class="offer-badge">تخفيض 63%</span></div>
                 <a href="book.html" class="gold-btn">اكتشف المكتبة ←</a>
               </div>
             </div>
           </article>
 
-          <!-- المنتج الثاني: VIDEO ADS PRO -->
-          <article class="product-card">
-            <img src="pro.header.jpg" alt="خدمة VIDEO ADS PRO"
-                 class="product-image" loading="lazy">
-
+          <article class="product-card" data-search="video ads pro فيديو إعلانات خدمة إعلانية مونتاج تسويق رقمي فيديوهات إعلانية">
+            <img src="pro.header.jpg" alt="خدمة VIDEO ADS PRO" class="product-image" loading="lazy">
             <div class="product-content">
               <div class="text-sm gold font-bold mb-3">حلول إعلانية</div>
               <h3 class="text-xl font-black mb-3">VIDEO ADS PRO</h3>
-
-              <p class="text-slate-400 leading-7 mb-5">
-                خدمة مخصصة لمساعدتك على الاستفادة من محتوى الفيديو في التسويق الرقمي.
-              </p>
-
-              <div class="flex items-center justify-between gap-3">
-                <div class="offer-pricing">
-                  <span class="offer-old-price">999 DH/شهر</span>
-                  <span class="offer-current-price">449 DH/شهر</span>
-                  <span class="offer-badge">تخفيض 55%</span>
-                </div>
-
+              <p class="text-slate-400 leading-7 mb-5">خدمة مخصصة لمساعدتك على الاستفادة من محتوى الفيديو في التسويق الرقمي.</p>
+              <div class="flex items-center justify-between gap-3 mt-auto">
+                <div class="offer-pricing"><span class="offer-old-price">999 DH/شهر</span><span class="offer-current-price">449 DH/شهر</span><span class="offer-badge">تخفيض 55%</span></div>
                 <a href="video-ads-pro.html" class="gold-btn">اكتشف المنتج</a>
               </div>
             </div>
           </article>
 
-          <!-- المنتج الثالث: متجر جاهز PRO -->
-          <article class="product-card">
-            <img src="pro.header.jpg" alt="متجر رقمي جاهز"
-                 class="product-image" loading="lazy">
-
+          <article class="product-card" data-search="متجر جاهز pro متجر رقمي مشروع تجارة إلكترونية متجر إلكتروني إنشاء متجر">
+            <img src="pro.header.jpg" alt="متجر رقمي جاهز" class="product-image" loading="lazy">
             <div class="product-content">
               <div class="text-sm gold font-bold mb-3">مشروع رقمي</div>
               <h3 class="text-xl font-black mb-3">متجر جاهز PRO</h3>
-
-              <p class="text-slate-400 leading-7 mb-5">
-                حل رقمي جاهز لمساعدتك على الانطلاق في مشروعك الخاص.
-              </p>
-
-              <div class="flex items-center justify-between gap-3">
-                <div class="offer-pricing">
-                  <span class="offer-old-price">699 DH</span>
-                  <span class="offer-current-price">299 DH</span>
-                  <span class="offer-badge">تخفيض 57%</span>
-                </div>
-
+              <p class="text-slate-400 leading-7 mb-5">حل رقمي جاهز لمساعدتك على الانطلاق في مشروعك الخاص.</p>
+              <div class="flex items-center justify-between gap-3 mt-auto">
+                <div class="offer-pricing"><span class="offer-old-price">699 DH</span><span class="offer-current-price">299 DH</span><span class="offer-badge">تخفيض 57%</span></div>
                 <a href="pro.html" class="gold-btn">اكتشف المنتج</a>
               </div>
             </div>
           </article>
-
         </div>
+        <div id="noProducts">ما لقيناش منتج بهاد الكلمات. جرّب كلمة أخرى أو مسح البحث.</div>
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 class="text-3xl md:text-4xl font-black mb-6">
-            لماذا <span class="gold">DIGITAL MAROC؟</span>
-          </h2>
-
-          <p class="text-slate-300 leading-9 mb-5">
-            نهدف إلى توفير منتجات رقمية تساعدك على اكتشاف فرص جديدة وتطوير مهاراتك ومشاريعك.
-          </p>
-
+          <h2 class="text-3xl md:text-4xl font-black mb-6">لماذا <span class="gold">DIGITAL MAROC؟</span></h2>
+          <p class="text-slate-300 leading-9 mb-5">نهدف إلى توفير منتجات رقمية تساعدك على اكتشاف فرص جديدة وتطوير مهاراتك ومشاريعك.</p>
           <div class="space-y-4 mb-7">
             <div class="flex items-start gap-3"><span class="gold text-xl">✓</span><span>منتجات رقمية في مجالات مختلفة.</span></div>
             <div class="flex items-start gap-3"><span class="gold text-xl">✓</span><span>معلومات واضحة حول المنتجات والأسعار.</span></div>
             <div class="flex items-start gap-3"><span class="gold text-xl">✓</span><span>إمكانية التواصل معنا عبر واتساب.</span></div>
           </div>
-
-          <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-             class="gold-btn">تواصل معنا عبر واتساب</a>
+          <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="gold-btn">تواصل معنا عبر واتساب</a>
         </div>
-
-        <div class="rounded-2xl overflow-hidden border border-white/10">
+        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
           <video class="w-full block" controls preload="metadata" poster="pro.header.jpg">
             <source src="digital-maroc-story.mp4" type="video/mp4">
             المتصفح ديالك لا يدعم تشغيل الفيديو.
@@ -456,19 +220,14 @@
       </div>
     </section>
 
-    <section id="reviews" class="section" style="background:#081426">
+    <section id="reviews" class="section" style="background:rgba(4,13,27,.48);border-top:1px solid rgba(255,255,255,.045)">
       <div class="max-w-4xl mx-auto">
         <h2 class="section-title">آراء <span class="gold">العملاء</span></h2>
         <p class="section-subtitle">شارك تجربتك مع منتجات DIGITAL MAROC.</p>
-
-        <div class="rounded-2xl p-6 md:p-8 mb-8"
-             style="background:#10213B;border:1px solid rgba(245,197,66,.2)">
+        <div class="rounded-2xl p-6 md:p-8 mb-8" style="background:#10213B;border:1px solid rgba(245,197,66,.2)">
           <h3 class="text-xl font-bold mb-5">أضف تعليقك</h3>
-
           <label for="cName" class="block mb-2">الاسم</label>
-          <input id="cName" type="text" maxlength="60" class="form-field mb-5"
-                 placeholder="أدخل اسمك" autocomplete="name">
-
+          <input id="cName" type="text" maxlength="60" class="form-field mb-5" placeholder="أدخل اسمك" autocomplete="name">
           <label class="block mb-2">التقييم</label>
           <div id="starSelector" class="flex gap-2 text-3xl mb-5" aria-label="اختيار التقييم">
             <button type="button" class="star" data-star="1" aria-label="نجمة واحدة">★</button>
@@ -477,62 +236,39 @@
             <button type="button" class="star" data-star="4" aria-label="أربع نجوم">★</button>
             <button type="button" class="star" data-star="5" aria-label="خمس نجوم">★</button>
           </div>
-
           <label for="cMsg" class="block mb-2">التعليق</label>
-          <textarea id="cMsg" rows="4" maxlength="1000" class="form-field mb-5"
-                    placeholder="اكتب تعليقك هنا..."></textarea>
-
+          <textarea id="cMsg" rows="4" maxlength="1000" class="form-field mb-5" placeholder="اكتب تعليقك هنا..."></textarea>
           <button id="btnPublish" type="button" class="gold-btn">نشر التعليق</button>
           <p id="statusMsg" class="text-sm mt-4" aria-live="polite"></p>
         </div>
-
-        <div id="allComments" class="space-y-4">
-          <p class="text-center text-slate-400">جاري تحميل التعليقات...</p>
-        </div>
-
-        <div id="commentsControls" class="text-center mt-6" hidden>
-          <button id="toggleCommentsBtn" type="button" class="outline-btn">تعليقات أكثر</button>
-        </div>
+        <div id="allComments" class="space-y-4"><p class="text-center text-slate-400">جاري تحميل التعليقات...</p></div>
+        <div id="commentsControls" class="text-center mt-6" hidden><button id="toggleCommentsBtn" type="button" class="outline-btn">تعليقات أكثر</button></div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-white/10 px-5 py-8">
+  <footer class="border-t border-white/10 px-5 py-8" style="background:rgba(4,13,27,.35)">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
       <div class="font-black text-lg">DIGITAL <span class="gold">MAROC</span></div>
-
       <div class="flex flex-wrap justify-center gap-5 text-sm text-slate-300">
         <a href="terms.html" class="hover:text-yellow-400">شروط الاستخدام</a>
         <a href="privacy.html" class="hover:text-yellow-400">سياسة الخصوصية</a>
-        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-           class="hover:text-yellow-400">اتصل بنا</a>
+        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400">اتصل بنا</a>
       </div>
-
       <p class="text-sm text-slate-500">© DIGITAL MAROC</p>
     </div>
   </footer>
 
-  <div id="leadPopup" role="dialog" aria-modal="true" aria-labelledby="popTitle"
-       style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999999;display:none;justify-content:center;align-items:center;padding:16px">
+  <div id="leadPopup" role="dialog" aria-modal="true" aria-labelledby="popTitle" style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999999;display:none;justify-content:center;align-items:center;padding:16px">
     <div style="background:#fff;color:#142033;padding:25px;border-radius:15px;width:100%;max-width:360px;text-align:center;max-height:90vh;overflow-y:auto">
       <h3 id="popTitle" class="text-2xl font-black mb-3">مرحباً بك في DIGITAL MAROC</h3>
       <p class="text-sm text-slate-600 mb-5">أدخل معلوماتك للتواصل معك حول منتجاتنا.</p>
-
       <form id="leadForm">
-        <input id="leadName" name="name" type="text" maxlength="80"
-               class="form-field mb-3" placeholder="الاسم" autocomplete="name" required>
-
-        <input id="leadPhone" name="phone" type="tel" maxlength="20"
-               class="form-field mb-3" placeholder="رقم الهاتف" autocomplete="tel" required>
-
+        <input id="leadName" name="name" type="text" maxlength="80" class="form-field mb-3" placeholder="الاسم" autocomplete="name" required>
+        <input id="leadPhone" name="phone" type="tel" maxlength="20" class="form-field mb-3" placeholder="رقم الهاتف" autocomplete="tel" required>
         <select id="leadAge" name="age" class="form-field mb-4" required>
-          <option value="">اختر الفئة العمرية</option>
-          <option value="18-24">18–24 سنة</option>
-          <option value="25-34">25–34 سنة</option>
-          <option value="35-44">35–44 سنة</option>
-          <option value="45+">45 سنة فما فوق</option>
+          <option value="">اختر الفئة العمرية</option><option value="18-24">18–24 سنة</option><option value="25-34">25–34 سنة</option><option value="35-44">35–44 سنة</option><option value="45+">45 سنة فما فوق</option>
         </select>
-
         <button id="btnSave" type="submit" class="gold-btn w-full mb-3">إرسال المعلومات</button>
         <button id="btnSkipPopup" type="button" class="w-full py-2 text-slate-500">تخطي</button>
         <p id="formMsg" class="text-sm mt-3" aria-live="polite"></p>
@@ -541,12 +277,10 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script>
     const SUPABASE_URL = 'https://tonkzmlrdmhtekvqdsjh.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_0EOeU0O5HcDd-dlMBGMVvA_P5Wkxg1f';
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_DANbnQci2zZCls-VeCwE3-CFJjXjEf00PSgy4Ht24tl8aYsOmfHumf_7VztVZfAp/exec';
-
     const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     let selectedStars = 5, currentUserId = null, reviews = [];
@@ -556,22 +290,69 @@
 
     const langMainBtn = document.getElementById('langMainBtn');
     const langMenu = document.getElementById('langMenu');
-
-    langMainBtn.addEventListener('click', () => langMenu.classList.toggle('hidden'));
+    langMainBtn.addEventListener('click', () => {
+      const isOpen = !langMenu.classList.contains('hidden');
+      langMenu.classList.toggle('hidden');
+      langMainBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
 
     function setLang(language) {
       if (!['ar', 'fr', 'en'].includes(language)) return;
       localStorage.setItem('dm_lang', language);
       langMainBtn.textContent = language.toUpperCase();
       langMenu.classList.add('hidden');
+      langMainBtn.setAttribute('aria-expanded', 'false');
     }
-
     setLang(localStorage.getItem('dm_lang') || 'ar');
 
     document.addEventListener('click', event => {
       if (!event.target.closest('#langMainBtn') && !event.target.closest('#langMenu')) {
         langMenu.classList.add('hidden');
+        langMainBtn.setAttribute('aria-expanded', 'false');
       }
+    });
+
+    // البحث في بطاقات المنتجات فقط؛ لا يتدخل في Supabase أو التعليقات.
+    const productSearch = document.getElementById('productSearch');
+    const clearSearch = document.getElementById('clearSearch');
+    const searchStatus = document.getElementById('searchStatus');
+    const noProducts = document.getElementById('noProducts');
+    const productCards = Array.from(document.querySelectorAll('#productGrid .product-card'));
+
+    function normalizeSearchText(value) {
+      return String(value || '')
+        .toLocaleLowerCase('ar')
+        .normalize('NFD')
+        .replace(/[\u064B-\u065F\u0670]/g, '')
+        .replace(/[أإآ]/g, 'ا')
+        .replace(/ى/g, 'ي')
+        .trim();
+    }
+
+    function filterProducts() {
+      const query = normalizeSearchText(productSearch.value);
+      const terms = query.split(/\s+/).filter(Boolean);
+      let visible = 0;
+
+      productCards.forEach(card => {
+        const haystack = normalizeSearchText((card.innerText || '') + ' ' + (card.dataset.search || ''));
+        const matches = terms.every(term => haystack.includes(term));
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+
+      noProducts.style.display = visible === 0 ? 'block' : 'none';
+      clearSearch.hidden = !productSearch.value;
+      searchStatus.textContent = query
+        ? `النتائج: ${visible} من ${productCards.length} منتجات`
+        : 'تقدر تبحث باسم المنتج أو نوع الخدمة.';
+    }
+
+    productSearch.addEventListener('input', filterProducts);
+    clearSearch.addEventListener('click', () => {
+      productSearch.value = '';
+      filterProducts();
+      productSearch.focus();
     });
 
     document.querySelectorAll('[data-star]').forEach(button => {
@@ -588,12 +369,7 @@
         button.setAttribute('aria-pressed', String(active));
       });
     }
-
-    function setStars(value) {
-      selectedStars = value;
-      updateStars();
-    }
-
+    function setStars(value) { selectedStars = value; updateStars(); }
     updateStars();
 
     function setStatus(message = '', isError = false) {
@@ -605,16 +381,13 @@
     async function initializeUser() {
       const { data: sessionData, error: sessionError } = await db.auth.getSession();
       if (sessionError) throw sessionError;
-
       if (sessionData.session?.user) {
         currentUserId = sessionData.session.user.id;
         return sessionData.session.user;
       }
-
       const { data, error } = await db.auth.signInAnonymously();
       if (error) throw error;
       if (!data.user) throw new Error('لم يتم إنشاء مستخدم مجهول.');
-
       currentUserId = data.user.id;
       return data.user;
     }
@@ -622,15 +395,12 @@
     async function ensureAnonymousUser() {
       if (currentUserId) {
         const { data, error } = await db.auth.getSession();
-
         if (!error && data.session?.user) {
           currentUserId = data.session.user.id;
           return data.session.user;
         }
-
         currentUserId = null;
       }
-
       return initializeUser();
     }
 
@@ -638,19 +408,11 @@
       const nameInput = document.getElementById('cName');
       const commentInput = document.getElementById('cMsg');
       const button = document.getElementById('btnPublish');
-
       const name = nameInput.value.trim();
       const comment = commentInput.value.trim();
 
-      if (
-        name.length < 2 ||
-        name.length > 60 ||
-        !comment ||
-        comment.length > 1000 ||
-        !Number.isInteger(selectedStars) ||
-        selectedStars < 1 ||
-        selectedStars > 5
-      ) {
+      if (name.length < 2 || name.length > 60 || !comment || comment.length > 1000 ||
+          !Number.isInteger(selectedStars) || selectedStars < 1 || selectedStars > 5) {
         setStatus('دخل اسم صحيح وتعليق، واختار التقييم بالنجوم.', true);
         return;
       }
@@ -661,21 +423,18 @@
 
       try {
         const user = await ensureAnonymousUser();
-
         const { error } = await db.from('reviews').insert({
           name,
           comment,
           stars: selectedStars,
           owner_id: user.id
         });
-
         if (error) throw error;
 
         nameInput.value = '';
         commentInput.value = '';
         setStars(5);
         showAllComments = false;
-
         setStatus('تم نشر التعليق بنجاح.');
         await loadReviews();
       } catch (error) {
@@ -686,34 +445,21 @@
         button.textContent = 'نشر التعليق';
       }
     }
-
     document.getElementById('btnPublish').addEventListener('click', postComment);
 
     async function toggleLike(reviewId) {
       const id = String(reviewId);
       if (busyLikes.has(id)) return;
-
       busyLikes.add(id);
-
       try {
         const user = await ensureAnonymousUser();
-
         if (likedReviewIds.has(id)) {
-          const { error } = await db.from('review_likes')
-            .delete()
-            .eq('review_id', reviewId)
-            .eq('user_id', user.id);
-
+          const { error } = await db.from('review_likes').delete().eq('review_id', reviewId).eq('user_id', user.id);
           if (error) throw error;
         } else {
-          const { error } = await db.from('review_likes').insert({
-            review_id: reviewId,
-            user_id: user.id
-          });
-
+          const { error } = await db.from('review_likes').insert({review_id: reviewId,user_id: user.id});
           if (error && error.code !== '23505') throw error;
         }
-
         await loadReviews();
       } catch (error) {
         console.error('toggleLike:', error);
@@ -726,35 +472,22 @@
     async function deleteReview(reviewId) {
       const id = String(reviewId);
       if (busyDeletes.has(id)) return;
-
       const review = reviews.find(item => String(item.id) === id);
       if (!review) return;
-
       try {
         const user = await ensureAnonymousUser();
-
         if (review.owner_id !== user.id) {
           setStatus('يمكنك حذف تعليقاتك فقط.', true);
           return;
         }
-
         if (!confirm('واش متأكد بغيتي تحذف هاد التعليق؟')) return;
-
         busyDeletes.add(id);
-
-        const { data, error } = await db.from('reviews')
-          .delete()
-          .eq('id', reviewId)
-          .eq('owner_id', user.id)
-          .select('id');
-
+        const { data, error } = await db.from('reviews').delete().eq('id', reviewId).eq('owner_id', user.id).select('id');
         if (error) throw error;
-
         if (!data || data.length === 0) {
           setStatus('ما تحذفش التعليق. تحقق من سياسة RLS.', true);
           return;
         }
-
         setStatus('تم حذف التعليق.');
         await loadReviews();
       } catch (error) {
@@ -768,26 +501,15 @@
     function orderReviewsWithPins(allReviews, pins) {
       const byId = new Map(allReviews.map(review => [String(review.id), review]));
       const ordered = [], used = new Set();
-
-      [...pins].sort((a, b) => Number(a.slot) - Number(b.slot)).forEach(pin => {
+      [...pins].sort((a,b) => Number(a.slot) - Number(b.slot)).forEach(pin => {
         const id = String(pin.review_id);
         const review = byId.get(id);
-
-        if (review && !used.has(id)) {
-          ordered.push(review);
-          used.add(id);
-        }
+        if (review && !used.has(id)) { ordered.push(review); used.add(id); }
       });
-
       allReviews.forEach(review => {
         const id = String(review.id);
-
-        if (!used.has(id)) {
-          ordered.push(review);
-          used.add(id);
-        }
+        if (!used.has(id)) { ordered.push(review); used.add(id); }
       });
-
       return ordered;
     }
 
@@ -795,7 +517,6 @@
       const box = document.getElementById('allComments');
       const controls = document.getElementById('commentsControls');
       const toggleButton = document.getElementById('toggleCommentsBtn');
-
       box.replaceChildren();
 
       if (!reviews.length) {
@@ -807,14 +528,11 @@
         return;
       }
 
-      const visibleReviews = showAllComments ? reviews : reviews.slice(0, 3);
-
+      const visibleReviews = showAllComments ? reviews : reviews.slice(0,3);
       visibleReviews.forEach(review => {
         const item = document.createElement('article');
         item.className = 'review-card';
-
         const pin = currentPins.find(p => String(p.review_id) === String(review.id));
-
         if (pin) {
           const pinnedLabel = document.createElement('p');
           pinnedLabel.className = 'text-xs gold font-bold mb-2';
@@ -825,30 +543,22 @@
         const name = document.createElement('p');
         name.className = 'font-bold mb-2';
         name.textContent = review.name || 'زائر';
-
         const stars = document.createElement('p');
         stars.className = 'gold mb-2';
-
-        const starCount = Math.max(0, Math.min(5, Number(review.stars) || 0));
-        stars.textContent = '★'.repeat(starCount) + '☆'.repeat(5 - starCount);
-        stars.setAttribute('aria-label', `التقييم ${starCount} من 5`);
-
+        const starCount = Math.max(0,Math.min(5,Number(review.stars)||0));
+        stars.textContent = '★'.repeat(starCount) + '☆'.repeat(5-starCount);
+        stars.setAttribute('aria-label',`التقييم ${starCount} من 5`);
         const comment = document.createElement('p');
         comment.className = 'mb-3 whitespace-pre-wrap break-words';
         comment.textContent = review.comment || '';
-
         const actions = document.createElement('div');
         actions.className = 'flex flex-wrap gap-3 items-center';
-
         const id = String(review.id);
         const likeButton = document.createElement('button');
-
         likeButton.type = 'button';
         likeButton.className = 'text-sm border border-white/10 rounded-lg px-3 py-2';
-        likeButton.textContent =
-          `${likedReviewIds.has(id) ? '❤️' : '🤍'} إعجاب (${likeCounts.get(id) || 0})`;
-
-        likeButton.addEventListener('click', () => toggleLike(review.id));
+        likeButton.textContent = `${likedReviewIds.has(id) ? '❤️' : '🤍'} إعجاب (${likeCounts.get(id)||0})`;
+        likeButton.addEventListener('click',() => toggleLike(review.id));
         actions.appendChild(likeButton);
 
         if (review.owner_id === user.id) {
@@ -856,171 +566,107 @@
           deleteButton.type = 'button';
           deleteButton.className = 'text-sm border border-white/10 rounded-lg px-3 py-2';
           deleteButton.textContent = '🗑️ حذف';
-          deleteButton.addEventListener('click', () => deleteReview(review.id));
+          deleteButton.addEventListener('click',() => deleteReview(review.id));
           actions.appendChild(deleteButton);
         }
-
-        item.append(name, stars, comment, actions);
+        item.append(name,stars,comment,actions);
         box.appendChild(item);
       });
-
       controls.hidden = reviews.length <= 3;
       toggleButton.textContent = showAllComments ? 'عرض أقل' : 'تعليقات أكثر';
     }
 
-    document.getElementById('toggleCommentsBtn').addEventListener('click', () => {
+    document.getElementById('toggleCommentsBtn').addEventListener('click',() => {
       showAllComments = !showAllComments;
-      if (currentUserId) renderReviews({ id: currentUserId });
+      if (currentUserId) renderReviews({id:currentUserId});
     });
 
     async function loadReviews() {
       const box = document.getElementById('allComments');
       box.innerHTML = '<p class="text-center text-slate-400">جاري تحميل التعليقات...</p>';
-
       try {
         const user = await ensureAnonymousUser();
-
-        const { data, error } = await db.from('reviews')
-          .select('*')
-          .order('created_at', { ascending: false });
-
+        const {data,error} = await db.from('reviews').select('*').order('created_at',{ascending:false});
         if (error) throw error;
-
         const allReviews = data || [];
-
-        // إذا لم يكن جدول التثبيت متاحاً، تبقى التعليقات تعمل بشكل عادي.
         let pins = [];
-
-        const { data: pinData, error: pinError } = await db.from('review_pins')
-          .select('slot,review_id')
-          .order('slot', { ascending: true });
-
+        const {data:pinData,error:pinError} = await db.from('review_pins').select('slot,review_id').order('slot',{ascending:true});
         if (!pinError && pinData) pins = pinData;
-
         currentPins = pins;
-        reviews = orderReviewsWithPins(allReviews, pins);
-
-        const { data: likes, error: likesError } = await db.from('review_likes')
-          .select('review_id,user_id');
-
+        reviews = orderReviewsWithPins(allReviews,pins);
+        const {data:likes,error:likesError} = await db.from('review_likes').select('review_id,user_id');
         if (likesError) throw likesError;
-
-        likedReviewIds = new Set(
-          (likes || [])
-            .filter(like => like.user_id === user.id)
-            .map(like => String(like.review_id))
-        );
-
+        likedReviewIds = new Set((likes||[]).filter(like => like.user_id === user.id).map(like => String(like.review_id)));
         likeCounts = new Map();
-
-        (likes || []).forEach(like => {
+        (likes||[]).forEach(like => {
           const id = String(like.review_id);
-          likeCounts.set(id, (likeCounts.get(id) || 0) + 1);
+          likeCounts.set(id,(likeCounts.get(id)||0)+1);
         });
-
         renderReviews(user);
       } catch (error) {
-        console.error('loadReviews:', error);
-
+        console.error('loadReviews:',error);
         box.replaceChildren();
-
         const message = document.createElement('p');
         message.className = 'text-center text-red-400';
         message.textContent = 'تعذر تحميل التعليقات. تحقق من إعدادات Supabase وسياسات RLS.';
-
         box.appendChild(message);
         document.getElementById('commentsControls').hidden = true;
-        setStatus('تعذر تحميل التعليقات.', true);
+        setStatus('تعذر تحميل التعليقات.',true);
       }
     }
 
-    // نافذة جمع معلومات التواصل
     const leadPopup = document.getElementById('leadPopup');
     const leadForm = document.getElementById('leadForm');
-
     function popupWasDismissed() {
-      try {
-        return sessionStorage.getItem('dm_popup_seen') === '1';
-      } catch (_) {
-        return false;
-      }
+      try { return sessionStorage.getItem('dm_popup_seen') === '1'; } catch (_) { return false; }
     }
-
     function markPopupDismissed() {
-      try {
-        sessionStorage.setItem('dm_popup_seen', '1');
-      } catch (_) {}
+      try { sessionStorage.setItem('dm_popup_seen','1'); } catch (_) {}
     }
-
-    function closeLeadPopup() {
-      leadPopup.style.display = 'none';
-      markPopupDismissed();
-    }
-
-    document.getElementById('btnSkipPopup').addEventListener('click', closeLeadPopup);
-
-    window.addEventListener('load', () => {
+    function closeLeadPopup() { leadPopup.style.display = 'none'; markPopupDismissed(); }
+    document.getElementById('btnSkipPopup').addEventListener('click',closeLeadPopup);
+    window.addEventListener('load',() => {
       if (!popupWasDismissed()) {
         window.setTimeout(() => {
-          if (!popupWasDismissed() && leadPopup) {
-            leadPopup.style.display = 'flex';
-          }
-        }, 5000);
+          if (!popupWasDismissed() && leadPopup) leadPopup.style.display = 'flex';
+        },5000);
       }
     });
 
-    leadForm.addEventListener('submit', async event => {
+    leadForm.addEventListener('submit',async event => {
       event.preventDefault();
-
       const button = document.getElementById('btnSave');
       const message = document.getElementById('formMsg');
-
       const name = document.getElementById('leadName').value.trim();
       const phone = document.getElementById('leadPhone').value.trim();
       const age = document.getElementById('leadAge').value;
-
-      if (!name || !phone || !age) {
-        message.textContent = 'يرجى ملء جميع المعلومات.';
-        return;
-      }
-
+      if (!name || !phone || !age) { message.textContent = 'يرجى ملء جميع المعلومات.'; return; }
       button.disabled = true;
       message.textContent = 'جاري الإرسال...';
-
       try {
         // وضع no-cors لا يسمح بقراءة جواب الخدمة.
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-          },
-          body: new URLSearchParams({ name, phone, age }).toString()
+        await fetch(GOOGLE_SCRIPT_URL,{
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+          body:new URLSearchParams({name,phone,age}).toString()
         });
-
         message.textContent = 'تم إرسال الطلب. إذا لم تتوصل بتأكيد، تحقق من إعدادات الخدمة.';
         markPopupDismissed();
-
-        window.setTimeout(() => {
-          leadPopup.style.display = 'none';
-        }, 1800);
+        window.setTimeout(() => { leadPopup.style.display = 'none'; },1800);
       } catch (error) {
-        console.error('خطأ في إرسال المعلومات:', error);
+        console.error('خطأ في إرسال المعلومات:',error);
         message.textContent = 'تعذر الإرسال. حاول مرة أخرى.';
-      } finally {
-        button.disabled = false;
-      }
+      } finally { button.disabled = false; }
     });
 
-    (function () {
+    (function() {
       if (document.getElementById('chatbase-script')) return;
-
       const script = document.createElement('script');
       script.id = 'chatbase-script';
       script.src = 'https://www.chatbase.co/embed.min.js';
-      script.setAttribute('chatbotId', 'BCI1Dqkp1ypx-ejQ4twP6');
+      script.setAttribute('chatbotId','BCI1Dqkp1ypx-ejQ4twP6');
       script.defer = true;
-
       document.body.appendChild(script);
     })();
 
@@ -1029,9 +675,8 @@
         await initializeUser();
         await loadReviews();
       } catch (error) {
-        console.error('startReviews:', error);
-        setStatus('تعذر الاتصال بـ Supabase. تحقق من إعدادات المشروع.', true);
-
+        console.error('startReviews:',error);
+        setStatus('تعذر الاتصال بـ Supabase. تحقق من إعدادات المشروع.',true);
         const box = document.getElementById('allComments');
         if (box) box.textContent = 'تعذر تحميل التعليقات حالياً.';
       }
@@ -1039,3 +684,9 @@
   </script>
 </body>
 </html>
+'''
+
+out = Path("/mnt/data/index_digital_maroc_updated.html")
+out.write_text(html, encoding="utf-8")
+print(f"Created: {out}")
+print(f"Size: {out.stat().st_size:,} bytes")
