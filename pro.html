@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>المتجر الجاهز PRO | DIGITAL MAROC</title>
-<meta name="description" content="اختر متجرك الإلكتروني من DIGITAL MAROC، واكتشف المميزات وخيارات الذكاء الاصطناعي والدعم حسب العرض.">
+<meta name="description" content="اكتشف ستة أنواع من المتاجر الإلكترونية مع DIGITAL MAROC.">
 <meta name="theme-color" content="#0A1931">
 <link rel="canonical" href="https://digital-maroc-store.vercel.app/pro.html">
 <link rel="icon" href="logo-final.png">
@@ -37,7 +37,6 @@ a,button{-webkit-tap-highlight-color:transparent}
   radial-gradient(ellipse at 10% 10%,rgba(23,105,255,.13),transparent 45%),
   radial-gradient(ellipse at 90% 80%,rgba(16,185,129,.11),transparent 40%),#fff
 }
-.soft-shadow{box-shadow:0 18px 55px rgba(10,25,49,.08)}
 .primary-btn{background:var(--navy);color:#fff;transition:.2s}
 .primary-btn:hover{background:var(--blue);transform:translateY(-1px)}
 .language-btn{
@@ -45,9 +44,7 @@ a,button{-webkit-tap-highlight-color:transparent}
   font-weight:800;color:#526178
 }
 .language-btn.active{background:var(--navy);color:#fff}
-.store-card{
-  overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s
-}
+.store-card{overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
 .store-card:hover{
   transform:translateY(-4px);
   box-shadow:0 18px 40px rgba(10,25,49,.11);
@@ -62,103 +59,136 @@ a,button{-webkit-tap-highlight-color:transparent}
   background:#fff7ed;color:#c2410c;border-radius:999px;
   padding:7px 10px;font-size:11px;font-weight:900
 }
-
-/* واجهات المتاجر */
-.store-cover{
-  position:relative;overflow:hidden;padding:14px;
-  border-radius:18px;border:1px solid #e2e8f0;
-  background:#f8fafc;color:#10213a
+.store-tag{
+  border-radius:999px;background:#f1f5f9;color:#475569;
+  padding:7px 11px;font-size:11px;font-weight:800
 }
-.cover-books{background:linear-gradient(140deg,#dbeafe,#eff6ff 60%,#bfdbfe)}
-.cover-canva{background:linear-gradient(140deg,#fce7f3,#eef2ff 55%,#cffafe)}
-.cover-shop{background:linear-gradient(140deg,#ffedd5,#fff7ed 55%,#fed7aa)}
-.cover-services{background:linear-gradient(140deg,#d1fae5,#ecfdf5 55%,#a7f3d0)}
-.cover-courses{background:linear-gradient(140deg,#ede9fe,#f5f3ff 55%,#c4b5fd)}
-.cover-empire{background:linear-gradient(140deg,#0A1931,#142e50 60%,#065f46);color:#fff}
+
+/* أغلفة المتاجر المصنوعة بالكامل داخل HTML وCSS */
+.store-cover{
+  position:relative;overflow:hidden;padding:12px;
+  border-radius:19px;border:1px solid #e2e8f0;
+  min-height:290px;
+}
+.cover-books{background:linear-gradient(145deg,#dbeafe,#eff6ff 55%,#93c5fd)}
+.cover-canva{background:linear-gradient(145deg,#fce7f3,#eef2ff 55%,#a5f3fc)}
+.cover-shop{background:linear-gradient(145deg,#ffedd5,#fff7ed 55%,#fdba74)}
+.cover-services{background:linear-gradient(145deg,#d1fae5,#ecfdf5 55%,#6ee7b7)}
+.cover-courses{background:linear-gradient(145deg,#ede9fe,#f5f3ff 55%,#c4b5fd)}
+.cover-empire{background:linear-gradient(145deg,#020617,#0A1931 60%,#065f46);color:white}
 
 .mock-window{
   position:relative;overflow:hidden;border-radius:13px;
   border:1px solid rgba(148,163,184,.35);
-  background:rgba(255,255,255,.96);
-  box-shadow:0 10px 25px rgba(15,23,42,.10)
+  background:rgba(255,255,255,.98);
+  box-shadow:0 12px 28px rgba(15,23,42,.13)
 }
 .mock-nav{
   display:flex;align-items:center;justify-content:space-between;
-  gap:8px;padding:10px;border-bottom:1px solid #e2e8f0
+  gap:6px;padding:10px;border-bottom:1px solid #e2e8f0
 }
 .mock-brand{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:900}
 .mock-logo{
-  display:flex;width:25px;height:25px;align-items:center;justify-content:center;
-  flex-shrink:0;border-radius:8px;background:#0A1931;color:#fff;font-size:10px
+  display:flex;width:26px;height:26px;align-items:center;justify-content:center;
+  flex-shrink:0;border-radius:8px;background:#0A1931;color:white;font-size:10px
 }
 .mock-link{font-size:8px;font-weight:800;color:#64748b}
 .mock-cta{
-  padding:5px 8px;border-radius:7px;background:#0A1931;
+  padding:6px 8px;border-radius:7px;background:#0A1931;
   color:white;font-size:8px;font-weight:800;white-space:nowrap
 }
 .mock-body{padding:11px}
 .mock-eyebrow{font-size:8px;font-weight:900;color:#1769ff}
-.mock-title{margin-top:4px;font-size:15px;font-weight:900;line-height:1.5}
+.mock-title{margin-top:4px;font-size:16px;font-weight:900;line-height:1.5;color:#10213a}
 .mock-description{margin-top:3px;font-size:9px;line-height:1.7;color:#64748b}
+.mock-banner{
+  position:relative;overflow:hidden;min-height:79px;padding:11px;
+  margin-top:10px;border-radius:10px;background:linear-gradient(110deg,#0A1931,#1769ff);
+  color:white;display:flex;align-items:center;justify-content:space-between;gap:8px
+}
+.mock-banner-text{position:relative;z-index:1;max-width:72%}
+.mock-banner-title{font-size:12px;font-weight:900;line-height:1.6}
+.mock-banner-sub{font-size:8px;line-height:1.6;opacity:.8;margin-top:3px}
+.mock-banner-art{font-size:35px;filter:drop-shadow(0 5px 5px #0002)}
 .mock-categories{display:flex;gap:5px;margin-top:10px}
 .mock-category{
   flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  padding:6px 3px;text-align:center;background:#f8fafc;border-radius:7px;
+  padding:7px 3px;text-align:center;background:#f8fafc;border-radius:7px;
   font-size:8px;font-weight:800;border:1px solid #e2e8f0
 }
-.mock-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:9px}
+.mock-section-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:5px;margin-top:12px;font-size:10px;font-weight:900;color:#10213a
+}
+.mock-section-head span:last-child{font-size:8px;color:#64748b}
+.mock-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
 .mock-product{
   min-width:0;padding:5px;border:1px solid #e2e8f0;
   border-radius:8px;background:#fff
 }
 .mock-art{
-  display:flex;height:53px;align-items:center;justify-content:center;
-  border-radius:6px;font-size:25px
+  position:relative;display:flex;height:63px;align-items:center;justify-content:center;
+  border-radius:7px;font-size:27px;overflow:hidden
 }
-.mock-name{
-  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
-  margin-top:5px;font-size:8px;font-weight:900;color:#10213a
+.mock-art::after{
+  content:"";position:absolute;width:35px;height:35px;border-radius:50%;
+  border:1px solid #ffffff70;top:-14px;right:-10px
 }
-.mock-price{margin-top:3px;font-size:8px;font-weight:900;color:#047857}
 .art-books{background:linear-gradient(135deg,#dbeafe,#93c5fd)}
 .art-canva{background:linear-gradient(135deg,#fbcfe8,#c4b5fd)}
 .art-shop{background:linear-gradient(135deg,#fed7aa,#fdba74)}
 .art-services{background:linear-gradient(135deg,#a7f3d0,#d1fae5)}
 .art-courses{background:linear-gradient(135deg,#ddd6fe,#c4b5fd)}
 .art-empire{background:linear-gradient(135deg,#dbeafe,#a7f3d0)}
-
+.mock-name{
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  margin-top:5px;font-size:8px;font-weight:900;color:#10213a
+}
+.mock-price{margin-top:3px;font-size:8px;font-weight:900;color:#047857}
+.mock-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:5px;margin-top:9px;padding:8px 9px;background:#f8fafc;
+  border-radius:8px;font-size:8px;font-weight:800;color:#475569
+}
+.mock-dots{display:flex;gap:3px}
+.mock-dots i{width:5px;height:5px;border-radius:50%;background:#cbd5e1}
 .cover-empire .mock-window{background:#10213a;border-color:#334155}
 .cover-empire .mock-nav{border-color:#334155}
-.cover-empire .mock-brand,.cover-empire .mock-title{color:#fff}
+.cover-empire .mock-brand,.cover-empire .mock-title,.cover-empire .mock-section-head{color:#fff}
 .cover-empire .mock-logo,.cover-empire .mock-cta{background:#10b981;color:#052e2b}
 .cover-empire .mock-link{color:#cbd5e1}
 .cover-empire .mock-description{color:#cbd5e1}
 .cover-empire .mock-category,.cover-empire .mock-product{background:#172943;border-color:#334155}
 .cover-empire .mock-name{color:#fff}
 .cover-empire .mock-price{color:#6ee7b7}
+.cover-empire .mock-banner{background:linear-gradient(110deg,#065f46,#0A1931)}
+.cover-empire .mock-bottom{background:#172943;color:#cbd5e1}
 
-.detail-block{
-  border:1px solid #e2e8f0;border-radius:14px;padding:12px;
+.feature-list{display:grid;gap:9px;margin-top:17px}
+.feature-item{
+  display:flex;align-items:flex-start;gap:9px;
+  border:1px solid #e8edf4;border-radius:12px;padding:10px;
   background:#f8fafc
 }
-.detail-heading{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:900}
-.detail-text{margin-top:6px;font-size:12px;line-height:1.9;color:#64748b}
-.feature-check{color:#059669;font-weight:900}
-.empire-card{background:#0A1931;color:white;border-color:#0A1931}
-.empire-card .detail-block{background:#10213a;border-color:#334155}
-.empire-card .detail-text{color:#cbd5e1}
-.empire-card .old-price{color:#cbd5e1}
-.empire-card .feature-check{color:#6ee7b7}
-.empire-card .store-tag{background:#ffffff15;color:#e2e8f0}
-.store-tag{
-  border-radius:999px;background:#f1f5f9;color:#475569;
-  padding:7px 11px;font-size:11px;font-weight:800
+.feature-number{
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:25px;height:25px;border-radius:8px;background:#e0edff;
+  color:#1769ff;font-size:11px;font-weight:900
 }
+.feature-copy{font-size:12px;line-height:1.8;color:#475569;font-weight:600}
+.empire-card{background:#0A1931;color:white;border-color:#0A1931}
+.empire-card .feature-item{background:#10213a;border-color:#334155}
+.empire-card .feature-number{background:#064e3b;color:#6ee7b7}
+.empire-card .feature-copy{color:#e2e8f0}
+.empire-card .old-price{color:#cbd5e1}
+.empire-card .store-tag{background:#ffffff15;color:#e2e8f0}
 [dir="ltr"] .brand-name{text-align:left}
 @media(max-width:640px){
   .brand-logo{width:37px;height:37px}
   .header-order{padding:9px 12px;font-size:11px}
   .hero-title{font-size:39px}
+  .store-cover{min-height:275px}
+  .mock-art{height:57px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
@@ -184,8 +214,10 @@ a,button{-webkit-tap-highlight-color:transparent}
         <button type="button" class="language-btn" data-lang="fr" aria-pressed="false">FR</button>
         <button type="button" class="language-btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
-      <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
-        class="header-order primary-btn rounded-full px-4 py-3 text-xs font-black sm:px-5" data-i18n="headerOrder">اطلب الآن</a>
+      <a href="https://wa.me/212719380106" data-general-wa
+        target="_blank" rel="noopener noreferrer"
+        class="header-order primary-btn rounded-full px-4 py-3 text-xs font-black sm:px-5"
+        data-i18n="headerOrder">اطلب الآن</a>
     </div>
   </div>
 </header>
@@ -206,16 +238,16 @@ a,button{-webkit-tap-highlight-color:transparent}
       <br><span data-i18n="heroLine2">وانطلق بمشروعك</span>
     </h1>
     <p data-i18n="heroDescription" class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-      اكتشف ستة أنواع من المتاجر، وشوف المميزات ديال كل واحد وخيارات AI والدعم المتاحة حسب العرض.
+      اختار المتجر المناسب لنشاطك، واكتشف خمس مميزات عملية لكل نوع قبل الطلب.
     </p>
     <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
       <a href="#stores" class="primary-btn rounded-full px-7 py-4 text-sm font-black" data-i18n="chooseStore">اختار نوع المتجر</a>
-      <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
+      <a href="https://wa.me/212719380106" data-general-wa target="_blank" rel="noopener noreferrer"
         class="rounded-full border border-slate-300 bg-white px-7 py-4 text-sm font-black text-[#0A1931] hover:border-blue-400" data-i18n="contactUs">تواصل معنا</a>
     </div>
     <div class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs font-bold text-slate-600">
       <span><span class="text-emerald-500">✓</span> <span data-i18n="heroBenefit1">تصميم حسب نوع النشاط</span></span>
-      <span><span class="text-emerald-500">✓</span> <span data-i18n="heroBenefit2">مميزات واضحة قبل الطلب</span></span>
+      <span><span class="text-emerald-500">✓</span> <span data-i18n="heroBenefit2">خمس مميزات واضحة لكل متجر</span></span>
       <span><span class="text-emerald-500">✓</span> <span data-i18n="heroBenefit3">تواصل مباشر عبر واتساب</span></span>
     </div>
   </div>
@@ -226,346 +258,14 @@ a,button{-webkit-tap-highlight-color:transparent}
     <span class="text-xs font-black uppercase tracking-wider text-blue-600" data-i18n="sectionEyebrow">اختار الحل المناسب</span>
     <h2 class="mt-3 text-3xl font-black text-[#0A1931] sm:text-4xl" data-i18n="storesTitle">ستة أنواع من المتاجر</h2>
     <p class="mt-4 text-sm leading-7 text-slate-500 sm:text-base" data-i18n="storesDescription">
-      كل متجر عندو استعمال ومميزات مختلفة. شوف الواجهة والمزايا والثمن، وتواصل معنا لتأكيد الخصائص قبل الطلب.
+      كل متجر عندو خمس مميزات مناسبة لطبيعة النشاط ديالو. اختار اللي يناسب مشروعك وتواصل معنا لتأكيد تفاصيل العرض.
     </p>
   </div>
 
-  <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div id="storeGrid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
 
-    <!-- 1: متجر الكتب الرقمية -->
-    <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-2xl">📚</span>
-        <span class="store-tag" data-i18n="s1Tag">كتب رقمية</span>
-      </div>
-
-      <div class="store-cover cover-books mt-4">
-        <div class="mock-window">
-          <div class="mock-nav">
-            <div class="mock-brand"><span class="mock-logo">B</span><span data-i18n="s1Brand">مكتبتي الرقمية</span></div>
-            <span class="mock-link" data-i18n="mockSearch">بحث</span>
-            <span class="mock-cta" data-i18n="mockVisit">تصفح المتجر</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-eyebrow" data-i18n="s1Eyebrow">مكتبة مختارة</div>
-            <div class="mock-title" data-i18n="s1MockTitle">المعرفة تبدأ من هنا</div>
-            <div class="mock-description" data-i18n="s1MockSub">اكتشف كتباً وموارد رقمية في مجالات متنوعة.</div>
-            <div class="mock-categories">
-              <div class="mock-category" data-i18n="s1Cat1">تطوير الذات</div>
-              <div class="mock-category" data-i18n="s1Cat2">الأعمال</div>
-              <div class="mock-category" data-i18n="s1Cat3">التقنية</div>
-            </div>
-            <div class="mock-products">
-              <div class="mock-product"><div class="mock-art art-books">📘</div><div class="mock-name" data-i18n="s1Product1">كتاب النجاح</div><div class="mock-price">49 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-books">📗</div><div class="mock-name" data-i18n="s1Product2">دليل الأعمال</div><div class="mock-price">39 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-books">📙</div><div class="mock-name" data-i18n="s1Product3">تعلم مهارة</div><div class="mock-price">59 DH</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="mt-5 text-xl font-black text-[#0A1931]" data-i18n="s1Title">متجر الكتب الرقمية</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="s1Description">لبيع الكتب الإلكترونية والملفات التعليمية وتصنيفها حسب المجال.</p>
-
-      <div class="detail-block mt-4">
-        <div class="detail-heading"><span>✦</span><span data-i18n="benefitsTitle">مميزات المتجر</span></div>
-        <p class="detail-text" data-i18n="s1Benefits">عرض الكتب بأغلفة وتصنيفات واضحة، مع تنظيم المحتوى لتسهيل وصول الزبون للكتاب المناسب.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🤖</span><span data-i18n="aiTitle">إمكانيات الذكاء الاصطناعي</span></div>
-        <p class="detail-text" data-i18n="s1AI">يمكن إضافة مساعدة AI للأسئلة المتكررة واقتراح تصنيفات أو محتوى، إذا كانت الخاصية ضمن التجهيز المتفق عليه.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🛠️</span><span data-i18n="supportTitle">دعم DIGITAL MAROC</span></div>
-        <p class="detail-text" data-i18n="s1Support">توجيه في تنظيم الكتب وتحديث المحتوى المتاح، مع توضيح طريقة الإدارة حسب العرض.</p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="old-price">599 DH</span><span class="new-price">299 DH</span>
-        <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
-      </div>
-      <a href="#" data-store="books" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
-    </article>
-
-    <!-- 2: متجر Canva -->
-    <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-fuchsia-50 text-2xl">🎨</span>
-        <span class="store-tag" data-i18n="s2Tag">قوالب وتصاميم</span>
-      </div>
-
-      <div class="store-cover cover-canva mt-4">
-        <div class="mock-window">
-          <div class="mock-nav">
-            <div class="mock-brand"><span class="mock-logo">C</span><span data-i18n="s2Brand">Creative Studio</span></div>
-            <span class="mock-link" data-i18n="mockSearch">بحث</span>
-            <span class="mock-cta" data-i18n="mockExplore">اكتشف التصاميم</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-eyebrow" data-i18n="s2Eyebrow">أفكارك بتصاميم جاهزة</div>
-            <div class="mock-title" data-i18n="s2MockTitle">كل تصميم في مكانه</div>
-            <div class="mock-description" data-i18n="s2MockSub">قوالب مرتبة حسب الاستعمال والمجال.</div>
-            <div class="mock-categories">
-              <div class="mock-category" data-i18n="s2Cat1">سوشيال ميديا</div>
-              <div class="mock-category" data-i18n="s2Cat2">أعمال</div>
-              <div class="mock-category" data-i18n="s2Cat3">دعوات</div>
-            </div>
-            <div class="mock-products">
-              <div class="mock-product"><div class="mock-art art-canva">🟪</div><div class="mock-name" data-i18n="s2Product1">قوالب منشورات</div><div class="mock-price">29 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-canva">🟦</div><div class="mock-name" data-i18n="s2Product2">قوالب أعمال</div><div class="mock-price">39 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-canva">🟨</div><div class="mock-name" data-i18n="s2Product3">تصاميم إبداعية</div><div class="mock-price">19 DH</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="mt-5 text-xl font-black text-[#0A1931]" data-i18n="s2Title">متجر قوالب Canva</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="s2Description">للمصممين وصناع المحتوى اللي بغاو يعرضو القوالب والتصاميم حسب الفئات.</p>
-
-      <div class="detail-block mt-4">
-        <div class="detail-heading"><span>✦</span><span data-i18n="benefitsTitle">مميزات المتجر</span></div>
-        <p class="detail-text" data-i18n="s2Benefits">جمع التصاميم وتسهيل عرضها وبيعها، مع تقسيم القوالب حسب الاستخدام لتسهيل الاختيار.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🤖</span><span data-i18n="aiTitle">إمكانيات الذكاء الاصطناعي</span></div>
-        <p class="detail-text" data-i18n="s2AI">يمكن إضافة مساعد AI للإجابة عن أسئلة الزبائن واقتراح فئات التصاميم، حسب الخصائص المتوفرة والمتفق عليها.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🛠️</span><span data-i18n="supportTitle">دعم DIGITAL MAROC</span></div>
-        <p class="detail-text" data-i18n="s2Support">توجيه في ترتيب مجموعات القوالب وتعديل المعلومات المتاحة، حسب نطاق العرض.</p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="old-price">599 DH</span><span class="new-price">299 DH</span>
-        <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
-      </div>
-      <a href="#" data-store="canva" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
-    </article>
-
-    <!-- 3: متجر المنتجات الملموسة -->
-    <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-2xl">🛒</span>
-        <span class="store-tag" data-i18n="s3Tag">منتجات مادية</span>
-      </div>
-
-      <div class="store-cover cover-shop mt-4">
-        <div class="mock-window">
-          <div class="mock-nav">
-            <div class="mock-brand"><span class="mock-logo">S</span><span data-i18n="s3Brand">متجر المنتجات</span></div>
-            <span class="mock-link" data-i18n="mockSearch">بحث</span>
-            <span class="mock-cta" data-i18n="mockCart">السلة 🛒</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-eyebrow" data-i18n="s3Eyebrow">اختيارات مميزة</div>
-            <div class="mock-title" data-i18n="s3MockTitle">تسوق بسهولة ووضوح</div>
-            <div class="mock-description" data-i18n="s3MockSub">صور المنتجات ومعلوماتها وأثمنتها في واجهة واحدة.</div>
-            <div class="mock-categories">
-              <div class="mock-category" data-i18n="s3Cat1">إلكترونيات</div>
-              <div class="mock-category" data-i18n="s3Cat2">المنزل</div>
-              <div class="mock-category" data-i18n="s3Cat3">إكسسوارات</div>
-            </div>
-            <div class="mock-products">
-              <div class="mock-product"><div class="mock-art art-shop">🎧</div><div class="mock-name" data-i18n="s3Product1">سماعات</div><div class="mock-price">149 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-shop">⌚</div><div class="mock-name" data-i18n="s3Product2">ساعة</div><div class="mock-price">199 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-shop">🎒</div><div class="mock-name" data-i18n="s3Product3">حقيبة</div><div class="mock-price">129 DH</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="mt-5 text-xl font-black text-[#0A1931]" data-i18n="s3Title">متجر المنتجات الملموسة</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="s3Description">لعرض المنتجات المادية بالصور والمعلومات والثمن وطريقة الطلب والتوصيل.</p>
-
-      <div class="detail-block mt-4">
-        <div class="detail-heading"><span>✦</span><span data-i18n="benefitsTitle">مميزات المتجر</span></div>
-        <p class="detail-text" data-i18n="s3Benefits">عرض المنتجات حسب الفئات مع توضيح الأثمنة والتفاصيل، وتسهيل وصول الزبون لمعلومات الطلب والتوصيل المتاحة.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🤖</span><span data-i18n="aiTitle">إمكانيات الذكاء الاصطناعي</span></div>
-        <p class="detail-text" data-i18n="s3AI">يمكن تهيئة مساعدة AI للإجابة عن الأسئلة المتكررة حول المنتجات، إذا كانت هاد الخاصية متوفرة ضمن العرض.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🛠️</span><span data-i18n="supportTitle">دعم DIGITAL MAROC</span></div>
-        <p class="detail-text" data-i18n="s3Support">شرح طريقة تحديث معلومات المنتجات المتاحة وتوجيهك في تنظيم الأقسام حسب الاتفاق.</p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="old-price">599 DH</span><span class="new-price">299 DH</span>
-        <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
-      </div>
-      <a href="#" data-store="ecommerce" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
-    </article>
-
-    <!-- 4: متجر الخدمات والحجز -->
-    <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">📅</span>
-        <span class="store-tag" data-i18n="s4Tag">خدمات وحجز</span>
-      </div>
-
-      <div class="store-cover cover-services mt-4">
-        <div class="mock-window">
-          <div class="mock-nav">
-            <div class="mock-brand"><span class="mock-logo">P</span><span data-i18n="s4Brand">Pro Services</span></div>
-            <span class="mock-link" data-i18n="mockSearch">بحث</span>
-            <span class="mock-cta" data-i18n="mockBooking">احجز موعداً</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-eyebrow" data-i18n="s4Eyebrow">خدمات احترافية</div>
-            <div class="mock-title" data-i18n="s4MockTitle">خدمات تناسب احتياجاتك</div>
-            <div class="mock-description" data-i18n="s4MockSub">تعرف على الخدمة والثمن وطريقة التواصل.</div>
-            <div class="mock-categories">
-              <div class="mock-category" data-i18n="s4Cat1">استشارات</div>
-              <div class="mock-category" data-i18n="s4Cat2">تصميم</div>
-              <div class="mock-category" data-i18n="s4Cat3">تسويق</div>
-            </div>
-            <div class="mock-products">
-              <div class="mock-product"><div class="mock-art art-services">💻</div><div class="mock-name" data-i18n="s4Product1">خدمة رقمية</div><div class="mock-price">199 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-services">📈</div><div class="mock-name" data-i18n="s4Product2">تسويق</div><div class="mock-price">249 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-services">🗓️</div><div class="mock-name" data-i18n="s4Product3">استشارة</div><div class="mock-price">99 DH</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="mt-5 text-xl font-black text-[#0A1931]" data-i18n="s4Title">متجر الخدمات والحجز</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="s4Description">للمستقلين ومقدمي الخدمات لعرض الخدمات والأسعار واستقبال طلبات التواصل.</p>
-
-      <div class="detail-block mt-4">
-        <div class="detail-heading"><span>✦</span><span data-i18n="benefitsTitle">مميزات المتجر</span></div>
-        <p class="detail-text" data-i18n="s4Benefits">تخصيص عرض لكل خدمة، مع وصفها وثمنها وطريقة طلب موعد أو استفسار. نظام الحجز الآلي يتطلب تأكيد توفره ضمن التجهيز.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🤖</span><span data-i18n="aiTitle">إمكانيات الذكاء الاصطناعي</span></div>
-        <p class="detail-text" data-i18n="s4AI">يمكن إضافة مساعد AI للتعريف بالخدمات والإجابة عن الأسئلة المتكررة، حسب الأدوات والإعدادات المتفق عليها.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🛠️</span><span data-i18n="supportTitle">دعم DIGITAL MAROC</span></div>
-        <p class="detail-text" data-i18n="s4Support">توجيه في ترتيب الخدمات وتعديل المعلومات المتاحة، مع توضيح طريقة استقبال الطلبات حسب العرض.</p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="old-price">599 DH</span><span class="new-price">299 DH</span>
-        <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
-      </div>
-      <a href="#" data-store="services" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
-    </article>
-
-    <!-- 5: متجر الكورسات -->
-    <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-50 text-2xl">🎓</span>
-        <span class="store-tag" data-i18n="s5Tag">تعليم رقمي</span>
-      </div>
-
-      <div class="store-cover cover-courses mt-4">
-        <div class="mock-window">
-          <div class="mock-nav">
-            <div class="mock-brand"><span class="mock-logo">A</span><span data-i18n="s5Brand">Academy Online</span></div>
-            <span class="mock-link" data-i18n="mockSearch">بحث</span>
-            <span class="mock-cta" data-i18n="mockLearn">تعلم الآن</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-eyebrow" data-i18n="s5Eyebrow">أكاديمية رقمية</div>
-            <div class="mock-title" data-i18n="s5MockTitle">طور مهاراتك من مكانك</div>
-            <div class="mock-description" data-i18n="s5MockSub">دورات منظمة حسب المجال والمستوى.</div>
-            <div class="mock-categories">
-              <div class="mock-category" data-i18n="s5Cat1">الأعمال</div>
-              <div class="mock-category" data-i18n="s5Cat2">التصميم</div>
-              <div class="mock-category" data-i18n="s5Cat3">التقنية</div>
-            </div>
-            <div class="mock-products">
-              <div class="mock-product"><div class="mock-art art-courses">▶️</div><div class="mock-name" data-i18n="s5Product1">دورة التسويق</div><div class="mock-price">199 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-courses">🎨</div><div class="mock-name" data-i18n="s5Product2">دورة التصميم</div><div class="mock-price">149 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-courses">💡</div><div class="mock-name" data-i18n="s5Product3">دورة المهارات</div><div class="mock-price">99 DH</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="mt-5 text-xl font-black text-[#0A1931]" data-i18n="s5Title">متجر الكورسات</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="s5Description">للمدربين وصناع الدورات لتنظيم المحتوى التعليمي حسب المجال والمستوى.</p>
-
-      <div class="detail-block mt-4">
-        <div class="detail-heading"><span>✦</span><span data-i18n="benefitsTitle">مميزات المتجر</span></div>
-        <p class="detail-text" data-i18n="s5Benefits">تنظيم الدورات وعرض وصف كل دورة ومحتواها، لتسهيل اكتشافها من طرف المتعلمين. تسجيل الدخول أو متابعة التقدم يحتاجان إلى تجهيز مناسب.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🤖</span><span data-i18n="aiTitle">إمكانيات الذكاء الاصطناعي</span></div>
-        <p class="detail-text" data-i18n="s5AI">يمكن تهيئة AI للإجابة عن الأسئلة الشائعة حول الدورات وتوجيه الزائر للمحتوى المناسب، حسب الخصائص المتوفرة.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🛠️</span><span data-i18n="supportTitle">دعم DIGITAL MAROC</span></div>
-        <p class="detail-text" data-i18n="s5Support">شرح طريقة تنظيم الدورات وتعديل معلوماتها المتاحة، مع توضيح الخصائص التعليمية المشمولة في العرض.</p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="old-price">599 DH</span><span class="new-price">299 DH</span>
-        <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
-      </div>
-      <a href="#" data-store="courses" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
-    </article>
-
-    <!-- 6: متجر Empire الشامل -->
-    <article class="store-card empire-card flex flex-col rounded-[24px] border-2 p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl">🚀</span>
-        <span class="rounded-full bg-emerald-400/15 px-3 py-2 text-xs font-extrabold text-emerald-300" data-i18n="s6Tag">خيار شامل</span>
-      </div>
-
-      <div class="store-cover cover-empire mt-4">
-        <div class="mock-window">
-          <div class="mock-nav">
-            <div class="mock-brand"><span class="mock-logo">E</span><span data-i18n="s6Brand">EMPIRE STORE</span></div>
-            <span class="mock-link" data-i18n="mockSearch">بحث</span>
-            <span class="mock-cta" data-i18n="mockExplore">اكتشف العروض</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-eyebrow" data-i18n="s6Eyebrow">منصة متعددة الأقسام</div>
-            <div class="mock-title" data-i18n="s6MockTitle">كل عروضك في مكان واحد</div>
-            <div class="mock-description" data-i18n="s6MockSub">منتجات رقمية وخدمات ودورات في واجهة موحدة.</div>
-            <div class="mock-categories">
-              <div class="mock-category" data-i18n="s6Cat1">منتجات</div>
-              <div class="mock-category" data-i18n="s6Cat2">خدمات</div>
-              <div class="mock-category" data-i18n="s6Cat3">دورات</div>
-            </div>
-            <div class="mock-products">
-              <div class="mock-product"><div class="mock-art art-empire">📦</div><div class="mock-name" data-i18n="s6Product1">منتجات رقمية</div><div class="mock-price">49 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-empire">🛠️</div><div class="mock-name" data-i18n="s6Product2">خدمات</div><div class="mock-price">99 DH</div></div>
-              <div class="mock-product"><div class="mock-art art-empire">🎓</div><div class="mock-name" data-i18n="s6Product3">دورات</div><div class="mock-price">149 DH</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="mt-5 text-xl font-black" data-i18n="s6Title">متجر Empire الشامل</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-300" data-i18n="s6Description">للمشاريع اللي محتاجة تجمع عدة أنواع من المنتجات والخدمات والكورسات في موقع واحد.</p>
-
-      <div class="detail-block mt-4">
-        <div class="detail-heading"><span>✦</span><span data-i18n="benefitsTitle">مميزات المتجر</span></div>
-        <p class="detail-text" data-i18n="s6Benefits">جمع عروض متعددة داخل أقسام واضحة، مع إمكانية تنظيم المنتجات الرقمية والخدمات والدورات حسب نطاق التجهيز المتفق عليه.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🤖</span><span data-i18n="aiTitle">إمكانيات الذكاء الاصطناعي</span></div>
-        <p class="detail-text" data-i18n="s6AI">يمكن دمج مساعد AI للأسئلة المتكررة وتوجيه الزوار نحو الأقسام المناسبة إذا كانت الوظيفة مدرجة في العرض النهائي.</p>
-      </div>
-      <div class="detail-block mt-3">
-        <div class="detail-heading"><span>🛠️</span><span data-i18n="supportTitle">دعم DIGITAL MAROC</span></div>
-        <p class="detail-text" data-i18n="s6Support">توجيه في تنظيم الأقسام وتوضيح طريقة إدارة المحتوى المشمول، وفق تفاصيل العرض المتفق عليه.</p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="old-price">999 DH</span>
-        <span class="rounded-full bg-white px-3 py-2 text-sm font-black text-[#0A1931]">499 DH</span>
-        <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
-      </div>
-      <a href="#" data-store="empire" class="store-order mt-6 block rounded-full bg-white py-3.5 text-center text-sm font-black text-[#0A1931] hover:bg-emerald-300" data-i18n="orderEmpire">طلب متجر Empire</a>
-    </article>
-
-  </div>
   <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-slate-500" data-i18n="offerNote">
-    الواجهات المعروضة نماذج توضيحية. الخصائص الفعلية، وميزات AI، والاستضافة، والدومين، والحجز أو الدفع الإلكتروني يتم تأكيدها قبل الطلب حسب العرض المتفق عليه.
+    الأغلفة المعروضة نماذج مصممة داخل الصفحة. تفاصيل الدفع والحجز وتسجيل الدخول وأي وظائف إضافية يتم تأكيدها قبل الطلب.
   </p>
 </section>
 
@@ -576,26 +276,26 @@ a,button{-webkit-tap-highlight-color:transparent}
   <div class="mt-8 space-y-3">
     <details class="rounded-2xl border border-slate-200 bg-white p-5">
       <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq1Q">كيفاش نختار نوع المتجر؟</summary>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq1A">اختار حسب النشاط ديالك، وتواصل معنا باش نأكدوا المميزات والتجهيزات المتوفرة.</p>
+      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq1A">اختار حسب النشاط ديالك وتواصل معنا لتأكيد التفاصيل.</p>
     </details>
     <details class="rounded-2xl border border-slate-200 bg-white p-5">
       <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq2Q">واش الدومين والاستضافة داخلين فالثمن؟</summary>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq2A">خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة وأي مصاريف تجديد.</p>
+      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq2A">خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة ومصاريف التجديد إن وجدت.</p>
     </details>
     <details class="rounded-2xl border border-slate-200 bg-white p-5">
-      <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq3Q">واش جميع المتاجر فيها AI؟</summary>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq3A">مميزات AI كتختلف حسب نوع المتجر والتجهيز. تواصل معنا باش نأكدوا شنو داخل في العرض قبل الطلب.</p>
+      <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq3Q">واش يمكن نزيد وظائف أخرى للمتجر؟</summary>
+      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq3A">بعض الوظائف الإضافية ممكنة حسب الاحتياجات والتجهيز المتفق عليه، ويتم تأكيدها قبل الطلب.</p>
     </details>
     <details class="rounded-2xl border border-slate-200 bg-white p-5">
       <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq4Q">كيفاش نطلب المتجر؟</summary>
-      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq4A">كليكي على زر الطلب تحت المتجر المناسب. غادي يتحل واتساب برسالة فيها النوع والثمن باش تكمل التواصل معنا.</p>
+      <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq4A">كليكي على زر الطلب تحت المتجر المناسب. غادي يتحل واتساب برسالة فيها النوع والثمن.</p>
     </details>
   </div>
 
   <div class="mt-8 rounded-[24px] bg-blue-50 p-6 text-center sm:p-8">
     <h3 class="text-xl font-black text-[#0A1931]" data-i18n="bottomTitle">باقي محتار فاختيار المتجر؟</h3>
     <p class="mt-2 text-sm leading-7 text-slate-600" data-i18n="bottomDescription">تواصل معنا عبر واتساب وشرح لينا فكرة المشروع ديالك.</p>
-    <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer"
+    <a href="https://wa.me/212719380106" data-general-wa target="_blank" rel="noopener noreferrer"
       class="primary-btn mt-5 inline-flex rounded-full px-7 py-4 text-sm font-black" data-i18n="bottomButton">تواصل عبر واتساب</a>
   </div>
 </section>
@@ -614,7 +314,7 @@ a,button{-webkit-tap-highlight-color:transparent}
       <a href="index.html" class="hover:text-white" data-i18n="footerHome">الرئيسية</a>
       <a href="terms.html" class="hover:text-white" data-i18n="footerTerms">شروط الاستخدام</a>
       <a href="privacy.html" class="hover:text-white" data-i18n="footerPrivacy">الخصوصية</a>
-      <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="hover:text-white" data-i18n="footerContact">اتصل بنا</a>
+      <a href="https://wa.me/212719380106" data-general-wa target="_blank" rel="noopener noreferrer" class="hover:text-white" data-i18n="footerContact">اتصل بنا</a>
     </div>
     <p class="text-xs text-slate-400">© <span id="currentYear"></span> DIGITAL MAROC</p>
   </div>
@@ -624,122 +324,39 @@ a,button{-webkit-tap-highlight-color:transparent}
 const WHATSAPP_NUMBER = "212719380106";
 
 const translations = {
-ar: {
+ar:{
   brandSubtitle:"حلول رقمية مغربية",
   headerOrder:"اطلب الآن",
   announcement:"حلول رقمية مغربية لمساعدتك على إطلاق مشروعك",
   heroBadge:"المتجر الجاهز PRO",
   heroLine1:"اختار متجرك",
   heroLine2:"وانطلق بمشروعك",
-  heroDescription:"اكتشف ستة أنواع من المتاجر، وشوف المميزات ديال كل واحد وخيارات AI والدعم المتاحة حسب العرض.",
+  heroDescription:"اختار المتجر المناسب لنشاطك، واكتشف خمس مميزات عملية لكل نوع قبل الطلب.",
   chooseStore:"اختار نوع المتجر",
   contactUs:"تواصل معنا",
   heroBenefit1:"تصميم حسب نوع النشاط",
-  heroBenefit2:"مميزات واضحة قبل الطلب",
+  heroBenefit2:"خمس مميزات واضحة لكل متجر",
   heroBenefit3:"تواصل مباشر عبر واتساب",
   sectionEyebrow:"اختار الحل المناسب",
   storesTitle:"ستة أنواع من المتاجر",
-  storesDescription:"كل متجر عندو استعمال ومميزات مختلفة. شوف الواجهة والمزايا والثمن، وتواصل معنا لتأكيد الخصائص قبل الطلب.",
-  benefitsTitle:"مميزات المتجر",
-  aiTitle:"إمكانيات الذكاء الاصطناعي",
-  supportTitle:"دعم DIGITAL MAROC",
-  mockSearch:"بحث",
-  mockVisit:"تصفح المتجر",
-  mockExplore:"اكتشف التصاميم",
-  mockCart:"السلة 🛒",
-  mockBooking:"احجز موعداً",
-  mockLearn:"تعلم الآن",
-  s1Tag:"كتب رقمية",
-  s1Brand:"مكتبتي الرقمية",
-  s1Eyebrow:"مكتبة مختارة",
-  s1MockTitle:"المعرفة تبدأ من هنا",
-  s1MockSub:"اكتشف كتباً وموارد رقمية في مجالات متنوعة.",
-  s1Cat1:"تطوير الذات",s1Cat2:"الأعمال",s1Cat3:"التقنية",
-  s1Product1:"كتاب النجاح",s1Product2:"دليل الأعمال",s1Product3:"تعلم مهارة",
-  s1Title:"متجر الكتب الرقمية",
-  s1Description:"لبيع الكتب الإلكترونية والملفات التعليمية وتصنيفها حسب المجال.",
-  s1Benefits:"عرض الكتب بأغلفة وتصنيفات واضحة، مع تنظيم المحتوى لتسهيل وصول الزبون للكتاب المناسب.",
-  s1AI:"يمكن إضافة مساعدة AI للأسئلة المتكررة واقتراح تصنيفات أو محتوى، إذا كانت الخاصية ضمن التجهيز المتفق عليه.",
-  s1Support:"توجيه في تنظيم الكتب وتحديث المحتوى المتاح، مع توضيح طريقة الإدارة حسب العرض.",
-
-  s2Tag:"قوالب وتصاميم",
-  s2Brand:"Creative Studio",
-  s2Eyebrow:"أفكارك بتصاميم جاهزة",
-  s2MockTitle:"كل تصميم في مكانه",
-  s2MockSub:"قوالب مرتبة حسب الاستعمال والمجال.",
-  s2Cat1:"سوشيال ميديا",s2Cat2:"أعمال",s2Cat3:"دعوات",
-  s2Product1:"قوالب منشورات",s2Product2:"قوالب أعمال",s2Product3:"تصاميم إبداعية",
-  s2Title:"متجر قوالب Canva",
-  s2Description:"للمصممين وصناع المحتوى اللي بغاو يعرضو القوالب والتصاميم حسب الفئات.",
-  s2Benefits:"جمع التصاميم وتسهيل عرضها وبيعها، مع تقسيم القوالب حسب الاستخدام لتسهيل الاختيار.",
-  s2AI:"يمكن إضافة مساعد AI للإجابة عن أسئلة الزبائن واقتراح فئات التصاميم، حسب الخصائص المتوفرة والمتفق عليها.",
-  s2Support:"توجيه في ترتيب مجموعات القوالب وتعديل المعلومات المتاحة، حسب نطاق العرض.",
-
-  s3Tag:"منتجات مادية",
-  s3Brand:"متجر المنتجات",
-  s3Eyebrow:"اختيارات مميزة",
-  s3MockTitle:"تسوق بسهولة ووضوح",
-  s3MockSub:"صور المنتجات ومعلوماتها وأثمنتها في واجهة واحدة.",
-  s3Cat1:"إلكترونيات",s3Cat2:"المنزل",s3Cat3:"إكسسوارات",
-  s3Product1:"سماعات",s3Product2:"ساعة",s3Product3:"حقيبة",
-  s3Title:"متجر المنتجات الملموسة",
-  s3Description:"لعرض المنتجات المادية بالصور والمعلومات والثمن وطريقة الطلب والتوصيل.",
-  s3Benefits:"عرض المنتجات حسب الفئات مع توضيح الأثمنة والتفاصيل، وتسهيل وصول الزبون لمعلومات الطلب والتوصيل المتاحة.",
-  s3AI:"يمكن تهيئة مساعدة AI للإجابة عن الأسئلة المتكررة حول المنتجات، إذا كانت هاد الخاصية متوفرة ضمن العرض.",
-  s3Support:"شرح طريقة تحديث معلومات المنتجات المتاحة وتوجيهك في تنظيم الأقسام حسب الاتفاق.",
-
-  s4Tag:"خدمات وحجز",
-  s4Brand:"Pro Services",
-  s4Eyebrow:"خدمات احترافية",
-  s4MockTitle:"خدمات تناسب احتياجاتك",
-  s4MockSub:"تعرف على الخدمة والثمن وطريقة التواصل.",
-  s4Cat1:"استشارات",s4Cat2:"تصميم",s4Cat3:"تسويق",
-  s4Product1:"خدمة رقمية",s4Product2:"تسويق",s4Product3:"استشارة",
-  s4Title:"متجر الخدمات والحجز",
-  s4Description:"للمستقلين ومقدمي الخدمات لعرض الخدمات والأسعار واستقبال طلبات التواصل.",
-  s4Benefits:"تخصيص عرض لكل خدمة، مع وصفها وثمنها وطريقة طلب موعد أو استفسار. نظام الحجز الآلي يتطلب تأكيد توفره ضمن التجهيز.",
-  s4AI:"يمكن إضافة مساعد AI للتعريف بالخدمات والإجابة عن الأسئلة المتكررة، حسب الأدوات والإعدادات المتفق عليها.",
-  s4Support:"توجيه في ترتيب الخدمات وتعديل المعلومات المتاحة، مع توضيح طريقة استقبال الطلبات حسب العرض.",
-
-  s5Tag:"تعليم رقمي",
-  s5Brand:"Academy Online",
-  s5Eyebrow:"أكاديمية رقمية",
-  s5MockTitle:"طور مهاراتك من مكانك",
-  s5MockSub:"دورات منظمة حسب المجال والمستوى.",
-  s5Cat1:"الأعمال",s5Cat2:"التصميم",s5Cat3:"التقنية",
-  s5Product1:"دورة التسويق",s5Product2:"دورة التصميم",s5Product3:"دورة المهارات",
-  s5Title:"متجر الكورسات",
-  s5Description:"للمدربين وصناع الدورات لتنظيم المحتوى التعليمي حسب المجال والمستوى.",
-  s5Benefits:"تنظيم الدورات وعرض وصف كل دورة ومحتواها، لتسهيل اكتشافها من طرف المتعلمين. تسجيل الدخول أو متابعة التقدم يحتاجان إلى تجهيز مناسب.",
-  s5AI:"يمكن تهيئة AI للإجابة عن الأسئلة الشائعة حول الدورات وتوجيه الزائر للمحتوى المناسب، حسب الخصائص المتوفرة.",
-  s5Support:"شرح طريقة تنظيم الدورات وتعديل معلوماتها المتاحة، مع توضيح الخصائص التعليمية المشمولة في العرض.",
-
-  s6Tag:"خيار شامل",
-  s6Brand:"EMPIRE STORE",
-  s6Eyebrow:"منصة متعددة الأقسام",
-  s6MockTitle:"كل عروضك في مكان واحد",
-  s6MockSub:"منتجات رقمية وخدمات ودورات في واجهة موحدة.",
-  s6Cat1:"منتجات",s6Cat2:"خدمات",s6Cat3:"دورات",
-  s6Product1:"منتجات رقمية",s6Product2:"خدمات",s6Product3:"دورات",
-  s6Title:"متجر Empire الشامل",
-  s6Description:"للمشاريع اللي محتاجة تجمع عدة أنواع من المنتجات والخدمات والكورسات في موقع واحد.",
-  s6Benefits:"جمع عروض متعددة داخل أقسام واضحة، مع إمكانية تنظيم المنتجات الرقمية والخدمات والدورات حسب نطاق التجهيز المتفق عليه.",
-  s6AI:"يمكن دمج مساعد AI للأسئلة المتكررة وتوجيه الزوار نحو الأقسام المناسبة إذا كانت الوظيفة مدرجة في العرض النهائي.",
-  s6Support:"توجيه في تنظيم الأقسام وتوضيح طريقة إدارة المحتوى المشمول، وفق تفاصيل العرض المتفق عليه.",
-
+  storesDescription:"كل متجر عندو خمس مميزات مناسبة لطبيعة النشاط ديالو. اختار اللي يناسب مشروعك وتواصل معنا لتأكيد تفاصيل العرض.",
+  previewSearch:"بحث",
+  previewAction:"اكتشف الآن",
+  previewSection:"اختار من مجموعتنا",
+  previewMore:"شاهد المزيد ←",
   discountLabel:"تخفيض 50%",
   orderThis:"طلب هذا المتجر",
   orderEmpire:"طلب متجر Empire",
-  offerNote:"الواجهات المعروضة نماذج توضيحية. الخصائص الفعلية، وميزات AI، والاستضافة، والدومين، والحجز أو الدفع الإلكتروني يتم تأكيدها قبل الطلب حسب العرض المتفق عليه.",
+  offerNote:"الأغلفة المعروضة نماذج مصممة داخل الصفحة. تفاصيل الدفع والحجز وتسجيل الدخول وأي وظائف إضافية يتم تأكيدها قبل الطلب.",
   faqTitle:"أسئلة شائعة",
   faq1Q:"كيفاش نختار نوع المتجر؟",
-  faq1A:"اختار حسب النشاط ديالك، وتواصل معنا باش نأكدوا المميزات والتجهيزات المتوفرة.",
+  faq1A:"اختار حسب النشاط ديالك وتواصل معنا لتأكيد التفاصيل.",
   faq2Q:"واش الدومين والاستضافة داخلين فالثمن؟",
-  faq2A:"خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة وأي مصاريف تجديد.",
-  faq3Q:"واش جميع المتاجر فيها AI؟",
-  faq3A:"مميزات AI كتختلف حسب نوع المتجر والتجهيز. تواصل معنا باش نأكدوا شنو داخل في العرض قبل الطلب.",
+  faq2A:"خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة ومصاريف التجديد إن وجدت.",
+  faq3Q:"واش يمكن نزيد وظائف أخرى للمتجر؟",
+  faq3A:"بعض الوظائف الإضافية ممكنة حسب الاحتياجات والتجهيز المتفق عليه، ويتم تأكيدها قبل الطلب.",
   faq4Q:"كيفاش نطلب المتجر؟",
-  faq4A:"كليكي على زر الطلب تحت المتجر المناسب. غادي يتحل واتساب برسالة فيها النوع والثمن باش تكمل التواصل معنا.",
+  faq4A:"كليكي على زر الطلب تحت المتجر المناسب. غادي يتحل واتساب برسالة فيها النوع والثمن.",
   bottomTitle:"باقي محتار فاختيار المتجر؟",
   bottomDescription:"تواصل معنا عبر واتساب وشرح لينا فكرة المشروع ديالك.",
   bottomButton:"تواصل عبر واتساب",
@@ -751,123 +368,41 @@ ar: {
   waIntro:"السلام عليكم، بغيت معلومات على هاد المتجر:",
   waStore:"نوع المتجر",
   waPrice:"الثمن المعروض",
-  waConfirm:"بغيت نعرف تفاصيل المحتويات وميزات AI والدعم والتسليم قبل تأكيد الطلب."
+  waConfirm:"بغيت نأكد المميزات والمحتوى والخصائص المشمولة قبل الطلب.",
+  featuresHeading:"5 مميزات خاصة بهذا المتجر",
+  pricesNote:"الثمن المعروض"
 },
-
-fr: {
+fr:{
   brandSubtitle:"Solutions numériques marocaines",
   headerOrder:"Commander",
   announcement:"Des solutions numériques pour lancer votre projet",
   heroBadge:"Boutique prête PRO",
   heroLine1:"Choisissez votre boutique",
   heroLine2:"et lancez votre projet",
-  heroDescription:"Découvrez six types de boutiques, leurs avantages, les possibilités d’IA et l’accompagnement prévu selon l’offre.",
+  heroDescription:"Choisissez la boutique adaptée à votre activité et découvrez cinq avantages concrets avant de commander.",
   chooseStore:"Choisir une boutique",
   contactUs:"Nous contacter",
-  heroBenefit1:"Design adapté à l’activité",
-  heroBenefit2:"Avantages détaillés avant commande",
+  heroBenefit1:"Design adapté à votre activité",
+  heroBenefit2:"Cinq avantages par boutique",
   heroBenefit3:"Contact direct sur WhatsApp",
   sectionEyebrow:"Choisissez votre solution",
   storesTitle:"Six types de boutiques",
-  storesDescription:"Chaque boutique répond à un besoin différent. Découvrez son interface, ses avantages et son prix, puis confirmez les fonctions avant de commander.",
-  benefitsTitle:"Avantages de la boutique",
-  aiTitle:"Possibilités d’intelligence artificielle",
-  supportTitle:"Accompagnement DIGITAL MAROC",
-  mockSearch:"Recherche",
-  mockVisit:"Voir la boutique",
-  mockExplore:"Découvrir les designs",
-  mockCart:"Panier 🛒",
-  mockBooking:"Réserver",
-  mockLearn:"Apprendre",
-  s1Tag:"Livres numériques",
-  s1Brand:"Ma bibliothèque",
-  s1Eyebrow:"Bibliothèque sélectionnée",
-  s1MockTitle:"La connaissance commence ici",
-  s1MockSub:"Découvrez des livres et ressources numériques.",
-  s1Cat1:"Développement",s1Cat2:"Business",s1Cat3:"Technologie",
-  s1Product1:"Livre réussite",s1Product2:"Guide business",s1Product3:"Nouvelle compétence",
-  s1Title:"Boutique de livres numériques",
-  s1Description:"Vendez des ebooks et ressources éducatives classés par domaine.",
-  s1Benefits:"Présentez les livres avec des couvertures et catégories claires pour faciliter la découverte des contenus.",
-  s1AI:"Une assistance IA pour les questions fréquentes ou les suggestions de catégories peut être ajoutée si elle est prévue dans l’offre.",
-  s1Support:"Conseils pour organiser les livres et modifier les contenus disponibles, selon l’offre.",
-
-  s2Tag:"Templates et designs",
-  s2Brand:"Creative Studio",
-  s2Eyebrow:"Des designs pour vos idées",
-  s2MockTitle:"Chaque design à sa place",
-  s2MockSub:"Des modèles classés par usage.",
-  s2Cat1:"Réseaux sociaux",s2Cat2:"Business",s2Cat3:"Invitations",
-  s2Product1:"Modèles de posts",s2Product2:"Modèles business",s2Product3:"Designs créatifs",
-  s2Title:"Boutique de templates Canva",
-  s2Description:"Pour les designers et créateurs qui souhaitent présenter leurs modèles par catégorie.",
-  s2Benefits:"Regroupez les créations et facilitez leur présentation et leur vente, avec des modèles classés par usage.",
-  s2AI:"Un assistant IA peut répondre aux questions des clients et orienter vers les catégories, selon les fonctions convenues.",
-  s2Support:"Conseils pour organiser les collections de modèles et modifier les informations prévues dans l’offre.",
-
-  s3Tag:"Produits physiques",
-  s3Brand:"Boutique produits",
-  s3Eyebrow:"Sélection de produits",
-  s3MockTitle:"Achetez simplement",
-  s3MockSub:"Photos, informations et prix dans une seule interface.",
-  s3Cat1:"Électronique",s3Cat2:"Maison",s3Cat3:"Accessoires",
-  s3Product1:"Écouteurs",s3Product2:"Montre",s3Product3:"Sac",
-  s3Title:"Boutique de produits physiques",
-  s3Description:"Présentez les produits avec photos, informations, prix et modalités de livraison.",
-  s3Benefits:"Classez les produits par catégorie et affichez les prix et détails ainsi que les informations disponibles sur la commande et la livraison.",
-  s3AI:"Une assistance IA peut répondre aux questions fréquentes sur les produits si cette fonction est incluse dans l’offre.",
-  s3Support:"Conseils pour actualiser les informations produits et organiser les sections selon l’accord.",
-
-  s4Tag:"Services et réservation",
-  s4Brand:"Pro Services",
-  s4Eyebrow:"Services professionnels",
-  s4MockTitle:"Des services adaptés",
-  s4MockSub:"Description, tarif et contact.",
-  s4Cat1:"Conseil",s4Cat2:"Design",s4Cat3:"Marketing",
-  s4Product1:"Service numérique",s4Product2:"Marketing",s4Product3:"Consultation",
-  s4Title:"Boutique de services et réservation",
-  s4Description:"Pour les indépendants qui veulent présenter leurs services et recevoir des demandes.",
-  s4Benefits:"Présentez chaque service avec sa description et son prix. La réservation automatique doit être confirmée selon la configuration.",
-  s4AI:"Un assistant IA peut présenter les services et répondre aux questions fréquentes selon les outils convenus.",
-  s4Support:"Conseils pour organiser les services et modifier les informations disponibles selon l’offre.",
-
-  s5Tag:"Formation numérique",
-  s5Brand:"Academy Online",
-  s5Eyebrow:"Académie numérique",
-  s5MockTitle:"Développez vos compétences",
-  s5MockSub:"Des cours classés par thème et niveau.",
-  s5Cat1:"Business",s5Cat2:"Design",s5Cat3:"Technologie",
-  s5Product1:"Cours marketing",s5Product2:"Cours design",s5Product3:"Compétences",
-  s5Title:"Boutique de formations",
-  s5Description:"Pour les formateurs qui souhaitent organiser leurs cours par thème et niveau.",
-  s5Benefits:"Organisez les formations et présentez leur contenu. Les comptes utilisateurs ou le suivi de progression nécessitent une configuration adaptée.",
-  s5AI:"Une IA peut répondre aux questions fréquentes et orienter les visiteurs vers les cours appropriés selon les fonctions prévues.",
-  s5Support:"Explication de l’organisation des cours et des contenus modifiables, selon l’offre.",
-
-  s6Tag:"Option complète",
-  s6Brand:"EMPIRE STORE",
-  s6Eyebrow:"Plateforme multi-sections",
-  s6MockTitle:"Toutes vos offres au même endroit",
-  s6MockSub:"Produits numériques, services et formations.",
-  s6Cat1:"Produits",s6Cat2:"Services",s6Cat3:"Cours",
-  s6Product1:"Produits numériques",s6Product2:"Services",s6Product3:"Formations",
-  s6Title:"Boutique Empire complète",
-  s6Description:"Pour les projets qui souhaitent réunir plusieurs types de produits, services et formations.",
-  s6Benefits:"Réunissez plusieurs offres dans des sections claires, selon le périmètre de la configuration convenue.",
-  s6AI:"Un assistant IA peut répondre aux questions fréquentes et orienter les visiteurs si cette fonction est prévue dans l’offre finale.",
-  s6Support:"Conseils pour organiser les sections et gérer les contenus inclus dans l’offre.",
-
+  storesDescription:"Chaque boutique possède cinq avantages adaptés à son activité. Choisissez celle qui correspond à votre projet et confirmez les détails de l’offre.",
+  previewSearch:"Recherche",
+  previewAction:"Découvrir",
+  previewSection:"Découvrez notre sélection",
+  previewMore:"Voir plus →",
   discountLabel:"PROMO -50%",
   orderThis:"Commander cette boutique",
   orderEmpire:"Commander Empire",
-  offerNote:"Les interfaces sont des maquettes illustratives. Les fonctions réelles, l’IA, l’hébergement, le domaine, la réservation et le paiement doivent être confirmés avant la commande.",
+  offerNote:"Les couvertures sont des maquettes créées dans la page. Les fonctions de paiement, de réservation, de connexion et les options supplémentaires sont à confirmer avant la commande.",
   faqTitle:"Questions fréquentes",
   faq1Q:"Comment choisir le type de boutique ?",
-  faq1A:"Choisissez selon votre activité, puis contactez-nous pour confirmer les fonctions disponibles.",
+  faq1A:"Choisissez selon votre activité et contactez-nous pour confirmer les détails.",
   faq2Q:"Le domaine et l’hébergement sont-ils inclus ?",
-  faq2A:"Confirmez ce point avant la commande, y compris la durée d’hébergement et les frais de renouvellement.",
-  faq3Q:"Toutes les boutiques comprennent-elles l’IA ?",
-  faq3A:"Les fonctions d’IA varient selon la boutique et la configuration. Contactez-nous pour confirmer ce qui est inclus.",
+  faq2A:"Ce point doit être confirmé avant la commande, y compris la durée d’hébergement et les éventuels frais de renouvellement.",
+  faq3Q:"Peut-on ajouter d’autres fonctions ?",
+  faq3A:"Certaines fonctions supplémentaires sont possibles selon les besoins et la configuration convenue. Elles doivent être confirmées avant la commande.",
   faq4Q:"Comment commander ?",
   faq4A:"Cliquez sur le bouton sous la boutique choisie. WhatsApp s’ouvrira avec le type et le prix.",
   bottomTitle:"Vous hésitez sur la boutique à choisir ?",
@@ -881,123 +416,41 @@ fr: {
   waIntro:"Bonjour, je souhaite des informations sur cette boutique :",
   waStore:"Type de boutique",
   waPrice:"Prix affiché",
-  waConfirm:"Je souhaite confirmer le contenu, les fonctions IA, l’assistance et la livraison avant de commander."
+  waConfirm:"Je souhaite confirmer les avantages, le contenu et les fonctions incluses avant de commander.",
+  featuresHeading:"5 avantages propres à cette boutique",
+  pricesNote:"Prix affiché"
 },
-
-en: {
+en:{
   brandSubtitle:"Moroccan digital solutions",
   headerOrder:"Order now",
   announcement:"Digital solutions to help you launch your project",
   heroBadge:"Ready Store PRO",
   heroLine1:"Choose your store",
   heroLine2:"and launch your project",
-  heroDescription:"Explore six store types, their benefits, AI possibilities and the support available under the agreed offer.",
+  heroDescription:"Choose a store that suits your business and explore five practical benefits before ordering.",
   chooseStore:"Choose a store",
   contactUs:"Contact us",
   heroBenefit1:"Design for your business",
-  heroBenefit2:"Clear benefits before ordering",
+  heroBenefit2:"Five clear benefits per store",
   heroBenefit3:"Direct WhatsApp contact",
   sectionEyebrow:"Choose the right solution",
   storesTitle:"Six store types",
-  storesDescription:"Each store serves a different purpose. Explore its interface, features and price, then confirm the available functions before ordering.",
-  benefitsTitle:"Store benefits",
-  aiTitle:"Artificial intelligence options",
-  supportTitle:"DIGITAL MAROC support",
-  mockSearch:"Search",
-  mockVisit:"Visit store",
-  mockExplore:"Explore designs",
-  mockCart:"Cart 🛒",
-  mockBooking:"Book now",
-  mockLearn:"Start learning",
-  s1Tag:"Digital books",
-  s1Brand:"My Digital Library",
-  s1Eyebrow:"Curated library",
-  s1MockTitle:"Knowledge starts here",
-  s1MockSub:"Explore digital books and resources.",
-  s1Cat1:"Self growth",s1Cat2:"Business",s1Cat3:"Technology",
-  s1Product1:"Success book",s1Product2:"Business guide",s1Product3:"Learn a skill",
-  s1Title:"Digital Books Store",
-  s1Description:"Sell ebooks and educational resources organized by topic.",
-  s1Benefits:"Show books with clear covers and categories to help customers discover relevant content.",
-  s1AI:"AI assistance for frequent questions or category suggestions can be added if included in the agreed setup.",
-  s1Support:"Guidance on organizing books and updating available content according to the offer.",
-
-  s2Tag:"Templates and designs",
-  s2Brand:"Creative Studio",
-  s2Eyebrow:"Designs for your ideas",
-  s2MockTitle:"Every design in its place",
-  s2MockSub:"Templates organized by use.",
-  s2Cat1:"Social media",s2Cat2:"Business",s2Cat3:"Invitations",
-  s2Product1:"Post templates",s2Product2:"Business templates",s2Product3:"Creative designs",
-  s2Title:"Canva Templates Store",
-  s2Description:"For designers and creators who want to present templates by category.",
-  s2Benefits:"Group your designs and make them easier to showcase and sell, with templates organized by use.",
-  s2AI:"An AI assistant can answer customer questions and suggest design categories, depending on the agreed features.",
-  s2Support:"Guidance on organizing template collections and editing available information under the offer.",
-
-  s3Tag:"Physical products",
-  s3Brand:"Product Store",
-  s3Eyebrow:"Featured products",
-  s3MockTitle:"Shop with clarity",
-  s3MockSub:"Product photos, details and prices in one interface.",
-  s3Cat1:"Electronics",s3Cat2:"Home",s3Cat3:"Accessories",
-  s3Product1:"Headphones",s3Product2:"Watch",s3Product3:"Bag",
-  s3Title:"Physical Products Store",
-  s3Description:"Display physical products with photos, information, prices and delivery details.",
-  s3Benefits:"Organize products by category and display prices and details alongside available ordering and delivery information.",
-  s3AI:"AI assistance can answer frequent product questions if this feature is included in the offer.",
-  s3Support:"Guidance on updating product information and organizing sections according to the agreement.",
-
-  s4Tag:"Services and booking",
-  s4Brand:"Pro Services",
-  s4Eyebrow:"Professional services",
-  s4MockTitle:"Services for your needs",
-  s4MockSub:"Service details, pricing and contact.",
-  s4Cat1:"Consulting",s4Cat2:"Design",s4Cat3:"Marketing",
-  s4Product1:"Digital service",s4Product2:"Marketing",s4Product3:"Consultation",
-  s4Title:"Services and Booking Store",
-  s4Description:"For independent professionals presenting services and receiving inquiries.",
-  s4Benefits:"Present each service with a description and price. Automated booking must be confirmed as part of the setup.",
-  s4AI:"An AI assistant can explain services and answer frequent questions, depending on the agreed tools.",
-  s4Support:"Guidance on organizing services and updating available information according to the offer.",
-
-  s5Tag:"Digital learning",
-  s5Brand:"Academy Online",
-  s5Eyebrow:"Digital academy",
-  s5MockTitle:"Grow your skills",
-  s5MockSub:"Courses organized by topic and level.",
-  s5Cat1:"Business",s5Cat2:"Design",s5Cat3:"Technology",
-  s5Product1:"Marketing course",s5Product2:"Design course",s5Product3:"Skills course",
-  s5Title:"Courses Store",
-  s5Description:"For trainers who want to organize learning content by topic and level.",
-  s5Benefits:"Organize courses and display their content. User accounts or progress tracking require suitable configuration.",
-  s5AI:"AI can answer common course questions and guide visitors to relevant content if included in the setup.",
-  s5Support:"Guidance on organizing courses and editing available information according to the offer.",
-
-  s6Tag:"Complete option",
-  s6Brand:"EMPIRE STORE",
-  s6Eyebrow:"Multi-section platform",
-  s6MockTitle:"All your offers in one place",
-  s6MockSub:"Digital products, services and courses.",
-  s6Cat1:"Products",s6Cat2:"Services",s6Cat3:"Courses",
-  s6Product1:"Digital products",s6Product2:"Services",s6Product3:"Courses",
-  s6Title:"Complete Empire Store",
-  s6Description:"For projects that need to combine multiple types of products, services and courses.",
-  s6Benefits:"Bring multiple offers together in clear sections, according to the agreed setup.",
-  s6AI:"An AI assistant can answer common questions and guide visitors if included in the final offer.",
-  s6Support:"Guidance on organizing sections and managing content included in the offer.",
-
+  storesDescription:"Each store has five benefits tailored to its purpose. Choose the right option for your project and confirm the offer details.",
+  previewSearch:"Search",
+  previewAction:"Explore now",
+  previewSection:"Explore our collection",
+  previewMore:"View more →",
   discountLabel:"50% OFF",
   orderThis:"Order this store",
   orderEmpire:"Order Empire",
-  offerNote:"The interfaces are illustrative mockups. Actual features, AI, hosting, domain, booking and online payments must be confirmed before ordering.",
+  offerNote:"The covers are mockups created within this page. Payment, booking, login and additional functions must be confirmed before ordering.",
   faqTitle:"Frequently asked questions",
   faq1Q:"How do I choose a store type?",
-  faq1A:"Choose based on your business, then contact us to confirm the available features.",
+  faq1A:"Choose based on your business and contact us to confirm the details.",
   faq2Q:"Are domain and hosting included?",
-  faq2A:"Confirm this before ordering, including the hosting period and renewal fees.",
-  faq3Q:"Do all stores include AI?",
-  faq3A:"AI features vary by store and setup. Contact us to confirm what is included.",
+  faq2A:"Confirm this before ordering, including the hosting period and any renewal fees.",
+  faq3Q:"Can additional functions be added?",
+  faq3A:"Some additional functions may be possible depending on your needs and the agreed setup. Confirm them before ordering.",
   faq4Q:"How do I order?",
   faq4A:"Click the button under your chosen store. WhatsApp will open with the type and price.",
   bottomTitle:"Unsure which store is right for you?",
@@ -1011,119 +464,466 @@ en: {
   waIntro:"Hello, I would like information about this store:",
   waStore:"Store type",
   waPrice:"Displayed price",
-  waConfirm:"I would like to confirm the contents, AI features, support and delivery before ordering."
+  waConfirm:"I would like to confirm the benefits, content and included functions before ordering.",
+  featuresHeading:"5 benefits for this store",
+  pricesNote:"Displayed price"
 }
 };
 
-const storeInfo = {
-  books:{
-    price:"299 DH",
-    ar:"متجر الكتب الرقمية",
-    fr:"Boutique de livres numériques",
-    en:"Digital Books Store"
-  },
-  canva:{
-    price:"299 DH",
-    ar:"متجر قوالب Canva",
-    fr:"Boutique de templates Canva",
-    en:"Canva Templates Store"
-  },
-  ecommerce:{
-    price:"299 DH",
-    ar:"متجر المنتجات الملموسة",
-    fr:"Boutique de produits physiques",
-    en:"Physical Products Store"
-  },
-  services:{
-    price:"299 DH",
-    ar:"متجر الخدمات والحجز",
-    fr:"Boutique de services et réservations",
-    en:"Services and Booking Store"
-  },
-  courses:{
-    price:"299 DH",
-    ar:"متجر الكورسات",
-    fr:"Boutique de formations",
-    en:"Courses Store"
-  },
-  empire:{
-    price:"499 DH",
-    ar:"متجر Empire الشامل",
-    fr:"Boutique Empire complète",
-    en:"Complete Empire Store"
-  }
-};
+const stores = [
+{
+ id:"books",theme:"books",icon:"📚",art:"books",letter:"B",
+ old:"599 DH",price:"299 DH",
+ data:{
+ ar:{
+ tag:"كتب رقمية",title:"متجر الكتب الرقمية",
+ desc:"متجر مخصص لعرض الكتب الإلكترونية والملفات التعليمية والموارد الرقمية.",
+ banner:"مكتبتك الرقمية",bannerSub:"معرفة منظمة في مكان واحد",bannerArt:"📚",
+ cats:["تطوير الذات","الأعمال","التقنية"],
+ products:[["📘","كتاب النجاح","49 DH"],["📗","دليل الأعمال","39 DH"],["📙","تعلم مهارة","59 DH"]],
+ features:[
+ "تصنيف الكتب حسب المجال لتسهيل العثور على المحتوى المناسب.",
+ "واجهة تعرض أغلفة الكتب وعناوينها وأثمنتها بوضوح.",
+ "صفحة مستقلة لكل كتاب لعرض الوصف والمحتويات.",
+ "إمكانية تنظيم الكتب الجديدة والأكثر طلباً ضمن أقسام مميزة.",
+ "إمكانية إضافة طريقة تسليم رقمي مناسبة حسب التجهيز المتفق عليه."
+ ]},
+ fr:{
+ tag:"Livres numériques",title:"Boutique de livres numériques",
+ desc:"Une boutique dédiée aux ebooks, ressources éducatives et fichiers numériques.",
+ banner:"Votre bibliothèque",bannerSub:"Le savoir bien organisé",bannerArt:"📚",
+ cats:["Développement","Business","Technologie"],
+ products:[["📘","Livre réussite","49 DH"],["📗","Guide business","39 DH"],["📙","Nouvelle compétence","59 DH"]],
+ features:[
+ "Classement des livres par domaine pour faciliter la recherche.",
+ "Interface présentant clairement les couvertures, titres et prix.",
+ "Page individuelle pour chaque livre avec sa description et son contenu.",
+ "Sections dédiées aux nouveautés et aux livres populaires.",
+ "Possibilité d’ajouter un mode de livraison numérique adapté à la configuration convenue."
+ ]},
+ en:{
+ tag:"Digital books",title:"Digital Books Store",
+ desc:"A dedicated store for ebooks, educational resources and digital files.",
+ banner:"Your digital library",bannerSub:"Knowledge, neatly organized",bannerArt:"📚",
+ cats:["Self growth","Business","Technology"],
+ products:[["📘","Success book","49 DH"],["📗","Business guide","39 DH"],["📙","Learn a skill","59 DH"]],
+ features:[
+ "Organize books by topic so visitors can find relevant content easily.",
+ "Display book covers, titles and prices in a clear storefront.",
+ "Give each book its own page with a description and contents.",
+ "Create dedicated sections for new and popular books.",
+ "Add a suitable digital delivery method according to the agreed setup."
+ ]}
+ }
+},
+{
+ id:"canva",theme:"canva",icon:"🎨",art:"canva",letter:"C",
+ old:"599 DH",price:"299 DH",
+ data:{
+ ar:{
+ tag:"قوالب وتصاميم",title:"متجر قوالب Canva",
+ desc:"للمصممين وصناع المحتوى اللي بغاو يجمعو التصاميم ويعرضوها حسب الفئات.",
+ banner:"أفكارك بتصاميم",bannerSub:"قوالب منظمة وسهلة الاكتشاف",bannerArt:"🎨",
+ cats:["سوشيال ميديا","أعمال","دعوات"],
+ products:[["🟪","قوالب منشورات","29 DH"],["🟦","قوالب أعمال","39 DH"],["🟨","تصاميم إبداعية","19 DH"]],
+ features:[
+ "جمع التصاميم في متجر واحد وتقسيمها حسب الفئات والاستعمال.",
+ "عرض معاينات للتصاميم لتسهيل اكتشافها قبل الشراء.",
+ "تنظيم القوالب حسب النوع مثل المنشورات والعروض والدعوات.",
+ "صفحة لكل مجموعة لعرض الوصف والثمن ومعلومات المنتج.",
+ "تسهيل إضافة مجموعات جديدة وتحديث التصنيفات عند توسيع المكتبة."
+ ]},
+ fr:{
+ tag:"Templates et designs",title:"Boutique de templates Canva",
+ desc:"Pour les designers et créateurs qui veulent regrouper et présenter leurs créations par catégorie.",
+ banner:"Vos idées en design",bannerSub:"Des modèles faciles à découvrir",bannerArt:"🎨",
+ cats:["Réseaux sociaux","Business","Invitations"],
+ products:[["🟪","Modèles de posts","29 DH"],["🟦","Modèles business","39 DH"],["🟨","Designs créatifs","19 DH"]],
+ features:[
+ "Regrouper les créations dans une seule boutique et les classer par usage.",
+ "Présenter des aperçus pour aider les visiteurs à découvrir les designs.",
+ "Organiser les modèles par type : publications, présentations et invitations.",
+ "Créer une page par collection avec description, prix et informations.",
+ "Faciliter l’ajout de nouvelles collections et la mise à jour des catégories."
+ ]},
+ en:{
+ tag:"Templates and designs",title:"Canva Templates Store",
+ desc:"For designers and creators who want to group and showcase designs by category.",
+ banner:"Designs for your ideas",bannerSub:"Templates made easy to explore",bannerArt:"🎨",
+ cats:["Social media","Business","Invitations"],
+ products:[["🟪","Post templates","29 DH"],["🟦","Business templates","39 DH"],["🟨","Creative designs","19 DH"]],
+ features:[
+ "Group designs in one store and organize them by category and use.",
+ "Show design previews to help visitors explore options before buying.",
+ "Sort templates by type, such as social posts, presentations and invitations.",
+ "Give each collection a page with its description, price and details.",
+ "Make it easier to add new collections and update categories as the library grows."
+ ]}
+ }
+},
+{
+ id:"ecommerce",theme:"shop",art:"shop",icon:"🛒",letter:"S",
+ old:"599 DH",price:"299 DH",
+ data:{
+ ar:{
+ tag:"منتجات مادية",title:"متجر المنتجات الملموسة",
+ desc:"لعرض المنتجات المادية بالصور والمعلومات والأثمنة وطريقة الطلب والتوصيل.",
+ banner:"اكتشف منتجاتنا",bannerSub:"اختياراتك اليومية في مكان واحد",bannerArt:"🛍️",
+ cats:["إلكترونيات","المنزل","إكسسوارات"],
+ products:[["🎧","سماعات","149 DH"],["⌚","ساعة","199 DH"],["🎒","حقيبة","129 DH"]],
+ features:[
+ "عرض صور المنتجات مع الاسم والثمن والمعلومات الأساسية.",
+ "تقسيم المنتجات حسب الفئات لتسهيل التصفح والاختيار.",
+ "صفحة مستقلة لكل منتج لعرض التفاصيل والمواصفات المتاحة.",
+ "إبراز المنتجات الجديدة والعروض الخاصة داخل الواجهة.",
+ "توضيح طريقة الطلب والتوصيل والإرجاع حسب السياسة المتفق عليها."
+ ]},
+ fr:{
+ tag:"Produits physiques",title:"Boutique de produits physiques",
+ desc:"Présentez des produits physiques avec photos, informations, prix et modalités de commande.",
+ banner:"Découvrez nos produits",bannerSub:"Vos essentiels au même endroit",bannerArt:"🛍️",
+ cats:["Électronique","Maison","Accessoires"],
+ products:[["🎧","Écouteurs","149 DH"],["⌚","Montre","199 DH"],["🎒","Sac","129 DH"]],
+ features:[
+ "Afficher les photos, noms, prix et informations essentielles des produits.",
+ "Classer les produits par catégorie pour simplifier la navigation.",
+ "Créer une page produit avec les détails et caractéristiques disponibles.",
+ "Mettre en avant les nouveautés et les offres spéciales.",
+ "Présenter les modalités de commande, livraison et retour convenues."
+ ]},
+ en:{
+ tag:"Physical products",title:"Physical Products Store",
+ desc:"Display physical products with photos, details, prices and ordering or delivery information.",
+ banner:"Explore our products",bannerSub:"Everyday picks in one place",bannerArt:"🛍️",
+ cats:["Electronics","Home","Accessories"],
+ products:[["🎧","Headphones","149 DH"],["⌚","Watch","199 DH"],["🎒","Bag","129 DH"]],
+ features:[
+ "Display product photos, names, prices and essential information.",
+ "Group products into categories for easier browsing and selection.",
+ "Give each product a page with available details and specifications.",
+ "Highlight new products and special offers on the storefront.",
+ "Explain the agreed ordering, delivery and return arrangements."
+ ]}
+ }
+},
+{
+ id:"services",theme:"services",art:"services",icon:"📅",letter:"P",
+ old:"599 DH",price:"299 DH",
+ data:{
+ ar:{
+ tag:"خدمات وحجز",title:"متجر الخدمات والحجز",
+ desc:"مناسب للمستقلين ومقدمي الخدمات لعرض الخدمات والأثمنة واستقبال طلبات التواصل.",
+ banner:"خدمات تناسبك",bannerSub:"تعرف على الخدمة قبل التواصل",bannerArt:"💼",
+ cats:["استشارات","تصميم","تسويق"],
+ products:[["💻","خدمة رقمية","199 DH"],["📈","تسويق","249 DH"],["🗓️","استشارة","99 DH"]],
+ features:[
+ "تخصيص بطاقة واضحة لكل خدمة مع الوصف والثمن.",
+ "تقسيم الخدمات حسب التخصص لتسهيل الوصول للخدمة المناسبة.",
+ "إضافة معلومات التواصل وطريقة طلب الاستفسار أو الموعد.",
+ "عرض باقات الخدمات وما يتضمنه كل اختيار بشكل منظم.",
+ "إمكانية ربط نظام حجز أو تقويم إذا تم الاتفاق على تجهيزه."
+ ]},
+ fr:{
+ tag:"Services et réservation",title:"Boutique de services et réservation",
+ desc:"Pour les indépendants qui souhaitent présenter leurs services et recevoir des demandes.",
+ banner:"Des services adaptés",bannerSub:"Découvrez le service avant de contacter",bannerArt:"💼",
+ cats:["Conseil","Design","Marketing"],
+ products:[["💻","Service numérique","199 DH"],["📈","Marketing","249 DH"],["🗓️","Consultation","99 DH"]],
+ features:[
+ "Présenter chaque service dans une fiche claire avec description et prix.",
+ "Classer les services par spécialité pour faciliter la recherche.",
+ "Afficher les coordonnées et la procédure de demande ou de rendez-vous.",
+ "Présenter les forfaits et le contenu de chaque formule.",
+ "Possibilité d’intégrer un système de réservation ou un calendrier si cela est convenu."
+ ]},
+ en:{
+ tag:"Services and booking",title:"Services and Booking Store",
+ desc:"For independent professionals presenting services, prices and contact options.",
+ banner:"Services for your needs",bannerSub:"Know the service before contacting",bannerArt:"💼",
+ cats:["Consulting","Design","Marketing"],
+ products:[["💻","Digital service","199 DH"],["📈","Marketing","249 DH"],["🗓️","Consultation","99 DH"]],
+ features:[
+ "Present each service with a clear description and price.",
+ "Organize services by specialty so visitors can find the right option.",
+ "Show contact details and how to request information or an appointment.",
+ "Display service packages and what each option includes.",
+ "Add a booking system or calendar if included in the agreed setup."
+ ]}
+ }
+},
+{
+ id:"courses",theme:"courses",art:"courses",icon:"🎓",letter:"A",
+ old:"599 DH",price:"299 DH",
+ data:{
+ ar:{
+ tag:"تعليم رقمي",title:"متجر الكورسات",
+ desc:"للمدربين وصناع الدورات لتنظيم المحتوى التعليمي حسب المجال والمستوى.",
+ banner:"تعلم مهارة جديدة",bannerSub:"اكتشف دورات تناسب أهدافك",bannerArt:"🎓",
+ cats:["الأعمال","التصميم","التقنية"],
+ products:[["▶️","دورة التسويق","199 DH"],["🎨","دورة التصميم","149 DH"],["💡","دورة المهارات","99 DH"]],
+ features:[
+ "تقسيم الدورات حسب المجال والمستوى أو المهارة المستهدفة.",
+ "صفحة خاصة بكل دورة لعرض الوصف والمحاور والمحتوى المتاح.",
+ "عرض مدة الدورة ومتطلباتها والفئة المستهدفة عند توفر المعلومات.",
+ "تجميع الدورات المتقاربة في مسارات أو مجموعات تعليمية واضحة.",
+ "إمكانية إضافة حسابات المتعلمين أو متابعة التقدم إذا تم تجهيزها والاتفاق عليها."
+ ]},
+ fr:{
+ tag:"Formation numérique",title:"Boutique de formations",
+ desc:"Pour les formateurs qui souhaitent organiser les contenus pédagogiques par domaine et niveau.",
+ banner:"Apprenez une compétence",bannerSub:"Des cours adaptés à vos objectifs",bannerArt:"🎓",
+ cats:["Business","Design","Technologie"],
+ products:[["▶️","Cours marketing","199 DH"],["🎨","Cours design","149 DH"],["💡","Cours compétences","99 DH"]],
+ features:[
+ "Classer les formations par domaine, niveau ou compétence visée.",
+ "Créer une page par formation avec description, modules et contenu disponible.",
+ "Présenter la durée, les prérequis et le public visé lorsque ces informations sont disponibles.",
+ "Regrouper les formations complémentaires en parcours ou collections pédagogiques.",
+ "Possibilité d’ajouter des comptes apprenants ou un suivi de progression si cela est configuré et convenu."
+ ]},
+ en:{
+ tag:"Digital learning",title:"Courses Store",
+ desc:"For trainers who want to organize learning content by topic and level.",
+ banner:"Learn a new skill",bannerSub:"Courses for your goals",bannerArt:"🎓",
+ cats:["Business","Design","Technology"],
+ products:[["▶️","Marketing course","199 DH"],["🎨","Design course","149 DH"],["💡","Skills course","99 DH"]],
+ features:[
+ "Organize courses by topic, level or target skill.",
+ "Create a page for each course with its description, modules and available content.",
+ "Show course duration, prerequisites and intended audience when details are available.",
+ "Group related courses into clear learning paths or collections.",
+ "Add learner accounts or progress tracking if configured and included in the agreed setup."
+ ]}
+ }
+},
+{
+ id:"empire",theme:"empire",art:"empire",icon:"🚀",letter:"E",
+ old:"999 DH",price:"499 DH",
+ data:{
+ ar:{
+ tag:"خيار شامل",title:"متجر Empire الشامل",
+ desc:"للمشاريع اللي محتاجة تجمع المنتجات الرقمية والخدمات والدورات في منصة واحدة.",
+ banner:"مشروعك في مكان واحد",bannerSub:"أقسام متنوعة وتجربة موحدة",bannerArt:"🚀",
+ cats:["منتجات","خدمات","دورات"],
+ products:[["📦","منتجات رقمية","49 DH"],["🛠️","خدمات","99 DH"],["🎓","دورات","149 DH"]],
+ features:[
+ "جمع أنواع مختلفة من المنتجات والخدمات والدورات في موقع واحد.",
+ "إنشاء أقسام واضحة تساعد الزائر على فهم العروض واكتشافها.",
+ "تنظيم كل فئة بصفحات ومعلومات مناسبة لطبيعة المحتوى.",
+ "توحيد الهوية البصرية والتنقل بين الأقسام لتقديم تجربة متناسقة.",
+ "إمكانية توسيع الأقسام والوظائف حسب احتياجات المشروع والتجهيز المتفق عليه."
+ ]},
+ fr:{
+ tag:"Option complète",title:"Boutique Empire complète",
+ desc:"Pour les projets qui souhaitent réunir produits numériques, services et formations sur une plateforme.",
+ banner:"Votre projet au même endroit",bannerSub:"Plusieurs sections, une expérience",bannerArt:"🚀",
+ cats:["Produits","Services","Formations"],
+ products:[["📦","Produits numériques","49 DH"],["🛠️","Services","99 DH"],["🎓","Formations","149 DH"]],
+ features:[
+ "Réunir plusieurs types de produits, services et formations dans un même site.",
+ "Créer des sections claires pour aider les visiteurs à découvrir les offres.",
+ "Organiser chaque catégorie avec des pages et informations adaptées.",
+ "Unifier l’identité visuelle et la navigation entre les différentes sections.",
+ "Possibilité d’étendre les sections et fonctions selon les besoins et la configuration convenue."
+ ]},
+ en:{
+ tag:"Complete option",title:"Complete Empire Store",
+ desc:"For projects combining digital products, services and courses on one platform.",
+ banner:"Your project in one place",bannerSub:"Multiple sections, one experience",bannerArt:"🚀",
+ cats:["Products","Services","Courses"],
+ products:[["📦","Digital products","49 DH"],["🛠️","Services","99 DH"],["🎓","Courses","149 DH"]],
+ features:[
+ "Bring different types of products, services and courses together on one website.",
+ "Create clear sections that help visitors understand and explore your offers.",
+ "Organize each category with pages and information suited to its content.",
+ "Keep the visual identity and navigation consistent across sections.",
+ "Expand sections and functions according to project needs and the agreed setup."
+ ]}
+ }
+}
+];
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
+}
 
 function makeWhatsAppUrl(message){
-  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+  return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message);
 }
 
-function updateWhatsAppLinks(lang){
-  const dict = translations[lang] || translations.ar;
+function renderStores(lang){
+  const dict=translations[lang]||translations.ar;
+  const grid=document.getElementById("storeGrid");
 
-  document.querySelectorAll("[data-store]").forEach(link=>{
-    const store = storeInfo[link.dataset.store];
-    if(!store) return;
+  grid.innerHTML=stores.map((store,index)=>{
+    const data=store.data[lang];
+    const isEmpire=store.id==="empire";
 
-    const message = [
+    const products=data.products.map(product=>`
+      <div class="mock-product">
+        <div class="mock-art art-${store.art}">${escapeHTML(product[0])}</div>
+        <div class="mock-name">${escapeHTML(product[1])}</div>
+        <div class="mock-price">${escapeHTML(product[2])}</div>
+      </div>
+    `).join("");
+
+    const categories=data.cats.map(category=>`
+      <div class="mock-category">${escapeHTML(category)}</div>
+    `).join("");
+
+    const features=data.features.map((feature,featureIndex)=>`
+      <li class="feature-item">
+        <span class="feature-number">${featureIndex+1}</span>
+        <span class="feature-copy">${escapeHTML(feature)}</span>
+      </li>
+    `).join("");
+
+    const message=[
       dict.waIntro,
-      dict.waStore + ": " + store[lang],
-      dict.waPrice + ": " + store.price,
+      dict.waStore+": "+data.title,
+      dict.waPrice+": "+store.price,
       dict.waConfirm
     ].join("\n");
 
-    link.href = makeWhatsAppUrl(message);
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
+    return `
+    <article class="store-card ${isEmpire?"empire-card":""} flex flex-col rounded-[24px] border ${isEmpire?"border-2":"border-slate-200"} p-5 sm:p-6">
+      <div class="flex items-center justify-between gap-3">
+        <span class="flex h-12 w-12 items-center justify-center rounded-2xl ${isEmpire?"bg-white/10":"bg-blue-50"} text-2xl">${store.icon}</span>
+        <span class="store-tag">${escapeHTML(data.tag)}</span>
+      </div>
+
+      <div class="store-cover cover-${store.theme} mt-4" role="img" aria-label="${escapeHTML(data.title)}">
+        <div class="mock-window">
+          <div class="mock-nav">
+            <div class="mock-brand">
+              <span class="mock-logo">${store.letter}</span>
+              <span>${escapeHTML(data.title)}</span>
+            </div>
+            <span class="mock-link">${escapeHTML(dict.previewSearch)}</span>
+            <span class="mock-cta">${escapeHTML(dict.previewAction)}</span>
+          </div>
+
+          <div class="mock-body">
+            <div class="mock-eyebrow">${escapeHTML(data.tag)}</div>
+            <div class="mock-title">${escapeHTML(data.banner)}</div>
+            <div class="mock-description">${escapeHTML(data.bannerSub)}</div>
+
+            <div class="mock-banner">
+              <div class="mock-banner-text">
+                <div class="mock-banner-title">${escapeHTML(data.title)}</div>
+                <div class="mock-banner-sub">${escapeHTML(data.desc)}</div>
+              </div>
+              <div class="mock-banner-art">${store.icon}</div>
+            </div>
+
+            <div class="mock-categories">${categories}</div>
+            <div class="mock-section-head">
+              <span>${escapeHTML(dict.previewSection)}</span>
+              <span>${escapeHTML(dict.previewMore)}</span>
+            </div>
+            <div class="mock-products">${products}</div>
+            <div class="mock-bottom">
+              <span>${escapeHTML(data.tag)}</span>
+              <span class="mock-dots"><i></i><i></i><i></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-5 text-xl font-black ${isEmpire?"text-white":"text-[#0A1931]"}">${escapeHTML(data.title)}</h3>
+      <p class="mt-3 text-sm leading-7 ${isEmpire?"text-slate-300":"text-slate-500"}">${escapeHTML(data.desc)}</p>
+
+      <div class="mt-5">
+        <h4 class="text-sm font-black ${isEmpire?"text-white":"text-[#0A1931]"}">${escapeHTML(dict.featuresHeading)}</h4>
+        <ol class="feature-list">${features}</ol>
+      </div>
+
+      <div class="mt-auto pt-6">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="old-price">${store.old}</span>
+          <span class="${isEmpire?"rounded-full bg-white px-3 py-2 text-sm font-black text-[#0A1931]":"new-price"}">${store.price}</span>
+          <span class="discount-badge">${escapeHTML(dict.discountLabel)}</span>
+        </div>
+
+        <a href="${makeWhatsAppUrl(message)}" data-store="${store.id}"
+          target="_blank" rel="noopener noreferrer"
+          class="store-order ${isEmpire?"bg-white text-[#0A1931] hover:bg-emerald-300":"primary-btn"} mt-6 block rounded-full py-3.5 text-center text-sm font-black">
+          ${escapeHTML(isEmpire?dict.orderEmpire:dict.orderThis)}
+        </a>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function updateWhatsAppLinks(lang){
+  const dict=translations[lang]||translations.ar;
+
+  document.querySelectorAll("[data-general-wa]").forEach(link=>{
+    link.href=makeWhatsAppUrl(dict.bottomTitle);
+    link.target="_blank";
+    link.rel="noopener noreferrer";
   });
 
-  const generalMessage = dict.bottomTitle;
-  document.querySelectorAll('a[href="https://wa.me/212719380106"]').forEach(link=>{
-    link.href = makeWhatsAppUrl(generalMessage);
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
+  document.querySelectorAll("[data-store]").forEach(link=>{
+    const store=stores.find(item=>item.id===link.dataset.store);
+    if(!store)return;
+
+    const data=store.data[lang]||store.data.ar;
+    const message=[
+      dict.waIntro,
+      dict.waStore+": "+data.title,
+      dict.waPrice+": "+store.price,
+      dict.waConfirm
+    ].join("\n");
+
+    link.href=makeWhatsAppUrl(message);
+    link.target="_blank";
+    link.rel="noopener noreferrer";
   });
 }
 
 function setLang(lang){
-  const dict = translations[lang] || translations.ar;
+  const dict=translations[lang]||translations.ar;
 
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-  document.body.style.fontFamily = lang === "ar"
-    ? "'Tajawal', sans-serif"
-    : "'Inter', sans-serif";
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  document.body.style.fontFamily=lang==="ar"
+    ?"'Tajawal',sans-serif"
+    :"'Inter',sans-serif";
 
   document.querySelectorAll("[data-i18n]").forEach(element=>{
-    const key = element.getAttribute("data-i18n");
+    const key=element.getAttribute("data-i18n");
     if(Object.prototype.hasOwnProperty.call(dict,key)){
-      element.textContent = dict[key];
+      element.textContent=dict[key];
     }
   });
 
   document.querySelectorAll("[data-lang]").forEach(button=>{
-    const active = button.dataset.lang === lang;
+    const active=button.dataset.lang===lang;
     button.classList.toggle("active",active);
     button.setAttribute("aria-pressed",String(active));
   });
 
+  renderStores(lang);
+  updateWhatsAppLinks(lang);
+
   try{
     localStorage.setItem("dm_lang",lang);
   }catch(error){}
-
-  updateWhatsAppLinks(lang);
 }
 
 document.querySelectorAll("[data-lang]").forEach(button=>{
   button.addEventListener("click",()=>setLang(button.dataset.lang));
 });
 
-document.getElementById("currentYear").textContent = new Date().getFullYear();
+document.getElementById("currentYear").textContent=new Date().getFullYear();
 
-let initialLang = "ar";
+let initialLang="ar";
 try{
-  const savedLang = localStorage.getItem("dm_lang");
-  if(savedLang && translations[savedLang]) initialLang = savedLang;
+  const savedLang=localStorage.getItem("dm_lang");
+  if(savedLang&&translations[savedLang])initialLang=savedLang;
 }catch(error){}
 
 setLang(initialLang);
