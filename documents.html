@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوثائق الإدارية | DIGITAL MAROC</title>
+  <meta name="description" content="اكتشف نماذج ووثائق إدارية عملية من DIGITAL MAROC. اطلب الوثيقة المناسبة عبر واتساب.">
+  <meta name="theme-color" content="#0A1931">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0A1931;
+      --blue: #1769FF;
+      --bg: #f4f7fb;
+      --text: #17243a;
+      --muted: #667085;
+      --white: #ffffff;
+      --border: #e4eaf2;
+      --green: #128c52;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 9px 14px;
+      font-size: 13px;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0A1931, #174a88);
+      color: white;
+      padding: 58px 20px;
+      text-align: center;
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(29px, 5vw, 44px);
+      font-weight: 900;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.9;
+      color: #e0eaff;
+      font-size: 17px;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .intro h2 {
+      font-size: 27px;
+      margin: 0 0 8px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .search-wrap {
+      max-width: 650px;
+      margin: 25px auto 30px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+      background: white;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(23,105,255,.1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      min-height: 255px;
+      box-shadow: 0 5px 20px rgba(10,25,49,.035);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(10,25,49,.09);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      background: #edf3ff;
+      border-radius: 14px;
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    .category {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+      margin: 0 0 20px;
+      flex: 1;
+    }
+
+    .price {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: var(--green);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 11px;
+      font-weight: 800;
+      transition: background .2s;
+    }
+
+    .btn:hover {
+      background: #0b7040;
+    }
+
+    .empty {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      padding: 35px 10px;
+    }
+
+    .note {
+      margin-top: 30px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #eaf1ff;
+      color: #23416c;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    footer {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      line-height: 1.8;
+    }
+
+    footer p {
+      margin: 5px 0;
+      color: #d5dfef;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 13px 15px;
+      }
+
+      .hero {
+        padding: 43px 17px;
+      }
+
+      main {
+        padding: 28px 15px 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">DIGITAL MAROC — موارد رقمية عملية في مكان واحد</div>
+
+  <header>
+    <nav class="nav">
+      <a class="logo" href="index.html">DIGITAL <span>MAROC</span></a>
+      <a class="nav-link" href="index.html">العودة إلى الرئيسية ←</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="tag">📄 المكتبة الرقمية المغربية</div>
+    <h1>الوثائق الإدارية</h1>
+    <p>
+      اكتشف نماذج ووثائق تساعدك على تنظيم أعمالك وتجهيز طلباتك الإدارية.
+      اختار الوثيقة المناسبة وتواصل معنا لمعرفة الثمن والتفاصيل.
+    </p>
+  </section>
+
+  <main>
+    <section class="intro">
+      <h2>تصفح الوثائق</h2>
+      <p>قلب على الوثيقة اللي محتاج باستعمال خانة البحث.</p>
+    </section>
+
+    <div class="search-wrap">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="قلب على وثيقة إدارية..."
+        aria-label="البحث عن وثيقة"
+      >
+    </div>
+
+    <section class="grid" id="productGrid">
+
+      <article class="card" data-search="طلب خطي إداري طلب">
+        <div class="card-icon">📝</div>
+        <div class="category">الطلبات الإدارية</div>
+        <h3>نموذج طلب خطي</h3>
+        <p>نموذج قابل للتعديل لمساعدتك على إعداد طلب خطي بصيغة منظمة.</p>
+        <div class="price">الثمن والتفاصيل عبر واتساب</div>
+        <a class="btn" href="https://wa.me/⁦+212 719-380106⁩?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20نموذج%20طلب%20خطي" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب</a>
+      </article>
+
+      <article class="card" data-search="سيرة ذاتية cv العمل">
+        <div class="card-icon">📄</div>
+        <div class="category">العمل والتوظيف</div>
+        <h3>نموذج سيرة ذاتية CV</h3>
+        <p>قالب منظم للسيرة الذاتية يمكنك تخصيصه بالمعلومات والتجارب ديالك.</p>
+        <div class="price">الثمن والتفاصيل عبر واتساب</div>
+        <a class="btn" href="https://wa.me/⁦+212 719-380106⁩?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20نموذج%20CV" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب</a>
+      </article>
+
+      <article class="card" data-search="رسالة تحفيزية طلب عمل">
+        <div class="card-icon">💼</div>
+        <div class="category">العمل والتوظيف</div>
+        <h3>نموذج رسالة تحفيزية</h3>
+        <p>نموذج يساعدك على تقديم طلب عمل بطريقة واضحة ومهنية.</p>
+        <div class="price">الثمن والتفاصيل عبر واتساب</div>
+        <a class="btn" href="https://wa.me/⁦+212 719-380106⁩?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20رسالة%20تحفيزية" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب</a>
+      </article>
+
+      <article class="card" data-search="طلب تدريب stage">
+        <div class="card-icon">🎓</div>
+        <div class="category">الدراسة والتدريب</div>
+        <h3>نموذج طلب تدريب Stage</h3>
+        <p>صيغة قابلة للتعديل للتعبير عن رغبتك في الحصول على تدريب مهني.</p>
+        <div class="price">الثمن والتفاصيل عبر واتساب</div>
+        <a class="btn" href="https://wa.me/⁦+212 719-380106⁩?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20طلب%20تدريب" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب</a>
+      </article>
+
+      <article class="card" data-search="فاتورة devis facture">
+        <div class="card-icon">🧾</div>
+        <div class="category">التجارة والمحاسبة</div>
+        <h3>نموذج فاتورة وDevis</h3>
+        <p>قالب لتنظيم معلومات الخدمات أو المنتجات والمبالغ داخل وثيقة تجارية.</p>
+        <div class="price">الثمن والتفاصيل عبر واتساب</div>
+        <a class="btn" href="https://wa.me/⁦+212 719-380106⁩?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20نموذج%20فاتورة%20وDevis" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب</a>
+      </article>
+
+      <article class="card" data-search="جدول الميزانية budget">
+        <div class="card-icon">📊</div>
+        <div class="category">التنظيم المالي</div>
+        <h3>جدول الميزانية الشهرية</h3>
+        <p>نموذج لتسجيل المداخيل والمصاريف ومتابعة الميزانية الشهرية.</p>
+        <div class="price">الثمن والتفاصيل عبر واتساب</div>
+        <a class="btn" href="https://wa.me/⁦+212 719-380106⁩?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20جدول%20الميزانية%20الشهرية" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب</a>
+      </article>
+
+    </section>
+
+    <div class="empty" id="emptyMessage">
+      ما لقيناش نتائج. جرب كلمات بحث أخرى.
+    </div>
+
+    <div class="note">
+      <strong>مهم:</strong> هاد الصفحة كتعرّف بالمنتجات وكتتيح طلبها عبر واتساب؛
+      ما فيهاش تحميل مباشر. تأكد من توفر كل وثيقة فعلياً قبل عرضها للبيع.
+    </div>
+  </main>
+
+  <footer>
+    <strong>DIGITAL MAROC</strong>
+    <p>مكتبتك الرقمية للموارد والأدوات العملية.</p>
+    <p>© 2026 DIGITAL MAROC — جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const searchInput = document.getElementById("searchInput");
+    const cards = Array.from(document.querySelectorAll(".card"));
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach(function (card) {
+        const searchableText =
+          (card.innerText + " " + (card.dataset.search || "")).toLowerCase();
+
+        const matches = searchableText.includes(query);
+        card.style.display = matches ? "flex" : "none";
+
+        if (matches) {
+          visibleCount++;
+        }
+      });
+
+      emptyMessage.style.display = visibleCount === 0 ? "block" : "none";
+    });
+  </script>
+</body>
+</html>
