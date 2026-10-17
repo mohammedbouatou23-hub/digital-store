@@ -1,88 +1,99 @@
+from pathlib import Path
+import zipfile, html
+from urllib.parse import quote
+
+base = Path("/mnt/data/digital_maroc_library")
+base.mkdir(parents=True, exist_ok=True)
 
 pages = {
 "documents.html": {
-"title":"الوثائق الإدارية", "eyebrow":"نماذج عملية لحياتك اليومية",
-"intro":"اكتشف أسماء الوثائق والنماذج الإدارية المتوفرة، واختار اللي محتاج. من بعد طلبك عبر واتساب، كنوجدو ليك الملف المناسب حسب العرض.",
-"icon":"📄",
-"products":[
-("طلب خطي إداري","نموذج منظم قابل للتعديل للاستعمال في الطلبات الإدارية العامة.","طلبات ومراسلات"),
-("طلب شهادة إدارية","نموذج طلب شهادة بصياغة واضحة وقابل للتخصيص.","شهادات"),
-("طلب عمل","قالب طلب عمل يمكنك تكييفه حسب المؤسسة والوظيفة.","العمل والتوظيف"),
-("سيرة ذاتية CV","نموذج سيرة ذاتية منظم لتقديم المعلومات المهنية والدراسية.","العمل والتوظيف"),
-("رسالة تحفيزية","قالب رسالة تحفيزية قابل للتعديل حسب فرصة العمل.","العمل والتوظيف"),
-("نموذج تصريح بالشرف","نموذج عام للتصريح بالشرف مع خانات قابلة للتعبئة.","نماذج عامة"),
-("نموذج طلب تدريب","قالب طلب تدريب مهني أو إداري قابل للتخصيص.","الدراسة والتدريب"),
-("جدول تتبع المصاريف","وثيقة تنظيمية لتسجيل المصاريف وترتيبها.","التنظيم الشخصي"),
-("نموذج فاتورة مبسطة","قالب تنظيمي للفواتير مع خانات أساسية قابلة للتعديل.","تنظيم الأعمال"),
-("نماذج مراسلات إدارية","مجموعة نماذج للمراسلات الإدارية الشائعة.","طلبات ومراسلات"),
+"title": "الوثائق الإدارية", "icon": "📄",
+"intro": "تصفح أسماء الوثائق والنماذج الإدارية، واختار اللي محتاج. تواصل معنا عبر واتساب باش نأكدوا ليك التوفر والتفاصيل.",
+"items": [
+("طلب خطي إداري","نموذج منظم قابل للتعديل للطلبات الإدارية العامة","طلبات ومراسلات"),
+("طلب شهادة إدارية","نموذج طلب شهادة بصياغة واضحة وقابل للتخصيص","شهادات"),
+("سيرة ذاتية CV","قالب منظم لتقديم المعلومات الدراسية والمهنية","العمل والتوظيف"),
+("رسالة تحفيزية","نموذج رسالة قابل للتعديل حسب الوظيفة","العمل والتوظيف"),
+("طلب تدريب","قالب طلب تدريب مهني أو إداري","الدراسة والتدريب"),
+("تصريح بالشرف","نموذج عام بخانات قابلة للتعبئة","نماذج عامة"),
+("نموذج طلب عمل","قالب لطلب العمل يمكن تخصيصه","العمل والتوظيف"),
+("نماذج مراسلات إدارية","نماذج متنوعة لتنظيم المراسلات","طلبات ومراسلات"),
+("جدول تتبع المصاريف","وثيقة تنظيمية لتسجيل المصاريف","التنظيم"),
+("نموذج فاتورة مبسطة","قالب للفواتير بخانات أساسية قابلة للتعديل","تنظيم الأعمال"),
+("طلب اجتياز مباراة","قالب عام يمكن تكييفه حسب الإعلان","الدراسة والعمل"),
+("نموذج طلب استقالة","نموذج عام يحتاج إلى مراجعة حسب الحالة","العمل والتوظيف"),
 ]},
 "summaries.html": {
-"title":"ملخصات الكتب", "eyebrow":"أفكار مركزة تساعدك على التعلم",
-"intro":"تصفح عناوين ملخصات في تطوير الذات والأعمال والإنتاجية والتسويق. اختار الموضوع اللي كيناسبك وطلب تفاصيل النسخة المتوفرة عبر واتساب.",
-"icon":"📖",
-"products":[
-("العادات الذرية","أفكار عملية حول بناء العادات الصغيرة والاستمرار عليها.","تطوير الذات"),
-("الأب الغني والأب الفقير","مفاهيم عامة حول التفكير المالي والأصول والالتزامات.","المال والأعمال"),
-("فكر تصبح غنياً","ملخص أفكار حول الأهداف والانضباط والعمل المنظم.","النجاح الشخصي"),
-("قوة الآن","أفكار حول الانتباه للحاضر وإدارة الأفكار اليومية.","الوعي الشخصي"),
-("كيف تكسب الأصدقاء وتؤثر في الناس","مبادئ التواصل وبناء العلاقات والتعامل مع الآخرين.","التواصل"),
-("ابدأ مع لماذا","ملخص حول أهمية الهدف في المشاريع والقيادة.","الأعمال"),
-("إنجاز الأمور","أفكار لتنظيم المهام وتقليل التشتت.","الإنتاجية"),
-("سيكولوجية المال","مفاهيم حول السلوك والقرارات المالية.","المال والأعمال"),
-("العقلية","أفكار حول التعلم والتطور وتقبل التحديات.","تطوير الذات"),
-("التأثير","مبادئ عامة حول الإقناع وفهم السلوك.","التسويق والتواصل"),
+"title": "ملخصات الكتب", "icon": "📖",
+"intro": "اكتشف عناوين ملخصات في تطوير الذات والأعمال والإنتاجية والتسويق. اختار الموضوع اللي كيناسبك وطلب تفاصيل النسخة المتوفرة عبر واتساب.",
+"items": [
+("العادات الذرية","أفكار حول بناء العادات الصغيرة والاستمرار عليها","تطوير الذات"),
+("الأب الغني والأب الفقير","مفاهيم عامة حول التفكير المالي والأصول والالتزامات","المال والأعمال"),
+("فكر تصبح غنياً","أفكار حول الأهداف والانضباط والعمل المنظم","النجاح الشخصي"),
+("قوة الآن","أفكار حول الانتباه للحاضر والوعي اليومي","الوعي الشخصي"),
+("كيف تكسب الأصدقاء وتؤثر في الناس","مبادئ التواصل وبناء العلاقات","التواصل"),
+("ابدأ مع لماذا","أهمية الهدف في المشاريع والقيادة","الأعمال"),
+("إنجاز الأمور","أفكار لتنظيم المهام وتقليل التشتت","الإنتاجية"),
+("سيكولوجية المال","مفاهيم حول السلوك والقرارات المالية","المال والأعمال"),
+("العقلية","أفكار حول التعلم والتطور وتقبل التحديات","تطوير الذات"),
+("التأثير","مبادئ عامة حول الإقناع وفهم السلوك","التسويق والتواصل"),
+("أسرار عقل المليونير","موضوعات حول المعتقدات والسلوك المالي","المال والأعمال"),
+("قوة التركيز","طرق وأفكار لتقليل التشتت وتنظيم الانتباه","الإنتاجية"),
 ]},
 "guides.html": {
-"title":"أدلة المشاريع الرقمية", "eyebrow":"من الفكرة إلى مشروع رقمي منظم",
-"intro":"موارد إرشادية للمبتدئين اللي باغين يفهمو كيفاش ينظمو مشروع رقمي، يبنيو صفحة هبوط، أو يجهزو متجر إلكتروني.",
-"icon":"💻",
-"products":[
-("دليل إنشاء صفحة هبوط","خطوات تنظيم صفحة تعرض الخدمة أو المنتج بوضوح.","إنشاء المواقع"),
-("دليل إطلاق متجر إلكتروني","نظرة عملية على صفحات المتجر والمنتجات وتجربة الزبون.","التجارة الإلكترونية"),
-("دليل بيع المنتجات الرقمية","أساسيات تقديم الملفات الرقمية وتنظيم الطلبات والتسليم.","المنتجات الرقمية"),
-("دليل التسويق بالمحتوى","كيفية تنظيم أفكار المحتوى وبناء خطة نشر أولية.","التسويق"),
-("دليل WhatsApp Business","تنظيم التواصل مع الزبائن وعرض الخدمات عبر واتساب.","خدمة الزبناء"),
-("دليل Canva للمبتدئين","التعرف على تصميم منشورات وعروض بسيطة باستعمال Canva.","التصميم"),
-("دليل إعداد عرض تجاري","تنظيم المزايا والوصف والسعر وطريقة الطلب في عرض واضح.","المبيعات"),
-("دليل هوية العلامة التجارية","عناصر أساسية لتوحيد ألوان ورسائل المشروع.","بناء العلامة"),
-("دليل تنظيم خدمة العملاء","خطوات عملية لترتيب الأسئلة والطلبات والمتابعة.","خدمة الزبناء"),
-("دليل تخطيط مشروع رقمي","ورقة طريق أولية لتحديد الفكرة والجمهور والخطوات.","بداية المشروع"),
-]},
+"title": "أدلة المشاريع الرقمية", "icon": "💻",
+"intro": "موارد إرشادية للمبتدئين اللي باغين ينظمو مشروع رقمي، يبنيو صفحة هبوط، أو يجهزو متجر إلكتروني.",
+"items": [
+("دليل إنشاء صفحة هبوط","خطوات تنظيم صفحة تعرض الخدمة أو المنتج بوضوح","إنشاء المواقع"),
+("دليل إطلاق متجر إلكتروني","أساسيات صفحات المتجر وتجربة الزبون","التجارة الإلكترونية"),
+("دليل بيع المنتجات الرقمية","تنظيم عرض الملفات الرقمية والطلبات والتسليم","المنتجات الرقمية"),
+("دليل التسويق بالمحتوى","تنظيم أفكار المحتوى وبناء خطة نشر أولية","التسويق"),
+("دليل WhatsApp Business","تنظيم التواصل مع الزبائن وعرض الخدمات","خدمة الزبناء"),
+("دليل Canva للمبتدئين","التعرف على تصميم منشورات وعروض بسيطة","التصميم"),
+("دليل إعداد عرض تجاري","تنظيم المزايا والوصف والسعر وطريقة الطلب","المبيعات"),
+("دليل هوية العلامة التجارية","عناصر لتوحيد ألوان ورسائل المشروع","بناء العلامة"),
+("دليل تنظيم خدمة العملاء","ترتيب الأسئلة والطلبات والمتابعة","خدمة الزبناء"),
+("دليل تخطيط مشروع رقمي","تحديد الفكرة والجمهور والخطوات الأولى","بداية المشروع"),
+("دليل إنشاء محتوى قصير","تنظيم أفكار الفيديوهات القصيرة","صناعة المحتوى"),
+("دليل تحسين صفحة المنتج","تحسين العنوان والوصف وتجربة الطلب","التجارة الإلكترونية")},
+},
 "plr.html": {
-"title":"كتب ومحتوى PLR", "eyebrow":"محتوى رقمي حسب شروط الترخيص",
-"intro":"تصفح موضوعات الكتب والحزم الرقمية المقترحة. حقوق التعديل أو إعادة البيع أو إعادة النشر كتختلف حسب الترخيص، لذلك كنأكدوا شروط كل منتج قبل الطلب.",
-"icon":"📚",
-"products":[
-("حزمة كتب تطوير الذات","مجموعة موضوعات حول الأهداف والعادات والتعلم.","تطوير الذات"),
-("حزمة أدلة الأعمال الصغيرة","محتوى إرشادي حول تنظيم الأفكار والخدمات.","الأعمال"),
-("كتاب رقمي حول Canva","موضوعات تصميم المحتوى المرئي للمبتدئين.","التصميم"),
-("حزمة التسويق الرقمي","مواد تعليمية حول المحتوى والتواصل مع الجمهور.","التسويق"),
-("حزمة الإنتاجية وتنظيم الوقت","أوراق عمل وموضوعات لتنظيم المهام.","الإنتاجية"),
-("حزمة التخطيط المالي الشخصي","مواد تنظيمية للتخطيط والميزانية الشخصية.","التنظيم المالي"),
-("حزمة وصفات المحتوى","أفكار وقوالب نصية لصناعة محتوى رقمي.","صناعة المحتوى"),
-("حزمة تعلم المهارات الرقمية","موضوعات تمهيدية حول مهارات العمل الرقمي.","التعلم"),
-("حزمة دفاتر العمل","قوالب أوراق عمل وتمارين قابلة للتعبئة حسب الترخيص.","قوالب عملية"),
-("حزمة كتب متنوعة","تشكيلة موضوعات رقمية حسب المحتوى المتوفر والترخيص.","متنوع"),
+"title": "كتب ومحتوى PLR", "icon": "📚",
+"intro": "تصفح موضوعات الكتب والحزم الرقمية. حقوق التعديل أو إعادة البيع أو إعادة النشر كتختلف حسب الترخيص، لذلك خاص تأكيد شروط كل منتج قبل الطلب.",
+"items": [
+("حزمة كتب تطوير الذات","موضوعات حول الأهداف والعادات والتعلم","تطوير الذات"),
+("أدلة الأعمال الصغيرة","محتوى حول تنظيم الأفكار والخدمات","الأعمال"),
+("كتاب رقمي حول Canva","موضوعات تصميم المحتوى المرئي للمبتدئين","التصميم"),
+("حزمة التسويق الرقمي","مواد حول المحتوى والتواصل مع الجمهور","التسويق"),
+("حزمة الإنتاجية وتنظيم الوقت","مواد وأفكار لتنظيم المهام","الإنتاجية"),
+("حزمة التخطيط المالي الشخصي","مواد تنظيمية للتخطيط والميزانية","التنظيم المالي"),
+("حزمة صناعة المحتوى","أفكار وقوالب نصية للمحتوى الرقمي","صناعة المحتوى"),
+("حزمة المهارات الرقمية","موضوعات تمهيدية حول مهارات العمل الرقمي","التعلم"),
+("حزمة دفاتر العمل","أوراق عمل وتمارين حسب الترخيص المتوفر","قوالب عملية"),
+("حزمة كتب متنوعة","موضوعات رقمية متنوعة حسب المتوفر والترخيص","متنوع"),
+("حزمة التسويق للمبتدئين","موضوعات تأسيسية في التسويق الرقمي","التسويق"),
+("حزمة تنظيم المشاريع","موارد حول تخطيط المهام ومراحل المشروع","الأعمال"),
 ]},
 "resources.html": {
-"title":"الموارد والأدوات الرقمية", "eyebrow":"قوالب تسهّل عليك التنظيم والعمل",
-"intro":"اختار القوالب والموارد اللي تقدر تعاونك فتنظيم العمل اليومي، صناعة المحتوى، وتخطيط مشروعك الرقمي.",
-"icon":"🗂️",
-"products":[
-("قوالب Canva لمنشورات التواصل","تصاميم قابلة للتخصيص حسب نوع المحتوى والترخيص.","التصميم"),
-("جدول Excel لتتبع المصاريف","قالب لتنظيم المصاريف والإيرادات بشكل مبسط.","Excel"),
-("مخطط أسبوعي للمهام","صفحة لتوزيع المهام والأولويات خلال الأسبوع.","الإنتاجية"),
-("قالب تقويم المحتوى","تنظيم أفكار المنشورات ومواعيد النشر.","التسويق"),
-("قالب تخطيط مشروع","تقسيم الفكرة إلى أهداف ومهام ومراحل.","تنظيم المشاريع"),
-("قائمة مراجعة إطلاق متجر","نقاط تساعدك تراجع صفحات المتجر قبل الإطلاق.","التجارة الإلكترونية"),
-("قوالب عروض تقديمية","نماذج للعروض والشرح وتقديم الأفكار.","التصميم"),
-("قالب ميزانية شهرية","جدول لتنظيم الميزانية والمصاريف المتوقعة.","التنظيم المالي"),
-("حزمة Prompts للذكاء الاصطناعي","أمثلة أوامر منظمة حسب الاستخدام، حسب الحزمة المتوفرة.","الذكاء الاصطناعي"),
-("قوالب وصف المنتجات","هيكل يساعدك تكتب وصفا واضحا للمنتجات والخدمات.","المبيعات"),
+"title": "الموارد والأدوات الرقمية", "icon": "🗂️",
+"intro": "اختار القوالب والموارد اللي تقدر تعاونك فتنظيم العمل، وصناعة المحتوى، وتخطيط مشروعك الرقمي.",
+"items": [
+("قوالب Canva لمنشورات التواصل","تصاميم قابلة للتخصيص حسب المحتوى والترخيص","التصميم"),
+("جدول Excel لتتبع المصاريف","قالب لتنظيم المصاريف والإيرادات","Excel"),
+("مخطط أسبوعي للمهام","صفحة لتوزيع المهام والأولويات","الإنتاجية"),
+("قالب تقويم المحتوى","تنظيم أفكار المنشورات ومواعيد النشر","التسويق"),
+("قالب تخطيط مشروع","تقسيم الفكرة إلى أهداف ومهام ومراحل","تنظيم المشاريع"),
+("قائمة مراجعة إطلاق متجر","نقاط لمراجعة صفحات المتجر قبل الإطلاق","التجارة الإلكترونية"),
+("قوالب عروض تقديمية","نماذج لتقديم الأفكار والمشاريع","التصميم"),
+("قالب ميزانية شهرية","جدول لتنظيم الميزانية والمصاريف","التنظيم المالي"),
+("Prompts للذكاء الاصطناعي","أمثلة أوامر منظمة حسب الاستخدام","الذكاء الاصطناعي"),
+("قوالب وصف المنتجات","هيكل لكتابة وصف واضح للمنتجات والخدمات","المبيعات"),
+("قالب تتبع العملاء","جدول لتنظيم معلومات الطلبات والمتابعة","خدمة الزبناء"),
+("قالب خطة نشر شهرية","تنظيم مواضيع النشر خلال الشهر","صناعة المحتوى"),
 ]}
 }
 
-common_css = r"""
+css = 
 :root{--navy:#0A1931;--blue:#175CD3;--light:#F4F7FC;--text:#17263D;--muted:#718096;--border:#E4EAF3;--green:#087F5B}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--light);color:var(--text);font-family:'Tajawal',Arial,sans-serif}
 a{text-decoration:none;color:inherit}button,input{font:inherit}.container{width:min(1120px,92%);margin:auto}
@@ -90,16 +101,16 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px}.logo{background:linear-gradient(135deg,#1765ED,#0A1931);color:#fff;width:43px;height:43px;border-radius:13px;display:grid;place-items:center;font-weight:900}
 .brand strong{font-size:18px;color:var(--navy)}.brand strong span{color:var(--blue)}.brand small{display:block;color:var(--muted);font-size:12px}
-.navlinks{display:flex;gap:18px;font-size:14px;font-weight:800}.navlinks a:hover{color:var(--blue)}
+.navlinks{display:flex;gap:16px;font-size:13px;font-weight:800}.navlinks a:hover{color:var(--blue)}
 .cta{background:var(--navy);color:#fff;padding:11px 15px;border-radius:11px;font-weight:800;font-size:13px}
-.hero{background:linear-gradient(120deg,#08162D,#123C7A 75%,#175CD3);color:#fff;padding:52px 0 46px}
+.hero{background:linear-gradient(120deg,#08162D,#123C7A 75%,#175CD3);color:#fff;padding:49px 0 43px}
 .pill{display:inline-block;background:#ffffff18;border:1px solid #ffffff30;padding:7px 12px;border-radius:30px;font-size:13px}
 .hero h1{font-size:clamp(30px,4vw,44px);margin:18px 0 10px;font-weight:900}.hero p{max-width:760px;line-height:2;color:#D7E3F8;margin:0}
-.searchrow{display:flex;gap:9px;margin-top:23px;max-width:620px;background:#fff;padding:6px;border-radius:13px}
+.searchrow{display:flex;gap:9px;margin-top:22px;max-width:620px;background:#fff;padding:6px;border-radius:13px}
 .searchrow input{border:0;outline:0;min-width:0;flex:1;padding:10px;color:var(--text);background:transparent}
 .searchrow button{border:0;background:var(--blue);color:white;padding:10px 18px;border-radius:9px;font-weight:800}
-main{padding:38px 0 60px}.heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
-.heading h2{margin:5px 0;color:var(--navy);font-size:27px}.heading p{margin:0;color:var(--muted);line-height:1.8}.count{font-size:13px;color:var(--muted);white-space:nowrap}
+main{padding:36px 0 58px}.heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+.heading h2{margin:8px 0;color:var(--navy);font-size:27px}.heading p{margin:0;color:var(--muted);line-height:1.8}.count{font-size:13px;color:var(--muted);white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
 .product{background:#fff;border:1px solid var(--border);border-radius:17px;padding:21px;display:flex;flex-direction:column;min-height:245px;transition:.2s}
 .product:hover{transform:translateY(-3px);border-color:#C5D7F8;box-shadow:0 12px 25px #0a19310c}
@@ -111,74 +122,49 @@ main{padding:38px 0 60px}.heading{display:flex;justify-content:space-between;ali
 .product-bottom{margin-top:auto;border-top:1px solid #EEF1F6;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .price{font-size:12px;color:var(--muted);font-weight:700}
 .order{background:#087F5B;color:white;border-radius:10px;padding:10px 12px;font-size:13px;font-weight:900;white-space:nowrap}
-.order:hover{background:#066849}
-.empty{display:none;text-align:center;padding:30px;background:white;border:1px solid var(--border);border-radius:15px;color:var(--muted)}
+.order:hover{background:#066849}.empty{display:none;text-align:center;padding:30px;background:white;border:1px solid var(--border);border-radius:15px;color:var(--muted)}
 .note{margin-top:25px;padding:17px 19px;border:1px solid #D9E6FA;background:#EFF5FF;color:#385579;border-radius:13px;font-size:13px;line-height:1.9}
 .banner{margin-top:32px;background:#fff;border:1px solid var(--border);border-radius:17px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:15px}
 .banner h3{margin:0 0 5px;color:var(--navy)}.banner p{margin:0;color:var(--muted);font-size:14px;line-height:1.8}
 footer{background:#071326;color:white;padding:26px 0}.foot{display:flex;justify-content:space-between;gap:15px;align-items:center}.foot p{color:#AAB8CE;font-size:12px;margin:6px 0 0}.footlinks{display:flex;gap:15px;font-size:13px;color:#D5DFEE}
 [hidden]{display:none!important}
 @media(max-width:800px){.navlinks{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:540px){.nav{min-height:65px}.brand strong{font-size:15px}.cta{font-size:12px;padding:10px}.hero{padding:40px 0}.grid{grid-template-columns:1fr}.heading{align-items:flex-start;flex-direction:column}.heading h2{font-size:24px}.product{min-height:220px}.banner,.foot{align-items:flex-start;flex-direction:column}.searchrow button{padding:10px 12px}.searchrow input{font-size:13px}}
-"""
+@media(max-width:540px){.nav{min-height:65px}.brand strong{font-size:15px}.cta{font-size:12px;padding:10px}.hero{padding:39px 0}.grid{grid-template-columns:1fr}.heading{align-items:flex-start;flex-direction:column}.heading h2{font-size:24px}.product{min-height:220px}.banner,.foot{align-items:flex-start;flex-direction:column}.searchrow button{padding:10px 12px}.searchrow input{font-size:13px}}
 
-for filename, data in pages.items():
+for filename, d in pages.items():
     cards = []
-    for idx, (name, desc, category) in enumerate(data["products"], 1):
-        icon = ["📘","📄","🧩","✨","📚"][idx % 5]
-        safe_name = html.escape(name)
-        safe_desc = html.escape(desc)
-        safe_cat = html.escape(category)
-        # wa.me placeholder is intentionally easy to find and replace.
-        message = f"السلام عليكم، بغيت معلومات على المنتج: {name} من مكتبة DIGITAL MAROC"
-        wa_url = "https://wa.me/212600000000?text=" + __import__("urllib.parse").parse.quote(message)
-        cards.append(f"""
-        <article class="product" data-search="{html.escape(name + ' ' + desc + ' ' + category, quote=True)}">
-          <div class="product-top"><div class="product-icon">{icon}</div><span class="tag">{safe_cat}</span></div>
-          <h3>{safe_name}</h3><p>{safe_desc}</p>
-          <div class="product-bottom"><span class="price">الثمن والتفاصيل عبر واتساب</span>
-          <a class="order" href="{wa_url}" target="_blank" rel="noopener">اطلب عبر واتساب ↗</a></div>
-        </article>""")
-    content = f"""<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0A1931">
-<title>{data['title']} | DIGITAL MAROC</title>
-<meta name="description" content="{data['intro']}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>{common_css}</style>
-</head>
-<body>
-<header><div class="container nav">
-<a class="brand" href="index.html"><div class="logo">DM</div><div><strong>DIGITAL <span>MAROC</span></strong><small>مكتبتك الرقمية المغربية</small></div></a>
-<nav class="navlinks"><a href="index.html">الرئيسية</a><a href="documents.html">الوثائق</a><a href="summaries.html">ملخصات الكتب</a><a href="guides.html">الأدلة الرقمية</a></nav>
-<a class="cta" href="#products">تصفح المنتجات ↓</a>
-</div></header>
-<section class="hero"><div class="container">
-<span class="pill">{data['icon']} {data['eyebrow']}</span>
-<h1>{data['title']}</h1><p>{data['intro']}</p>
-<form class="searchrow" id="searchForm"><input id="searchInput" type="search" placeholder="قلب على اسم المنتج أو الموضوع..." aria-label="البحث عن منتج"><button type="submit">بحث 🔎</button></form>
-</div></section>
-<main class="container" id="products">
-<div class="heading"><div><span class="pill" style="background:#EAF1FF;color:#2455A6;border-color:#D8E5FC">كتالوج المنتجات</span><h2>اختار المنتج المناسب ليك</h2><p>شوف العنوان والوصف، ومن بعد طلب التفاصيل والتوفر عبر واتساب.</p></div><div class="count" id="count">10 منتجات</div></div>
-<div class="grid" id="grid">{''.join(cards)}</div>
-<div class="empty" id="empty"><div style="font-size:30px">🔎</div><strong>ما لقيناش منتج بهاد الكلمات.</strong><p>جرب كلمة أخرى أو تواصل معنا عبر واتساب.</p></div>
-<div class="note"><strong>معلومة مهمة:</strong> هاد الصفحة كتعرض عناوين للتعريف بالكتالوج. التوفر، المحتوى النهائي، الثمن، وأي شروط ترخيص كيتأكد منها فريق DIGITAL MAROC قبل تأكيد الطلب. بالنسبة للوثائق الإدارية، خاص الزبون يراجع المتطلبات الرسمية ديال الجهة المعنية.</div>
-<div class="banner"><div><h3>ما لقيتيش اللي كتقلب عليه؟</h3><p>تواصل معنا وشرح لينا شنو محتاج، ونوضحو ليك الخيارات المتوفرة.</p></div><a class="order" href="https://wa.me/212600000000?text={__import__('urllib.parse').parse.quote('السلام عليكم، بغيت نستفسر على منتجات المكتبة الرقمية DIGITAL MAROC')}" target="_blank" rel="noopener">تواصل عبر واتساب ↗</a></div>
-</main>
-<footer><div class="container foot"><div><strong>DIGITAL MAROC</strong><p>موارد رقمية تساعدك تتعلم وتنظم مشروعك.</p></div><div class="footlinks"><a href="index.html">الرئيسية</a><a href="pro.html">المتاجر الجاهزة</a><a href="resources.html">الموارد الرقمية</a></div></div></footer>
+    for i, (name, desc, category) in enumerate(d["items"]):
+        msg = quote(f"السلام عليكم، بغيت معلومات على المنتج: {name} من مكتبة DIGITAL MAROC")
+        wa = f"https://wa.me/212600000000?text={msg}"
+        search = html.escape(f"{name} {desc} {category}", quote=True)
+        cards.append(f
+<article class="product" data-search="{search}">
+<div class="product-top"><div class="product-icon">{['📘','📄','🧩','✨','📚'][i%5]}</div><span class="tag">{html.escape(category)}</span></div>
+<h3>{html.escape(name)}</h3><p>{html.escape(desc)}</p>
+<div class="product-bottom"><span class="price">الثمن والتفاصيل عبر واتساب</span><a class="order" href="{wa}" target="_blank" rel="noopener">اطلب عبر واتساب ↗</a></div>
+</article>""")
+    wa_general = "https://wa.me/212600000000?text=" + quote("السلام عليكم، بغيت نستفسر على منتجات مكتبة DIGITAL MAROC")
+    page = f"""<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0A1931"><title>{d['title']} | DIGITAL MAROC</title>
+<meta name="description" content="{d['intro']}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>{css}</style></head><body>
+<header><div class="container nav"><a class="brand" href="index.html"><div class="logo">DM</div><div><strong>DIGITAL <span>MAROC</span></strong><small>مكتبتك الرقمية المغربية</small></div></a>
+<nav class="navlinks"><a href="index.html">الرئيسية</a><a href="documents.html">الوثائق</a><a href="summaries.html">ملخصات الكتب</a><a href="guides.html">الأدلة الرقمية</a><a href="plr.html">كتب PLR</a><a href="resources.html">الموارد</a></nav>
+<a class="cta" href="#products">تصفح المنتجات ↓</a></div></header>
+<section class="hero"><div class="container"><span class="pill">{d['icon']} {d['title']}</span><h1>{d['title']}</h1><p>{d['intro']}</p>
+<form class="searchrow" id="searchForm"><input id="searchInput" type="search" placeholder="قلب على اسم المنتج أو الموضوع..." aria-label="البحث عن منتج"><button type="submit">بحث 🔎</button></form></div></section>
+<main class="container" id="products"><div class="heading"><div><span class="pill" style="background:#EAF1FF;color:#2455A6;border-color:#D8E5FC">كتالوج المنتجات</span><h2>اختار المنتج المناسب ليك</h2><p>شوف العنوان والوصف، ومن بعد طلب التفاصيل والتوفر عبر واتساب.</p></div><div class="count" id="count">{len(d['items'])} منتج</div></div>
+<div class="grid" id="grid">{''.join(cards)}</div><div class="empty" id="empty"><div style="font-size:30px">🔎</div><strong>ما لقيناش منتج بهاد الكلمات.</strong><p>جرب كلمة أخرى أو تواصل معنا عبر واتساب.</p></div>
+<div class="note"><strong>ملاحظة:</strong> هاد الصفحة كتعرض عناوين كتالوج قابلة للتعديل. التوفر، المحتوى النهائي، والثمن كيتأكد منهم قبل تأكيد الطلب. بالنسبة لمحتوى PLR، خاص التحقق من الترخيص ديال كل منتج قبل إعادة البيع أو النشر.</div>
+<div class="banner"><div><h3>ما لقيتيش اللي كتقلب عليه؟</h3><p>تواصل معنا وشرح لينا شنو محتاج، ونوضحو ليك الخيارات المتوفرة.</p></div><a class="order" href="{wa_general}" target="_blank" rel="noopener">تواصل عبر واتساب ↗</a></div>
+</main><footer><div class="container foot"><div><strong>DIGITAL MAROC</strong><p>موارد رقمية تساعدك تتعلم وتنظم مشروعك.</p></div><div class="footlinks"><a href="index.html">الرئيسية</a><a href="pro.html">المتاجر الجاهزة</a><a href="resources.html">الموارد الرقمية</a></div></div></footer>
 <script>
-const input=document.getElementById('searchInput');
-const form=document.getElementById('searchForm');
-const cards=[...document.querySelectorAll('.product')];
-const count=document.getElementById('count');
-const empty=document.getElementById('empty');
+const input=document.getElementById('searchInput'), form=document.getElementById('searchForm');
+const cards=[...document.querySelectorAll('.product')], count=document.getElementById('count'), empty=document.getElementById('empty');
 function norm(s){{return s.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').trim()}}
 function filterCards(){{const q=norm(input.value);let n=0;cards.forEach(c=>{{const ok=!q||norm(c.innerText+' '+c.dataset.search).includes(q);c.hidden=!ok;if(ok)n++}});count.textContent=n+' منتجات';empty.style.display=n?'none':'block'}}
-input.addEventListener('input',filterCards);
-form.addEventListener('submit',e=>{{e.preventDefault();filterCards();document.getElementById('products').scrollIntoView({{behavior:'smooth'}})}});
-</script>
-</body>
-</html>
+input.addEventListener('input',filterCards);form.addEventListener('submit',e=>{{e.preventDefault();filterCards();document.getElementById('products').scrollIntoView({{behavior:'smooth'}})}});
+</script></body></html>
+   
