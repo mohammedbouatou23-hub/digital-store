@@ -9,7 +9,6 @@
 <meta name="description" content="اكتشف المكتبة الرقمية المغربية من DIGITAL MAROC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 :root{--navy:#0A1931;--blue:#1458D4;--light:#F4F7FC;--text:#18263D;--muted:#718096;--border:#E6ECF4;--gold:#F5C542}
 *{box-sizing:border-box}
@@ -77,17 +76,15 @@ button{cursor:pointer}
 .resource-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:20px 0}
 .resource-count{background:#E9F1FF;color:var(--blue);border-radius:30px;padding:8px 12px;font-size:12px;font-weight:900}
 .resources{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.resource-card{background:#fff;border:1px solid var(--border);border-radius:13px;padding:15px;min-height:145px;display:flex;flex-direction:column;align-items:flex-start;text-align:start;gap:8px;min-width:0}
+.resource-card{background:#fff;border:1px solid var(--border);border-radius:13px;padding:15px;min-height:130px;display:flex;flex-direction:column;align-items:flex-start;text-align:start;gap:8px;min-width:0}
 .resource-card .resource-icon{font-size:23px}
 .resource-card strong{display:block;color:var(--navy);font-size:14px;line-height:1.7}
-.resource-card small{display:block;color:var(--muted);font-size:12px;line-height:1.7}
 .order-btn{margin-top:auto;width:100%;border:0;background:#EAF1FF;color:var(--blue);padding:9px;border-radius:9px;font-size:12px;font-weight:900}
 .order-btn:hover{background:var(--blue);color:#fff}
 .empty-state{text-align:center;padding:30px 18px;background:#F8FAFE;border:1px dashed #C9D8ED;border-radius:15px;color:var(--muted);line-height:1.9}
 .empty-state .big-icon{font-size:32px;margin-bottom:8px}
 .back-btn{border:1px solid var(--border);background:#fff;color:var(--navy);border-radius:10px;padding:9px 13px;font-weight:800;white-space:nowrap}
 .back-btn:hover{border-color:var(--blue);color:var(--blue)}
-.notice{background:#FFF8E5;border:1px solid #F3DF9D;color:#735A12;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.8;margin:18px 0}
 .banner{background:linear-gradient(115deg,#0A1931,#17458D);color:#fff;border-radius:20px;padding:27px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:35px}
 .banner h3{font-size:23px;margin:0 0 8px}
 .banner p{color:#D3DDF0;line-height:1.8;margin:0;font-size:14px}
@@ -106,408 +103,431 @@ footer{background:#071326;color:#fff;margin-top:25px;padding:30px 0}
 .whatsapp-btn{display:block;background:#168B50;color:#fff;padding:13px;border-radius:11px;font-weight:900}
 .close-btn{margin-top:10px;width:100%;border:1px solid var(--border);background:#fff;color:var(--navy);padding:11px;border-radius:10px;font-weight:800}
 @media(max-width:850px){.nav-links{display:none}.hero-inner{grid-template-columns:1fr}.hero-art{display:none}.types{grid-template-columns:repeat(2,minmax(0,1fr))}.domains{grid-template-columns:repeat(2,minmax(0,1fr))}.resources{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:540px){.nav{min-height:66px}.brand-name{font-size:16px}.brand small{font-size:10px}.nav-cta{font-size:11px;padding:10px}.language{padding:9px 6px;font-size:12px}.hero{padding:42px 0}.hero h1{font-size:31px}.section{padding:35px 0}.section h2{font-size:25px}.panel{padding:15px}.panel-head{align-items:flex-start}.types,.domains{grid-template-columns:1fr}.resources{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.resource-card{padding:11px;min-height:160px}.resource-card strong{font-size:13px}.banner{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;align-items:flex-start}.search button{padding:10px 12px;font-size:13px}.back-btn{font-size:12px;padding:8px}.panel-head h3{font-size:18px}}
+@media(max-width:540px){.nav{min-height:66px}.brand-name{font-size:16px}.brand small{font-size:10px}.nav-cta{font-size:11px;padding:10px}.language{padding:9px 6px;font-size:12px}.hero{padding:42px 0}.hero h1{font-size:31px}.section{padding:35px 0}.section h2{font-size:25px}.panel{padding:15px}.panel-head{align-items:flex-start}.types,.domains{grid-template-columns:1fr}.resources{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.resource-card{padding:11px;min-height:140px}.resource-card strong{font-size:13px}.banner{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;align-items:flex-start}.search button{padding:10px 12px;font-size:13px}.back-btn{font-size:12px;padding:8px}.panel-head h3{font-size:18px}}
 </style>
 </head>
-
 <body>
 <header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html" aria-label="DIGITAL MAROC">
-      <div class="logo">DM</div>
-      <div><div class="brand-name">DIGITAL <span>MAROC</span></div><small data-i18n="tagline">مكتبتك الرقمية المغربية</small></div>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" data-i18n="home">الرئيسية</a>
-      <a href="#library" data-i18n="library">أقسام المكتبة</a>
-      <a href="#bundle" data-i18n="bundle">العرض الكامل</a>
-      <a href="pro.html" data-i18n="stores">المتاجر الجاهزة</a>
-    </nav>
-    <div class="nav-actions">
-      <select id="languageSelect" class="language" aria-label="Language">
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-        <option value="en">English</option>
-      </select>
-      <a class="nav-cta" href="#library" data-i18n="explore">اكتشف المكتبة ←</a>
-    </div>
-  </div>
+<div class="container nav">
+<a class="brand" href="index.html" aria-label="DIGITAL MAROC">
+<div class="logo">DM</div>
+<div><div class="brand-name">DIGITAL <span>MAROC</span></div><small data-i18n="tagline">مكتبتك الرقمية المغربية</small></div>
+</a>
+<nav class="nav-links">
+<a href="index.html" data-i18n="home">الرئيسية</a>
+<a href="#library" data-i18n="library">أقسام المكتبة</a>
+<a href="#bundle" data-i18n="bundle">العرض الكامل</a>
+<a href="pro.html" data-i18n="stores">المتاجر الجاهزة</a>
+</nav>
+<div class="nav-actions">
+<select id="languageSelect" class="language" aria-label="Language">
+<option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option>
+</select>
+<a class="nav-cta" href="#library" data-i18n="explore">اكتشف المكتبة ←</a>
+</div>
+</div>
 </header>
 
 <main>
 <section class="hero">
-  <div class="container hero-inner">
-    <div>
-      <div class="eyebrow" data-i18n="eyebrow">📚 مكتبة رقمية متكاملة</div>
-      <h1><span data-i18n="heroLine1">اختار مجالك، واكتشف</span><br><span data-i18n="heroLine2">المحتوى المناسب ليك.</span></h1>
-      <p data-i18n="heroText">أربع مكتبات متخصصة، وكل مكتبة فيها عشرة مجالات. اختار الصنف والمجال، وغادي يبان ليك المحتوى مباشرة فهاد الصفحة.</p>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="book-stack">
-        <div class="book one"></div><div class="book two"></div>
-        <div class="book three"><span>📚</span><strong>DIGITAL<br>LIBRARY</strong><small>تعلم • اكتشف • تطور</small></div>
-      </div>
-    </div>
-  </div>
+<div class="container hero-inner">
+<div>
+<div class="eyebrow" data-i18n="eyebrow">📚 مكتبة رقمية متكاملة</div>
+<h1><span data-i18n="heroLine1">اختار مجالك، واكتشف</span><br><span data-i18n="heroLine2">المحتوى المناسب ليك.</span></h1>
+<p data-i18n="heroText">أربع مكتبات متخصصة، وكل مكتبة فيها عشرة مجالات. اختار الصنف والمجال، وغادي يبان ليك المحتوى مباشرة فهاد الصفحة.</p>
+</div>
+<div class="hero-art" aria-hidden="true">
+<div class="book-stack"><div class="book one"></div><div class="book two"></div><div class="book three"><span>📚</span><strong>DIGITAL<br>LIBRARY</strong><small>تعلم • اكتشف • تطور</small></div></div>
+</div>
+</div>
 </section>
 
 <section class="section" id="library">
 <div class="container">
-  <div class="section-head">
-    <div class="kicker" data-i18n="step1">الخطوة 1</div>
-    <h2 data-i18n="chooseType">اختار صنف المكتبة</h2>
-    <p data-i18n="chooseTypeText">ضغط على الصنف اللي بغيتي باش تظهر المجالات ديالو.</p>
-  </div>
+<div class="section-head">
+<div class="kicker" data-i18n="step1">الخطوة 1</div>
+<h2 data-i18n="chooseType">اختار صنف المكتبة</h2>
+<p data-i18n="chooseTypeText">ضغط على الصنف اللي بغيتي باش تظهر المجالات ديالو.</p>
+</div>
 
-  <div class="types" id="typeGrid">
-    <button class="type-card" type="button" data-type="documents">
-      <span class="type-icon" style="background:#E9F1FF">📄</span>
-      <h3 data-i18n="documents">الوثائق الإدارية</h3>
-      <p data-i18n="documentsDesc">نماذج، طلبات، مراسلات ووثائق تنظيمية.</p>
-      <span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span>
-    </button>
-    <button class="type-card" type="button" data-type="summaries">
-      <span class="type-icon" style="background:#F0E9FF">📖</span>
-      <h3 data-i18n="summaries">ملخصات الكتب</h3>
-      <p data-i18n="summariesDesc">ملخصات معرفية في مجالات متنوعة.</p>
-      <span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span>
-    </button>
-    <button class="type-card" type="button" data-type="guides">
-      <span class="type-icon" style="background:#E3F8EF">💻</span>
-      <h3 data-i18n="guides">أدلة المشاريع الرقمية</h3>
-      <p data-i18n="guidesDesc">موارد حول المواقع والمتاجر وتطوير المشاريع.</p>
-      <span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span>
-    </button>
-    <button class="type-card" type="button" data-type="plr">
-      <span class="type-icon" style="background:#FFF0DB">📚</span>
-      <h3 data-i18n="plr">كتب PLR الرقمية</h3>
-      <p data-i18n="plrDesc">محتوى رقمي حسب شروط الترخيص لكل منتج.</p>
-      <span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span>
-    </button>
-  </div>
+<div class="types" id="typeGrid">
+<button class="type-card" type="button" data-type="documents"><span class="type-icon" style="background:#E9F1FF">📄</span><h3 data-i18n="documents">الوثائق الإدارية</h3><p data-i18n="documentsDesc">نماذج، طلبات، مراسلات ووثائق تنظيمية.</p><span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span></button>
+<button class="type-card" type="button" data-type="summaries"><span class="type-icon" style="background:#F0E9FF">📖</span><h3 data-i18n="summaries">ملخصات الكتب</h3><p data-i18n="summariesDesc">ملخصات معرفية في مجالات متنوعة.</p><span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span></button>
+<button class="type-card" type="button" data-type="guides"><span class="type-icon" style="background:#E3F8EF">💻</span><h3 data-i18n="guides">أدلة المشاريع الرقمية</h3><p data-i18n="guidesDesc">موارد حول المواقع والمتاجر وتطوير المشاريع.</p><span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span></button>
+<button class="type-card" type="button" data-type="plr"><span class="type-icon" style="background:#FFF0DB">📚</span><h3 data-i18n="plr">كتب PLR الرقمية</h3><p data-i18n="plrDesc">محتوى رقمي حسب شروط الترخيص لكل منتج.</p><span class="type-select" data-i18n="showDomains">عرض 10 مجالات ←</span></button>
+</div>
 
-  <div class="notice" data-i18n="notice">
-    ملاحظة: العناوين المعروضة اقتراحات لتنظيم المكتبة وليست دليلاً على وجود ملفات جاهزة. تأكد من التوفر والترخيص قبل الطلب.
-  </div>
+<div class="panel" id="domainsPanel" hidden>
+<div class="panel-head">
+<div><div class="kicker" data-i18n="step2">الخطوة 2</div><h3 id="selectedTypeTitle">مجالات المكتبة</h3><p class="small-note" data-i18n="chooseDomain">اختار مجالاً باش تشوف الموارد ديالو.</p></div>
+<button class="back-btn" id="backToTypes" type="button" data-i18n="backTypes">رجوع للأصناف ↑</button>
+</div>
+<div class="domains" id="domainGrid"></div>
+</div>
 
-  <div class="panel" id="domainsPanel" hidden>
-    <div class="panel-head">
-      <div><div class="kicker" data-i18n="step2">الخطوة 2</div><h3 id="selectedTypeTitle">مجالات المكتبة</h3><p class="small-note" data-i18n="chooseDomain">اختار مجالاً باش تشوف الموارد المقترحة ديالو.</p></div>
-      <button class="back-btn" id="backToTypes" type="button" data-i18n="backTypes">رجوع للأصناف ↑</button>
-    </div>
-    <div class="domains" id="domainGrid"></div>
-  </div>
+<div class="panel" id="resourcesPanel" hidden>
+<div class="panel-head">
+<div><div class="kicker" data-i18n="step3">الخطوة 3</div><h3 id="selectedDomainTitle">موارد المجال</h3><p class="small-note" id="selectedDomainDescription"></p></div>
+<button class="back-btn" id="backToDomains" type="button" data-i18n="backDomains">رجوع للمجالات ↑</button>
+</div>
+<form class="search" id="resourceSearchForm" role="search">
+<input id="resourceSearch" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="قلب على كتاب أو مورد..." aria-label="Search resources">
+<button type="submit" data-i18n="search">بحث 🔎</button>
+</form>
+<div class="resource-toolbar"><span class="small-note" id="resourceStatus"></span><span class="resource-count" id="resourceCount">0</span></div>
+<div class="resources" id="resourceGrid"></div>
+<div class="empty-state" id="emptyResources" hidden><div class="big-icon">🔎</div><strong data-i18n="noResults">ما لقينا حتى نتيجة بهاد البحث.</strong><div data-i18n="tryAnother">جرب كلمة أخرى أو مسح البحث.</div></div>
+</div>
 
-  <div class="panel" id="resourcesPanel" hidden>
-    <div class="panel-head">
-      <div><div class="kicker" data-i18n="step3">الخطوة 3</div><h3 id="selectedDomainTitle">موارد المجال</h3><p class="small-note" id="selectedDomainDescription"></p></div>
-      <button class="back-btn" id="backToDomains" type="button" data-i18n="backDomains">رجوع للمجالات ↑</button>
-    </div>
-    <form class="search" id="resourceSearchForm" role="search">
-      <input id="resourceSearch" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="قلب على مورد داخل هاد المجال..." aria-label="Search resources">
-      <button type="submit" data-i18n="search">بحث 🔎</button>
-    </form>
-    <div class="resource-toolbar">
-      <span class="small-note" id="resourceStatus"></span>
-      <span class="resource-count" id="resourceCount">0</span>
-    </div>
-    <div class="resources" id="resourceGrid"></div>
-    <div class="empty-state" id="emptyResources" hidden>
-      <div class="big-icon">🔎</div>
-      <strong data-i18n="noResults">ما لقينا حتى نتيجة بهاد البحث.</strong>
-      <div data-i18n="tryAnother">جرب كلمة أخرى أو مسح البحث.</div>
-    </div>
-  </div>
-
-  <div class="banner" id="bundle">
-    <div>
-      <h3 data-i18n="bundleTitle">باغي المكتبات الأربع كاملة؟</h3>
-      <p data-i18n="bundleText">تواصل معنا عبر WhatsApp وتأكد من المحتوى المتوفر قبل الشراء.</p>
-      <a id="bundleWhatsApp" href="https://wa.me/212719380106" target="_blank" rel="noopener" data-i18n="bundleButton">طلب تفاصيل المجموعة ←</a>
-    </div>
-    <div><div class="price">149 DH</div><div style="color:#D3DDF0;font-size:13px;text-decoration:line-through">399 DH</div></div>
-  </div>
+<div class="banner" id="bundle">
+<div><h3 data-i18n="bundleTitle">باغي المكتبات الأربع كاملة؟</h3><p data-i18n="bundleText">تواصل معنا عبر WhatsApp للاستفسار عن المجموعة.</p><a id="bundleWhatsApp" href="https://wa.me/212719380106" target="_blank" rel="noopener" data-i18n="bundleButton">طلب تفاصيل المجموعة ←</a></div>
+<div><div class="price">149 DH</div><div style="color:#D3DDF0;font-size:13px;text-decoration:line-through">399 DH</div></div>
+</div>
 </div>
 </section>
 </main>
 
 <footer>
-  <div class="container footer-inner">
-    <div><div class="brand-name" style="color:white">DIGITAL <span>MAROC</span></div><p data-i18n="footerText">مكتبة رقمية وموارد عملية لتطوير المعرفة والمشاريع الرقمية.</p></div>
-    <div class="footer-links"><a href="index.html" data-i18n="home">الرئيسية</a><a href="#library" data-i18n="library">المكتبة</a><a href="pro.html" data-i18n="stores">المتاجر الجاهزة</a></div>
-  </div>
-  <div class="container" style="margin-top:20px;padding-top:15px;border-top:1px solid #ffffff18;color:#9BAAC0;font-size:12px">© <span id="year"></span> DIGITAL MAROC — <span data-i18n="copyright">جميع الحقوق محفوظة.</span></div>
+<div class="container footer-inner">
+<div><div class="brand-name" style="color:white">DIGITAL <span>MAROC</span></div><p data-i18n="footerText">مكتبة رقمية وموارد عملية لتطوير المعرفة والمشاريع الرقمية.</p></div>
+<div class="footer-links"><a href="index.html" data-i18n="home">الرئيسية</a><a href="#library" data-i18n="library">المكتبة</a><a href="pro.html" data-i18n="stores">المتاجر الجاهزة</a></div>
+</div>
+<div class="container" style="margin-top:20px;padding-top:15px;border-top:1px solid #ffffff18;color:#9BAAC0;font-size:12px">© <span id="year"></span> DIGITAL MAROC — <span data-i18n="copyright">جميع الحقوق محفوظة.</span></div>
 </footer>
 
 <div class="modal" id="orderModal" hidden>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-icon">📁</div>
-    <h3 id="modalTitle" data-i18n="modalTitle">طلب مورد رقمي</h3>
-    <p data-i18n="modalText">تواصل معنا للتأكد من توفر الملف والثمن وطريقة الاستلام.</p>
-    <div class="file-name" id="orderFileName"></div>
-    <a class="whatsapp-btn" id="orderWhatsApp" href="#" target="_blank" rel="noopener" data-i18n="orderWhatsApp">طلب عبر WhatsApp</a>
-    <button class="close-btn" id="closeOrder" type="button" data-i18n="close">إغلاق</button>
-  </div>
+<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal-icon">📁</div><h3 id="modalTitle" data-i18n="modalTitle">طلب مورد رقمي</h3>
+<p data-i18n="modalText">تواصل معنا للاستفسار عن الملف والثمن وطريقة الاستلام.</p>
+<div class="file-name" id="orderFileName"></div>
+<a class="whatsapp-btn" id="orderWhatsApp" href="#" target="_blank" rel="noopener" data-i18n="orderWhatsApp">طلب عبر WhatsApp</a>
+<button class="close-btn" id="closeOrder" type="button" data-i18n="close">إغلاق</button>
+</div>
 </div>
 
 <script>
-const library = {
- documents:{title:{ar:"الوثائق الإدارية",fr:"Documents administratifs",en:"Administrative documents"},icon:"📄",domains:[
- {ar:"طلبات وشواهد إدارية",fr:"Demandes et attestations",en:"Requests and certificates"},
- {ar:"العمل والتوظيف",fr:"Travail et emploi",en:"Work and employment"},
- {ar:"الدراسة والتعليم",fr:"Études et éducation",en:"Study and education"},
- {ar:"السكن والعقار",fr:"Logement et immobilier",en:"Housing and real estate"},
- {ar:"الضرائب والمالية",fr:"Fiscalité et finances",en:"Taxes and finance"},
- {ar:"المقاولات والتجارة",fr:"Entreprises et commerce",en:"Business and trade"},
- {ar:"البنوك والتأمين",fr:"Banques et assurances",en:"Banking and insurance"},
- {ar:"المراسلات الرسمية",fr:"Correspondance officielle",en:"Official correspondence"},
- {ar:"التنظيم والتسيير",fr:"Organisation et gestion",en:"Organization and management"},
- {ar:"نماذج إدارية عامة",fr:"Modèles administratifs",en:"General administrative forms"}]},
- summaries:{title:{ar:"ملخصات الكتب",fr:"Résumés de livres",en:"Book summaries"},icon:"📖",domains:[
- {ar:"تطوير الذات",fr:"Développement personnel",en:"Personal development"},
- {ar:"المال والاستثمار",fr:"Finance et investissement",en:"Money and investing"},
- {ar:"التسويق والمبيعات",fr:"Marketing et ventes",en:"Marketing and sales"},
- {ar:"المقاولات والأعمال",fr:"Entrepreneuriat et affaires",en:"Entrepreneurship and business"},
- {ar:"علم النفس",fr:"Psychologie",en:"Psychology"},
- {ar:"الإنتاجية وإدارة الوقت",fr:"Productivité et temps",en:"Productivity and time"},
- {ar:"القيادة والتواصل",fr:"Leadership et communication",en:"Leadership and communication"},
- {ar:"التكنولوجيا والذكاء الاصطناعي",fr:"Technologie et IA",en:"Technology and AI"},
- {ar:"التاريخ والثقافة",fr:"Histoire et culture",en:"History and culture"},
- {ar:"التعلم والمهارات",fr:"Apprentissage et compétences",en:"Learning and skills"}]},
- guides:{title:{ar:"أدلة المشاريع الرقمية",fr:"Guides de projets numériques",en:"Digital project guides"},icon:"💻",domains:[
- {ar:"إنشاء المواقع",fr:"Création de sites web",en:"Website creation"},
- {ar:"المتاجر الإلكترونية",fr:"Boutiques en ligne",en:"Online stores"},
- {ar:"صفحات الهبوط",fr:"Pages de destination",en:"Landing pages"},
- {ar:"التسويق الرقمي",fr:"Marketing numérique",en:"Digital marketing"},
- {ar:"صناعة المحتوى",fr:"Création de contenu",en:"Content creation"},
- {ar:"الذكاء الاصطناعي",fr:"Intelligence artificielle",en:"Artificial intelligence"},
- {ar:"التصميم وCanva",fr:"Design et Canva",en:"Design and Canva"},
- {ar:"العمل الحر",fr:"Travail indépendant",en:"Freelancing"},
- {ar:"إدارة المشاريع",fr:"Gestion de projets",en:"Project management"},
- {ar:"الدخل الرقمي",fr:"Revenus numériques",en:"Digital income"}]},
- plr:{title:{ar:"كتب PLR الرقمية",fr:"Livres numériques PLR",en:"PLR digital books"},icon:"📚",domains:[
- {ar:"تطوير الذات",fr:"Développement personnel",en:"Personal development"},
- {ar:"الصحة والعادات",fr:"Santé et habitudes",en:"Health and habits"},
- {ar:"المال والأعمال",fr:"Finance et affaires",en:"Finance and business"},
- {ar:"التسويق الرقمي",fr:"Marketing numérique",en:"Digital marketing"},
- {ar:"الذكاء الاصطناعي",fr:"Intelligence artificielle",en:"Artificial intelligence"},
- {ar:"التصميم والإبداع",fr:"Design et créativité",en:"Design and creativity"},
- {ar:"التعليم والتدريب",fr:"Éducation et formation",en:"Education and training"},
- {ar:"الإنتاجية والتنظيم",fr:"Productivité et organisation",en:"Productivity and organization"},
- {ar:"الأطفال والأسرة",fr:"Enfants et famille",en:"Children and family"},
- {ar:"المقاولات والمشاريع",fr:"Entreprises et projets",en:"Business and projects"}]}
+const library={
+documents:{title:{ar:"الوثائق الإدارية",fr:"Documents administratifs",en:"Administrative documents"},icon:"📄",domains:[
+{ar:"طلبات وشواهد إدارية",fr:"Demandes et attestations",en:"Requests and certificates"},
+{ar:"العمل والتوظيف",fr:"Travail et emploi",en:"Work and employment"},
+{ar:"الدراسة والتعليم",fr:"Études et éducation",en:"Study and education"},
+{ar:"السكن والعقار",fr:"Logement et immobilier",en:"Housing and real estate"},
+{ar:"الضرائب والمالية",fr:"Fiscalité et finances",en:"Taxes and finance"},
+{ar:"المقاولات والتجارة",fr:"Entreprises et commerce",en:"Business and trade"},
+{ar:"البنوك والتأمين",fr:"Banques et assurances",en:"Banking and insurance"},
+{ar:"المراسلات الرسمية",fr:"Correspondance officielle",en:"Official correspondence"},
+{ar:"التنظيم والتسيير",fr:"Organisation et gestion",en:"Organization and management"},
+{ar:"نماذج إدارية عامة",fr:"Modèles administratifs",en:"General administrative forms"}]},
+summaries:{title:{ar:"ملخصات الكتب",fr:"Résumés de livres",en:"Book summaries"},icon:"📖",domains:[
+{ar:"تطوير الذات",fr:"Développement personnel",en:"Personal development"},
+{ar:"المال والاستثمار",fr:"Finance et investissement",en:"Money and investing"},
+{ar:"التسويق والمبيعات",fr:"Marketing et ventes",en:"Marketing and sales"},
+{ar:"المقاولات والأعمال",fr:"Entrepreneuriat et affaires",en:"Entrepreneurship and business"},
+{ar:"علم النفس",fr:"Psychologie",en:"Psychology"},
+{ar:"الإنتاجية وإدارة الوقت",fr:"Productivité et temps",en:"Productivity and time"},
+{ar:"القيادة والتواصل",fr:"Leadership et communication",en:"Leadership and communication"},
+{ar:"التكنولوجيا والذكاء الاصطناعي",fr:"Technologie et IA",en:"Technology and AI"},
+{ar:"التاريخ والثقافة",fr:"Histoire et culture",en:"History and culture"},
+{ar:"التعلم والمهارات",fr:"Apprentissage et compétences",en:"Learning and skills"}]},
+guides:{title:{ar:"أدلة المشاريع الرقمية",fr:"Guides de projets numériques",en:"Digital project guides"},icon:"💻",domains:[
+{ar:"إنشاء المواقع",fr:"Création de sites web",en:"Website creation"},
+{ar:"المتاجر الإلكترونية",fr:"Boutiques en ligne",en:"Online stores"},
+{ar:"صفحات الهبوط",fr:"Pages de destination",en:"Landing pages"},
+{ar:"التسويق الرقمي",fr:"Marketing numérique",en:"Digital marketing"},
+{ar:"صناعة المحتوى",fr:"Création de contenu",en:"Content creation"},
+{ar:"الذكاء الاصطناعي",fr:"Intelligence artificielle",en:"Artificial intelligence"},
+{ar:"التصميم وCanva",fr:"Design et Canva",en:"Design and Canva"},
+{ar:"العمل الحر",fr:"Travail indépendant",en:"Freelancing"},
+{ar:"إدارة المشاريع",fr:"Gestion de projets",en:"Project management"},
+{ar:"الدخل الرقمي",fr:"Revenus numériques",en:"Digital income"}]},
+plr:{title:{ar:"كتب PLR الرقمية",fr:"Livres numériques PLR",en:"PLR digital books"},icon:"📚",domains:[
+{ar:"تطوير الذات",fr:"Développement personnel",en:"Personal development"},
+{ar:"الصحة والعادات",fr:"Santé et habitudes",en:"Health and habits"},
+{ar:"المال والأعمال",fr:"Finance et affaires",en:"Finance and business"},
+{ar:"التسويق الرقمي",fr:"Marketing numérique",en:"Digital marketing"},
+{ar:"الذكاء الاصطناعي",fr:"Intelligence artificielle",en:"Artificial intelligence"},
+{ar:"التصميم والإبداع",fr:"Design et créativité",en:"Design and creativity"},
+{ar:"التعليم والتدريب",fr:"Éducation et formation",en:"Education and training"},
+{ar:"الإنتاجية والتنظيم",fr:"Productivité et organisation",en:"Productivity and organization"},
+{ar:"الأطفال والأسرة",fr:"Enfants et famille",en:"Children and family"},
+{ar:"المقاولات والمشاريع",fr:"Entreprises et projets",en:"Business and projects"}]}
 };
 
 const translations={
- ar:{
- tagline:"مكتبتك الرقمية المغربية",home:"الرئيسية",library:"أقسام المكتبة",bundle:"العرض الكامل",stores:"المتاجر الجاهزة",explore:"اكتشف المكتبة ←",
- eyebrow:"📚 مكتبة رقمية متكاملة",heroLine1:"اختار مجالك، واكتشف",heroLine2:"المحتوى المناسب ليك.",heroText:"أربع مكتبات متخصصة، وكل مكتبة فيها عشرة مجالات. اختار الصنف والمجال، وغادي يبان ليك المحتوى مباشرة فهاد الصفحة.",
- step1:"الخطوة 1",chooseType:"اختار صنف المكتبة",chooseTypeText:"ضغط على الصنف اللي بغيتي باش تظهر المجالات ديالو.",documents:"الوثائق الإدارية",documentsDesc:"نماذج، طلبات، مراسلات ووثائق تنظيمية.",summaries:"ملخصات الكتب",summariesDesc:"ملخصات معرفية في مجالات متنوعة.",guides:"أدلة المشاريع الرقمية",guidesDesc:"موارد حول المواقع والمتاجر وتطوير المشاريع.",plr:"كتب PLR الرقمية",plrDesc:"محتوى رقمي حسب شروط الترخيص لكل منتج.",showDomains:"عرض 10 مجالات ←",
- notice:"ملاحظة: العناوين المعروضة اقتراحات لتنظيم المكتبة وليست دليلاً على وجود ملفات جاهزة. تأكد من التوفر والترخيص قبل الطلب.",
- step2:"الخطوة 2",chooseDomain:"اختار مجالاً باش تشوف الموارد المقترحة ديالو.",backTypes:"رجوع للأصناف ↑",step3:"الخطوة 3",backDomains:"رجوع للمجالات ↑",search:"بحث 🔎",searchPlaceholder:"قلب على مورد داخل هاد المجال...",noResults:"ما لقينا حتى نتيجة بهاد البحث.",tryAnother:"جرب كلمة أخرى أو مسح البحث.",
- bundleTitle:"باغي المكتبات الأربع كاملة؟",bundleText:"تواصل معنا عبر WhatsApp وتأكد من المحتوى المتوفر قبل الشراء.",bundleButton:"طلب تفاصيل المجموعة ←",footerText:"مكتبة رقمية وموارد عملية لتطوير المعرفة والمشاريع الرقمية.",copyright:"جميع الحقوق محفوظة.",
- modalTitle:"طلب مورد رقمي",modalText:"تواصل معنا للتأكد من توفر الملف والثمن وطريقة الاستلام.",orderWhatsApp:"طلب عبر WhatsApp",close:"إغلاق",
- domainCount:"10 مجالات",resourceCount:"عنوان مقترح",resourceStatus:"عناوين مقترحة وليست ملفات مؤكدة التوفر",order:"استفسر عبر WhatsApp ←",description:"عنوان مقترح ضمن مجال",formatNames:["دليل عملي","خطة عمل","قائمة تحقق","نموذج قابل للتعديل","ملف تعريفي","خطوات تطبيقية","دفتر عمل","مرجع مختصر","حزمة موارد","دليل للمبتدئين"],topicNames:["الأساسيات","التخطيط والتنظيم","الأدوات المطلوبة","خطوات التنفيذ","الأخطاء الشائعة","نصائح عملية","أمثلة تطبيقية","التطوير والتحسين","المراجعة والتقييم","خطة العمل"]}
- ,
- fr:{
- tagline:"Votre bibliothèque numérique marocaine",home:"Accueil",library:"Catégories",bundle:"Offre complète",stores:"Boutiques prêtes",explore:"Explorer la bibliothèque ←",
- eyebrow:"📚 Bibliothèque numérique",heroLine1:"Choisissez un domaine et découvrez",heroLine2:"des ressources adaptées.",heroText:"Quatre bibliothèques spécialisées, chacune avec dix domaines. Choisissez une catégorie puis un domaine pour voir les titres sur cette page.",
- step1:"Étape 1",chooseType:"Choisissez une catégorie",chooseTypeText:"Cliquez sur une catégorie pour afficher ses domaines.",documents:"Documents administratifs",documentsDesc:"Modèles, demandes, courriers et documents pratiques.",summaries:"Résumés de livres",summariesDesc:"Résumés dans différents domaines.",guides:"Guides de projets numériques",guidesDesc:"Ressources sur les sites, boutiques et projets.",plr:"Livres numériques PLR",plrDesc:"Contenu numérique selon la licence de chaque produit.",showDomains:"Voir 10 domaines ←",
- notice:"Remarque : les titres affichés sont des suggestions, pas la preuve que les fichiers existent. Vérifiez la disponibilité et la licence avant toute commande.",
- step2:"Étape 2",chooseDomain:"Choisissez un domaine pour afficher les titres suggérés.",backTypes:"Retour aux catégories ↑",step3:"Étape 3",backDomains:"Retour aux domaines ↑",search:"Rechercher 🔎",searchPlaceholder:"Rechercher dans ce domaine...",noResults:"Aucun résultat trouvé.",tryAnother:"Essayez un autre terme ou effacez la recherche.",
- bundleTitle:"Vous voulez les quatre bibliothèques ?",bundleText:"Contactez-nous sur WhatsApp pour confirmer le contenu disponible avant achat.",bundleButton:"Demander les détails ←",footerText:"Bibliothèque numérique et ressources pratiques pour apprendre et développer vos projets.",copyright:"Tous droits réservés.",
- modalTitle:"Demande de ressource numérique",modalText:"Contactez-nous pour confirmer la disponibilité, le prix et le mode de livraison.",orderWhatsApp:"Demander via WhatsApp",close:"Fermer",
- domainCount:"10 domaines",resourceCount:"titres suggérés",resourceStatus:"Titres suggérés, disponibilité non garantie",order:"Demander sur WhatsApp ←",description:"Titre suggéré dans ce domaine",formatNames:["Guide pratique","Plan d’action","Liste de contrôle","Modèle modifiable","Fiche pratique","Étapes d’application","Cahier d’exercices","Référence rapide","Pack de ressources","Guide débutant"],topicNames:["Les bases","Planification et organisation","Outils nécessaires","Étapes de réalisation","Erreurs courantes","Conseils pratiques","Exemples appliqués","Amélioration","Révision et évaluation","Plan de travail"]}
- ,
- en:{
- tagline:"Your Moroccan digital library",home:"Home",library:"Library categories",bundle:"Complete offer",stores:"Ready-made stores",explore:"Explore library ←",
- eyebrow:"📚 Digital library",heroLine1:"Choose a field and discover",heroLine2:"useful resources for you.",heroText:"Four specialized libraries, each with ten fields. Choose a category and then a field to see titles on this page.",
- step1:"Step 1",chooseType:"Choose a library category",chooseTypeText:"Select a category to display its fields.",documents:"Administrative documents",documentsDesc:"Templates, requests, letters and practical documents.",summaries:"Book summaries",summariesDesc:"Summaries across different subjects.",guides:"Digital project guides",guidesDesc:"Resources for websites, online stores and projects.",plr:"PLR digital books",plrDesc:"Digital content subject to each product's license.",showDomains:"View 10 fields ←",
- notice:"Note: the displayed titles are suggestions, not proof that files exist. Confirm availability and licensing before ordering.",
- step2:"Step 2",chooseDomain:"Choose a field to view suggested titles.",backTypes:"Back to categories ↑",step3:"Step 3",backDomains:"Back to fields ↑",search:"Search 🔎",searchPlaceholder:"Search within this field...",noResults:"No results found.",tryAnother:"Try another term or clear your search.",
- bundleTitle:"Want all four libraries?",bundleText:"Contact us on WhatsApp to confirm available content before buying.",bundleButton:"Request offer details ←",footerText:"A digital library with practical resources for learning and developing projects.",copyright:"All rights reserved.",
- modalTitle:"Request a digital resource",modalText:"Contact us to confirm file availability, price and delivery method.",orderWhatsApp:"Request via WhatsApp",close:"Close",
- domainCount:"10 fields",resourceCount:"suggested titles",resourceStatus:"Suggested titles; availability is not guaranteed",order:"Ask on WhatsApp ←",description:"Suggested title in this field",formatNames:["Practical guide","Action plan","Checklist","Editable template","Reference sheet","Implementation steps","Workbook","Quick reference","Resource pack","Beginner guide"],topicNames:["The basics","Planning and organization","Required tools","Implementation steps","Common mistakes","Practical tips","Worked examples","Improvement","Review and evaluation","Action plan"]}
+ar:{
+tagline:"مكتبتك الرقمية المغربية",home:"الرئيسية",library:"أقسام المكتبة",bundle:"العرض الكامل",stores:"المتاجر الجاهزة",explore:"اكتشف المكتبة ←",
+eyebrow:"📚 مكتبة رقمية متكاملة",heroLine1:"اختار مجالك، واكتشف",heroLine2:"المحتوى المناسب ليك.",heroText:"أربع مكتبات متخصصة، وكل مكتبة فيها عشرة مجالات. اختار الصنف والمجال باش تشوف الموارد.",
+step1:"الخطوة 1",chooseType:"اختار صنف المكتبة",chooseTypeText:"ضغط على الصنف اللي بغيتي باش تظهر المجالات ديالو.",
+documents:"الوثائق الإدارية",documentsDesc:"نماذج، طلبات، مراسلات ووثائق تنظيمية.",summaries:"ملخصات الكتب",summariesDesc:"ملخصات كتب معروفة في مجالات متنوعة.",guides:"أدلة المشاريع الرقمية",guidesDesc:"موارد حول المواقع والمتاجر وتطوير المشاريع.",plr:"كتب PLR الرقمية",plrDesc:"محتوى رقمي حسب شروط الترخيص لكل منتج.",showDomains:"عرض 10 مجالات ←",
+step2:"الخطوة 2",chooseDomain:"اختار مجالاً باش تشوف الموارد ديالو.",backTypes:"رجوع للأصناف ↑",step3:"الخطوة 3",backDomains:"رجوع للمجالات ↑",search:"بحث 🔎",searchPlaceholder:"قلب على كتاب أو مورد...",noResults:"ما لقينا حتى نتيجة بهاد البحث.",tryAnother:"جرب كلمة أخرى أو مسح البحث.",
+bundleTitle:"باغي المكتبات الأربع كاملة؟",bundleText:"تواصل معنا عبر WhatsApp للاستفسار عن المجموعة.",bundleButton:"طلب تفاصيل المجموعة ←",footerText:"مكتبة رقمية وموارد عملية لتطوير المعرفة والمشاريع الرقمية.",copyright:"جميع الحقوق محفوظة.",
+modalTitle:"طلب مورد رقمي",modalText:"تواصل معنا للاستفسار عن الملف والثمن وطريقة الاستلام.",orderWhatsApp:"طلب عبر WhatsApp",close:"إغلاق",domainCount:"مجالات",resourceCount:"مورد",order:"طلب عبر WhatsApp ←",resourceStatus:"النتائج المتوفرة في الفهرس"},
+fr:{
+tagline:"Votre bibliothèque numérique marocaine",home:"Accueil",library:"Catégories",bundle:"Offre complète",stores:"Boutiques prêtes",explore:"Explorer la bibliothèque ←",
+eyebrow:"📚 Bibliothèque numérique",heroLine1:"Choisissez un domaine et découvrez",heroLine2:"des ressources adaptées.",heroText:"Quatre bibliothèques spécialisées, chacune avec dix domaines. Choisissez une catégorie puis un domaine.",
+step1:"Étape 1",chooseType:"Choisissez une catégorie",chooseTypeText:"Cliquez sur une catégorie pour afficher ses domaines.",
+documents:"Documents administratifs",documentsDesc:"Modèles, demandes, courriers et documents pratiques.",summaries:"Résumés de livres",summariesDesc:"Résumés de livres connus dans différents domaines.",guides:"Guides de projets numériques",guidesDesc:"Ressources sur les sites, boutiques et projets.",plr:"Livres numériques PLR",plrDesc:"Contenu numérique soumis à la licence de chaque produit.",showDomains:"Voir 10 domaines ←",
+step2:"Étape 2",chooseDomain:"Choisissez un domaine pour voir ses ressources.",backTypes:"Retour aux catégories ↑",step3:"Étape 3",backDomains:"Retour aux domaines ↑",search:"Rechercher 🔎",searchPlaceholder:"Chercher un livre ou une ressource...",noResults:"Aucun résultat trouvé.",tryAnother:"Essayez un autre terme ou effacez la recherche.",
+bundleTitle:"Vous voulez les quatre bibliothèques ?",bundleText:"Contactez-nous sur WhatsApp pour en savoir plus.",bundleButton:"Demander les détails ←",footerText:"Bibliothèque numérique et ressources pratiques.",copyright:"Tous droits réservés.",
+modalTitle:"Demande de ressource numérique",modalText:"Contactez-nous pour connaître le prix et les modalités.",orderWhatsApp:"Demander via WhatsApp",close:"Fermer",domainCount:"domaines",resourceCount:"ressources",order:"Demander sur WhatsApp ←",resourceStatus:"Résultats présents dans le catalogue"},
+en:{
+tagline:"Your Moroccan digital library",home:"Home",library:"Library categories",bundle:"Complete offer",stores:"Ready-made stores",explore:"Explore library ←",
+eyebrow:"📚 Digital library",heroLine1:"Choose a field and discover",heroLine2:"useful resources for you.",heroText:"Four specialized libraries, each with ten fields. Choose a category and then a field.",
+step1:"Step 1",chooseType:"Choose a library category",chooseTypeText:"Select a category to display its fields.",
+documents:"Administrative documents",documentsDesc:"Templates, requests, letters and practical documents.",summaries:"Book summaries",summariesDesc:"Summaries of well-known books across different subjects.",guides:"Digital project guides",guidesDesc:"Resources for websites, stores and projects.",plr:"PLR digital books",plrDesc:"Digital content subject to each product's license.",showDomains:"View 10 fields ←",
+step2:"Step 2",chooseDomain:"Choose a field to see its resources.",backTypes:"Back to categories ↑",step3:"Step 3",backDomains:"Back to fields ↑",search:"Search 🔎",searchPlaceholder:"Search for a book or resource...",noResults:"No results found.",tryAnother:"Try another term or clear the search.",
+bundleTitle:"Want all four libraries?",bundleText:"Contact us on WhatsApp for more information.",bundleButton:"Request offer details ←",footerText:"A digital library with practical resources.",copyright:"All rights reserved.",
+modalTitle:"Request a digital resource",modalText:"Contact us for pricing and delivery details.",orderWhatsApp:"Request via WhatsApp",close:"Close",domainCount:"fields",resourceCount:"resources",order:"Ask on WhatsApp ←",resourceStatus:"Results listed in the catalogue"}
 };
 
-let currentLang="ar";
-let activeType=null;
-let activeDomain=null;
+/* عناوين كتب معروفة مع مرادفات البحث بالعربية والفرنسية والإنجليزية */
+const knownBooks=[
+{title:"الأب الغني والأب الفقير",aliases:["Rich Dad Poor Dad","Père riche, père pauvre","روبرت كيوساكي"]},
+{title:"العادات الذرية",aliases:["Atomic Habits","Un rien peut tout changer","James Clear"]},
+{title:"فكر تصبح غنياً",aliases:["Think and Grow Rich","Réfléchissez et devenez riche","Napoleon Hill"]},
+{title:"قوة الآن",aliases:["The Power of Now","Le Pouvoir du moment présent","Eckhart Tolle"]},
+{title:"كيف تكسب الأصدقاء وتؤثر في الناس",aliases:["How to Win Friends and Influence People","Comment se faire des amis","Dale Carnegie"]},
+{title:"ابدأ بلماذا",aliases:["Start with Why","Commencer par pourquoi","Simon Sinek"]},
+{title:"الأعمال من الصفر إلى الواحد",aliases:["Zero to One","De zéro à un","Peter Thiel"]},
+{title:"العقلية",aliases:["Mindset","Carol Dweck","L'état d'esprit"]},
+{title:"الأسبوع العملي من أربع ساعات",aliases:["The 4-Hour Workweek","La semaine de 4 heures","Tim Ferriss"]},
+{title:"أغنى رجل في بابل",aliases:["The Richest Man in Babylon","L'homme le plus riche de Babylone"]},
+{title:"سيكولوجية المال",aliases:["The Psychology of Money","La psychologie de l'argent","Morgan Housel"]},
+{title:"قوة العادات",aliases:["The Power of Habit","Le pouvoir des habitudes","Charles Duhigg"]},
+{title:"لا يمكنك إيذائي",aliases:["Can't Hurt Me","David Goggins"]},
+{title:"فن اللامبالاة",aliases:["The Subtle Art of Not Giving a F*ck","Mark Manson"]},
+{title:"التفكير السريع والبطيء",aliases:["Thinking, Fast and Slow","Système 1 / Système 2","Daniel Kahneman"]},
+{title:"من جيد إلى عظيم",aliases:["Good to Great","De la performance à l'excellence","Jim Collins"]},
+{title:"العادات السبع للناس الأكثر فعالية",aliases:["The 7 Habits of Highly Effective People","Les 7 habitudes de ceux qui réalisent tout ce qu'ils entreprennent","Stephen Covey"]},
+{title:"التأثير: سيكولوجية الإقناع",aliases:["Influence: The Psychology of Persuasion","Robert Cialdini"]},
+{title:"العمل العميق",aliases:["Deep Work","Cal Newport"]},
+{title:"أربعون قاعدة للحب",aliases:["The Forty Rules of Love","Les quarante règles de l'amour","Elif Shafak"]},
+{title:"الأمير",aliases:["The Prince","Le Prince","Machiavelli","ميكافيلي"]},
+{title:"فن الحرب",aliases:["The Art of War","L'Art de la guerre","Sun Tzu","سون تزو"]},
+{title:"1984",aliases:["George Orwell","Nineteen Eighty-Four"]},
+{title:"الخيميائي",aliases:["The Alchemist","L'Alchimiste","Paulo Coelho"]},
+{title:"البؤساء",aliases:["Les Misérables","Victor Hugo"]},
+{title:"مقدمة ابن خلدون",aliases:["Muqaddimah","Ibn Khaldun","ابن خلدون"]},
+{title:"الأبله",aliases:["The Idiot","L'Idiot","Dostoevsky"]},
+{title:"الجمهورية",aliases:["The Republic","La République","Plato","أفلاطون"]},
+{title:"الأوديسة",aliases:["The Odyssey","L'Odyssée","Homer","هوميروس"]},
+{title:"تأملات",aliases:["Meditations","Marc Aurèle","Marcus Aurelius"]}
+];
 
-const $=id=>document.getElementById(id);
-const typeGrid=$("typeGrid");
-const typeCards=[...document.querySelectorAll(".type-card")];
-const domainsPanel=$("domainsPanel");
-const domainGrid=$("domainGrid");
-const resourcesPanel=$("resourcesPanel");
-const resourceGrid=$("resourceGrid");
-const resourceSearch=$("resourceSearch");
-const orderModal=$("orderModal");
+/* أسماء موارد مفيدة حسب كل مجال */
+const domainTitles={
+documents:[
+["طلب خطي للعمل","طلب شهادة إدارية","طلب شهادة السكنى","طلب شهادة العمل","طلب التسجيل","طلب الاستفادة من خدمة","طلب رخصة","طلب نسخة من وثيقة","طلب تصحيح معلومات","طلب موعد إداري"],
+["سيرة ذاتية احترافية","رسالة تحفيزية للعمل","طلب تدريب","طلب اجتياز مباراة","طلب شهادة العمل","طلب شهادة الأجرة","استقالة من العمل","طلب عطلة سنوية","طلب تغيير المنصب","نموذج عقد عمل"],
+["طلب التسجيل المدرسي","طلب شهادة مدرسية","طلب إعادة التسجيل","طلب انتقال مدرسي","طلب منحة دراسية","جدول المراجعة","برنامج الامتحانات","طلب السكن الجامعي","طلب تدريب جامعي","نموذج بحث مدرسي"],
+["طلب كراء منزل","عقد كراء سكني","وصل أداء الكراء","محضر تسليم المفاتيح","طلب إصلاح السكن","اتفاق إفراغ محل","طلب شهادة السكنى","جرد محتويات المنزل","نموذج وعد بالبيع","لائحة مصاريف العقار"],
+["جدول تتبع المصاريف","نموذج فاتورة","وصل الأداء","كشف المداخيل والمصاريف","جدول الميزانية الشهرية","تصريح بالمداخيل","طلب جدولة الأداء","جدول تتبع الديون","تقرير مالي مبسط","نموذج حساب الأرباح"],
+["نموذج خطة مشروع","فاتورة تجارية","عرض أثمان","طلب شراكة تجارية","عقد تقديم خدمات","نموذج طلب شراء","سجل المبيعات","تقرير نشاط تجاري","نموذج وصل تسليم","جدول تتبع الزبناء"],
+["طلب فتح حساب بنكي","طلب شهادة بنكية","جدول تتبع القروض","جدول أداء الأقساط","نموذج تصريح بالتأمين","طلب تعويض تأميني","جدول مقارنة العروض","تتبع المصاريف البنكية","طلب تغيير المعلومات","ملف تنظيم الوثائق المالية"],
+["رسالة إدارية رسمية","رسالة تظلم","رسالة شكاية","رسالة طلب معلومات","رسالة تذكير","رسالة اعتذار رسمية","رسالة طلب موعد","رسالة تأكيد الاستلام","رسالة طلب توضيح","رسالة متابعة ملف"],
+["جدول المهام الأسبوعي","محضر اجتماع","جدول الحضور","تقرير شهري","خطة العمل السنوية","جدول تتبع الأهداف","قائمة المهام اليومية","نموذج تفويض","جدول متابعة الملفات","تقرير تقدم المشروع"],
+["نموذج تصريح بالشرف","نموذج التزام","نموذج موافقة","نموذج تفويض إداري","نموذج استلام وتسليم","نموذج طلب عام","نموذج إقرار","نموذج محضر","نموذج إشعار","نموذج لائحة الوثائق"]
+],
+summaries:[
+["العادات الذرية","الأب الغني والأب الفقير","قوة الآن","العادات السبع للناس الأكثر فعالية","كيف تكسب الأصدقاء وتؤثر في الناس","فكر تصبح غنياً","قوة العادات","العقلية","العمل العميق","فن اللامبالاة"],
+["سيكولوجية المال","أغنى رجل في بابل","المستثمر الذكي","فكر تصبح غنياً","الأب الغني والأب الفقير","المشي العشوائي في وول ستريت","دليل الاستثمار للمبتدئين","من صفر إلى واحد","مبادئ راي داليو","أسرار عقلية المليونير"],
+["التأثير: سيكولوجية الإقناع","ابدأ بلماذا","هذا هو التسويق","التسويق بالعمولة","كتاب التسويق الرقمي","قوة العلامة التجارية","استراتيجية المحيط الأزرق","التسويق بالمحتوى","فن البيع","التفاوض بلا تنازلات"],
+["من جيد إلى عظيم","الأعمال من الصفر إلى الواحد","الشركة الناشئة المرنة","إعادة العمل","ابدأ بلماذا","الهدف","المؤسس","الاستراتيجية التنافسية","فن البداية","إدارة المشاريع"],
+["التفكير السريع والبطيء","العقلية","الإنسان يبحث عن المعنى","التأثير","قوة العادات","الذكاء العاطفي","التفكير الواضح","الإنسان ذلك المجهول","فن اللامبالاة","كيف تكسب الأصدقاء وتؤثر في الناس"],
+["العمل العميق","العادات الذرية","الأسبوع العملي من أربع ساعات","إنجاز الأمور","جوهرية","قوة العادات","أكل هذا الضفدع","إدارة الوقت","التركيز","قاعدة الخمس ثوان"],
+["العادات السبع للناس الأكثر فعالية","كيف تكسب الأصدقاء وتؤثر في الناس","ابدأ بلماذا","القيادة أولاً","الذكاء العاطفي","التواصل اللاعنفي","التأثير","قوة الاستماع","فن التفاوض","القيادة بالمبادئ"],
+["الحياة 3.0","الذكاء الاصطناعي للمبتدئين","موجة جديدة","الإنسان المتفرد","الابتكار والذكاء الاصطناعي","مقدمة في تعلم الآلة","مستقبل العمل","البرمجة للجميع","التفكير الحاسوبي","العصر الرقمي"],
+["مقدمة ابن خلدون","فن الحرب","الأمير","الجمهورية","1984","البؤساء","الخيميائي","الأوديسة","تاريخ موجز للزمن","العالم كما أراه"],
+["تعلم كيف تتعلم","العقلية","التفكير السريع والبطيء","العمل العميق","قوة العادات","التعلم الفائق","ذاكرة لا تنسى","التعلم مدى الحياة","فن التعلم","التدريب المتعمد"]
+],
+guides:[
+["دليل HTML وCSS","إنشاء موقع من الصفر","دليل JavaScript للمبتدئين","نشر موقع على GitHub Pages","ربط نطاق بموقعك","تحسين سرعة الموقع","تحسين SEO للمبتدئين","تصميم موقع متجاوب","أساسيات تجربة المستخدم","دليل صيانة المواقع"],
+["إنشاء متجر إلكتروني","إعداد صفحات المنتجات","كتابة وصف المنتج","تنظيم الطلبات","إعداد سياسة الاسترجاع","تصميم صفحة الدفع","خطة إطلاق المتجر","إدارة مخزون المنتجات","خدمة العملاء للمتاجر","تحسين معدل التحويل"],
+["إنشاء صفحة هبوط","كتابة عنوان مقنع","تصميم دعوة لاتخاذ إجراء","نموذج جمع العملاء","اختبار صفحات الهبوط","تحسين التحويلات","صفحة هبوط لمنتج رقمي","صفحة هبوط لخدمة","تحليل سلوك الزوار","قائمة مراجعة صفحة الهبوط"],
+["خطة التسويق الرقمي","دليل SEO","التسويق عبر البريد الإلكتروني","إعلانات Meta للمبتدئين","إعلانات Google للمبتدئين","التسويق بالمحتوى","التسويق بالعمولة","بناء علامة تجارية","تحليل المنافسين","خطة تسويق لمدة 30 يوماً"],
+["خطة محتوى شهرية","كتابة منشورات السوشيال ميديا","دليل تصوير الفيديو بالهاتف","كتابة سيناريو فيديو قصير","صناعة فيديوهات قصيرة","تقويم المحتوى","أفكار محتوى Instagram","أفكار محتوى TikTok","تحرير الفيديو للمبتدئين","دليل بناء جمهور"],
+["دليل استخدام ChatGPT","كتابة Prompts احترافية","أتمتة المهام بالذكاء الاصطناعي","الذكاء الاصطناعي للأعمال","إنشاء محتوى بالذكاء الاصطناعي","تحليل البيانات بالذكاء الاصطناعي","أدوات AI لصناع المحتوى","إنشاء مساعد ذكي","دليل توليد الصور بالذكاء الاصطناعي","أخلاقيات استخدام الذكاء الاصطناعي"],
+["دليل Canva للمبتدئين","تصميم منشورات احترافية","تصميم كتاب إلكتروني","تصميم عروض تقديمية","تصميم هوية بصرية","قوالب وسائل التواصل","أساسيات الألوان والخطوط","تصميم إعلانات رقمية","تصميم غلاف كتاب","دليل تصميم السيرة الذاتية"],
+["إنشاء حساب للعمل الحر","كتابة ملف شخصي احترافي","تسعير الخدمات الرقمية","كتابة عرض خدمات","بناء معرض أعمال","التعامل مع العملاء","تنظيم وقت المستقل","خطة الحصول على أول عميل","إنشاء خدمة رقمية","إدارة الدخل الحر"],
+["خطة إدارة مشروع","تقسيم المشروع إلى مهام","جدول تتبع التقدم","إدارة مخاطر المشروع","إدارة فريق صغير","تحديد الأهداف","إعداد تقرير المشروع","إدارة الميزانية","تنظيم الاجتماعات","تقييم نتائج المشروع"],
+["بيع المنتجات الرقمية","إنشاء كتاب إلكتروني","إنشاء منتج Canva","التسويق بالعمولة للمبتدئين","بيع القوالب الرقمية","إنشاء دورة رقمية","بناء قائمة بريدية","خطة إطلاق منتج","تسعير المنتجات الرقمية","خدمة العملاء الرقمية"]
+],
+plr:[
+["تطوير الذات خطوة بخطوة","بناء الثقة بالنفس","تحديد الأهداف الشخصية","تغيير العادات اليومية","التغلب على التسويف","خطة تطوير شخصية","التفكير الإيجابي الواقعي","تنظيم الحياة اليومية","مهارات اتخاذ القرار","دليل الانضباط الذاتي"],
+["دليل العادات الصحية","تنظيم النوم","التخطيط للوجبات","العناية بالصحة اليومية","دليل الحركة والنشاط","إدارة التوتر","روتين صباحي صحي","العناية الذاتية","دفتر تتبع العادات","التوازن بين العمل والراحة"],
+["أساسيات الثقافة المالية","إعداد ميزانية شخصية","تتبع المصاريف","التخطيط للادخار","مقدمة في الاستثمار","أساسيات إدارة الأعمال","خطة مشروع صغير","التخطيط المالي للمشروع","تحديد أسعار المنتجات","إدارة التدفق النقدي"],
+["خطة محتوى تسويقي","كتابة محتوى مقنع","دليل بناء الجمهور","أفكار منشورات تجارية","التسويق عبر البريد","دليل العلامة التجارية","أساسيات التسويق بالعمولة","إعداد حملة إعلانية","دليل التسويق بالمحتوى","خطة تسويق للمبتدئين"],
+["دليل أدوات الذكاء الاصطناعي","مكتبة Prompts للأعمال","الذكاء الاصطناعي للمحتوى","إنشاء صور بالذكاء الاصطناعي","أتمتة العمل اليومي","AI للمستقلين","AI للتسويق","AI للتعليم","تنظيم العمل بأدوات AI","استخدام AI بمسؤولية"],
+["دفتر أفكار إبداعية","دليل أساسيات التصميم","مبادئ التكوين البصري","دليل الألوان","قوالب منشورات قابلة للتعديل","أفكار أغلفة الكتب","تصميم الهوية البصرية","دليل Canva للمشاريع","تصميم العروض التقديمية","تمارين الإبداع اليومي"],
+["خطة تعلم مهارة جديدة","دفتر متابعة الدراسة","تقنيات المذاكرة","بطاقات مراجعة قابلة للطباعة","دليل التعلم الذاتي","خطة التحضير للامتحانات","دفتر الأهداف الدراسية","تطوير مهارات الكتابة","تنظيم وقت الدراسة","دليل تدريب المبتدئين"],
+["مخطط أسبوعي","مخطط شهري","دفتر تتبع الأهداف","قائمة المهام اليومية","منظم المشاريع","دفتر تتبع العادات","مخطط الميزانية","جدول تنظيم الوقت","مراجعة نهاية الأسبوع","خطة إنجاز 30 يوماً"],
+["أنشطة تعليمية للأطفال","جدول الروتين اليومي","أفكار أنشطة منزلية","دفتر متابعة القراءة","بطاقات تعليم الحروف","أنشطة تنمية الإبداع","جدول المهام العائلية","أفكار التعلم باللعب","دفتر أهداف الطفل","دليل تنظيم وقت الأسرة"],
+["خطة إطلاق مشروع صغير","دفتر أفكار المشاريع","نموذج دراسة السوق","خطة عمل مبسطة","دليل اختيار فكرة مشروع","تحليل المنافسين","تحديد الجمهور المستهدف","خطة تسعير الخدمات","جدول تتبع المبيعات","خطة تطوير المشروع"]
+]
+};
 
-function t(key){return translations[currentLang][key]||translations.ar[key]||key}
-function localized(value){return typeof value==="string"?value:(value[currentLang]||value.ar)}
+/* كلمات إضافية تجعل البحث مرناً، مع توليد 100 اسم فريد لكل مجال */
+const variants={
+ar:["دليل شامل","خطة عملية","دفتر تطبيق","قائمة مراجعة","نموذج احترافي","مرجع سريع","خطة للمبتدئين","ورقة عمل","ملف عملي"],
+fr:["Guide complet","Plan pratique","Cahier d'application","Liste de contrôle","Modèle professionnel","Référence rapide","Guide débutant","Fiche de travail","Dossier pratique"],
+en:["Complete guide","Practical plan","Workbook","Checklist","Professional template","Quick reference","Beginner guide","Worksheet","Practical resource"]
+};
+const domainTitlesFlat=Object.values(domainTitles).flat();
 function normalize(value){
- return String(value||"").toLowerCase().normalize("NFD")
- .replace(/[\u0300-\u036f]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").trim();
+return String(value||"").toLowerCase().normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.replace(/[أإآٱ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه")
+.replace(/[^\p{L}\p{N}\s]/gu," ").replace(/\s+/g," ").trim();
 }
-function scrollToElement(el){el.scrollIntoView({behavior:"smooth",block:"start"})}
+function localized(obj){return obj[currentLang]||obj.ar}
+function t(key){return translations[currentLang][key]||translations.ar[key]||key}
+let currentLang="ar",activeType=null,activeDomain=null;
+const $=id=>document.getElementById(id);
+const typeCards=[...document.querySelectorAll(".type-card")];
+const domainsPanel=$("domainsPanel"),domainGrid=$("domainGrid");
+const resourcesPanel=$("resourcesPanel"),resourceGrid=$("resourceGrid");
+const resourceSearch=$("resourceSearch"),orderModal=$("orderModal");
 
 function applyLanguage(lang){
- currentLang=translations[lang]?lang:"ar";
- document.documentElement.lang=currentLang;
- document.documentElement.dir=currentLang==="ar"?"rtl":"ltr";
- document.querySelectorAll("[data-i18n]").forEach(el=>{
-   const key=el.dataset.i18n;
-   if(translations[currentLang][key])el.textContent=translations[currentLang][key];
- });
- document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
-   const key=el.dataset.i18nPlaceholder;
-   if(translations[currentLang][key])el.placeholder=translations[currentLang][key];
- });
- document.title=currentLang==="ar"?"المكتبة الرقمية | DIGITAL MAROC":currentLang==="fr"?"Bibliothèque numérique | DIGITAL MAROC":"Digital Library | DIGITAL MAROC";
- $("languageSelect").value=currentLang;
- if(activeType)showDomains(activeType,false);
- if(activeType!==null&&activeDomain!==null)showResources(activeType,activeDomain,false);
- if(!activeType)renderTypeCards();
- updateBundleLink();
+currentLang=translations[lang]?lang:"ar";
+document.documentElement.lang=currentLang;
+document.documentElement.dir=currentLang==="ar"?"rtl":"ltr";
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+const key=el.dataset.i18n;
+if(translations[currentLang][key])el.textContent=translations[currentLang][key];
+});
+document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+const key=el.dataset.i18nPlaceholder;
+if(translations[currentLang][key])el.placeholder=translations[currentLang][key];
+});
+document.title=currentLang==="ar"?"المكتبة الرقمية | DIGITAL MAROC":currentLang==="fr"?"Bibliothèque numérique | DIGITAL MAROC":"Digital Library | DIGITAL MAROC";
+$("languageSelect").value=currentLang;
+if(activeType)showDomains(activeType,false);
+if(activeType!==null&&activeDomain!==null)showResources(activeType,activeDomain,false);
+renderTypeCards();
+updateBundleLink();
 }
-
 function renderTypeCards(){
- typeCards.forEach(card=>{
-  const id=card.dataset.type;
-  const keys={documents:["documents","documentsDesc"],summaries:["summaries","summariesDesc"],guides:["guides","guidesDesc"],plr:["plr","plrDesc"]}[id];
-  card.querySelector("h3").textContent=t(keys[0]);
-  card.querySelector("p").textContent=t(keys[1]);
-  card.querySelector(".type-select").textContent=t("showDomains");
- });
+typeCards.forEach(card=>{
+const id=card.dataset.type;
+card.querySelector("h3").textContent=t(id);
+card.querySelector("p").textContent=t(id+"Desc");
+card.querySelector(".type-select").textContent=t("showDomains");
+});
 }
-
-function makeResources(typeId,domainIndex){
- const type=library[typeId];
- const domain=localized(type.domains[domainIndex]);
- const formats=t("formatNames");
- const topics=t("topicNames");
- const items=[];
- formats.forEach(format=>{
-  topics.forEach(topic=>{
-   items.push({
-    title:currentLang==="ar"?`${domain} — ${format}: ${topic}`:
-          currentLang==="fr"?`${domain} — ${format} : ${topic}`:
-          `${domain} — ${format}: ${topic}`,
-    description:t("description"),
-    icon:type.icon
-   });
-  });
- });
- return items;
+function getDomainBase(typeId,index){
+const typeIndex={documents:0,summaries:1,guides:2,plr:3}[typeId];
+return domainTitles[typeId][index];
 }
-
+function makeResources(typeId,index){
+const bases=getDomainBase(typeId,index);
+const items=[];
+const add=(title,aliases=[])=>items.push({title,aliases,icon:library[typeId].icon});
+bases.forEach(title=>{
+const match=knownBooks.find(b=>normalize(b.title)===normalize(title));
+add(title,match?match.aliases:[]);
+});
+if(typeId==="summaries"){
+knownBooks.forEach(book=>{
+if(!items.some(item=>normalize(item.title)===normalize(book.title)))add(book.title,book.aliases);
+});
+}
+const suffixes=variants[currentLang];
+let serial=1;
+while(items.length<100){
+const base=bases[(serial-1)%bases.length];
+const suffix=suffixes[Math.floor((serial-1)/bases.length)%suffixes.length];
+const title=currentLang==="ar"?`${base} — ${suffix}`:`${suffix}: ${base}`;
+if(!items.some(item=>normalize(item.title)===normalize(title)))add(title);
+serial++;
+if(serial>500)break;
+}
+return items.slice(0,100);
+}
+function scrollToElement(el){el.scrollIntoView({behavior:"smooth",block:"start"})}
 function showDomains(typeId,shouldScroll=true){
- activeType=typeId;
- activeDomain=null;
- const type=library[typeId];
- typeCards.forEach(card=>card.classList.toggle("active",card.dataset.type===typeId));
- $("selectedTypeTitle").textContent=localized(type.title)+" — "+t("chooseType");
- domainGrid.innerHTML="";
- type.domains.forEach((domain,index)=>{
-  const button=document.createElement("button");
-  button.type="button";
-  button.className="domain-card";
-  button.innerHTML=`<span class="domain-number">${String(index+1).padStart(2,"0")}</span><span class="domain-info"><strong></strong><small>100 ${t("resourceCount")}</small></span><span class="domain-arrow">←</span>`;
-  button.querySelector("strong").textContent=localized(domain);
-  button.addEventListener("click",()=>showResources(typeId,index));
-  domainGrid.appendChild(button);
- });
- domainsPanel.hidden=false;
- resourcesPanel.hidden=true;
- if(shouldScroll)scrollToElement(domainsPanel);
+activeType=typeId;activeDomain=null;
+typeCards.forEach(card=>card.classList.toggle("active",card.dataset.type===typeId));
+$("selectedTypeTitle").textContent=localized(library[typeId].title);
+domainGrid.innerHTML="";
+library[typeId].domains.forEach((domain,index)=>{
+const button=document.createElement("button");
+button.type="button";button.className="domain-card";
+button.innerHTML=`<span class="domain-number">${String(index+1).padStart(2,"0")}</span><span class="domain-info"><strong></strong><small>100 ${t("resourceCount")}</small></span><span class="domain-arrow">←</span>`;
+button.querySelector("strong").textContent=localized(domain);
+button.addEventListener("click",()=>showResources(typeId,index));
+domainGrid.appendChild(button);
+});
+domainsPanel.hidden=false;resourcesPanel.hidden=true;
+if(shouldScroll)scrollToElement(domainsPanel);
 }
-
-function showResources(typeId,domainIndex,shouldScroll=true){
- activeType=typeId;
- activeDomain=domainIndex;
- const type=library[typeId];
- const domain=localized(type.domains[domainIndex]);
- $("selectedDomainTitle").textContent=domain;
- $("selectedDomainDescription").textContent=localized(type.title)+" — "+domain;
- resourceSearch.value="";
- renderResources();
- resourcesPanel.hidden=false;
- if(shouldScroll)scrollToElement(resourcesPanel);
+function showResources(typeId,index,shouldScroll=true){
+activeType=typeId;activeDomain=index;
+$("selectedDomainTitle").textContent=localized(library[typeId].domains[index]);
+$("selectedDomainDescription").textContent=localized(library[typeId].title);
+resourceSearch.value="";
+renderResources();
+resourcesPanel.hidden=false;
+if(shouldScroll)scrollToElement(resourcesPanel);
 }
-
 function renderResources(){
- if(activeType===null||activeDomain===null)return;
- const items=makeResources(activeType,activeDomain);
- const query=normalize(resourceSearch.value);
- const filtered=items.filter(item=>normalize(item.title+" "+item.description).includes(query));
- resourceGrid.innerHTML="";
- filtered.forEach(item=>{
-  const article=document.createElement("article");
-  article.className="resource-card";
-  const icon=document.createElement("div");
-  icon.className="resource-icon";
-  icon.textContent=item.icon;
-  const title=document.createElement("strong");
-  title.textContent=item.title;
-  const desc=document.createElement("small");
-  desc.textContent=item.description;
-  const button=document.createElement("button");
-  button.type="button";
-  button.className="order-btn";
-  button.textContent=t("order");
-  button.addEventListener("click",()=>openOrder(item.title));
-  article.append(icon,title,desc,button);
-  resourceGrid.appendChild(article);
- });
- $("resourceCount").textContent=filtered.length+" / 100 "+t("resourceCount");
- $("resourceStatus").textContent=t("resourceStatus");
- $("emptyResources").hidden=filtered.length!==0;
- resourceGrid.hidden=filtered.length===0;
+if(activeType===null||activeDomain===null)return;
+const items=makeResources(activeType,activeDomain);
+const query=normalize(resourceSearch.value);
+const filtered=items.filter(item=>{
+const text=[item.title,...item.aliases].join(" ");
+return normalize(text).includes(query);
+});
+resourceGrid.innerHTML="";
+filtered.forEach(item=>{
+const article=document.createElement("article");article.className="resource-card";
+const icon=document.createElement("div");icon.className="resource-icon";icon.textContent=item.icon;
+const title=document.createElement("strong");title.textContent=item.title;
+const button=document.createElement("button");button.type="button";button.className="order-btn";button.textContent=t("order");
+button.addEventListener("click",()=>openOrder(item.title));
+article.append(icon,title,button);resourceGrid.appendChild(article);
+});
+$("resourceCount").textContent=filtered.length+" / "+items.length;
+$("resourceStatus").textContent=t("resourceStatus");
+$("emptyResources").hidden=filtered.length!==0;
+resourceGrid.hidden=filtered.length===0;
 }
-
 function openOrder(title){
- $("orderFileName").textContent=title;
- const message=currentLang==="fr"
-  ?`Bonjour DIGITAL MAROC, je souhaite demander cette ressource :\n${title}\nMerci de confirmer sa disponibilité, son prix et le mode de livraison.`
-  :currentLang==="en"
-  ?`Hello DIGITAL MAROC, I would like to request this resource:\n${title}\nPlease confirm availability, price and delivery method.`
-  :`السلام عليكم DIGITAL MAROC، بغيت نطلب هاد المورد:\n${title}\nعافاكم أكدوا ليا التوفر والثمن وطريقة الاستلام.`;
- $("orderWhatsApp").href="https://wa.me/212719380106?text="+encodeURIComponent(message);
- orderModal.hidden=false;
- document.body.style.overflow="hidden";
+$("orderFileName").textContent=title;
+const message=currentLang==="fr"
+?`Bonjour DIGITAL MAROC, je souhaite demander cette ressource :\n${title}\nMerci de me confirmer la disponibilité, le prix et le mode de livraison.`
+:currentLang==="en"
+?`Hello DIGITAL MAROC, I would like to request this resource:\n${title}\nPlease confirm availability, price and delivery method.`
+:`السلام عليكم DIGITAL MAROC، بغيت نطلب هاد المورد:\n${title}\nعافاكم أكدوا ليا التوفر والثمن وطريقة الاستلام.`;
+$("orderWhatsApp").href="https://wa.me/212719380106?text="+encodeURIComponent(message);
+orderModal.hidden=false;document.body.style.overflow="hidden";
 }
 function closeOrder(){orderModal.hidden=true;document.body.style.overflow=""}
 function updateBundleLink(){
- const msg=currentLang==="fr"?"Bonjour, je souhaite connaître les détails de l'offre des quatre bibliothèques numériques.":
- currentLang==="en"?"Hello, I would like details about the complete four-library offer.":
- "السلام عليكم، بغيت نعرف تفاصيل عرض المكتبات الرقمية الأربع.";
- $("bundleWhatsApp").href="https://wa.me/212719380106?text="+encodeURIComponent(msg);
+const message=currentLang==="fr"?"Bonjour, je souhaite connaître les détails de l'offre des quatre bibliothèques numériques."
+:currentLang==="en"?"Hello, I would like details about the complete four-library offer."
+:"السلام عليكم، بغيت نعرف تفاصيل عرض المكتبات الرقمية الأربع.";
+$("bundleWhatsApp").href="https://wa.me/212719380106?text="+encodeURIComponent(message);
 }
-
-typeGrid.addEventListener("click",event=>{
- const button=event.target.closest(".type-card");
- if(button)showDomains(button.dataset.type);
+$("typeGrid").addEventListener("click",event=>{
+const button=event.target.closest(".type-card");
+if(button)showDomains(button.dataset.type);
 });
 $("backToTypes").addEventListener("click",()=>{
- domainsPanel.hidden=true;resourcesPanel.hidden=true;activeType=null;activeDomain=null;
- typeCards.forEach(card=>card.classList.remove("active"));
- scrollToElement(typeGrid);
+domainsPanel.hidden=true;resourcesPanel.hidden=true;activeType=null;activeDomain=null;
+typeCards.forEach(card=>card.classList.remove("active"));scrollToElement($("typeGrid"));
 });
 $("backToDomains").addEventListener("click",()=>{
- resourcesPanel.hidden=true;scrollToElement(domainsPanel);
+resourcesPanel.hidden=true;scrollToElement(domainsPanel);
 });
-$("resourceSearchForm").addEventListener("submit",event=>{
- event.preventDefault();renderResources();
-});
+$("resourceSearchForm").addEventListener("submit",event=>{event.preventDefault();renderResources()});
 resourceSearch.addEventListener("input",renderResources);
 $("languageSelect").addEventListener("change",event=>applyLanguage(event.target.value));
 $("closeOrder").addEventListener("click",closeOrder);
 orderModal.addEventListener("click",event=>{if(event.target===orderModal)closeOrder()});
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!orderModal.hidden)closeOrder()});
 $("year").textContent=new Date().getFullYear();
-renderTypeCards();
-updateBundleLink();
+renderTypeCards();updateBundleLink();
 </script>
 </body>
 </html>
