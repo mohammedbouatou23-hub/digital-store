@@ -4,203 +4,634 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>المتجر الجاهز PRO | DIGITAL MAROC</title>
-  <meta name="description" content="اكتشف المتجر الجاهز PRO من DIGITAL MAROC. اختر نوع المتجر المناسب لمشروعك وتواصل معنا عبر واتساب.">
+  <meta name="description" content="اختار المتجر الإلكتروني المناسب لمشروعك مع DIGITAL MAROC.">
   <meta name="theme-color" content="#0A1931">
-  <link rel="canonical" href="https://digital-maroc-store.vercel.app/pro.html">
-  <meta property="og:title" content="المتجر الجاهز PRO | DIGITAL MAROC">
-  <meta property="og:description" content="اختار نوع متجرك وابدأ مشروعك الرقمي مع DIGITAL MAROC.">
-  <meta property="og:type" content="product">
+
   <link rel="icon" href="logo-final.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    :root{--navy:#0A1931;--blue:#1769ff;--green:#10b981;--page:#f5f8fc;--text:#10213a;--muted:#64748b}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:90px}
-    body{margin:0;background:var(--page);color:var(--text);font-family:'Tajawal',sans-serif}
-    a{-webkit-tap-highlight-color:transparent}
-    .brand-logo{width:43px;height:43px;object-fit:contain;border-radius:12px}
-    .gradient-text{background:linear-gradient(100deg,#1769ff,#10b981);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero-bg{background:radial-gradient(ellipse at 10% 10%,rgba(23,105,255,.12),transparent 45%),radial-gradient(ellipse at 90% 80%,rgba(16,185,129,.10),transparent 40%),#fff}
-    .soft-shadow{box-shadow:0 18px 55px rgba(10,25,49,.08)}
-    .store-card{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-    .store-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(10,25,49,.10);border-color:#93b4ff}
-    .primary-btn{background:var(--navy);color:white;transition:background .2s ease,transform .2s ease}
-    .primary-btn:hover{background:#1769ff;transform:translateY(-1px)}
-    .language-btn{border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;color:#526178}
-    .language-btn.active{background:var(--navy);color:white}
-    .store-image{display:block;width:100%;height:175px;margin:18px auto 0;object-fit:cover;object-position:center;border-radius:16px;background:#f1f5f9}
-    .old-price{color:#64748b;text-decoration:line-through;font-size:12px;font-weight:700}
-    .new-price{background:#ecfdf5;color:#047857;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900}
-    .discount-badge{background:#fff7ed;color:#c2410c;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900}
-    .empire-old-price{color:#cbd5e1;text-decoration:line-through;font-size:12px;font-weight:700}
-    [dir="ltr"] .brand-name{text-align:left}
-    @media(max-width:640px){.brand-logo{width:37px;height:37px}.header-order{padding:9px 12px;font-size:11px}.hero-title{font-size:38px}.store-image{height:165px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+    :root {
+      --navy: #0A1931;
+      --blue: #1769ff;
+      --green: #10b981;
+      --page: #f5f8fc;
+      --text: #10213a;
+      --muted: #64748b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    a { -webkit-tap-highlight-color: transparent; }
+
+    .brand-logo {
+      width: 43px;
+      height: 43px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #1769ff, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(23,105,255,.12), transparent 45%),
+        radial-gradient(ellipse at 90% 80%, rgba(16,185,129,.10), transparent 40%),
+        #fff;
+    }
+
+    .soft-shadow {
+      box-shadow: 0 18px 55px rgba(10,25,49,.08);
+    }
+
+    .store-card {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .store-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(10,25,49,.10);
+    }
+
+    .primary-btn {
+      background: var(--navy);
+      color: white;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .primary-btn:hover {
+      background: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .language-btn {
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #526178;
+    }
+
+    .language-btn.active {
+      background: var(--navy);
+      color: white;
+    }
+
+    .store-image {
+      display: block;
+      width: 100%;
+      height: 190px;
+      margin-top: 18px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      background: #f1f5f9;
+    }
+
+    .old-price {
+      color: #64748b;
+      text-decoration: line-through;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .new-price {
+      background: #ecfdf5;
+      color: #047857;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .discount-badge {
+      background: #fff7ed;
+      color: #c2410c;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    [dir="ltr"] .brand-name { text-align: left; }
+
+    @media (max-width: 640px) {
+      .brand-logo {
+        width: 37px;
+        height: 37px;
+      }
+
+      .hero-title { font-size: 38px; }
+
+      .store-image { height: 165px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
     <div class="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
-      <a href="index.html" class="flex min-w-0 items-center gap-3" aria-label="DIGITAL MAROC - الصفحة الرئيسية">
-        <img src="logo-final.png" alt="DIGITAL MAROC" class="brand-logo" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
-        <span id="logoFallback" style="display:none" class="h-[43px] w-[43px] items-center justify-center rounded-xl bg-[#0A1931] font-black text-white">DM</span>
+
+      <a href="index.html" class="flex min-w-0 items-center gap-3">
+        <img
+          src="logo-final.png"
+          alt="DIGITAL MAROC"
+          class="brand-logo"
+          onerror="this.style.display='none'"
+        >
+
         <span class="brand-name min-w-0">
-          <span class="block truncate text-sm font-black text-[#0A1931] sm:text-base">DIGITAL MAROC</span>
-          <span data-i18n="brandSubtitle" class="block text-[10px] font-bold text-slate-500 sm:text-xs">حلول رقمية مغربية</span>
+          <span class="block truncate text-sm font-black text-[#0A1931] sm:text-base">
+            DIGITAL MAROC
+          </span>
+          <span data-i18n="brandSubtitle" class="block text-[10px] font-bold text-slate-500 sm:text-xs">
+            حلول رقمية مغربية
+          </span>
         </span>
       </a>
-      <div class="flex shrink-0 items-center gap-2 sm:gap-4">
-        <div class="flex items-center rounded-full bg-slate-100 p-1" aria-label="Language">
-          <button type="button" class="language-btn active" data-lang="ar" aria-pressed="true">AR</button>
-          <button type="button" class="language-btn" data-lang="fr" aria-pressed="false">FR</button>
-          <button type="button" class="language-btn" data-lang="en" aria-pressed="false">EN</button>
-        </div>   
+
+      <div class="flex shrink-0 items-center gap-2">
+        <div class="flex items-center rounded-full bg-slate-100 p-1">
+          <button type="button" class="language-btn active" data-lang="ar">AR</button>
+          <button type="button" class="language-btn" data-lang="fr">FR</button>
+          <button type="button" class="language-btn" data-lang="en">EN</button>
+        </div>
+
+        <a
+          href="https://wa.me/212719380106"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="primary-btn rounded-full px-4 py-3 text-xs font-black"
+          data-i18n="headerOrder"
+        >
+          اطلب الآن
+        </a>
+      </div>
+
     </div>
   </header>
+
   <div class="bg-[#0A1931] px-3 py-2.5 text-center text-xs font-bold text-white">
-    <span data-i18n="announcement">حلول رقمية مغربية لمساعدتك على إطلاق مشروعك</span>
+    <span data-i18n="announcement">
+      حلول رقمية مغربية لمساعدتك على إطلاق مشروعك
+    </span>
   </div>
+
   <main>
+
+    <!-- HERO -->
     <section class="hero-bg">
-      <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:px-6 sm:py-16 md:grid-cols-2 md:py-20">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:px-6 md:grid-cols-2 md:py-20">
+
         <div>
           <span class="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-xs font-extrabold text-blue-700">
-            <span>✦</span><span data-i18n="heroBadge">المتجر الجاهز PRO</span>
+            ✦
+            <span data-i18n="heroBadge">المتجر الجاهز PRO</span>
           </span>
+
           <h1 class="hero-title mt-6 text-5xl font-black leading-tight text-[#0A1931] sm:text-6xl">
-            <span data-i18n="heroLine1">ابدأ مشروعك</span><br><span class="gradient-text">PRO</span><br><span data-i18n="heroLine2">بخطوة واضحة</span>
+            <span data-i18n="heroLine1">ابدأ مشروعك</span>
+            <br>
+            <span class="gradient-text">PRO</span>
+            <br>
+            <span data-i18n="heroLine2">بخطوة واضحة</span>
           </h1>
-          <p data-i18n="heroDescription" class="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">اختار نوع المتجر اللي مناسب لفكرتك، تعرّف على محتوياته، وتواصل معنا عبر واتساب لمعرفة تفاصيل التجهيز والتسليم.</p>
+
+          <p data-i18n="heroDescription" class="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+            اختار نوع المتجر المناسب لفكرتك، واكتشف المميزات ديالو، وتواصل معنا لمعرفة تفاصيل التجهيز والتسليم.
+          </p>
+
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#stores" class="primary-btn rounded-full px-7 py-4 text-sm font-black" data-i18n="chooseStore">اختار نوع المتجر</a>
-            <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="rounded-full border border-slate-300 bg-white px-7 py-4 text-sm font-black text-[#0A1931] hover:border-blue-400" data-i18n="contactUs">تواصل معنا</a>
+            <a href="#stores" class="primary-btn rounded-full px-7 py-4 text-sm font-black" data-i18n="chooseStore">
+              اختار نوع المتجر
+            </a>
+
+            <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="rounded-full border border-slate-300 bg-white px-7 py-4 text-sm font-black text-[#0A1931]" data-i18n="contactUs">
+              تواصل معنا
+            </a>
           </div>
+
           <div class="mt-8 flex flex-wrap gap-x-5 gap-y-3 text-xs font-bold text-slate-600">
-            <span><span class="text-emerald-500">✓</span> <span data-i18n="benefit1">اختيار نوع المتجر</span></span>
-            <span><span class="text-emerald-500">✓</span> <span data-i18n="benefit2">تفاصيل قبل الطلب</span></span>
-            <span><span class="text-emerald-500">✓</span> <span data-i18n="benefit3">تواصل مباشر</span></span>
+            <span>✓ <span data-i18n="benefit1">اختيار نوع المتجر</span></span>
+            <span>✓ <span data-i18n="benefit2">تفاصيل قبل الطلب</span></span>
+            <span>✓ <span data-i18n="benefit3">تواصل مباشر</span></span>
           </div>
         </div>
+
+        <!-- HERO IMAGE: ELECTRONIC STORE PREVIEW -->
+        <div class="mx-auto w-full max-w-xl">
+          <div class="soft-shadow overflow-hidden rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4">
+
+            <div class="relative overflow-hidden rounded-[21px] bg-slate-100">
+              <img
+                src="pro.header.jpg"
+                alt="تصميم ومعاينة متجر إلكتروني احترافي"
+                class="h-[250px] w-full object-cover sm:h-[330px]"
+                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80'"
+              >
+
+              <div class="absolute bottom-4 right-4 left-4 rounded-2xl border border-white/70 bg-white/95 p-4 shadow-lg">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="font-black text-[#0A1931]" data-i18n="previewTitle">معاينة متجرك</span>
+                  <span class="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-extrabold text-emerald-700" data-i18n="previewLabel">معاينة</span>
+                </div>
+
+                <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+                  <div class="rounded-xl bg-slate-50 p-3">
+                    <div class="text-2xl">📚</div>
+                    <p class="mt-1 text-[10px] font-extrabold" data-i18n="previewBooks">كتب رقمية</p>
+                  </div>
+
+                  <div class="rounded-xl bg-slate-50 p-3">
+                    <div class="text-2xl">🎨</div>
+                    <p class="mt-1 text-[10px] font-extrabold" data-i18n="previewCanva">قوالب Canva</p>
+                  </div>
+
+                  <div class="rounded-xl bg-slate-50 p-3">
+                    <div class="text-2xl">🛒</div>
+                    <p class="mt-1 text-[10px] font-extrabold" data-i18n="previewShop">متجر إلكتروني</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 px-3 pb-2 pt-4">
+              <div>
+                <p class="text-xs font-bold text-slate-500" data-i18n="startingPrice">الثمن ابتداءً من</p>
+                <p class="mt-1 text-2xl font-black text-[#0A1931]">299 DH</p>
+              </div>
+
+              <a href="#stores" class="rounded-full bg-blue-50 px-4 py-3 text-xs font-black text-blue-700" data-i18n="seeOffers">
+                اكتشف العروض
+              </a>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
-   <section id="stores" class="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-20">
+
+    <!-- STORES -->
+    <section id="stores" class="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-20">
+
       <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-black uppercase tracking-wider text-blue-600" data-i18n="sectionEyebrow">اختار الحل المناسب</span>
-        <h2 class="mt-3 text-3xl font-black text-[#0A1931] sm:text-4xl" data-i18n="storesTitle">ستة أنواع من المتاجر</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-500 sm:text-base" data-i18n="storesDescription">كل اختيار عندو استعمال مختلف. شوف المميزات والتخفيض ديالو، وتواصل معنا لتأكيد المحتويات قبل الطلب.</p>
+        <span class="text-xs font-black uppercase tracking-wider text-blue-600" data-i18n="sectionEyebrow">
+          اختار الحل المناسب
+        </span>
+
+        <h2 class="mt-3 text-3xl font-black text-[#0A1931] sm:text-4xl" data-i18n="storesTitle">
+          ستة أنواع من المتاجر
+        </h2>
+
+        <p class="mt-4 text-sm leading-7 text-slate-500 sm:text-base" data-i18n="storesDescription">
+          كل متجر عندو استعمال ومميزات مختلفة. اكتشف شنو مناسب لمشروعك وتواصل معنا لتأكيد المحتويات قبل الطلب.
+        </p>
       </div>
 
       <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Store 1 -->
+
+        <!-- 1. DIGITAL BOOKS STORE -->
         <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-6">
+
           <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-2xl">📚</div>
-          <img class="store-image" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80" alt="متجر الكتب الرقمية" loading="lazy">
-          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s1Title">متجر الكتب الرقمية</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s1Description">مناسب لبيع الكتب الإلكترونية والملفات التعليمية. نظم المحتوى حسب المجالات وسهّل على الزبون اكتشاف الكتب المناسبة له.</p>
-          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s1Why">علاش تختارو؟ باش تعرض محتوى رقمي منظم بلا شحن مادي.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s1Tag">كتب رقمية</span><span class="old-price">599 DH</span><span class="new-price">299 DH</span><span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span></div>
-          <a href="#" data-store="books" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
+
+          <img
+            class="store-image"
+            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80"
+            alt="تصور احترافي لمتجر كتب إلكترونية وكتب رقمية"
+            loading="lazy"
+          >
+
+          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s1Title">
+            متجر الكتب الرقمية
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s1Description">
+            متجر لعرض الكتب الإلكترونية والملفات التعليمية حسب المجالات، مع واجهة كتخلي الزبون يتصفح المحتوى ويختار الكتب المناسبة.
+          </p>
+
+          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s1Why">
+            المميزات: تصنيف الكتب، عرض الأغلفة، وتنظيم المنتجات الرقمية.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s1Tag">كتب رقمية</span>
+            <span class="old-price">599 DH</span>
+            <span class="new-price">299 DH</span>
+            <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
+          </div>
+
+          <a href="#" data-store="books" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">
+            طلب هذا المتجر
+          </a>
+
         </article>
 
-        <!-- Store 2 -->
+        <!-- 2. CANVA STORE -->
         <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-6">
+
           <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-50 text-2xl">🎨</div>
-          <img class="store-image" src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=80" alt="متجر قوالب وتصاميم Canva" loading="lazy">
-          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s2Title">متجر قوالب Canva</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s2Description">مناسب للمصممين وصناع المحتوى. اعرض قوالب Canva والتصاميم حسب الفئات ليسهل على الزبون تصفحها واختيارها.</p>
-          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s2Why">علاش تختارو؟ باش تجمع التصاميم ديالك وتسهّل عرضها وبيعها.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s2Tag">قوالب وتصاميم</span><span class="old-price">599 DH</span><span class="new-price">299 DH</span><span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span></div>
-          <a href="#" data-store="canva" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
+
+          <img
+            class="store-image"
+            src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=80"
+            alt="تصور لمتجر قوالب Canva وتصاميم رقمية"
+            loading="lazy"
+          >
+
+          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s2Title">
+            متجر قوالب Canva
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s2Description">
+            متجر للمصممين وصناع المحتوى لعرض قوالب Canva والتصاميم الرقمية حسب الفئات، مع صور معاينة كتوضح نوع التصاميم المعروضة.
+          </p>
+
+          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s2Why">
+            المميزات: تنظيم القوالب، تصنيف التصاميم، وتسهيل استعراض المنتجات.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s2Tag">قوالب وتصاميم</span>
+            <span class="old-price">599 DH</span>
+            <span class="new-price">299 DH</span>
+            <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
+          </div>
+
+          <a href="#" data-store="canva" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">
+            طلب هذا المتجر
+          </a>
+
         </article>
 
-        <!-- Store 3 -->
+        <!-- 3. PHYSICAL PRODUCTS STORE -->
         <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-6">
+
           <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-2xl">🛒</div>
-          <img class="store-image" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="متجر المنتجات الملموسة" loading="lazy">
-          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s3Title">متجر المنتجات الملموسة</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s3Description">مناسب لبيع المنتجات المادية. اعرض صور المنتجات ومعلوماتها، وحدد طريقة استقبال الطلبات والتوصيل حسب الاتفاق.</p>
-          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s3Why">علاش تختارو؟ باش تعرض المنتجات ديالك فواجهة منظمة وواضحة.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s3Tag">منتجات مادية</span><span class="old-price">599 DH</span><span class="new-price">299 DH</span><span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span></div>
-          <a href="#" data-store="ecommerce" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
+
+          <img
+            class="store-image"
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
+            alt="تصور لمتجر إلكتروني يعرض المنتجات مع واجهة شراء"
+            loading="lazy"
+          >
+
+          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s3Title">
+            متجر المنتجات الملموسة
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s3Description">
+            متجر لعرض المنتجات المادية مع الصور والأثمنة والمعلومات، وتوضيح كيفية استقبال الطلبات والتوصيل حسب الاتفاق.
+          </p>
+
+          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s3Why">
+            المميزات: واجهة للمنتجات، معلومات واضحة، وعرض منظم للسلع.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s3Tag">منتجات مادية</span>
+            <span class="old-price">599 DH</span>
+            <span class="new-price">299 DH</span>
+            <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
+          </div>
+
+          <a href="#" data-store="ecommerce" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">
+            طلب هذا المتجر
+          </a>
+
         </article>
 
-        <!-- Store 4 -->
+        <!-- 4. SERVICES STORE -->
         <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-6">
+
           <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">📅</div>
-          <img class="store-image" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80" alt="متجر الخدمات والحجز" loading="lazy">
-          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s4Title">متجر الخدمات والحجز</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s4Description">مناسب للمستقلين ومقدمي الخدمات. وضّح خدماتك وأسعارك واستقبل طلبات التواصل أو الحجز.</p>
-          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s4Why">علاش تختارو؟ باش الزبون يفهم الخدمة ويعرف كيفاش يتواصل معاك.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s4Tag">خدمات وحجز</span><span class="old-price">599 DH</span><span class="new-price">299 DH</span><span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span></div>
-          <a href="#" data-store="services" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
+
+          <img
+            class="store-image"
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80"
+            alt="تصور لموقع خدمات احترافي وصفحة حجز وتواصل"
+            loading="lazy"
+          >
+
+          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s4Title">
+            متجر الخدمات والحجز
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s4Description">
+            مناسب للمستقلين ومقدمي الخدمات لعرض الخدمات والأثمنة، مع توضيح خطوات التواصل أو طلب الحجز.
+          </p>
+
+          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s4Why">
+            المميزات: صفحات للخدمات، توضيح الأثمنة، وتسهيل طلب المعلومات والحجز.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s4Tag">خدمات وحجز</span>
+            <span class="old-price">599 DH</span>
+            <span class="new-price">299 DH</span>
+            <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
+          </div>
+
+          <a href="#" data-store="services" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">
+            طلب هذا المتجر
+          </a>
+
         </article>
 
-        <!-- Store 5 -->
+        <!-- 5. COURSES STORE -->
         <article class="store-card flex flex-col rounded-[24px] border border-slate-200 bg-white p-6">
+
           <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-50 text-2xl">🎓</div>
-          <img class="store-image" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="متجر الكورسات والدورات" loading="lazy">
-          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s5Title">متجر الكورسات</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s5Description">مناسب للمدربين وصناع الدورات. نظم الدروس والمحتوى التعليمي في مكان واحد، مع تأكيد خصائص الفيديو حسب التجهيز المتفق عليه.</p>
-          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s5Why">علاش تختارو؟ باش تعرض الدورات ديالك بشكل مرتب وسهل التصفح.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s5Tag">تعليم رقمي</span><span class="old-price">599 DH</span><span class="new-price">299 DH</span><span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span></div>
-          <a href="#" data-store="courses" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">طلب هذا المتجر</a>
+
+          <img
+            class="store-image"
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+            alt="تصور لمتجر دورات تعليمية وكورسات عبر الإنترنت"
+            loading="lazy"
+          >
+
+          <h3 class="mt-5 text-lg font-black text-[#0A1931]" data-i18n="s5Title">
+            متجر الكورسات
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-slate-500" data-i18n="s5Description">
+            متجر للمدربين وصناع الدورات لتنظيم الدروس والبرامج التعليمية، مع تحديد خصائص عرض الفيديو والوصول للمحتوى حسب التجهيز المتفق عليه.
+          </p>
+
+          <p class="mt-3 text-xs font-bold leading-6 text-slate-600" data-i18n="s5Why">
+            المميزات: تصنيف الدورات، عرض معلوماتها، وتنظيم المحتوى التعليمي.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-slate-100 px-3 py-2 text-xs font-bold" data-i18n="s5Tag">تعليم رقمي</span>
+            <span class="old-price">599 DH</span>
+            <span class="new-price">299 DH</span>
+            <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
+          </div>
+
+          <a href="#" data-store="courses" class="store-order primary-btn mt-6 block rounded-full py-3.5 text-center text-sm font-black" data-i18n="orderThis">
+            طلب هذا المتجر
+          </a>
+
         </article>
 
-        <!-- Store 6 -->
+        <!-- 6. EMPIRE STORE -->
         <article class="store-card flex flex-col rounded-[24px] border-2 border-[#0A1931] bg-[#0A1931] p-6 text-white">
+
           <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl">🚀</div>
-          <img class="store-image" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="متجر Empire الشامل" loading="lazy">
-          <span class="mt-4 w-fit rounded-full bg-emerald-400/15 px-3 py-1.5 text-[10px] font-extrabold text-emerald-300" data-i18n="s6Badge">خيار شامل</span>
-          <h3 class="mt-4 text-lg font-black" data-i18n="s6Title">متجر Empire الشامل</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-slate-300" data-i18n="s6Description">اختيار للمشروع اللي كيحتاج أقسام متعددة. اجمع المنتجات الرقمية والخدمات والكورسات ضمن متجر واحد حسب نطاق العمل المتفق عليه.</p>
-          <p class="mt-3 text-xs font-bold leading-6 text-slate-200" data-i18n="s6Why">علاش تختارو؟ إلا بغيتي مشروع فيه أكثر من نوع واحد من العروض.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2"><span class="rounded-full bg-white/10 px-3 py-2 text-xs font-bold" data-i18n="s6Tag">عدة أقسام</span><span class="empire-old-price">999 DH</span><span class="rounded-full bg-white px-3 py-2 text-xs font-black text-[#0A1931]">499 DH</span><span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span></div>
-          <a href="#" data-store="empire" class="store-order mt-6 block rounded-full bg-white py-3.5 text-center text-sm font-black text-[#0A1931] hover:bg-emerald-300" data-i18n="orderEmpire">طلب متجر Empire</a>
+
+          <img
+            class="store-image"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+            alt="تصور لمتجر إلكتروني شامل بلوحة عرض المنتجات والأقسام"
+            loading="lazy"
+          >
+
+          <span class="mt-4 w-fit rounded-full bg-emerald-400/15 px-3 py-1.5 text-[10px] font-extrabold text-emerald-300" data-i18n="s6Badge">
+            خيار شامل
+          </span>
+
+          <h3 class="mt-4 text-lg font-black" data-i18n="s6Title">
+            متجر Empire الشامل
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-slate-300" data-i18n="s6Description">
+            متجر للمشاريع اللي كتحتاج أقسام متعددة، بحال المنتجات الرقمية والخدمات والكورسات، حسب نطاق التجهيز المتفق عليه.
+          </p>
+
+          <p class="mt-3 text-xs font-bold leading-6 text-slate-200" data-i18n="s6Why">
+            المميزات: أقسام متعددة، عرض أنواع مختلفة من العروض، وواجهة موحدة للمشروع.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-white/10 px-3 py-2 text-xs font-bold" data-i18n="s6Tag">عدة أقسام</span>
+            <span class="old-price text-slate-300">999 DH</span>
+            <span class="rounded-full bg-white px-3 py-2 text-xs font-black text-[#0A1931]">499 DH</span>
+            <span class="discount-badge" data-i18n="discountLabel">تخفيض 50%</span>
+          </div>
+
+          <a href="#" data-store="empire" class="store-order mt-6 block rounded-full bg-white py-3.5 text-center text-sm font-black text-[#0A1931] hover:bg-emerald-300" data-i18n="orderEmpire">
+            طلب متجر Empire
+          </a>
+
         </article>
+
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="mx-auto max-w-4xl px-5 py-14 sm:px-6 sm:py-20">
-      <div class="text-center"><h2 class="text-3xl font-black text-[#0A1931]" data-i18n="faqTitle">أسئلة شائعة</h2></div>
+
+      <div class="text-center">
+        <h2 class="text-3xl font-black text-[#0A1931]" data-i18n="faqTitle">
+          أسئلة شائعة
+        </h2>
+      </div>
+
       <div class="mt-8 space-y-3">
+
         <details class="rounded-2xl border border-slate-200 bg-white p-5">
-          <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq1Q">كيفاش نختار نوع المتجر؟</summary>
-          <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq1A">اختار حسب النشاط ديالك، ومن بعد تواصل معنا باش نأكدوا معك التفاصيل والخصائص المتوفرة.</p>
+          <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq1Q">
+            كيفاش نختار نوع المتجر؟
+          </summary>
+          <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq1A">
+            اختار حسب النشاط ديالك، ومن بعد تواصل معنا لتأكيد التفاصيل والخصائص المتوفرة.
+          </p>
         </details>
+
         <details class="rounded-2xl border border-slate-200 bg-white p-5">
-          <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq2Q">واش الدومين والاستضافة داخلين فالثمن؟</summary>
-          <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq2A">خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة وأي مصاريف تجديد.</p>
+          <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq2Q">
+            واش الدومين والاستضافة داخلين فالثمن؟
+          </summary>
+          <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq2A">
+            خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة وأي مصاريف تجديد.
+          </p>
         </details>
+
         <details class="rounded-2xl border border-slate-200 bg-white p-5">
-          <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq3Q">كيفاش نطلب المتجر؟</summary>
-          <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq3A">كليكي على زر الطلب تحت المتجر المناسب، وغادي يتحل واتساب برسالة فيها النوع والثمن.</p>
+          <summary class="cursor-pointer font-extrabold text-[#0A1931]" data-i18n="faq3Q">
+            كيفاش نطلب المتجر؟
+          </summary>
+          <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="faq3A">
+            كليكي على زر الطلب تحت المتجر المناسب، وغادي يتحل واتساب برسالة فيها النوع والثمن.
+          </p>
         </details>
+
       </div>
+
       <div class="mt-8 rounded-[24px] bg-blue-50 p-6 text-center sm:p-8">
-        <h3 class="text-xl font-black text-[#0A1931]" data-i18n="bottomTitle">عندك سؤال على المتجر المناسب ليك؟</h3>
-        <p class="mt-2 text-sm leading-7 text-slate-600" data-i18n="bottomDescription">تواصل معنا عبر واتساب قبل ما تأكد الطلب.</p>
-        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="primary-btn mt-5 inline-flex rounded-full px-7 py-4 text-sm font-black" data-i18n="bottomButton">تواصل عبر واتساب</a>
+        <h3 class="text-xl font-black text-[#0A1931]" data-i18n="bottomTitle">
+          عندك سؤال على المتجر المناسب ليك؟
+        </h3>
+
+        <p class="mt-2 text-sm leading-7 text-slate-600" data-i18n="bottomDescription">
+          تواصل معنا عبر واتساب قبل ما تأكد الطلب.
+        </p>
+
+        <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="primary-btn mt-5 inline-flex rounded-full px-7 py-4 text-sm font-black" data-i18n="bottomButton">
+          تواصل عبر واتساب
+        </a>
       </div>
+
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="bg-[#0A1931] text-white">
     <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
+
       <a href="index.html" class="flex items-center gap-3">
-        <img src="logo-final.png" alt="DIGITAL MAROC" class="h-10 w-10 rounded-lg object-contain" onerror="this.style.display='none'">
-        <span><span class="block font-black">DIGITAL MAROC</span><span class="mt-1 block text-xs text-slate-300" data-i18n="footerSubtitle">حلول رقمية مغربية منذ 2024</span></span>
+        <img src="logo-final.png" alt="DIGITAL MAROC" class="h-10 w-10 rounded-lg object-contain">
+
+        <span>
+          <span class="block font-black">DIGITAL MAROC</span>
+          <span class="mt-1 block text-xs text-slate-300" data-i18n="footerSubtitle">
+            حلول رقمية مغربية منذ 2024
+          </span>
+        </span>
       </a>
+
       <div class="flex flex-wrap gap-x-5 gap-y-3 text-xs font-bold text-slate-300">
         <a href="index.html" class="hover:text-white" data-i18n="footerHome">الرئيسية</a>
         <a href="terms.html" class="hover:text-white" data-i18n="footerTerms">شروط الاستخدام</a>
         <a href="privacy.html" class="hover:text-white" data-i18n="footerPrivacy">الخصوصية</a>
         <a href="https://wa.me/212719380106" target="_blank" rel="noopener noreferrer" class="hover:text-white" data-i18n="footerContact">اتصل بنا</a>
       </div>
-      <p class="text-xs text-slate-400">© <span id="currentYear"></span> DIGITAL MAROC</p>
+
+      <p class="text-xs text-slate-400">
+        © <span id="currentYear"></span> DIGITAL MAROC
+      </p>
+
     </div>
   </footer>
 
@@ -209,129 +640,389 @@
 
     const translations = {
       ar: {
-        brandSubtitle:"حلول رقمية مغربية",headerOrder:"اطلب الآن",announcement:"حلول رقمية مغربية لمساعدتك على إطلاق مشروعك",
-        heroBadge:"المتجر الجاهز PRO",heroLine1:"ابدأ مشروعك",heroLine2:"بخطوة واضحة",
-        heroDescription:"اختار نوع المتجر اللي مناسب لفكرتك، تعرّف على مميزاته، وتواصل معنا عبر واتساب لمعرفة تفاصيل التجهيز والتسليم.",
-        chooseStore:"اختار نوع المتجر",contactUs:"تواصل معنا",benefit1:"اختيار نوع المتجر",benefit2:"تفاصيل قبل الطلب",benefit3:"تواصل مباشر",
-        previewTitle:"معاينة متجرك",previewLabel:"معاينة",previewBooks:"كتب رقمية",previewCanva:"قوالب Canva",previewShop:"متجر إلكتروني",
-        startingPrice:"الثمن ابتداءً من",seeOffers:"اكتشف العروض",sectionEyebrow:"اختار الحل المناسب",storesTitle:"ستة أنواع من المتاجر",
-        storesDescription:"كل اختيار عندو استعمال مختلف. شوف المميزات والتخفيض ديالو، وتواصل معنا لتأكيد المحتويات قبل الطلب.",
-        s1Title:"متجر الكتب الرقمية",s1Description:"مناسب لبيع الكتب الإلكترونية والملفات التعليمية. نظم المحتوى حسب المجالات وسهّل على الزبون اكتشاف الكتب المناسبة له.",s1Why:"علاش تختارو؟ باش تعرض محتوى رقمي منظم بلا شحن مادي.",s1Tag:"كتب رقمية",
-        s2Title:"متجر قوالب Canva",s2Description:"مناسب للمصممين وصناع المحتوى. اعرض قوالب Canva والتصاميم حسب الفئات ليسهل على الزبون تصفحها واختيارها.",s2Why:"علاش تختارو؟ باش تجمع التصاميم ديالك وتسهّل عرضها وبيعها.",s2Tag:"قوالب وتصاميم",
-        s3Title:"متجر المنتجات الملموسة",s3Description:"مناسب لبيع المنتجات المادية. اعرض صور المنتجات ومعلوماتها، وحدد طريقة استقبال الطلبات والتوصيل حسب الاتفاق.",s3Why:"علاش تختارو؟ باش تعرض المنتجات ديالك فواجهة منظمة وواضحة.",s3Tag:"منتجات مادية",
-        s4Title:"متجر الخدمات والحجز",s4Description:"مناسب للمستقلين ومقدمي الخدمات. وضّح خدماتك وأسعارك واستقبل طلبات التواصل أو الحجز.",s4Why:"علاش تختارو؟ باش الزبون يفهم الخدمة ويعرف كيفاش يتواصل معاك.",s4Tag:"خدمات وحجز",
-        s5Title:"متجر الكورسات",s5Description:"مناسب للمدربين وصناع الدورات. نظم الدروس والمحتوى التعليمي في مكان واحد، مع تأكيد خصائص الفيديو حسب التجهيز المتفق عليه.",s5Why:"علاش تختارو؟ باش تعرض الدورات ديالك بشكل مرتب وسهل التصفح.",s5Tag:"تعليم رقمي",
-        s6Badge:"خيار شامل",s6Title:"متجر Empire الشامل",s6Description:"اختيار للمشروع اللي كيحتاج أقسام متعددة. اجمع المنتجات الرقمية والخدمات والكورسات ضمن متجر واحد حسب نطاق العمل المتفق عليه.",s6Why:"علاش تختارو؟ إلا بغيتي مشروع فيه أكثر من نوع واحد من العروض.",s6Tag:"عدة أقسام",
-        discountLabel:"تخفيض 50%",orderThis:"طلب هذا المتجر",orderEmpire:"طلب متجر Empire",
-        faqTitle:"أسئلة شائعة",faq1Q:"كيفاش نختار نوع المتجر؟",faq1A:"اختار حسب النشاط ديالك، ومن بعد تواصل معنا باش نأكدوا معك التفاصيل والخصائص المتوفرة.",
-        faq2Q:"واش الدومين والاستضافة داخلين فالثمن؟",faq2A:"خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة وأي مصاريف تجديد.",
-        faq3Q:"كيفاش نطلب المتجر؟",faq3A:"كليكي على زر الطلب تحت المتجر المناسب، وغادي يتحل واتساب برسالة فيها النوع والثمن.",
-        bottomTitle:"عندك سؤال على المتجر المناسب ليك؟",bottomDescription:"تواصل معنا عبر واتساب قبل ما تأكد الطلب.",bottomButton:"تواصل عبر واتساب",
-        footerSubtitle:"حلول رقمية مغربية منذ 2024",footerHome:"الرئيسية",footerTerms:"شروط الاستخدام",footerPrivacy:"الخصوصية",footerContact:"اتصل بنا",
-        waIntro:"السلام عليكم، بغيت معلومات على هاد المتجر:",waStore:"نوع المتجر",waPrice:"الثمن المعروض",waConfirm:"بغيت نعرف تفاصيل المحتويات والتسليم قبل تأكيد الطلب."
+        brandSubtitle: "حلول رقمية مغربية",
+        headerOrder: "اطلب الآن",
+        announcement: "حلول رقمية مغربية لمساعدتك على إطلاق مشروعك",
+        heroBadge: "المتجر الجاهز PRO",
+        heroLine1: "ابدأ مشروعك",
+        heroLine2: "بخطوة واضحة",
+        heroDescription: "اختار نوع المتجر المناسب لفكرتك، واكتشف المميزات ديالو، وتواصل معنا لمعرفة تفاصيل التجهيز والتسليم.",
+        chooseStore: "اختار نوع المتجر",
+        contactUs: "تواصل معنا",
+        benefit1: "اختيار نوع المتجر",
+        benefit2: "تفاصيل قبل الطلب",
+        benefit3: "تواصل مباشر",
+        previewTitle: "معاينة متجرك",
+        previewLabel: "معاينة",
+        previewBooks: "كتب رقمية",
+        previewCanva: "قوالب Canva",
+        previewShop: "متجر إلكتروني",
+        startingPrice: "الثمن ابتداءً من",
+        seeOffers: "اكتشف العروض",
+        sectionEyebrow: "اختار الحل المناسب",
+        storesTitle: "ستة أنواع من المتاجر",
+        storesDescription: "كل متجر عندو استعمال ومميزات مختلفة. اكتشف شنو مناسب لمشروعك وتواصل معنا لتأكيد المحتويات قبل الطلب.",
+
+        s1Title: "متجر الكتب الرقمية",
+        s1Description: "متجر لعرض الكتب الإلكترونية والملفات التعليمية حسب المجالات، مع واجهة كتخلي الزبون يتصفح المحتوى ويختار الكتب المناسبة.",
+        s1Why: "المميزات: تصنيف الكتب، عرض الأغلفة، وتنظيم المنتجات الرقمية.",
+        s1Tag: "كتب رقمية",
+
+        s2Title: "متجر قوالب Canva",
+        s2Description: "متجر للمصممين وصناع المحتوى لعرض قوالب Canva والتصاميم الرقمية حسب الفئات، مع صور معاينة كتوضح نوع التصاميم المعروضة.",
+        s2Why: "المميزات: تنظيم القوالب، تصنيف التصاميم، وتسهيل استعراض المنتجات.",
+        s2Tag: "قوالب وتصاميم",
+
+        s3Title: "متجر المنتجات الملموسة",
+        s3Description: "متجر لعرض المنتجات المادية مع الصور والأثمنة والمعلومات، وتوضيح كيفية استقبال الطلبات والتوصيل حسب الاتفاق.",
+        s3Why: "المميزات: واجهة للمنتجات، معلومات واضحة، وعرض منظم للسلع.",
+        s3Tag: "منتجات مادية",
+
+        s4Title: "متجر الخدمات والحجز",
+        s4Description: "مناسب للمستقلين ومقدمي الخدمات لعرض الخدمات والأثمنة، مع توضيح خطوات التواصل أو طلب الحجز.",
+        s4Why: "المميزات: صفحات للخدمات، توضيح الأثمنة، وتسهيل طلب المعلومات والحجز.",
+        s4Tag: "خدمات وحجز",
+
+        s5Title: "متجر الكورسات",
+        s5Description: "متجر للمدربين وصناع الدورات لتنظيم الدروس والبرامج التعليمية، مع تحديد خصائص عرض الفيديو والوصول للمحتوى حسب التجهيز المتفق عليه.",
+        s5Why: "المميزات: تصنيف الدورات، عرض معلوماتها، وتنظيم المحتوى التعليمي.",
+        s5Tag: "تعليم رقمي",
+
+        s6Badge: "خيار شامل",
+        s6Title: "متجر Empire الشامل",
+        s6Description: "متجر للمشاريع اللي كتحتاج أقسام متعددة، بحال المنتجات الرقمية والخدمات والكورسات، حسب نطاق التجهيز المتفق عليه.",
+        s6Why: "المميزات: أقسام متعددة، عرض أنواع مختلفة من العروض، وواجهة موحدة للمشروع.",
+        s6Tag: "عدة أقسام",
+
+        discountLabel: "تخفيض 50%",
+        orderThis: "طلب هذا المتجر",
+        orderEmpire: "طلب متجر Empire",
+
+        faqTitle: "أسئلة شائعة",
+        faq1Q: "كيفاش نختار نوع المتجر؟",
+        faq1A: "اختار حسب النشاط ديالك، ومن بعد تواصل معنا لتأكيد التفاصيل والخصائص المتوفرة.",
+        faq2Q: "واش الدومين والاستضافة داخلين فالثمن؟",
+        faq2A: "خاص تأكيد هاد النقطة قبل الطلب، بما فيها مدة الاستضافة وأي مصاريف تجديد.",
+        faq3Q: "كيفاش نطلب المتجر؟",
+        faq3A: "كليكي على زر الطلب تحت المتجر المناسب، وغادي يتحل واتساب برسالة فيها النوع والثمن.",
+
+        bottomTitle: "عندك سؤال على المتجر المناسب ليك؟",
+        bottomDescription: "تواصل معنا عبر واتساب قبل ما تأكد الطلب.",
+        bottomButton: "تواصل عبر واتساب",
+
+        footerSubtitle: "حلول رقمية مغربية منذ 2024",
+        footerHome: "الرئيسية",
+        footerTerms: "شروط الاستخدام",
+        footerPrivacy: "الخصوصية",
+        footerContact: "اتصل بنا",
+
+        waIntro: "السلام عليكم، بغيت معلومات على هاد المتجر:",
+        waStore: "نوع المتجر",
+        waPrice: "الثمن المعروض",
+        waConfirm: "بغيت نعرف تفاصيل المحتويات والتسليم قبل تأكيد الطلب."
       },
+
       fr: {
-        brandSubtitle:"Solutions numériques marocaines",headerOrder:"Commander",announcement:"Des solutions numériques pour lancer votre projet",
-        heroBadge:"Boutique prête PRO",heroLine1:"Lancez votre projet",heroLine2:"en toute clarté",
-        heroDescription:"Choisissez la boutique adaptée à votre idée, découvrez ses avantages et contactez-nous sur WhatsApp pour confirmer les détails et la livraison.",
-        chooseStore:"Choisir une boutique",contactUs:"Nous contacter",benefit1:"Choix du type de boutique",benefit2:"Détails avant commande",benefit3:"Contact direct",
-        previewTitle:"Aperçu de votre boutique",previewLabel:"Aperçu",previewBooks:"Livres numériques",previewCanva:"Templates Canva",previewShop:"Boutique en ligne",
-        startingPrice:"Prix à partir de",seeOffers:"Voir les offres",sectionEyebrow:"Choisissez votre solution",storesTitle:"Six types de boutiques",
-        storesDescription:"Chaque option répond à un besoin différent. Découvrez les avantages et la promotion, puis confirmez le contenu avant de commander.",
-        s1Title:"Boutique de livres numériques",s1Description:"Idéale pour vendre des ebooks et des ressources éducatives, organisés par catégories pour faciliter la recherche.",s1Why:"Pourquoi la choisir ? Pour présenter du contenu numérique organisé sans livraison physique.",s1Tag:"Livres numériques",
-        s2Title:"Boutique de templates Canva",s2Description:"Pensée pour les designers et créateurs de contenu. Présentez vos modèles Canva et designs par catégories.",s2Why:"Pourquoi la choisir ? Pour regrouper et présenter vos créations plus facilement.",s2Tag:"Templates et designs",
-        s3Title:"Boutique de produits physiques",s3Description:"Adaptée à la vente de produits physiques. Présentez les articles et définissez les modalités de commande et de livraison.",s3Why:"Pourquoi la choisir ? Pour présenter vos produits dans une vitrine claire et organisée.",s3Tag:"Produits physiques",
-        s4Title:"Services et réservations",s4Description:"Idéale pour les indépendants et prestataires. Présentez vos services, vos tarifs et recevez des demandes de contact ou de réservation.",s4Why:"Pourquoi la choisir ? Pour expliquer clairement vos services et faciliter la prise de contact.",s4Tag:"Services et réservations",
-        s5Title:"Boutique de formations",s5Description:"Adaptée aux formateurs et créateurs de cours. Organisez vos leçons ; les fonctions vidéo sont à confirmer selon le projet.",s5Why:"Pourquoi la choisir ? Pour présenter vos formations de manière claire et structurée.",s5Tag:"Formation numérique",
-        s6Badge:"Option complète",s6Title:"Boutique Empire complète",s6Description:"Pour les projets qui nécessitent plusieurs sections. Regroupez produits numériques, services et formations selon le périmètre convenu.",s6Why:"Pourquoi la choisir ? Pour un projet qui propose plusieurs types d'offres.",s6Tag:"Plusieurs sections",
-        discountLabel:"PROMO -50%",orderThis:"Commander cette boutique",orderEmpire:"Commander Empire",
-        faqTitle:"Questions fréquentes",faq1Q:"Comment choisir le type de boutique ?",faq1A:"Choisissez selon votre activité, puis contactez-nous pour confirmer les détails et les fonctions disponibles.",
-        faq2Q:"Le domaine et l'hébergement sont-ils inclus ?",faq2A:"Ce point doit être confirmé avant la commande, y compris la durée d'hébergement et les éventuels frais de renouvellement.",
-        faq3Q:"Comment commander ?",faq3A:"Cliquez sur le bouton sous la boutique choisie. WhatsApp s'ouvrira avec un message indiquant le type et le prix.",
-        bottomTitle:"Une question sur la boutique qui vous convient ?",bottomDescription:"Contactez-nous sur WhatsApp avant de confirmer votre commande.",bottomButton:"Contacter sur WhatsApp",
-        footerSubtitle:"Solutions numériques marocaines depuis 2024",footerHome:"Accueil",footerTerms:"Conditions d'utilisation",footerPrivacy:"Confidentialité",footerContact:"Contact",
-        waIntro:"Bonjour, je souhaite des informations sur cette boutique :",waStore:"Type de boutique",waPrice:"Prix promotionnel affiché",waConfirm:"Je souhaite confirmer le contenu et les modalités de livraison avant de commander."
+        brandSubtitle: "Solutions numériques marocaines",
+        headerOrder: "Commander",
+        announcement: "Des solutions numériques pour lancer votre projet",
+        heroBadge: "Boutique prête PRO",
+        heroLine1: "Lancez votre projet",
+        heroLine2: "en toute clarté",
+        heroDescription: "Choisissez la boutique adaptée à votre idée, découvrez ses avantages et contactez-nous pour confirmer les détails.",
+        chooseStore: "Choisir une boutique",
+        contactUs: "Nous contacter",
+        benefit1: "Choix du type de boutique",
+        benefit2: "Détails avant commande",
+        benefit3: "Contact direct",
+        previewTitle: "Aperçu de votre boutique",
+        previewLabel: "Aperçu",
+        previewBooks: "Livres numériques",
+        previewCanva: "Templates Canva",
+        previewShop: "Boutique en ligne",
+        startingPrice: "Prix à partir de",
+        seeOffers: "Voir les offres",
+        sectionEyebrow: "Choisissez votre solution",
+        storesTitle: "Six types de boutiques",
+        storesDescription: "Chaque boutique répond à un besoin différent. Découvrez ses avantages et confirmez son contenu avant de commander.",
+
+        s1Title: "Boutique de livres numériques",
+        s1Description: "Présentez des ebooks et ressources éducatives par catégories, avec une interface facilitant la découverte des livres.",
+        s1Why: "Atouts : classement des livres, couvertures et organisation des produits numériques.",
+        s1Tag: "Livres numériques",
+
+        s2Title: "Boutique de templates Canva",
+        s2Description: "Présentez des modèles Canva et designs numériques par catégories, avec des aperçus adaptés aux créations.",
+        s2Why: "Atouts : organisation des templates et présentation claire des créations.",
+        s2Tag: "Templates et designs",
+
+        s3Title: "Boutique de produits physiques",
+        s3Description: "Présentez les produits physiques avec leurs photos et informations, et définissez les modalités de commande et de livraison.",
+        s3Why: "Atouts : vitrine organisée et informations produits claires.",
+        s3Tag: "Produits physiques",
+
+        s4Title: "Services et réservations",
+        s4Description: "Présentez vos services et tarifs, et facilitez les demandes de contact ou de réservation.",
+        s4Why: "Atouts : pages de services, tarifs et prise de contact facilitée.",
+        s4Tag: "Services et réservations",
+
+        s5Title: "Boutique de formations",
+        s5Description: "Organisez vos formations et leçons. Les fonctions vidéo et l'accès au contenu dépendent du projet convenu.",
+        s5Why: "Atouts : classement des cours et présentation du contenu pédagogique.",
+        s5Tag: "Formation numérique",
+
+        s6Badge: "Option complète",
+        s6Title: "Boutique Empire complète",
+        s6Description: "Une boutique avec plusieurs sections pour les produits numériques, services et formations selon le projet convenu.",
+        s6Why: "Atouts : plusieurs catégories et une interface unifiée.",
+        s6Tag: "Plusieurs sections",
+
+        discountLabel: "PROMO -50%",
+        orderThis: "Commander cette boutique",
+        orderEmpire: "Commander Empire",
+
+        faqTitle: "Questions fréquentes",
+        faq1Q: "Comment choisir le type de boutique ?",
+        faq1A: "Choisissez selon votre activité, puis contactez-nous pour confirmer les détails et les fonctions disponibles.",
+        faq2Q: "Le domaine et l'hébergement sont-ils inclus ?",
+        faq2A: "Confirmez ce point avant la commande, y compris la durée d'hébergement et les éventuels frais de renouvellement.",
+        faq3Q: "Comment commander ?",
+        faq3A: "Cliquez sur le bouton sous la boutique choisie. WhatsApp s'ouvrira avec le type et le prix.",
+
+        bottomTitle: "Une question sur la boutique qui vous convient ?",
+        bottomDescription: "Contactez-nous sur WhatsApp avant de confirmer votre commande.",
+        bottomButton: "Contacter sur WhatsApp",
+
+        footerSubtitle: "Solutions numériques marocaines depuis 2024",
+        footerHome: "Accueil",
+        footerTerms: "Conditions d'utilisation",
+        footerPrivacy: "Confidentialité",
+        footerContact: "Contact",
+
+        waIntro: "Bonjour, je souhaite des informations sur cette boutique :",
+        waStore: "Type de boutique",
+        waPrice: "Prix affiché",
+        waConfirm: "Je souhaite confirmer le contenu et les modalités de livraison avant de commander."
       },
+
       en: {
-        brandSubtitle:"Moroccan digital solutions",headerOrder:"Order now",announcement:"Digital solutions to help you launch your project",
-        heroBadge:"Ready Store PRO",heroLine1:"Start your project",heroLine2:"with clarity",
-        heroDescription:"Choose the store that fits your idea, review its benefits, and contact us on WhatsApp to confirm setup and delivery details.",
-        chooseStore:"Choose a store",contactUs:"Contact us",benefit1:"Choose a store type",benefit2:"Details before ordering",benefit3:"Direct contact",
-        previewTitle:"Store preview",previewLabel:"Preview",previewBooks:"Digital books",previewCanva:"Canva templates",previewShop:"Online store",
-        startingPrice:"Starting price",seeOffers:"View offers",sectionEyebrow:"Choose the right solution",storesTitle:"Six store types",
-        storesDescription:"Each option serves a different purpose. Review its benefits and discount, then confirm the contents before ordering.",
-        s1Title:"Digital Books Store",s1Description:"Ideal for selling ebooks and educational resources, organized into categories to help customers find relevant content.",s1Why:"Why choose it? Present organized digital content without physical shipping.",s1Tag:"Digital books",
-        s2Title:"Canva Templates Store",s2Description:"Designed for designers and content creators. Present Canva templates and digital designs in organized categories.",s2Why:"Why choose it? Group and showcase your designs more easily.",s2Tag:"Templates and designs",
-        s3Title:"Physical Products Store",s3Description:"Suitable for physical products. Display product details and define order and delivery arrangements.",s3Why:"Why choose it? Present your products in a clear, organized storefront.",s3Tag:"Physical products",
-        s4Title:"Services and Booking Store",s4Description:"Ideal for freelancers and service providers. Present services and pricing, and receive contact or booking requests.",s4Why:"Why choose it? Explain your services clearly and make contacting you easier.",s4Tag:"Services and booking",
-        s5Title:"Courses Store",s5Description:"Suitable for trainers and course creators. Organize lessons in one place; video features depend on the agreed setup.",s5Why:"Why choose it? Present your courses in a clear, structured way.",s5Tag:"Digital learning",
-        s6Badge:"Complete option",s6Title:"Complete Empire Store",s6Description:"For projects that need multiple sections. Combine digital products, services and courses according to the agreed scope.",s6Why:"Why choose it? For a project offering several types of products or services.",s6Tag:"Multiple sections",
-        discountLabel:"50% OFF",orderThis:"Order this store",orderEmpire:"Order Empire",
-        faqTitle:"Frequently asked questions",faq1Q:"How do I choose a store type?",faq1A:"Choose based on your business, then contact us to confirm the available features and details.",
-        faq2Q:"Are domain and hosting included?",faq2A:"Confirm this before ordering, including the hosting period and any renewal fees.",
-        faq3Q:"How do I order?",faq3A:"Click the order button under your chosen store. WhatsApp will open with a message containing the type and price.",
-        bottomTitle:"Have a question about the right store for you?",bottomDescription:"Contact us on WhatsApp before confirming your order.",bottomButton:"Contact us on WhatsApp",
-        footerSubtitle:"Moroccan digital solutions since 2024",footerHome:"Home",footerTerms:"Terms of use",footerPrivacy:"Privacy",footerContact:"Contact",
-        waIntro:"Hello, I would like information about this store:",waStore:"Store type",waPrice:"Displayed promotional price",waConfirm:"I would like to confirm the contents and delivery details before ordering."
+        brandSubtitle: "Moroccan digital solutions",
+        headerOrder: "Order now",
+        announcement: "Digital solutions to help you launch your project",
+        heroBadge: "Ready Store PRO",
+        heroLine1: "Start your project",
+        heroLine2: "with clarity",
+        heroDescription: "Choose the store that fits your idea, review its benefits, and contact us to confirm setup and delivery details.",
+        chooseStore: "Choose a store",
+        contactUs: "Contact us",
+        benefit1: "Choose a store type",
+        benefit2: "Details before ordering",
+        benefit3: "Direct contact",
+        previewTitle: "Store preview",
+        previewLabel: "Preview",
+        previewBooks: "Digital books",
+        previewCanva: "Canva templates",
+        previewShop: "Online store",
+        startingPrice: "Starting price",
+        seeOffers: "View offers",
+        sectionEyebrow: "Choose the right solution",
+        storesTitle: "Six store types",
+        storesDescription: "Each store serves a different purpose. Review its benefits and confirm the contents before ordering.",
+
+        s1Title: "Digital Books Store",
+        s1Description: "Showcase ebooks and educational resources by category, making it easier for customers to discover relevant books.",
+        s1Why: "Features: book categories, cover previews and organized digital products.",
+        s1Tag: "Digital books",
+
+        s2Title: "Canva Templates Store",
+        s2Description: "Showcase Canva templates and digital designs by category, with previews suited to the designs.",
+        s2Why: "Features: organized templates and clear presentation of your designs.",
+        s2Tag: "Templates and designs",
+
+        s3Title: "Physical Products Store",
+        s3Description: "Display physical products with photos and details, and define ordering and delivery arrangements.",
+        s3Why: "Features: an organized product storefront and clear product information.",
+        s3Tag: "Physical products",
+
+        s4Title: "Services and Booking Store",
+        s4Description: "Present your services and pricing, and make contact or booking requests easier.",
+        s4Why: "Features: service pages, clear prices and easier contact.",
+        s4Tag: "Services and booking",
+
+        s5Title: "Courses Store",
+        s5Description: "Organize courses and lessons. Video and content-access features depend on the agreed project scope.",
+        s5Why: "Features: organized courses and clear educational content presentation.",
+        s5Tag: "Digital learning",
+
+        s6Badge: "Complete option",
+        s6Title: "Complete Empire Store",
+        s6Description: "A multi-section store for digital products, services and courses according to the agreed project scope.",
+        s6Why: "Features: multiple categories and one unified storefront.",
+        s6Tag: "Multiple sections",
+
+        discountLabel: "50% OFF",
+        orderThis: "Order this store",
+        orderEmpire: "Order Empire",
+
+        faqTitle: "Frequently asked questions",
+        faq1Q: "How do I choose a store type?",
+        faq1A: "Choose based on your business, then contact us to confirm available features and details.",
+        faq2Q: "Are domain and hosting included?",
+        faq2A: "Confirm this before ordering, including the hosting period and any renewal fees.",
+        faq3Q: "How do I order?",
+        faq3A: "Click the order button under your chosen store. WhatsApp will open with the store type and price.",
+
+        bottomTitle: "Have a question about the right store for you?",
+        bottomDescription: "Contact us on WhatsApp before confirming your order.",
+        bottomButton: "Contact us on WhatsApp",
+
+        footerSubtitle: "Moroccan digital solutions since 2024",
+        footerHome: "Home",
+        footerTerms: "Terms of use",
+        footerPrivacy: "Privacy",
+        footerContact: "Contact",
+
+        waIntro: "Hello, I would like information about this store:",
+        waStore: "Store type",
+        waPrice: "Displayed price",
+        waConfirm: "I would like to confirm the contents and delivery details before ordering."
       }
     };
 
     const storeInfo = {
-      books:{price:"299 DH",ar:"متجر الكتب الرقمية",fr:"Boutique de livres numériques",en:"Digital Books Store"},
-      canva:{price:"299 DH",ar:"متجر قوالب Canva",fr:"Boutique de templates Canva",en:"Canva Templates Store"},
-      ecommerce:{price:"299 DH",ar:"متجر المنتجات الملموسة",fr:"Boutique de produits physiques",en:"Physical Products Store"},
-      services:{price:"299 DH",ar:"متجر الخدمات والحجز",fr:"Boutique de services et réservations",en:"Services and Booking Store"},
-      courses:{price:"299 DH",ar:"متجر الكورسات",fr:"Boutique de formations",en:"Courses Store"},
-      empire:{price:"499 DH",ar:"متجر Empire الشامل",fr:"Boutique Empire complète",en:"Complete Empire Store"}
+      books: {
+        price: "299 DH",
+        ar: "متجر الكتب الرقمية",
+        fr: "Boutique de livres numériques",
+        en: "Digital Books Store"
+      },
+
+      canva: {
+        price: "299 DH",
+        ar: "متجر قوالب Canva",
+        fr: "Boutique de templates Canva",
+        en: "Canva Templates Store"
+      },
+
+      ecommerce: {
+        price: "299 DH",
+        ar: "متجر المنتجات الملموسة",
+        fr: "Boutique de produits physiques",
+        en: "Physical Products Store"
+      },
+
+      services: {
+        price: "299 DH",
+        ar: "متجر الخدمات والحجز",
+        fr: "Boutique de services et réservations",
+        en: "Services and Booking Store"
+      },
+
+      courses: {
+        price: "299 DH",
+        ar: "متجر الكورسات",
+        fr: "Boutique de formations",
+        en: "Courses Store"
+      },
+
+      empire: {
+        price: "499 DH",
+        ar: "متجر Empire الشامل",
+        fr: "Boutique Empire complète",
+        en: "Complete Empire Store"
+      }
     };
 
-    function makeWhatsAppUrl(message){
-      return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message);
+    function makeWhatsAppUrl(message) {
+      return "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
     }
 
-    function updateWhatsAppLinks(lang){
-      const dict=translations[lang]||translations.ar;
-      document.querySelectorAll("[data-store]").forEach(link=>{
-        const store=storeInfo[link.dataset.store];
-        if(!store)return;
-        const message=[dict.waIntro,dict.waStore+": "+store[lang],dict.waPrice+": "+store.price,dict.waConfirm].join("\n");
-        link.href=makeWhatsAppUrl(message);
-        link.target="_blank";
-        link.rel="noopener noreferrer";
+    function updateWhatsAppLinks(lang) {
+      const dict = translations[lang] || translations.ar;
+
+      document.querySelectorAll("[data-store]").forEach(link => {
+        const store = storeInfo[link.dataset.store];
+
+        if (!store) return;
+
+        const message = [
+          dict.waIntro,
+          dict.waStore + ": " + store[lang],
+          dict.waPrice + ": " + store.price,
+          dict.waConfirm
+        ].join("\n");
+
+        link.href = makeWhatsAppUrl(message);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
       });
-      const generalMessage=dict.bottomTitle;
-      document.querySelectorAll('a[href="https://wa.me/212719380106"]').forEach(link=>{
-        link.href=makeWhatsAppUrl(generalMessage);
-        link.target="_blank";
-        link.rel="noopener noreferrer";
+
+      const generalMessage = dict.bottomTitle;
+
+      document.querySelectorAll(
+        'a[href="https://wa.me/212719380106"]'
+      ).forEach(link => {
+        link.href = makeWhatsAppUrl(generalMessage);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
       });
     }
 
-    function setLang(lang){
-      const dict=translations[lang]||translations.ar;
-      document.documentElement.lang=lang;
-      document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-      document.body.style.fontFamily=lang==="ar"?"'Tajawal', sans-serif":"'Inter', sans-serif";
-      document.querySelectorAll("[data-i18n]").forEach(element=>{
-        const key=element.getAttribute("data-i18n");
-        if(Object.prototype.hasOwnProperty.call(dict,key))element.textContent=dict[key];
+    function setLang(lang) {
+      const dict = translations[lang] || translations.ar;
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+      document.body.style.fontFamily =
+        lang === "ar"
+          ? "'Tajawal', sans-serif"
+          : "'Inter', sans-serif";
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+
+        if (Object.prototype.hasOwnProperty.call(dict, key)) {
+          element.textContent = dict[key];
+        }
       });
-      document.querySelectorAll("[data-lang]").forEach(button=>{
-        const active=button.dataset.lang===lang;
-        button.classList.toggle("active",active);
-        button.setAttribute("aria-pressed",String(active));
+
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        const active = button.dataset.lang === lang;
+
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
       });
-      try{localStorage.setItem("dm_lang",lang)}catch(error){}
+
+      try {
+        localStorage.setItem("dm_lang", lang);
+      } catch (error) {}
+
       updateWhatsAppLinks(lang);
     }
 
-    document.querySelectorAll("[data-lang]").forEach(button=>{
-      button.addEventListener("click",()=>setLang(button.dataset.lang));
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => {
+        setLang(button.dataset.lang);
+      });
     });
-    document.getElementById("currentYear").textContent=new Date().getFullYear();
-    let initialLang="ar";
-    try{const savedLang=localStorage.getItem("dm_lang");if(savedLang&&translations[savedLang])initialLang=savedLang}catch(error){}
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    let initialLang = "ar";
+
+    try {
+      const savedLang = localStorage.getItem("dm_lang");
+
+      if (savedLang && translations[savedLang]) {
+        initialLang = savedLang;
+      }
+    } catch (error) {}
+
     setLang(initialLang);
   </script>
+
 </body>
 </html>
